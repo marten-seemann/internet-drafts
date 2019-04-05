@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                          April 04, 2019
-Expires: October 6, 2019
+Intended status: Standards Track                          April 05, 2019
+Expires: October 7, 2019
 
 
           Concrete QUIC and HTTP/3 event definitions for qlog
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 6, 2019.
+   This Internet-Draft will expire on October 7, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                     Expires October 6, 2019                [Page 1]
+Marx                     Expires October 7, 2019                [Page 1]
 
 Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Marx                     Expires October 6, 2019                [Page 2]
+Marx                     Expires October 7, 2019                [Page 2]
 
 Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
 
@@ -165,7 +165,7 @@ Appendix C.  Acknowledgements
 
 
 
-Marx                     Expires October 6, 2019                [Page 3]
+Marx                     Expires October 7, 2019                [Page 3]
 
 Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
 
@@ -221,4 +221,4 @@ Author's Address
 
 
 
-Marx                     Expires October 6, 2019                [Page 4]
+Marx                     Expires October 7, 2019                [Page 4]
