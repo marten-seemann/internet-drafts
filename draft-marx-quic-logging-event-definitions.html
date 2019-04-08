@@ -5,7 +5,7 @@
 <head profile="http://www.w3.org/2006/03/hcard http://dublincore.org/documents/2008/08/04/dc-html/">
   <meta http-equiv="Content-Type" content="text/html; charset=us-ascii" />
 
-  <title>Concrete QUIC and HTTP/3 event definitions for qlog</title>
+  <title>QUIC and HTTP/3 event definitions for qlog</title>
 
   
 <style type="text/css">/*<![CDATA[*/
@@ -285,7 +285,36 @@ ul.toc li {
 <link href="#rfc.section.1.1" rel="Chapter" title="1.1 Notational Conventions">
 <link href="#rfc.section.2" rel="Chapter" title="2 Overview">
 <link href="#rfc.section.3" rel="Chapter" title="3 QUIC event definitions">
+<link href="#rfc.section.3.1" rel="Chapter" title="3.1 CONNECTIVITY">
+<link href="#rfc.section.3.1.1" rel="Chapter" title="3.1.1 CONNECTION_ATTEMPT">
+<link href="#rfc.section.3.1.2" rel="Chapter" title="3.1.2 CONNECTION_NEW">
+<link href="#rfc.section.3.1.3" rel="Chapter" title="3.1.3 CONNECTION_ID_UPDATE">
+<link href="#rfc.section.3.1.4" rel="Chapter" title="3.1.4 MIGRATION-related events">
+<link href="#rfc.section.3.2" rel="Chapter" title="3.2 SECURITY">
+<link href="#rfc.section.3.2.1" rel="Chapter" title="3.2.1 HEADER_DECRYPT_ERROR">
+<link href="#rfc.section.3.2.2" rel="Chapter" title="3.2.2 PACKET_DECRYPT_ERROR">
+<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 KEY_UPDATE">
+<link href="#rfc.section.3.2.4" rel="Chapter" title="3.2.4 KEY_RETIRED">
+<link href="#rfc.section.3.2.5" rel="Chapter" title="3.2.5 CIPHER_UPDATE">
+<link href="#rfc.section.3.3" rel="Chapter" title="3.3 TRANSPORT">
+<link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 VERSION_UPDATE">
+<link href="#rfc.section.3.3.2" rel="Chapter" title="3.3.2 TRANSPORT_PARAMETERS_UPDATE">
+<link href="#rfc.section.3.3.3" rel="Chapter" title="3.3.3 ALPN_UPDATE">
+<link href="#rfc.section.3.3.4" rel="Chapter" title="3.3.4 STREAM_STATE_UPDATE">
+<link href="#rfc.section.3.3.5" rel="Chapter" title="3.3.5 FLOW_CONTROL_UPDATE">
+<link href="#rfc.section.3.4" rel="Chapter" title="3.4 RECOVERY">
+<link href="#rfc.section.3.4.1" rel="Chapter" title="3.4.1 CC_STATE_UPDATE">
+<link href="#rfc.section.3.4.2" rel="Chapter" title="3.4.2 METRIC_UPDATE">
+<link href="#rfc.section.3.4.3" rel="Chapter" title="3.4.3 LOSS_ALARM_SET">
+<link href="#rfc.section.3.4.4" rel="Chapter" title="3.4.4 LOSS_ALARM_FIRED">
+<link href="#rfc.section.3.4.5" rel="Chapter" title="3.4.5 PACKET_LOST">
+<link href="#rfc.section.3.4.6" rel="Chapter" title="3.4.6 PACKET_ACKNOWLEDGED">
+<link href="#rfc.section.3.4.7" rel="Chapter" title="3.4.7 PACKET_RETRANSMIT">
 <link href="#rfc.section.4" rel="Chapter" title="4 HTTP/3 event definitions">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 HTTP">
+<link href="#rfc.section.4.2" rel="Chapter" title="4.2 QPACK">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 PRIORITIZATION">
+<link href="#rfc.section.4.4" rel="Chapter" title="4.4 PUSH">
 <link href="#rfc.section.5" rel="Chapter" title="5 Security Considerations">
 <link href="#rfc.section.6" rel="Chapter" title="6 IANA Considerations">
 <link href="#rfc.references" rel="Chapter" title="7 References">
@@ -304,8 +333,8 @@ ul.toc li {
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-quic-logging-event-definitions-latest" />
   <meta name="dct.issued" scheme="ISO8601" content="2019-04-08" />
-  <meta name="dct.abstract" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events SHOULD be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema." />
-  <meta name="description" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events SHOULD be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema." />
+  <meta name="dct.abstract" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema." />
+  <meta name="description" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema." />
 
 </head>
 
@@ -335,11 +364,11 @@ ul.toc li {
     </tbody>
   </table>
 
-  <p class="title">Concrete QUIC and HTTP/3 event definitions for qlog<br />
+  <p class="title">QUIC and HTTP/3 event definitions for qlog<br />
   <span class="filename">draft-marx-quic-logging-event-definitions-latest</span></p>
   
   <h1 id="rfc.abstract"><a href="#rfc.abstract">Abstract</a></h1>
-<p>This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events SHOULD be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema.</p>
+<p>This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema.</p>
 <h1 id="rfc.status"><a href="#rfc.status">Status of This Memo</a></h1>
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
@@ -362,9 +391,67 @@ ul.toc li {
 </li>
 <li>3.   <a href="#rfc.section.3">QUIC event definitions</a>
 </li>
-<li>4.   <a href="#rfc.section.4">HTTP/3 event definitions</a>
+<ul><li>3.1.   <a href="#rfc.section.3.1">CONNECTIVITY</a>
 </li>
-<li>5.   <a href="#rfc.section.5">Security Considerations</a>
+<ul><li>3.1.1.   <a href="#rfc.section.3.1.1">CONNECTION_ATTEMPT</a>
+</li>
+<li>3.1.2.   <a href="#rfc.section.3.1.2">CONNECTION_NEW</a>
+</li>
+<li>3.1.3.   <a href="#rfc.section.3.1.3">CONNECTION_ID_UPDATE</a>
+</li>
+<li>3.1.4.   <a href="#rfc.section.3.1.4">MIGRATION-related events</a>
+</li>
+</ul><li>3.2.   <a href="#rfc.section.3.2">SECURITY</a>
+</li>
+<ul><li>3.2.1.   <a href="#rfc.section.3.2.1">HEADER_DECRYPT_ERROR</a>
+</li>
+<li>3.2.2.   <a href="#rfc.section.3.2.2">PACKET_DECRYPT_ERROR</a>
+</li>
+<li>3.2.3.   <a href="#rfc.section.3.2.3">KEY_UPDATE</a>
+</li>
+<li>3.2.4.   <a href="#rfc.section.3.2.4">KEY_RETIRED</a>
+</li>
+<li>3.2.5.   <a href="#rfc.section.3.2.5">CIPHER_UPDATE</a>
+</li>
+</ul><li>3.3.   <a href="#rfc.section.3.3">TRANSPORT</a>
+</li>
+<ul><li>3.3.1.   <a href="#rfc.section.3.3.1">VERSION_UPDATE</a>
+</li>
+<li>3.3.2.   <a href="#rfc.section.3.3.2">TRANSPORT_PARAMETERS_UPDATE</a>
+</li>
+<li>3.3.3.   <a href="#rfc.section.3.3.3">ALPN_UPDATE</a>
+</li>
+<li>3.3.4.   <a href="#rfc.section.3.3.4">STREAM_STATE_UPDATE</a>
+</li>
+<li>3.3.5.   <a href="#rfc.section.3.3.5">FLOW_CONTROL_UPDATE</a>
+</li>
+</ul><li>3.4.   <a href="#rfc.section.3.4">RECOVERY</a>
+</li>
+<ul><li>3.4.1.   <a href="#rfc.section.3.4.1">CC_STATE_UPDATE</a>
+</li>
+<li>3.4.2.   <a href="#rfc.section.3.4.2">METRIC_UPDATE</a>
+</li>
+<li>3.4.3.   <a href="#rfc.section.3.4.3">LOSS_ALARM_SET</a>
+</li>
+<li>3.4.4.   <a href="#rfc.section.3.4.4">LOSS_ALARM_FIRED</a>
+</li>
+<li>3.4.5.   <a href="#rfc.section.3.4.5">PACKET_LOST</a>
+</li>
+<li>3.4.6.   <a href="#rfc.section.3.4.6">PACKET_ACKNOWLEDGED</a>
+</li>
+<li>3.4.7.   <a href="#rfc.section.3.4.7">PACKET_RETRANSMIT</a>
+</li>
+</ul></ul><li>4.   <a href="#rfc.section.4">HTTP/3 event definitions</a>
+</li>
+<ul><li>4.1.   <a href="#rfc.section.4.1">HTTP</a>
+</li>
+<li>4.2.   <a href="#rfc.section.4.2">QPACK</a>
+</li>
+<li>4.3.   <a href="#rfc.section.4.3">PRIORITIZATION</a>
+</li>
+<li>4.4.   <a href="#rfc.section.4.4">PUSH</a>
+</li>
+</ul><li>5.   <a href="#rfc.section.5">Security Considerations</a>
 </li>
 <li>6.   <a href="#rfc.section.6">IANA Considerations</a>
 </li>
@@ -399,15 +486,157 @@ ul.toc li {
 <h1 id="rfc.section.2">
 <a href="#rfc.section.2">2.</a> <a href="#overview" id="overview">Overview</a>
 </h1>
-<p id="rfc.section.2.p.1">TBD</p>
+<p id="rfc.section.2.p.1">This document describes the values of the qlog CATEGORY, EVENT_TYPE, TRIGGER and DATA fields and their semantics for the QUIC and HTTP/3 protocols. The definitions included in this file are assumed to be used in qlog&#8217;s &#8220;trace&#8221; containers, where the trace&#8217;s &#8220;protocol_type&#8221; field MUST be set to &#8220;QUIC_HTTP3&#8221;.</p>
+<p id="rfc.section.2.p.2">This document uses the <a href="https://www.typescriptlang.org/">&#8220;TypeScript&#8221; language</a> to describe its schema in. We use TypeScript because it is less verbose than JSON-schema and almost as expressive. It also makes it easier to include these definitions directly into a web-based tool. The main conventions a reader should be aware of are:</p>
+<p></p>
+
+<ul>
+<li>obj? : this object is optional</li>
+<li>type1 | type2 : a union of these two types</li>
+<li>obj:type : this object has this concrete type</li>
+<li>obj[] : this object is an array (which can contain any type of object)</li>
+<li>obj:Array&lt;type&gt; : this object is an array of this type</li>
+<li>number : identifies either an integer, float or double in TypeScript. In this document, number always means an integer.</li>
+<li>TODO: list all possible triggers per event type</li>
+<li>TODO: make it clear which events are &#8220;normal&#8221; and which are &#8220;only if you really need this&#8221; (normal = probably TRANSPORT and RECOVERY and HTTP)</li>
+</ul>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#quic-event-definitions" id="quic-event-definitions">QUIC event definitions</a>
 </h1>
-<p id="rfc.section.3.p.1">TBD</p>
+<h1 id="rfc.section.3.1">
+<a href="#rfc.section.3.1">3.1.</a> <a href="#connectivity" id="connectivity">CONNECTIVITY</a>
+</h1>
+<h1 id="rfc.section.3.1.1">
+<a href="#rfc.section.3.1.1">3.1.1.</a> <a href="#connectionattempt" id="connectionattempt">CONNECTION_ATTEMPT</a>
+</h1>
+<h1 id="rfc.section.3.1.2">
+<a href="#rfc.section.3.1.2">3.1.2.</a> <a href="#connectionnew" id="connectionnew">CONNECTION_NEW</a>
+</h1>
+<h1 id="rfc.section.3.1.3">
+<a href="#rfc.section.3.1.3">3.1.3.</a> <a href="#connectionidupdate" id="connectionidupdate">CONNECTION_ID_UPDATE</a>
+</h1>
+<h1 id="rfc.section.3.1.4">
+<a href="#rfc.section.3.1.4">3.1.4.</a> <a href="#migration-related-events" id="migration-related-events">MIGRATION-related events</a>
+</h1>
+<p id="rfc.section.3.1.4.p.1">e.g., PATH_UPDATE</p>
+<p id="rfc.section.3.1.4.p.2">TODO: read up on the draft how migration works and whether to best fit this here or in TRANSPORT</p>
+<h1 id="rfc.section.3.2">
+<a href="#rfc.section.3.2">3.2.</a> <a href="#security" id="security">SECURITY</a>
+</h1>
+<h1 id="rfc.section.3.2.1">
+<a href="#rfc.section.3.2.1">3.2.1.</a> <a href="#headerdecrypterror" id="headerdecrypterror">HEADER_DECRYPT_ERROR</a>
+</h1>
+<pre>
+{ mask, error }
+</pre>
+<h1 id="rfc.section.3.2.2">
+<a href="#rfc.section.3.2.2">3.2.2.</a> <a href="#packetdecrypterror" id="packetdecrypterror">PACKET_DECRYPT_ERROR</a>
+</h1>
+<pre>
+{ key, error }
+</pre>
+<h1 id="rfc.section.3.2.3">
+<a href="#rfc.section.3.2.3">3.2.3.</a> <a href="#keyupdate" id="keyupdate">KEY_UPDATE</a>
+</h1>
+<pre>
+{ type = "Initial | handshake | 1RTT", value }
+</pre>
+<h1 id="rfc.section.3.2.4">
+<a href="#rfc.section.3.2.4">3.2.4.</a> <a href="#keyretired" id="keyretired">KEY_RETIRED</a>
+</h1>
+<pre>
+{ value } # initial encryption level is implicitly deleted
+</pre>
+<h1 id="rfc.section.3.2.5">
+<a href="#rfc.section.3.2.5">3.2.5.</a> <a href="#cipherupdate" id="cipherupdate">CIPHER_UPDATE</a>
+</h1>
+<h1 id="rfc.section.3.3">
+<a href="#rfc.section.3.3">3.3.</a> <a href="#transport" id="transport">TRANSPORT</a>
+</h1>
+<h1 id="rfc.section.3.3.1">
+<a href="#rfc.section.3.3.1">3.3.1.</a> <a href="#versionupdate" id="versionupdate">VERSION_UPDATE</a>
+</h1>
+<p id="rfc.section.3.3.1.p.1">TODO: maybe name VERSION_SELECTED ?</p>
+<h1 id="rfc.section.3.3.2">
+<a href="#rfc.section.3.3.2">3.3.2.</a> <a href="#transportparametersupdate" id="transportparametersupdate">TRANSPORT_PARAMETERS_UPDATE</a>
+</h1>
+<h1 id="rfc.section.3.3.3">
+<a href="#rfc.section.3.3.3">3.3.3.</a> <a href="#alpnupdate" id="alpnupdate">ALPN_UPDATE</a>
+</h1>
+<p id="rfc.section.3.3.3.p.1">TODO: should this be in HTTP? ~~~~ { alpn } ~~~~</p>
+<h1 id="rfc.section.3.3.4">
+<a href="#rfc.section.3.3.4">3.3.4.</a> <a href="#streamstateupdate" id="streamstateupdate">STREAM_STATE_UPDATE</a>
+</h1>
+<p></p>
+
+<ul>
+<li>NEW</li>
+<li>CLOSED</li>
+<li>DESTROYED</li>
+<li>HALF_CLOSED</li>
+<li>HALF_OPEN</li>
+<li>&#8230;</li>
+</ul>
+<h1 id="rfc.section.3.3.5">
+<a href="#rfc.section.3.3.5">3.3.5.</a> <a href="#flowcontrolupdate" id="flowcontrolupdate">FLOW_CONTROL_UPDATE</a>
+</h1>
+<p></p>
+
+<ul>
+<li>type = connection</li>
+<li>type = stream + id = streamid</li>
+</ul>
+<p id="rfc.section.3.3.5.p.2">TODO: check state machine in QUIC transport draft</p>
+<h1 id="rfc.section.3.4">
+<a href="#rfc.section.3.4">3.4.</a> <a href="#recovery" id="recovery">RECOVERY</a>
+</h1>
+<h1 id="rfc.section.3.4.1">
+<a href="#rfc.section.3.4.1">3.4.1.</a> <a href="#ccstateupdate" id="ccstateupdate">CC_STATE_UPDATE</a>
+</h1>
+<h1 id="rfc.section.3.4.2">
+<a href="#rfc.section.3.4.2">3.4.2.</a> <a href="#metricupdate" id="metricupdate">METRIC_UPDATE</a>
+</h1>
+<p></p>
+
+<ul>
+<li>CWND</li>
+<li>BYTES_IN_FLIGHT</li>
+<li>RTT</li>
+<li>SSTHRESH</li>
+<li>PACING_RATE</li>
+</ul>
+<p id="rfc.section.3.4.2.p.2">TODO: split these up into separate events? TODO: allow more than 1 of these in a single METRIC_UPDATE event? (cfr. quic-trace TransportState)</p>
+<h1 id="rfc.section.3.4.3">
+<a href="#rfc.section.3.4.3">3.4.3.</a> <a href="#lossalarmset" id="lossalarmset">LOSS_ALARM_SET</a>
+</h1>
+<h1 id="rfc.section.3.4.4">
+<a href="#rfc.section.3.4.4">3.4.4.</a> <a href="#lossalarmfired" id="lossalarmfired">LOSS_ALARM_FIRED</a>
+</h1>
+<h1 id="rfc.section.3.4.5">
+<a href="#rfc.section.3.4.5">3.4.5.</a> <a href="#packetlost" id="packetlost">PACKET_LOST</a>
+</h1>
+<h1 id="rfc.section.3.4.6">
+<a href="#rfc.section.3.4.6">3.4.6.</a> <a href="#packetacknowledged" id="packetacknowledged">PACKET_ACKNOWLEDGED</a>
+</h1>
+<h1 id="rfc.section.3.4.7">
+<a href="#rfc.section.3.4.7">3.4.7.</a> <a href="#packetretransmit" id="packetretransmit">PACKET_RETRANSMIT</a>
+</h1>
+<p id="rfc.section.3.4.7.p.1">TODO: only if a packet is retransmit in-full, which many stacks don&#8217;t do. Need something more flexible.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#http3-event-definitions" id="http3-event-definitions">HTTP/3 event definitions</a>
 </h1>
-<p id="rfc.section.4.p.1">TBD</p>
+<h1 id="rfc.section.4.1">
+<a href="#rfc.section.4.1">4.1.</a> <a href="#http" id="http">HTTP</a>
+</h1>
+<h1 id="rfc.section.4.2">
+<a href="#rfc.section.4.2">4.2.</a> <a href="#qpack" id="qpack">QPACK</a>
+</h1>
+<h1 id="rfc.section.4.3">
+<a href="#rfc.section.4.3">4.3.</a> <a href="#prioritization" id="prioritization">PRIORITIZATION</a>
+</h1>
+<h1 id="rfc.section.4.4">
+<a href="#rfc.section.4.4">4.4.</a> <a href="#push" id="push">PUSH</a>
+</h1>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
@@ -462,7 +691,7 @@ ul.toc li {
 <h1 id="rfc.appendix.C">
 <a href="#rfc.appendix.C">Appendix C.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>
-<p id="rfc.section.C.p.1">Thanks to Jana Iyengar, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and suggestions.</p>
+<p id="rfc.section.C.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and suggestions.</p>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">

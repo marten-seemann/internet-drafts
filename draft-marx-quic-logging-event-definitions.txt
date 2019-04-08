@@ -8,14 +8,14 @@ Intended status: Standards Track                          April 08, 2019
 Expires: October 10, 2019
 
 
-          Concrete QUIC and HTTP/3 event definitions for qlog
+               QUIC and HTTP/3 event definitions for qlog
             draft-marx-quic-logging-event-definitions-latest
 
 Abstract
 
    This document describes concrete qlog event definitions and their
-   metadata for QUIC and HTTP/3-related events.  These events SHOULD be
-   embedded in the higher level schema defined in draft-marx-quic-
+   metadata for QUIC and HTTP/3-related events.  These events can then
+   be embedded in the higher level schema defined in draft-marx-quic-
    logging-main-schema.
 
 Status of This Memo
@@ -55,26 +55,64 @@ Copyright Notice
 
 Marx                    Expires October 10, 2019                [Page 1]
 
-Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
+Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 Table of Contents
 
-   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   2
-     1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   2
-   2.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   2
-   3.  QUIC event definitions  . . . . . . . . . . . . . . . . . . .   2
-   4.  HTTP/3 event definitions  . . . . . . . . . . . . . . . . . .   2
-   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   2
-   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   3
-   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   3
-     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   3
-     7.2.  Informative References  . . . . . . . . . . . . . . . . .   3
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .   3
-     A.1.  Since draft-marx-quic-logging-event-definitions-00: . . .   3
-   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .   3
-   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .   3
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   4
+   1.  Introduction  . . . . . . . . . . . . . . . . . . . . . . . .   3
+     1.1.  Notational Conventions  . . . . . . . . . . . . . . . . .   3
+   2.  Overview  . . . . . . . . . . . . . . . . . . . . . . . . . .   3
+   3.  QUIC event definitions  . . . . . . . . . . . . . . . . . . .   4
+     3.1.  CONNECTIVITY  . . . . . . . . . . . . . . . . . . . . . .   4
+       3.1.1.  CONNECTION_ATTEMPT  . . . . . . . . . . . . . . . . .   4
+       3.1.2.  CONNECTION_NEW  . . . . . . . . . . . . . . . . . . .   4
+       3.1.3.  CONNECTION_ID_UPDATE  . . . . . . . . . . . . . . . .   4
+       3.1.4.  MIGRATION-related events  . . . . . . . . . . . . . .   4
+     3.2.  SECURITY  . . . . . . . . . . . . . . . . . . . . . . . .   4
+       3.2.1.  HEADER_DECRYPT_ERROR  . . . . . . . . . . . . . . . .   4
+       3.2.2.  PACKET_DECRYPT_ERROR  . . . . . . . . . . . . . . . .   4
+       3.2.3.  KEY_UPDATE  . . . . . . . . . . . . . . . . . . . . .   4
+       3.2.4.  KEY_RETIRED . . . . . . . . . . . . . . . . . . . . .   4
+       3.2.5.  CIPHER_UPDATE . . . . . . . . . . . . . . . . . . . .   4
+     3.3.  TRANSPORT . . . . . . . . . . . . . . . . . . . . . . . .   4
+       3.3.1.  VERSION_UPDATE  . . . . . . . . . . . . . . . . . . .   4
+       3.3.2.  TRANSPORT_PARAMETERS_UPDATE . . . . . . . . . . . . .   4
+       3.3.3.  ALPN_UPDATE . . . . . . . . . . . . . . . . . . . . .   5
+       3.3.4.  STREAM_STATE_UPDATE . . . . . . . . . . . . . . . . .   5
+       3.3.5.  FLOW_CONTROL_UPDATE . . . . . . . . . . . . . . . . .   5
+     3.4.  RECOVERY  . . . . . . . . . . . . . . . . . . . . . . . .   5
+       3.4.1.  CC_STATE_UPDATE . . . . . . . . . . . . . . . . . . .   5
+       3.4.2.  METRIC_UPDATE . . . . . . . . . . . . . . . . . . . .   5
+       3.4.3.  LOSS_ALARM_SET  . . . . . . . . . . . . . . . . . . .   6
+       3.4.4.  LOSS_ALARM_FIRED  . . . . . . . . . . . . . . . . . .   6
+       3.4.5.  PACKET_LOST . . . . . . . . . . . . . . . . . . . . .   6
+       3.4.6.  PACKET_ACKNOWLEDGED . . . . . . . . . . . . . . . . .   6
+       3.4.7.  PACKET_RETRANSMIT . . . . . . . . . . . . . . . . . .   6
+   4.  HTTP/3 event definitions  . . . . . . . . . . . . . . . . . .   6
+     4.1.  HTTP  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.2.  QPACK . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     4.3.  PRIORITIZATION  . . . . . . . . . . . . . . . . . . . . .   6
+     4.4.  PUSH  . . . . . . . . . . . . . . . . . . . . . . . . . .   6
+   5.  Security Considerations . . . . . . . . . . . . . . . . . . .   6
+   6.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .   6
+   7.  References  . . . . . . . . . . . . . . . . . . . . . . . . .   6
+     7.1.  Normative References  . . . . . . . . . . . . . . . . . .   6
+     7.2.  Informative References  . . . . . . . . . . . . . . . . .   7
+     7.3.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .   7
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .   7
+     A.1.  Since draft-marx-quic-logging-event-definitions-00: . . .   7
+   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .   7
+   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .   7
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .   7
+
+
+
+
+Marx                    Expires October 10, 2019                [Page 2]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
+
 
 1.  Introduction
 
@@ -88,31 +126,188 @@ Table of Contents
 
 2.  Overview
 
-   TBD
+   This document describes the values of the qlog CATEGORY, EVENT_TYPE,
+   TRIGGER and DATA fields and their semantics for the QUIC and HTTP/3
+   protocols.  The definitions included in this file are assumed to be
+   used in qlog's "trace" containers, where the trace's "protocol_type"
+   field MUST be set to "QUIC_HTTP3".
+
+   This document uses the "TypeScript" language [1] to describe its
+   schema in.  We use TypeScript because it is less verbose than JSON-
+   schema and almost as expressive.  It also makes it easier to include
+   these definitions directly into a web-based tool.  The main
+   conventions a reader should be aware of are:
+
+   o  obj? : this object is optional
+
+   o  type1 | type2 : a union of these two types
+
+   o  obj:type : this object has this concrete type
+
+   o  obj[] : this object is an array (which can contain any type of
+      object)
+
+   o  obj:Array<type> : this object is an array of this type
+
+   o  number : identifies either an integer, float or double in
+      TypeScript.  In this document, number always means an integer.
+
+   o  TODO: list all possible triggers per event type
+
+   o  TODO: make it clear which events are "normal" and which are "only
+      if you really need this" (normal = probably TRANSPORT and RECOVERY
+      and HTTP)
+
+
+
+
+
+
+
+
+Marx                    Expires October 10, 2019                [Page 3]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
+
 
 3.  QUIC event definitions
 
-   TBD
+3.1.  CONNECTIVITY
+
+3.1.1.  CONNECTION_ATTEMPT
+
+3.1.2.  CONNECTION_NEW
+
+3.1.3.  CONNECTION_ID_UPDATE
+
+3.1.4.  MIGRATION-related events
+
+   e.g., PATH_UPDATE
+
+   TODO: read up on the draft how migration works and whether to best
+   fit this here or in TRANSPORT
+
+3.2.  SECURITY
+
+3.2.1.  HEADER_DECRYPT_ERROR
+
+   { mask, error }
+
+3.2.2.  PACKET_DECRYPT_ERROR
+
+   { key, error }
+
+3.2.3.  KEY_UPDATE
+
+   { type = "Initial | handshake | 1RTT", value }
+
+3.2.4.  KEY_RETIRED
+
+   { value } # initial encryption level is implicitly deleted
+
+3.2.5.  CIPHER_UPDATE
+
+3.3.  TRANSPORT
+
+3.3.1.  VERSION_UPDATE
+
+   TODO: maybe name VERSION_SELECTED ?
+
+3.3.2.  TRANSPORT_PARAMETERS_UPDATE
+
+
+
+
+
+
+
+Marx                    Expires October 10, 2019                [Page 4]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
+
+
+3.3.3.  ALPN_UPDATE
+
+   TODO: should this be in HTTP? ~~~~ { alpn } ~~~~
+
+3.3.4.  STREAM_STATE_UPDATE
+
+   o  NEW
+
+   o  CLOSED
+
+   o  DESTROYED
+
+   o  HALF_CLOSED
+
+   o  HALF_OPEN
+
+   o  ...
+
+3.3.5.  FLOW_CONTROL_UPDATE
+
+   o  type = connection
+
+   o  type = stream + id = streamid
+
+   TODO: check state machine in QUIC transport draft
+
+3.4.  RECOVERY
+
+3.4.1.  CC_STATE_UPDATE
+
+3.4.2.  METRIC_UPDATE
+
+   o  CWND
+
+   o  BYTES_IN_FLIGHT
+
+   o  RTT
+
+   o  SSTHRESH
+
+   o  PACING_RATE
+
+   TODO: split these up into separate events?  TODO: allow more than 1
+   of these in a single METRIC_UPDATE event? (cfr. quic-trace
+   TransportState)
+
+
+
+
+
+
+Marx                    Expires October 10, 2019                [Page 5]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
+
+
+3.4.3.  LOSS_ALARM_SET
+
+3.4.4.  LOSS_ALARM_FIRED
+
+3.4.5.  PACKET_LOST
+
+3.4.6.  PACKET_ACKNOWLEDGED
+
+3.4.7.  PACKET_RETRANSMIT
+
+   TODO: only if a packet is retransmit in-full, which many stacks don't
+   do.  Need something more flexible.
 
 4.  HTTP/3 event definitions
 
-   TBD
+4.1.  HTTP
+
+4.2.  QPACK
+
+4.3.  PRIORITIZATION
+
+4.4.  PUSH
 
 5.  Security Considerations
 
    TBD
-
-
-
-
-
-
-
-
-Marx                    Expires October 10, 2019                [Page 2]
-
-Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
-
 
 6.  IANA Considerations
 
@@ -132,6 +327,17 @@ Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+
+
+Marx                    Expires October 10, 2019                [Page 6]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
+
+
 7.2.  Informative References
 
    [QUIC-HTTP]
@@ -142,6 +348,10 @@ Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
+
+7.3.  URIs
+
+   [1] https://www.typescriptlang.org/
 
 Appendix A.  Change Log
 
@@ -155,20 +365,9 @@ Appendix B.  Design Variations
 
 Appendix C.  Acknowledgements
 
-   Thanks to Jana Iyengar, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar,
-   Victor Vasiliev and Lucas Pardue for their feedback and suggestions.
-
-
-
-
-
-
-
-
-Marx                    Expires October 10, 2019                [Page 3]
-
-Internet-DraConcrete QUIC and HTTP/3 event definitions for q  April 2019
-
+   Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko,
+   Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and
+   suggestions.
 
 Author's Address
 
@@ -190,35 +389,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Marx                    Expires October 10, 2019                [Page 4]
+Marx                    Expires October 10, 2019                [Page 7]
