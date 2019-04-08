@@ -289,7 +289,8 @@ ul.toc li {
 <link href="#rfc.section.3.2" rel="Chapter" title="3.2 Trace container">
 <link href="#rfc.section.3.2.1" rel="Chapter" title="3.2.1 vantage_point">
 <link href="#rfc.section.3.2.2" rel="Chapter" title="3.2.2 Title and Description">
-<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 common_fields and event_fields">
+<link href="#rfc.section.3.2.3" rel="Chapter" title="3.2.3 Configuration">
+<link href="#rfc.section.3.2.4" rel="Chapter" title="3.2.4 common_fields and event_fields">
 <link href="#rfc.section.3.3" rel="Chapter" title="3.3 Field name semantics">
 <link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 time, rolling_time and reference_time + delta_time">
 <link href="#rfc.section.3.3.2" rel="Chapter" title="3.3.2 group_id and group_ids">
@@ -316,7 +317,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-quic-logging-main-schema-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-04-05" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-04-08" />
   <meta name="dct.abstract" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
   <meta name="description" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
 
@@ -337,10 +338,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">April 05, 2019</td>
+<td class="right">April 08, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: October 7, 2019</td>
+<td class="left">Expires: October 10, 2019</td>
 <td class="right"></td>
 </tr>
 
@@ -357,7 +358,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on October 7, 2019.</p>
+<p>This Internet-Draft will expire on October 10, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -383,7 +384,9 @@ ul.toc li {
 </li>
 <li>3.2.2.   <a href="#rfc.section.3.2.2">Title and Description</a>
 </li>
-<li>3.2.3.   <a href="#rfc.section.3.2.3">common_fields and event_fields</a>
+<li>3.2.3.   <a href="#rfc.section.3.2.3">Configuration</a>
+</li>
+<li>3.2.4.   <a href="#rfc.section.3.2.4">common_fields and event_fields</a>
 </li>
 </ul><li>3.3.   <a href="#rfc.section.3.3">Field name semantics</a>
 </li>
@@ -480,6 +483,10 @@ ul.toc li {
     "vantage_point": "SERVER",
     "title": "Name of this particular trace (short)",
     "description": "Description for this trace (long)",
+    "configuration": {
+        "time_offset": "offset in ms",
+        "time_units": "ms" | "us"
+    },
     "common_fields": (see below),
     "event_fields": (see below),
     "events": [...]
@@ -496,11 +503,24 @@ ul.toc li {
 </h1>
 <p id="rfc.section.3.2.2.p.1">Both fields&#8217; values are generic strings, used for describing the contents of the trace. These can either be filled in automatically (e.g., showing the endpoint name and readable timestamp of the log), or can be filled manually when creating aggregated logs (e.g., qlog files that illustrate a specific problem across traces that want to include additional explanations for easier communication between teams, students, &#8230;).</p>
 <h1 id="rfc.section.3.2.3">
-<a href="#rfc.section.3.2.3">3.2.3.</a> <a href="#commonfields-and-eventfields" id="commonfields-and-eventfields">common_fields and event_fields</a>
+<a href="#rfc.section.3.2.3">3.2.3.</a> <a href="#configuration" id="configuration">Configuration</a>
 </h1>
-<p id="rfc.section.3.2.3.p.1">To reduce file size and make logging easier, the trace schema lists the names of the specific fields that are logged per-event up-front, instead of repeating the field name with each value, as is common in traditiona JSON. This is done in the &#8220;event_fields&#8221; list. This allows us to encode individual events as an array of values, instead of an object. To reduce file size even further, common event fields that have the same value for all events in this trace, are listed as name-value pairs in &#8220;common_fields&#8221;.</p>
-<p id="rfc.section.3.2.3.p.2">For example, when logging events for a single QUIC connection, all events will share the same &#8220;original destination connection ID&#8221; (ODCID). This field and its value should be set in &#8220;common_fields&#8221;, rather than &#8220;event_fields&#8221;. However, if a single trace would contain events for multiple QUIC connections at the same time (e.g., a single, big output log for a server), the ODCID can be different across events, and SHOULD be part of &#8220;event_fields&#8221;.</p>
-<p id="rfc.section.3.2.3.p.3">Examples comparing traditional JSON vs the qlog format can be found in <a href="#traditional_json" class="xref">Figure 3</a> and <a href="#qlog_json" class="xref">Figure 4</a>. The events described in these examples are purely for illustration. Actual event type definitions for the QUIC and HTTP/3 protocols can be found in TODO.</p>
+<p id="rfc.section.3.2.3.p.1">We take into account that a log file is usually not used in isolation, but by means of various tools. Especially when aggregating various traces together or preparing traces for a demonstration, one might wish to persist certain tool-based settings inside the log file itself. For this, the configuration field is used.</p>
+<p id="rfc.section.3.2.3.p.2">The configuration field can be viewed as a generic metadata field that tools can fill with their own fields, based on per-tool logic. It is best practice for tools to prefix each added field with their tool name to prevent collisions across tools. This document only defines two standard, tool-independent configuration settings: &#8220;time_offset&#8221; and &#8220;time_units&#8221;.</p>
+<h1 id="rfc.section.3.2.3.1">
+<a href="#rfc.section.3.2.3.1">3.2.3.1.</a> <a href="#timeoffset" id="timeoffset">time_offset</a>
+</h1>
+<p id="rfc.section.3.2.3.1.p.1">time_offset indicates by how many units of time (see next section) the starting time of the current trace should be offset. This is useful when comparing logs taken from various systems, where clocks might not be perfectly synchronous. Users could use manual tools or automated logic to align traces in time and the found optimal offsets can be stored in this field for future usage.</p>
+<h1 id="rfc.section.3.2.3.2">
+<a href="#rfc.section.3.2.3.2">3.2.3.2.</a> <a href="#timeunits" id="timeunits">time_units</a>
+</h1>
+<p id="rfc.section.3.2.3.2.p.1">Since timestamps can be stored in various granularities, this field allows to indicate whether storage happens in either milliseconds (&#8220;ms&#8221;) or microseconds (&#8220;us&#8221;). If this field is not present, the default value is &#8220;ms&#8221;. This configuration setting applies to all other timestamps in the trace file as well, not just the &#8220;time_offset&#8221; field.</p>
+<h1 id="rfc.section.3.2.4">
+<a href="#rfc.section.3.2.4">3.2.4.</a> <a href="#commonfields-and-eventfields" id="commonfields-and-eventfields">common_fields and event_fields</a>
+</h1>
+<p id="rfc.section.3.2.4.p.1">To reduce file size and make logging easier, the trace schema lists the names of the specific fields that are logged per-event up-front, instead of repeating the field name with each value, as is common in traditiona JSON. This is done in the &#8220;event_fields&#8221; list. This allows us to encode individual events as an array of values, instead of an object. To reduce file size even further, common event fields that have the same value for all events in this trace, are listed as name-value pairs in &#8220;common_fields&#8221;.</p>
+<p id="rfc.section.3.2.4.p.2">For example, when logging events for a single QUIC connection, all events will share the same &#8220;original destination connection ID&#8221; (ODCID). This field and its value should be set in &#8220;common_fields&#8221;, rather than &#8220;event_fields&#8221;. However, if a single trace would contain events for multiple QUIC connections at the same time (e.g., a single, big output log for a server), the ODCID can be different across events, and SHOULD be part of &#8220;event_fields&#8221;.</p>
+<p id="rfc.section.3.2.4.p.3">Examples comparing traditional JSON vs the qlog format can be found in <a href="#traditional_json" class="xref">Figure 3</a> and <a href="#qlog_json" class="xref">Figure 4</a>. The events described in these examples are purely for illustration. Actual event type definitions for the QUIC and HTTP/3 protocols can be found in TODO.</p>
 <div id="rfc.figure.3"></div>
 <div id="traditional_json"></div>
 <pre>
@@ -564,18 +584,18 @@ ul.toc li {
 }
 </pre>
 <p class="figure">Figure 4: qlog optimized JSON</p>
-<p id="rfc.section.3.2.3.p.4">The main field names that can be included in these fields are defined in <a href="#field-name-semantics" class="xref">Section 3.3</a>.</p>
-<p id="rfc.section.3.2.3.p.5">Given that qlog is intended to be a flexible format, unknown field names in both &#8220;common_fields&#8221; and &#8220;event_fields&#8221; MUST be disregarded by the user (i.e., the presence of an uknown field is explicitly NOT an error).</p>
-<p id="rfc.section.3.2.3.p.6">This approach makes line-per-line logging easier and faster, as each log statement only needs to include the data for the events, not the field names. Events can also be logged and processed separately, as part of a contiguous event-stream.</p>
-<h1 id="rfc.section.3.2.3.1">
-<a href="#rfc.section.3.2.3.1">3.2.3.1.</a> <a href="#commonfields-format" id="commonfields-format">common_fields format</a>
+<p id="rfc.section.3.2.4.p.4">The main field names that can be included in these fields are defined in <a href="#field-name-semantics" class="xref">Section 3.3</a>.</p>
+<p id="rfc.section.3.2.4.p.5">Given that qlog is intended to be a flexible format, unknown field names in both &#8220;common_fields&#8221; and &#8220;event_fields&#8221; MUST be disregarded by the user (i.e., the presence of an uknown field is explicitly NOT an error).</p>
+<p id="rfc.section.3.2.4.p.6">This approach makes line-per-line logging easier and faster, as each log statement only needs to include the data for the events, not the field names. Events can also be logged and processed separately, as part of a contiguous event-stream.</p>
+<h1 id="rfc.section.3.2.4.1">
+<a href="#rfc.section.3.2.4.1">3.2.4.1.</a> <a href="#commonfields-format" id="commonfields-format">common_fields format</a>
 </h1>
-<p id="rfc.section.3.2.3.1.p.1">An object containing pairs of &#8220;field name&#8221;-&#8220;field value&#8221;. Fields included in &#8220;common_fields&#8221; indicate that these field values are the same for each event in the &#8220;events&#8221; array (with the exception of the &#8220;group_ids&#8221; field, see <a href="#group_ids" class="xref">Section 3.3.2</a>)</p>
-<p id="rfc.section.3.2.3.1.p.2">If even one event in the trace does not adhere to this convention, that field name should be in &#8220;event_fields&#8221; instead, and the value logged per event. An alternative route is to include the most commonly seen value in &#8220;common_fields&#8221; and then include the deviating field value in the generic &#8220;data&#8221; field for each non-confirming event. However, these semantics are not defined in this document.</p>
-<h1 id="rfc.section.3.2.3.2">
-<a href="#rfc.section.3.2.3.2">3.2.3.2.</a> <a href="#eventfields-format" id="eventfields-format">event_fields format</a>
+<p id="rfc.section.3.2.4.1.p.1">An object containing pairs of &#8220;field name&#8221;-&#8220;field value&#8221;. Fields included in &#8220;common_fields&#8221; indicate that these field values are the same for each event in the &#8220;events&#8221; array (with the exception of the &#8220;group_ids&#8221; field, see <a href="#group_ids" class="xref">Section 3.3.2</a>)</p>
+<p id="rfc.section.3.2.4.1.p.2">If even one event in the trace does not adhere to this convention, that field name should be in &#8220;event_fields&#8221; instead, and the value logged per event. An alternative route is to include the most commonly seen value in &#8220;common_fields&#8221; and then include the deviating field value in the generic &#8220;data&#8221; field for each non-confirming event. However, these semantics are not defined in this document.</p>
+<h1 id="rfc.section.3.2.4.2">
+<a href="#rfc.section.3.2.4.2">3.2.4.2.</a> <a href="#eventfields-format" id="eventfields-format">event_fields format</a>
 </h1>
-<p id="rfc.section.3.2.3.2.p.1">An array of field names (plain strings). Field names included in &#8220;event_fields&#8221; indicate that these field names are present <strong>in this exact order</strong> for each event in the &#8220;events&#8221; array. Each individual event then only has to log the corresponding values for those fields in the correct order.</p>
+<p id="rfc.section.3.2.4.2.p.1">An array of field names (plain strings). Field names included in &#8220;event_fields&#8221; indicate that these field names are present <strong>in this exact order</strong> for each event in the &#8220;events&#8221; array. Each individual event then only has to log the corresponding values for those fields in the correct order.</p>
 <h1 id="rfc.section.3.3">
 <a href="#rfc.section.3.3">3.3.</a> <a href="#field-name-semantics" id="field-name-semantics">Field name semantics</a>
 </h1>

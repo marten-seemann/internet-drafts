@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                          April 05, 2019
-Expires: October 7, 2019
+Intended status: Standards Track                          April 08, 2019
+Expires: October 10, 2019
 
 
                       Main logging schema for qlog
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 7, 2019.
+   This Internet-Draft will expire on October 10, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                     Expires October 7, 2019                [Page 1]
+Marx                    Expires October 10, 2019                [Page 1]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -71,7 +71,8 @@ Table of Contents
      3.2.  Trace container . . . . . . . . . . . . . . . . . . . . .   4
        3.2.1.  vantage_point . . . . . . . . . . . . . . . . . . . .   4
        3.2.2.  Title and Description . . . . . . . . . . . . . . . .   4
-       3.2.3.  common_fields and event_fields  . . . . . . . . . . .   5
+       3.2.3.  Configuration . . . . . . . . . . . . . . . . . . . .   5
+       3.2.4.  common_fields and event_fields  . . . . . . . . . . .   5
      3.3.  Field name semantics  . . . . . . . . . . . . . . . . . .   8
        3.3.1.  time, rolling_time and reference_time + delta_time  .   8
        3.3.2.  group_id and group_ids  . . . . . . . . . . . . . . .   9
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Marx                     Expires October 7, 2019                [Page 2]
+Marx                    Expires October 10, 2019                [Page 2]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -165,7 +165,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019                [Page 3]
+Marx                    Expires October 10, 2019                [Page 3]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -187,6 +187,10 @@ Internet-Draft        Main logging schema for qlog            April 2019
        "vantage_point": "SERVER",
        "title": "Name of this particular trace (short)",
        "description": "Description for this trace (long)",
+       "configuration": {
+           "time_offset": "offset in ms",
+           "time_units": "ms" | "us"
+       },
        "common_fields": (see below),
        "event_fields": (see below),
        "events": [...]
@@ -217,16 +221,46 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-
-
-
-
-Marx                     Expires October 7, 2019                [Page 4]
+Marx                    Expires October 10, 2019                [Page 4]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
 
-3.2.3.  common_fields and event_fields
+3.2.3.  Configuration
+
+   We take into account that a log file is usually not used in
+   isolation, but by means of various tools.  Especially when
+   aggregating various traces together or preparing traces for a
+   demonstration, one might wish to persist certain tool-based settings
+   inside the log file itself.  For this, the configuration field is
+   used.
+
+   The configuration field can be viewed as a generic metadata field
+   that tools can fill with their own fields, based on per-tool logic.
+   It is best practice for tools to prefix each added field with their
+   tool name to prevent collisions across tools.  This document only
+   defines two standard, tool-independent configuration settings:
+   "time_offset" and "time_units".
+
+3.2.3.1.  time_offset
+
+   time_offset indicates by how many units of time (see next section)
+   the starting time of the current trace should be offset.  This is
+   useful when comparing logs taken from various systems, where clocks
+   might not be perfectly synchronous.  Users could use manual tools or
+   automated logic to align traces in time and the found optimal offsets
+   can be stored in this field for future usage.
+
+3.2.3.2.  time_units
+
+   Since timestamps can be stored in various granularities, this field
+   allows to indicate whether storage happens in either milliseconds
+   ("ms") or microseconds ("us").  If this field is not present, the
+   default value is "ms".  This configuration setting applies to all
+   other timestamps in the trace file as well, not just the
+   "time_offset" field.
+
+3.2.4.  common_fields and event_fields
 
    To reduce file size and make logging easier, the trace schema lists
    the names of the specific fields that are logged per-event up-front,
@@ -240,6 +274,14 @@ Internet-Draft        Main logging schema for qlog            April 2019
    For example, when logging events for a single QUIC connection, all
    events will share the same "original destination connection ID"
    (ODCID).  This field and its value should be set in "common_fields",
+
+
+
+Marx                    Expires October 10, 2019                [Page 5]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
    rather than "event_fields".  However, if a single trace would contain
    events for multiple QUIC connections at the same time (e.g., a
    single, big output log for a server), the ODCID can be different
@@ -249,38 +291,6 @@ Internet-Draft        Main logging schema for qlog            April 2019
    in Figure 3 and Figure 4.  The events described in these examples are
    purely for illustration.  Actual event type definitions for the QUIC
    and HTTP/3 protocols can be found in TODO.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Marx                     Expires October 7, 2019                [Page 5]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
 
    {
        "events": [{
@@ -323,17 +333,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-Marx                     Expires October 7, 2019                [Page 6]
+Marx                    Expires October 10, 2019                [Page 6]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -389,12 +389,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019                [Page 7]
+Marx                    Expires October 10, 2019                [Page 7]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
 
-3.2.3.1.  common_fields format
+3.2.4.1.  common_fields format
 
    An object containing pairs of "field name"-"field value".  Fields
    included in "common_fields" indicate that these field values are the
@@ -408,7 +408,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    field value in the generic "data" field for each non-confirming
    event.  However, these semantics are not defined in this document.
 
-3.2.3.2.  event_fields format
+3.2.4.2.  event_fields format
 
    An array of field names (plain strings).  Field names included in
    "event_fields" indicate that these field names are present *in this
@@ -445,7 +445,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019                [Page 8]
+Marx                    Expires October 10, 2019                [Page 8]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -501,7 +501,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019                [Page 9]
+Marx                    Expires October 10, 2019                [Page 9]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -557,7 +557,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019               [Page 10]
+Marx                    Expires October 10, 2019               [Page 10]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -613,7 +613,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019               [Page 11]
+Marx                    Expires October 10, 2019               [Page 11]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -669,7 +669,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019               [Page 12]
+Marx                    Expires October 10, 2019               [Page 12]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -725,7 +725,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                     Expires October 7, 2019               [Page 13]
+Marx                    Expires October 10, 2019               [Page 13]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -781,7 +781,7 @@ A.1.  Since draft-marx-quic-logging-main-schema-00:
 
 
 
-Marx                     Expires October 7, 2019               [Page 14]
+Marx                    Expires October 10, 2019               [Page 14]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -837,4 +837,4 @@ Author's Address
 
 
 
-Marx                     Expires October 7, 2019               [Page 15]
+Marx                    Expires October 10, 2019               [Page 15]
