@@ -1,6 +1,69 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/9",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/9/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/9/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/9/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/issues/9",
+    "id": 430501683,
+    "node_id": "MDU6SXNzdWU0MzA1MDE2ODM=",
+    "number": 9,
+    "title": "How descriptive should EVENT_TYPE names be?",
+    "user": {
+      "login": "rmarx",
+      "id": 2240689,
+      "node_id": "MDQ6VXNlcjIyNDA2ODk=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2240689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmarx",
+      "html_url": "https://github.com/rmarx",
+      "followers_url": "https://api.github.com/users/rmarx/followers",
+      "following_url": "https://api.github.com/users/rmarx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmarx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmarx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmarx/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmarx/orgs",
+      "repos_url": "https://api.github.com/users/rmarx/repos",
+      "events_url": "https://api.github.com/users/rmarx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmarx/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 1304363852,
+        "node_id": "MDU6TGFiZWwxMzA0MzYzODUy",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/design",
+        "name": "design",
+        "color": "1d76db",
+        "default": false
+      },
+      {
+        "id": 1309472379,
+        "node_id": "MDU6TGFiZWwxMzA5NDcyMzc5",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/quic-http3-fields",
+        "name": "quic-http3-fields",
+        "color": "d6354a",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-04-08T15:01:36Z",
+    "updated_at": "2019-04-08T15:35:49Z",
+    "closed_at": null,
+    "author_association": "MEMBER",
+    "body": "For example:\r\nPACKET_RX        vs       1RTT_PACKET_RX\r\nFRAME_NEW     vs      ACK_FRAME_NEW\r\n\r\nFor the leftmost entries, one would add a \"type\" field to the \"DATA\" value, e.g., \r\n```\r\n{\r\n     \"type\": \"1RTT\"\r\n}\r\n```\r\n\r\nThe shorter form makes that we have a much less large amount of different EVENT_TYPEs, but also makes it a bit harder to parse for human readers + harder to quickly filter for tools. \r\nThe longer form is much more explicit, but requires much more definition up-front and a proliferation of different EVENT_TYPEs.\r\n\r\nWe could also break consistency. i.e., the original qlog used PACKET_RX with an explicit type in the DATA, but used ACK_FRAME_NEW for individual frames.\r\n\r\nCurrently, we use the short-form, since this is most similar to quic-trace and keeps it consistent if we want to log frames both in their own events and again when sending a packet. \r\n\r\nExtra edge-case: Errors\r\nIf you go for extreme short-form, you would just have a single ERROR EVENT_TYPE for each CATEGORY, and define the error type in the DATA.\r\nHowever, for easier manual debugging, tracking the specific type of error directly in the EVENT_TYPE is arguably easier. Maybe an exception should be made for errors? "
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/8",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/8/labels{/name}",
@@ -39,6 +102,14 @@
         "name": "design",
         "color": "1d76db",
         "default": false
+      },
+      {
+        "id": 1309471920,
+        "node_id": "MDU6TGFiZWwxMzA5NDcxOTIw",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/high-level-schema",
+        "name": "high-level-schema",
+        "color": "7fd836",
+        "default": false
       }
     ],
     "state": "open",
@@ -50,7 +121,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T16:27:53Z",
-    "updated_at": "2019-04-08T13:37:13Z",
+    "updated_at": "2019-04-08T14:18:05Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "Currently, we have a concept that you can have a \"groups_id\" object in \"common_fields\". \r\nIf you then have a \"group_id\" in your \"events_field\", the value for that with each event is an index into the \"groups_id\" field, to prevent replication of complex fields.\r\n\r\nWe could make this more general, applicable to each field name.\r\nE.g., if you know up-front which CATEGORY values you support, you could do something like:\r\n\r\n```\r\n{\r\n    \"common_fields\": {\r\n        \"group_id\": \"127ecc830d98f9d54a42c4f0842aa87e181a\",\r\n        \"ODCID\": \"127ecc830d98f9d54a42c4f0842aa87e181a\",\r\n        \"CATEGORY\": [\"PACKET_RX\", \"DATA_FRAME_NEW\"]\r\n        \"protocol_type\":  \"QUIC_HTTP3\",\r\n        \"reference_time\": \"1553986553572\"\r\n    },\r\n    \"event_fields\": [\r\n        \"delta_time\",\r\n        \"CATEGORY\",\r\n        \"EVENT_TYPE\",\r\n        \"TRIGGER\",\r\n        \"DATA\"\r\n    ],\r\n    \"events\": [[\r\n            2,\r\n            \"TRANSPORT\",\r\n            0,\r\n            \"LINE\",\r\n            [...]\r\n        ],[\r\n            7,\r\n            \"APPLICATION\",\r\n            1,\r\n            \"GET\",\r\n            [...]\r\n        ],\r\n        ...\r\n    ]\r\n}\r\n```\r\n\r\nWe would then have a general rule:\r\n\r\n> If the field is present as a value of type array in \"common_fields\" AND the field-name is present in \"event_fields\", the value per-event MUST be treated as an index into the \"common_fields\" entry, rather than taken as a direct value. \r\n\r\n(\"groups_id\" would then also be renamed to \"group_id\" in \"common_fields\")\r\n\r\nThis would allow smaller file sizes (and less string writing overhead) for applications that have a static list of e.g., CATEGORY or EVENT_TYPE up front.\r\nDownside is that it complicates the tools reading the file (but only a bit imo)\r\n"
@@ -94,6 +165,14 @@
         "name": "design",
         "color": "1d76db",
         "default": false
+      },
+      {
+        "id": 1309471920,
+        "node_id": "MDU6TGFiZWwxMzA5NDcxOTIw",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/high-level-schema",
+        "name": "high-level-schema",
+        "color": "7fd836",
+        "default": false
       }
     ],
     "state": "open",
@@ -105,7 +184,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T15:48:06Z",
-    "updated_at": "2019-04-08T13:37:24Z",
+    "updated_at": "2019-04-08T14:18:05Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "To have the TRIGGER as a top-level field, there need to be good use-cases and people willing to use this in their tools. \r\n\r\nSince the TRIGGER will only be useful for specific events (e.g., PACKET_RETRANSMIT can be due to several loss-detection related situations) and it's value might in some cases also just be deduced from the context of surrounding log messages, it is debatable it will have much use in practice. \r\n\r\nAn alternate approach could be to log it as part of the DATA field of specific events, instead of as a top-level field. "
@@ -149,6 +228,14 @@
         "name": "design",
         "color": "1d76db",
         "default": false
+      },
+      {
+        "id": 1309471920,
+        "node_id": "MDU6TGFiZWwxMzA5NDcxOTIw",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/high-level-schema",
+        "name": "high-level-schema",
+        "color": "7fd836",
+        "default": false
       }
     ],
     "state": "open",
@@ -160,7 +247,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T14:15:11Z",
-    "updated_at": "2019-04-08T13:37:31Z",
+    "updated_at": "2019-04-08T14:18:05Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "For CLIENT and SERVER, the difference between RECEIVE (RX) and TRANSMIT (TX) are obvious. Not so for an in-network observer, where these terms make less sense...\r\n\r\nSome options:\r\n- NETWORK_CLIENT and NETWORK_SERVER\r\n- add separate metadata field indicating which 5-tuple is the conceptual \"client\" and which is the \"server\" and use RX/TX based on that\r\n- Don't fix this and let the tooling layer figure it out (if packet nr 6 is a client TX and a RX in the NETWORK trace, the network is from the viewpoint of the SERVER)"
@@ -197,7 +284,14 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 1304364706,
+        "node_id": "MDU6TGFiZWwxMzA0MzY0NzA2",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/editorial",
+        "name": "editorial",
+        "color": "0e8a16",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -208,10 +302,10 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T12:26:48Z",
-    "updated_at": "2019-04-05T13:24:41Z",
+    "updated_at": "2019-04-08T14:16:22Z",
     "closed_at": null,
     "author_association": "MEMBER",
-    "body": "We need to indicate various things, such as field types (int, string, ...), whether fields are required or optional, give example values for fields, etc.\r\n\r\nWe could use normal JSON-schema for this, but this is quite verbose...\r\nWe could also use TypeScript, though this is non-standard...\r\nOther RFCs are known to use their own specific languages for this (i.e., see TLS 1.3's type definitions), but maybe there is something workable already out there. "
+    "body": "We need to indicate various things, such as field types (int, string, ...), whether fields are required or optional, give example values for fields, etc.\r\n\r\nWe could use normal JSON-schema for this, but this is quite verbose...\r\nWe could also use TypeScript, though this is non-standard...\r\nOther RFCs are known to use their own specific languages for this (i.e., see TLS 1.3's type definitions), but maybe there is something workable already out there. \r\n\r\nCurrently, we use TypeScript format, since this is used in the Quicker prototype qlog implementation directly + is easy enough to parse for newcomers. "
   },
   {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/4",
@@ -362,6 +456,14 @@
         "name": "design",
         "color": "1d76db",
         "default": false
+      },
+      {
+        "id": 1309471920,
+        "node_id": "MDU6TGFiZWwxMzA5NDcxOTIw",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/high-level-schema",
+        "name": "high-level-schema",
+        "color": "7fd836",
+        "default": false
       }
     ],
     "state": "open",
@@ -373,7 +475,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-04T15:47:41Z",
-    "updated_at": "2019-04-04T15:51:49Z",
+    "updated_at": "2019-04-08T14:18:05Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "Plain JSON is not entirely streamable... it requires its fields to be closed properly (by ] and }) at the end.\r\n\r\ne.g.,\r\n```\r\n\"events\": [\r\n           { \"key\": \"val\" }\r\n```\r\nWill fail, but \r\n```\r\n\"events\": [\r\n           { \"key\": \"val\" }\r\n]\r\n```\r\nwill succeed. \r\n\r\nHowever, one could employ a streaming JSON parser (e.g., http://oboejs.com/) and ignore unclosed fields at the end that way. \r\nFor the way the format is currently defined, an implementation would then write the \"header\" of the qlog file, and then it could stream individual events that are just appended to the file. \r\nIf the file isn't properly closed, that's not a problem: the streaming parser user just ignores those errors.\r\nHowever, this breaks compatibility with the built-in parsers in many stdlibs and the browsers themselves.\r\nIt would also be possible to write a simple postprocessing tool that simply appends the necessary \"closing\" characters to a qlog file if it isn't complete, though that adds another step in a pipeline... \r\n\r\nThere are also various JSON-subformats that address this problem (see https://en.wikipedia.org/wiki/JSON_streaming), but they also do not seem to be supported in the standard JSON parsers for many platforms...\r\n\r\n**Given all this, my personal preference is to stay with just the normal JSON format and tools are recommended to use a streaming parser.** \r\n\r\n\r\nExample of how the browser's built-in JSON parser does not support special JSON:\r\n![2019-04-04 17_02_41](https://user-images.githubusercontent.com/2240689/55566226-8df5ff80-56fb-11e9-9a60-ab0fe703cf27.png)\r\n\r\nExample of how a streaming parser (oboe) does handle this properly:\r\n![proof](https://user-images.githubusercontent.com/2240689/55569216-77eb3d80-5701-11e9-86af-2b1a5b79ea2f.png)\r\n\r\n\r\n\r\n"
@@ -417,6 +519,14 @@
         "name": "design",
         "color": "1d76db",
         "default": false
+      },
+      {
+        "id": 1309471920,
+        "node_id": "MDU6TGFiZWwxMzA5NDcxOTIw",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/high-level-schema",
+        "name": "high-level-schema",
+        "color": "7fd836",
+        "default": false
       }
     ],
     "state": "open",
@@ -428,7 +538,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-04T13:46:52Z",
-    "updated_at": "2019-04-04T15:51:56Z",
+    "updated_at": "2019-04-08T14:18:05Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "The fields that are logged for each individual event depend on the context of usage of the format.\r\n\r\nE.g., if you split your logs per connection-id yourself, you do not need to log the connection-id for each event.\r\nHowever, if you do not log only QUIC data, but also ICMP/TCP info (e.g., the in-network measurement use-case), you need an additional field \"protocol-type\".\r\n\r\nProposal:\r\nAllow common fields to be set in each \"trace\" header.\r\n\r\n```\r\n{\r\n     \"common_fields\": [ \"connection_id\": \"0xdeadbeef\", \"protocol-type\": \"QUIC\" ],  \r\n     \"field_headers: [\"timestamp\", \"category\", \"type\", \"trigger\", \"data\"],  \r\n     \"events\": [ ... ]  \r\n}\r\n```\r\n\r\nIf you do not log a field, you just leave it out of both common_fields and field_headers. \r\n"
