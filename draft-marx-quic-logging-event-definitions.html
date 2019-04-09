@@ -297,11 +297,13 @@ ul.toc li {
 <link href="#rfc.section.3.2.4" rel="Chapter" title="3.2.4 KEY_RETIRED">
 <link href="#rfc.section.3.2.5" rel="Chapter" title="3.2.5 CIPHER_UPDATE">
 <link href="#rfc.section.3.3" rel="Chapter" title="3.3 TRANSPORT">
-<link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 VERSION_UPDATE">
-<link href="#rfc.section.3.3.2" rel="Chapter" title="3.3.2 TRANSPORT_PARAMETERS_UPDATE">
-<link href="#rfc.section.3.3.3" rel="Chapter" title="3.3.3 ALPN_UPDATE">
-<link href="#rfc.section.3.3.4" rel="Chapter" title="3.3.4 STREAM_STATE_UPDATE">
-<link href="#rfc.section.3.3.5" rel="Chapter" title="3.3.5 FLOW_CONTROL_UPDATE">
+<link href="#rfc.section.3.3.1" rel="Chapter" title="3.3.1 PACKET_SENT">
+<link href="#rfc.section.3.3.2" rel="Chapter" title="3.3.2 PACKET_RECEIVED">
+<link href="#rfc.section.3.3.3" rel="Chapter" title="3.3.3 VERSION_UPDATE">
+<link href="#rfc.section.3.3.4" rel="Chapter" title="3.3.4 TRANSPORT_PARAMETERS_UPDATE">
+<link href="#rfc.section.3.3.5" rel="Chapter" title="3.3.5 ALPN_UPDATE">
+<link href="#rfc.section.3.3.6" rel="Chapter" title="3.3.6 STREAM_STATE_UPDATE">
+<link href="#rfc.section.3.3.7" rel="Chapter" title="3.3.7 FLOW_CONTROL_UPDATE">
 <link href="#rfc.section.3.4" rel="Chapter" title="3.4 RECOVERY">
 <link href="#rfc.section.3.4.1" rel="Chapter" title="3.4.1 CC_STATE_UPDATE">
 <link href="#rfc.section.3.4.2" rel="Chapter" title="3.4.2 METRIC_UPDATE">
@@ -320,10 +322,24 @@ ul.toc li {
 <link href="#rfc.references" rel="Chapter" title="7 References">
 <link href="#rfc.references.1" rel="Chapter" title="7.1 Normative References">
 <link href="#rfc.references.2" rel="Chapter" title="7.2 Informative References">
-<link href="#rfc.appendix.A" rel="Chapter" title="A Change Log">
-<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Since draft-marx-quic-logging-event-definitions-00:">
-<link href="#rfc.appendix.B" rel="Chapter" title="B Design Variations">
-<link href="#rfc.appendix.C" rel="Chapter" title="C Acknowledgements">
+<link href="#rfc.appendix.A" rel="Chapter" title="A QUIC DATA type definitions">
+<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 PacketType">
+<link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 PacketHeader">
+<link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 QUIC Frames">
+<link href="#rfc.appendix.A.3.1" rel="Chapter" title="A.3.1 AckFrame">
+<link href="#rfc.appendix.A.3.2" rel="Chapter" title="A.3.2 StreamFrame">
+<link href="#rfc.appendix.A.3.3" rel="Chapter" title="A.3.3 ResetStreamFrame">
+<link href="#rfc.appendix.A.3.4" rel="Chapter" title="A.3.4 ConnectionCloseFrame">
+<link href="#rfc.appendix.A.3.5" rel="Chapter" title="A.3.5 MaxDataFrame">
+<link href="#rfc.appendix.A.3.6" rel="Chapter" title="A.3.6 MaxStreamDataFrame">
+<link href="#rfc.appendix.A.3.7" rel="Chapter" title="A.3.7 UnknownFrame">
+<link href="#rfc.appendix.A.3.8" rel="Chapter" title="A.3.8 TransportError">
+<link href="#rfc.appendix.B" rel="Chapter" title="B HTTP/3 DATA type definitions">
+<link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 ApplicationError">
+<link href="#rfc.appendix.C" rel="Chapter" title="C Change Log">
+<link href="#rfc.appendix.C.1" rel="Chapter" title="C.1 Since draft-marx-quic-logging-event-definitions-00:">
+<link href="#rfc.appendix.D" rel="Chapter" title="D Design Variations">
+<link href="#rfc.appendix.E" rel="Chapter" title="E Acknowledgements">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -415,15 +431,19 @@ ul.toc li {
 </li>
 </ul><li>3.3.   <a href="#rfc.section.3.3">TRANSPORT</a>
 </li>
-<ul><li>3.3.1.   <a href="#rfc.section.3.3.1">VERSION_UPDATE</a>
+<ul><li>3.3.1.   <a href="#rfc.section.3.3.1">PACKET_SENT</a>
 </li>
-<li>3.3.2.   <a href="#rfc.section.3.3.2">TRANSPORT_PARAMETERS_UPDATE</a>
+<li>3.3.2.   <a href="#rfc.section.3.3.2">PACKET_RECEIVED</a>
 </li>
-<li>3.3.3.   <a href="#rfc.section.3.3.3">ALPN_UPDATE</a>
+<li>3.3.3.   <a href="#rfc.section.3.3.3">VERSION_UPDATE</a>
 </li>
-<li>3.3.4.   <a href="#rfc.section.3.3.4">STREAM_STATE_UPDATE</a>
+<li>3.3.4.   <a href="#rfc.section.3.3.4">TRANSPORT_PARAMETERS_UPDATE</a>
 </li>
-<li>3.3.5.   <a href="#rfc.section.3.3.5">FLOW_CONTROL_UPDATE</a>
+<li>3.3.5.   <a href="#rfc.section.3.3.5">ALPN_UPDATE</a>
+</li>
+<li>3.3.6.   <a href="#rfc.section.3.3.6">STREAM_STATE_UPDATE</a>
+</li>
+<li>3.3.7.   <a href="#rfc.section.3.3.7">FLOW_CONTROL_UPDATE</a>
 </li>
 </ul><li>3.4.   <a href="#rfc.section.3.4">RECOVERY</a>
 </li>
@@ -461,13 +481,41 @@ ul.toc li {
 </li>
 <li>7.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
-</ul><li>Appendix A.   <a href="#rfc.appendix.A">Change Log</a>
+</ul><li>Appendix A.   <a href="#rfc.appendix.A">QUIC DATA type definitions</a>
 </li>
-<ul><li>A.1.   <a href="#rfc.appendix.A.1">Since draft-marx-quic-logging-event-definitions-00:</a>
+<ul><li>A.1.   <a href="#rfc.appendix.A.1">PacketType</a>
 </li>
-</ul><li>Appendix B.   <a href="#rfc.appendix.B">Design Variations</a>
+<li>A.2.   <a href="#rfc.appendix.A.2">PacketHeader</a>
 </li>
-<li>Appendix C.   <a href="#rfc.appendix.C">Acknowledgements</a>
+<li>A.3.   <a href="#rfc.appendix.A.3">QUIC Frames</a>
+</li>
+<ul><li>A.3.1.   <a href="#rfc.appendix.A.3.1">AckFrame</a>
+</li>
+<li>A.3.2.   <a href="#rfc.appendix.A.3.2">StreamFrame</a>
+</li>
+<li>A.3.3.   <a href="#rfc.appendix.A.3.3">ResetStreamFrame</a>
+</li>
+<li>A.3.4.   <a href="#rfc.appendix.A.3.4">ConnectionCloseFrame</a>
+</li>
+<li>A.3.5.   <a href="#rfc.appendix.A.3.5">MaxDataFrame</a>
+</li>
+<li>A.3.6.   <a href="#rfc.appendix.A.3.6">MaxStreamDataFrame</a>
+</li>
+<li>A.3.7.   <a href="#rfc.appendix.A.3.7">UnknownFrame</a>
+</li>
+<li>A.3.8.   <a href="#rfc.appendix.A.3.8">TransportError</a>
+</li>
+</ul></ul><li>Appendix B.   <a href="#rfc.appendix.B">HTTP/3 DATA type definitions</a>
+</li>
+<ul><li>B.1.   <a href="#rfc.appendix.B.1">ApplicationError</a>
+</li>
+</ul><li>Appendix C.   <a href="#rfc.appendix.C">Change Log</a>
+</li>
+<ul><li>C.1.   <a href="#rfc.appendix.C.1">Since draft-marx-quic-logging-event-definitions-00:</a>
+</li>
+</ul><li>Appendix D.   <a href="#rfc.appendix.D">Design Variations</a>
+</li>
+<li>Appendix E.   <a href="#rfc.appendix.E">Acknowledgements</a>
 </li>
 <li><a href="#rfc.authors">Author's Address</a>
 </li>
@@ -487,19 +535,22 @@ ul.toc li {
 <a href="#rfc.section.2">2.</a> <a href="#overview" id="overview">Overview</a>
 </h1>
 <p id="rfc.section.2.p.1">This document describes the values of the qlog CATEGORY, EVENT_TYPE, TRIGGER and DATA fields and their semantics for the QUIC and HTTP/3 protocols. The definitions included in this file are assumed to be used in qlog&#8217;s &#8220;trace&#8221; containers, where the trace&#8217;s &#8220;protocol_type&#8221; field MUST be set to &#8220;QUIC_HTTP3&#8221;.</p>
-<p id="rfc.section.2.p.2">This document uses the <a href="https://www.typescriptlang.org/">&#8220;TypeScript&#8221; language</a> to describe its schema in. We use TypeScript because it is less verbose than JSON-schema and almost as expressive. It also makes it easier to include these definitions directly into a web-based tool. The main conventions a reader should be aware of are:</p>
+<p id="rfc.section.2.p.2">This document is based on draft-19 of the QUIC and HTTP/3 I-Ds. TODO: add ref</p>
+<p id="rfc.section.2.p.3">This document uses the <a href="https://www.typescriptlang.org/">&#8220;TypeScript&#8221; language</a> to describe its schema in. We use TypeScript because it is less verbose than JSON-schema and almost as expressive. It also makes it easier to include these definitions directly into a web-based tool. The main conventions a reader should be aware of are:</p>
 <p></p>
 
 <ul>
 <li>obj? : this object is optional</li>
-<li>type1 | type2 : a union of these two types</li>
+<li>type1 | type2 : a union of these two types (object can be either type1 OR type2)</li>
 <li>obj:type : this object has this concrete type</li>
 <li>obj[] : this object is an array (which can contain any type of object)</li>
 <li>obj:Array&lt;type&gt; : this object is an array of this type</li>
 <li>number : identifies either an integer, float or double in TypeScript. In this document, number always means an integer.</li>
-<li>TODO: list all possible triggers per event type</li>
-<li>TODO: make it clear which events are &#8220;normal&#8221; and which are &#8220;only if you really need this&#8221; (normal = probably TRANSPORT and RECOVERY and HTTP)</li>
+<li>Unless explicity defined, the value of an enum entry is the string version of its name (e.g., INITIAL = &#8220;INITIAL&#8221;)</li>
+<li>Many numerical fields have type &#8220;string&#8221; instead of &#8220;number&#8221;. This is because many JSON implementations only support integers up to 2^53-1 (MAX_INTEGER for JavaScript without BigInt support), which is less than QUIC&#8217;s VLIE types (2^62-1). Each VLIE field is thus a string, where a number would be semantically more correct. Unless mentioned otherwise (e.g., for connection IDs), numerical fields that are logged as strings (e.g., packet numbers) MUST be logged in decimal (base-10) format. TODO: see issue 10</li>
 </ul>
+<p id="rfc.section.2.p.5">TODO: list all possible triggers per event type</p>
+<p id="rfc.section.2.p.6">TODO: make it clear which events are &#8220;normal&#8221; and which are &#8220;only if you really need this&#8221; (normal = probably TRANSPORT TX/RX and RECOVERY basics and HTTP basics)</p>
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#quic-event-definitions" id="quic-event-definitions">QUIC event definitions</a>
 </h1>
@@ -515,6 +566,7 @@ ul.toc li {
 <h1 id="rfc.section.3.1.3">
 <a href="#rfc.section.3.1.3">3.1.3.</a> <a href="#connectionidupdate" id="connectionidupdate">CONNECTION_ID_UPDATE</a>
 </h1>
+<p id="rfc.section.3.1.3.p.1">TODO: mention that CIDs can be logged in hex</p>
 <h1 id="rfc.section.3.1.4">
 <a href="#rfc.section.3.1.4">3.1.4.</a> <a href="#migration-related-events" id="migration-related-events">MIGRATION-related events</a>
 </h1>
@@ -554,31 +606,87 @@ ul.toc li {
 <a href="#rfc.section.3.3">3.3.</a> <a href="#transport" id="transport">TRANSPORT</a>
 </h1>
 <h1 id="rfc.section.3.3.1">
-<a href="#rfc.section.3.3.1">3.3.1.</a> <a href="#versionupdate" id="versionupdate">VERSION_UPDATE</a>
+<a href="#rfc.section.3.3.1">3.3.1.</a> <a href="#packetsent" id="packetsent">PACKET_SENT</a>
 </h1>
-<p id="rfc.section.3.3.1.p.1">TODO: maybe name VERSION_SELECTED ?</p>
+<p id="rfc.section.3.3.1.p.1">Triggers:</p>
+<p></p>
+
+<ul>
+<li>&#8220;DEFAULT&#8221;</li>
+<li>&#8220;RETRANSMIT_REORDERING&#8221; // draft-19 6.1.1</li>
+<li>&#8220;RETRANSMIT_TIMEOUT&#8221; // draft-19 6.1.2</li>
+<li>&#8220;RETRANSMIT_CRYPTO&#8221; // draft-19 6.2</li>
+<li>&#8220;RETRANSMIT_PTO&#8221; // draft-19 6.3</li>
+</ul>
+<p id="rfc.section.3.3.1.p.3">Data:</p>
+<pre>
+{
+    packet_type:PacketType,
+    header:PacketHeader,
+    frames:Array&lt;QuicFrame&gt;
+}
+</pre>
+<p id="rfc.section.3.3.1.p.4">Notes:</p>
+<p></p>
+
+<ul><li>We don&#8217;t explicitly log the encryption_level or packet_number_space: the packet_type specifies this by inference (assuming correct implementation)</li></ul>
 <h1 id="rfc.section.3.3.2">
-<a href="#rfc.section.3.3.2">3.3.2.</a> <a href="#transportparametersupdate" id="transportparametersupdate">TRANSPORT_PARAMETERS_UPDATE</a>
+<a href="#rfc.section.3.3.2">3.3.2.</a> <a href="#packetreceived" id="packetreceived">PACKET_RECEIVED</a>
 </h1>
+<p id="rfc.section.3.3.2.p.1">Triggers:</p>
+<p></p>
+
+<ul><li>&#8220;DEFAULT&#8221;</li></ul>
+<p id="rfc.section.3.3.2.p.3">Data:</p>
+<pre>
+{
+    packet_type:PacketType,
+    header:PacketHeader,
+    frames:Array&lt;QuicFrame&gt;
+}
+</pre>
+<p id="rfc.section.3.3.2.p.4">Notes:</p>
+<p></p>
+
+<ul><li>We don&#8217;t explicitly log the encryption_level or packet_number_space: the packet_type specifies this by inference (assuming correct implementation)</li></ul>
 <h1 id="rfc.section.3.3.3">
-<a href="#rfc.section.3.3.3">3.3.3.</a> <a href="#alpnupdate" id="alpnupdate">ALPN_UPDATE</a>
+<a href="#rfc.section.3.3.3">3.3.3.</a> <a href="#versionupdate" id="versionupdate">VERSION_UPDATE</a>
 </h1>
-<p id="rfc.section.3.3.3.p.1">TODO: should this be in HTTP? ~~~~ { alpn } ~~~~</p>
+<p id="rfc.section.3.3.3.p.1">TODO: maybe name VERSION_SELECTED ?</p>
 <h1 id="rfc.section.3.3.4">
-<a href="#rfc.section.3.3.4">3.3.4.</a> <a href="#streamstateupdate" id="streamstateupdate">STREAM_STATE_UPDATE</a>
+<a href="#rfc.section.3.3.4">3.3.4.</a> <a href="#transportparametersupdate" id="transportparametersupdate">TRANSPORT_PARAMETERS_UPDATE</a>
+</h1>
+<h1 id="rfc.section.3.3.5">
+<a href="#rfc.section.3.3.5">3.3.5.</a> <a href="#alpnupdate" id="alpnupdate">ALPN_UPDATE</a>
+</h1>
+<p id="rfc.section.3.3.5.p.1">TODO: should this be in HTTP? ~~~~ { alpn } ~~~~</p>
+<h1 id="rfc.section.3.3.6">
+<a href="#rfc.section.3.3.6">3.3.6.</a> <a href="#streamstateupdate" id="streamstateupdate">STREAM_STATE_UPDATE</a>
 </h1>
 <p></p>
 
 <ul>
-<li>NEW</li>
+<li>IDLE</li>
+<li>OPEN</li>
 <li>CLOSED</li>
-<li>DESTROYED</li>
-<li>HALF_CLOSED</li>
-<li>HALF_OPEN</li>
-<li>&#8230;</li>
+<li>HALF_CLOSED_REMOTE</li>
+<li>HALF_CLOSED_LOCAL</li>
+<li>DESTROYED // memory freed</li>
+<li>Ready</li>
+<li>Send</li>
+<li>Data Sent</li>
+<li>Reset Sent</li>
+<li>Data Rcvd</li>
+<li>Reset Rcvd</li>
+<li>Recv</li>
+<li>Size Known</li>
+<li>Data Rcvd</li>
+<li>Data Read</li>
+<li>Reset Read</li>
 </ul>
-<h1 id="rfc.section.3.3.5">
-<a href="#rfc.section.3.3.5">3.3.5.</a> <a href="#flowcontrolupdate" id="flowcontrolupdate">FLOW_CONTROL_UPDATE</a>
+<p id="rfc.section.3.3.6.p.2">TODO: do we need all of these? How do implementations actually handle this in practice?</p>
+<h1 id="rfc.section.3.3.7">
+<a href="#rfc.section.3.3.7">3.3.7.</a> <a href="#flowcontrolupdate" id="flowcontrolupdate">FLOW_CONTROL_UPDATE</a>
 </h1>
 <p></p>
 
@@ -586,7 +694,7 @@ ul.toc li {
 <li>type = connection</li>
 <li>type = stream + id = streamid</li>
 </ul>
-<p id="rfc.section.3.3.5.p.2">TODO: check state machine in QUIC transport draft</p>
+<p id="rfc.section.3.3.7.p.2">TODO: check state machine in QUIC transport draft</p>
 <h1 id="rfc.section.3.4">
 <a href="#rfc.section.3.4">3.4.</a> <a href="#recovery" id="recovery">RECOVERY</a>
 </h1>
@@ -676,22 +784,211 @@ ul.toc li {
 </tr>
 </tbody></table>
 <h1 id="rfc.appendix.A">
-<a href="#rfc.appendix.A">Appendix A.</a> <a href="#change-log" id="change-log">Change Log</a>
+<a href="#rfc.appendix.A">Appendix A.</a> <a href="#quic-data-type-definitions" id="quic-data-type-definitions">QUIC DATA type definitions</a>
 </h1>
 <h1 id="rfc.appendix.A.1">
-<a href="#rfc.appendix.A.1">A.1.</a> <a href="#since-draft-marx-quic-logging-event-definitions-00" id="since-draft-marx-quic-logging-event-definitions-00">Since draft-marx-quic-logging-event-definitions-00:</a>
+<a href="#rfc.appendix.A.1">A.1.</a> <a href="#packettype" id="packettype">PacketType</a>
+</h1>
+<pre>
+enum PacketType {
+    INITIAL,
+    HANDSHAKE,
+    ZERORTT = "0RTT",
+    ONERTT = "1RTT",
+    RETRY,
+    VERSION_NEGOTIATION,
+    UNKOWN
+}
+</pre>
+<h1 id="rfc.appendix.A.2">
+<a href="#rfc.appendix.A.2">A.2.</a> <a href="#packetheader" id="packetheader">PacketHeader</a>
+</h1>
+<pre>
+class PacketHeader {
+    packet_number: string;
+    packet_size?: number;
+    payload_length?: number;
+
+    // only if present in the header
+    // if correctly using NEW_CONNECTION_ID events,
+    // dcid can be skipped for 1RTT packets
+    version?: string;
+    scil?: string;
+    dcil?: string;
+    scid?: string;
+    dcid?: string;
+
+    // Note: short vs long header is implicit through PacketType
+}
+</pre>
+<h1 id="rfc.appendix.A.3">
+<a href="#rfc.appendix.A.3">A.3.</a> <a href="#quic-frames" id="quic-frames">QUIC Frames</a>
+</h1>
+<pre>
+type QuicFrame = AckFrame | StreamFrame | ResetStreamFrame | ConnetionCloseFrame | MaxDataFrame | MaxStreamDataFrame | UnknownFrame;
+</pre>
+<h1 id="rfc.appendix.A.3.1">
+<a href="#rfc.appendix.A.3.1">A.3.1.</a> <a href="#ackframe" id="ackframe">AckFrame</a>
+</h1>
+<pre>
+class AckFrame{
+    frame_type:string = "ACK";
+
+    ack_delay:string;
+    acked_ranges:Array&lt;AckRange&gt;;
+
+    ect1:string;
+    ect0:string;
+    ce:string;
+}
+
+class AckRange{
+    from:string;
+    to:string; // up to and including
+}
+</pre>
+<h1 id="rfc.appendix.A.3.2">
+<a href="#rfc.appendix.A.3.2">A.3.2.</a> <a href="#streamframe" id="streamframe">StreamFrame</a>
+</h1>
+<pre>
+class StreamFrame{
+  frame_type:string = "STREAM";
+
+  id:string;
+
+  // These three MUST always be set
+  // If not present in the Frame type, log their default values
+  offset:string;
+  length:string;
+  fin:boolean;
+}
+</pre>
+<h1 id="rfc.appendix.A.3.3">
+<a href="#rfc.appendix.A.3.3">A.3.3.</a> <a href="#resetstreamframe" id="resetstreamframe">ResetStreamFrame</a>
+</h1>
+<pre>
+class ResetStreamFrame{
+    frame_type:string = "RESET_STREAM";
+
+    id:string;
+    error_code:ApplicationError | number;
+    final_offset:string;
+}
+</pre>
+<h1 id="rfc.appendix.A.3.4">
+<a href="#rfc.appendix.A.3.4">A.3.4.</a> <a href="#connectioncloseframe" id="connectioncloseframe">ConnectionCloseFrame</a>
+</h1>
+<pre>
+type ErrorSpace = "TRANSPORT" | "APPLICATION";
+
+class ConnectionCloseFrame{
+    frame_type:string = "CONNECTION_CLOSE";
+
+    error_space:ErrorSpace;
+    error_code:TransportError | ApplicationError | number;
+    reason:string;
+
+    trigger_frame_type?:number; // TODO: should be more defined, but we don't have a FrameType enum atm...
+}
+</pre>
+<h1 id="rfc.appendix.A.3.5">
+<a href="#rfc.appendix.A.3.5">A.3.5.</a> <a href="#maxdataframe" id="maxdataframe">MaxDataFrame</a>
+</h1>
+<pre>
+class MaxDataFrame{
+    stream_type:string = "MAX_DATA";
+
+    maximum:string;
+}
+</pre>
+<h1 id="rfc.appendix.A.3.6">
+<a href="#rfc.appendix.A.3.6">A.3.6.</a> <a href="#maxstreamdataframe" id="maxstreamdataframe">MaxStreamDataFrame</a>
+</h1>
+<pre>
+class MaxStreamDataFrame{
+    stream_type:string = "MAX_STREAM_DATA";
+
+    id:string;
+    maximum:string;
+}
+</pre>
+<h1 id="rfc.appendix.A.3.7">
+<a href="#rfc.appendix.A.3.7">A.3.7.</a> <a href="#unknownframe" id="unknownframe">UnknownFrame</a>
+</h1>
+<pre>
+class UnknownFrame{
+    frame_type:string = "UNKNOWN";
+}
+</pre>
+<h1 id="rfc.appendix.A.3.8">
+<a href="#rfc.appendix.A.3.8">A.3.8.</a> <a href="#transporterror" id="transporterror">TransportError</a>
+</h1>
+<pre>
+enum TransportError {
+    NO_ERROR,
+    INTERNAL_ERROR,
+    SERVER_BUSY,
+    APPLICATION_FLOW_CONTROL_ERROR, // 0x3
+    STREAM_FLOW_CONTROL_ERROR,  // 0x4
+    STREAM_STATE_ERROR,
+    FINAL_SIZE_ERROR,
+    FRAME_ENCODING_ERROR,
+    TRANSPORT_PARAMETER_ERROR,
+    PROTOCOL_VIOLATION,
+    INVALID_MIGRATION,
+    CRYPTO_ERROR
+}
+</pre>
+<h1 id="rfc.appendix.B">
+<a href="#rfc.appendix.B">Appendix B.</a> <a href="#http3-data-type-definitions" id="http3-data-type-definitions">HTTP/3 DATA type definitions</a>
+</h1>
+<h1 id="rfc.appendix.B.1">
+<a href="#rfc.appendix.B.1">B.1.</a> <a href="#applicationerror" id="applicationerror">ApplicationError</a>
+</h1>
+<pre>
+enum ApplicationError{
+    HTTP_NO_ERROR,
+    HTTP_WRONG_SETTING_DIRECTION,
+    HTTP_PUSH_REFUSED,
+    HTTP_INTERNAL_ERROR,
+    HTTP_PUSH_ALREADY_IN_CACHE,
+    HTTP_REQUEST_CANCELLED,
+    HTTP_INCOMPLETE_REQUEST,
+    HTTP_CONNECT_ERROR,
+    HTTP_EXCESSIVE_LOAD,
+    HTTP_VERSION_FALLBACK,
+    HTTP_WRONG_STREAM,
+    HTTP_LIMIT_EXCEEDED,
+    HTTP_DUPLICATE_PUSH,
+    HTTP_UNKNOWN_STREAM_TYPE,
+    HTTP_WRONG_STREAM_COUNT,
+    HTTP_CLOSED_CRITICAL_STREAM,
+    HTTP_WRONG_STREAM_DIRECTION,
+    HTTP_EARLY_RESPONSE,
+    HTTP_MISSING_SETTINGS,
+    HTTP_UNEXPECTED_FRAME,
+    HTTP_REQUEST_REJECTED,
+    HTTP_GENERAL_PROTOCOL_ERROR,
+    HTTP_MALFORMED_FRAME
+}
+</pre>
+<h1 id="rfc.appendix.C">
+<a href="#rfc.appendix.C">Appendix C.</a> <a href="#change-log" id="change-log">Change Log</a>
+</h1>
+<h1 id="rfc.appendix.C.1">
+<a href="#rfc.appendix.C.1">C.1.</a> <a href="#since-draft-marx-quic-logging-event-definitions-00" id="since-draft-marx-quic-logging-event-definitions-00">Since draft-marx-quic-logging-event-definitions-00:</a>
 </h1>
 <p></p>
 
 <ul><li>None yet.</li></ul>
-<h1 id="rfc.appendix.B">
-<a href="#rfc.appendix.B">Appendix B.</a> <a href="#design-variations" id="design-variations">Design Variations</a>
+<h1 id="rfc.appendix.D">
+<a href="#rfc.appendix.D">Appendix D.</a> <a href="#design-variations" id="design-variations">Design Variations</a>
 </h1>
-<p id="rfc.section.B.p.1">TBD</p>
-<h1 id="rfc.appendix.C">
-<a href="#rfc.appendix.C">Appendix C.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
+<p id="rfc.section.D.p.1">TBD</p>
+<h1 id="rfc.appendix.E">
+<a href="#rfc.appendix.E">Appendix E.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>
-<p id="rfc.section.C.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and suggestions.</p>
+<p id="rfc.section.E.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and suggestions.</p>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">
