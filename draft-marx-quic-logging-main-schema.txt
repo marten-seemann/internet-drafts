@@ -80,13 +80,14 @@ Table of Contents
        3.3.4.  TRIGGER . . . . . . . . . . . . . . . . . . . . . . .  14
        3.3.5.  DATA  . . . . . . . . . . . . . . . . . . . . . . . .  14
        3.3.6.  Event field values  . . . . . . . . . . . . . . . . .  14
-   4.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  14
-   5.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  15
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  15
+   4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  14
+   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  15
+   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  15
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  15
    Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  16
      A.1.  Since draft-marx-quic-logging-main-schema-00: . . . . . .  16
    Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  16
@@ -102,7 +103,6 @@ Table of Contents
    The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
    "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this
    document are to be interpreted as described in [RFC2119].
-
 
 
 
@@ -138,10 +138,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
    To allow separate qlog traces to be contained within a single,
    encompassing qlog file, the top-level element in the qlog schema
    defines only a small set of fields and an array of component traces.
-   Only the "qlog_version" and "traces" fields MUST be present.
+   Only the "qlog_version" and "traces" fields MUST be present.  For
+   this document, the "qlog_version" field MUST have a value of draft-
+   00.
 
    {
-       "qlog_version": "0.1",
+       "qlog_version": "draft-00",
        "title": "Name of this particular qlog file (short)",
        "description": "Description for this group of traces (long)",
        "traces": [...]
@@ -159,8 +161,6 @@ Internet-Draft        Main logging schema for qlog            April 2019
    the SERVER and on a single point on their common NETWORK path.  Each
    of these three logs is first created separately during the test.
    Afterwards, the three logs can be aggregated into a single qlog file.
-
-
 
 
 
@@ -772,12 +772,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
    For example: event definitions for QUIC and HTTP/3 can be found in
    TODO.
 
-4.  Methods of Access
+4.  Tooling requirements
 
-   TBD : propose to use a .well-known URL to fetch these logs from the
-   server
-
-
+   Tools MUST indicate which qlog version(s) they support.
+   Additionally, they SHOULD indicate exactly which values for the
+   CATEGORY, EVENT_TYPE and TRIGGER fields they look for to execute
+   their logic.  Tools SHOULD perform a (high-level) check if an input
 
 
 
@@ -786,24 +786,37 @@ Marx                    Expires October 11, 2019               [Page 14]
 Internet-Draft        Main logging schema for qlog            April 2019
 
 
-5.  Notes on Practical Use
+   qlog file adheres to the expected qlog schema.  If a tool determines
+   a qlog file does not contain enough supported information to
+   correctly execute the tool's logic, it SHOULD generate a clear error
+   message to this effect.
+
+   Tools MUST disregard any field names and values in the qlog format
+   that they do not recognize.
+
+5.  Methods of Access
+
+   TBD : propose to use a .well-known URL to fetch logs from an endpoint
+   / to send logs to.
+
+6.  Notes on Practical Use
 
    TBD : discuss that implementation do not have to output qlog
    directly.  It is good practice to log in whatever way you want, and
    then just write a transformer to qlog for use in tooling.
 
-6.  Security Considerations
+7.  Security Considerations
 
    TBD : discuss privacy and security considerations (e.g., what NOT to
    log, what to strip out of a log before sharing, ...)
 
-7.  IANA Considerations
+8.  IANA Considerations
 
    TBD
 
-8.  References
+9.  References
 
-8.1.  Normative References
+9.1.  Normative References
 
    [QUIC-TRANSPORT]
               Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
@@ -815,25 +828,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-8.2.  Informative References
+9.2.  Informative References
 
    [QUIC-HTTP]
               Bishop, M., Ed., "Hypertext Transfer Protocol Version 3
               (HTTP/3)", draft-ietf-quic-http-19 (work in progress),
               October 2018.
-
-   [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
-              Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
-              April 2016, <https://www.rfc-editor.org/info/rfc7838>.
-
-8.3.  URIs
-
-   [1] https://github.com/google/quic-trace
-
-   [2] https://github.com/EricssonResearch/spindump
-
-   [3] https://www.wireshark.org/
-
 
 
 
@@ -841,6 +841,18 @@ Marx                    Expires October 11, 2019               [Page 15]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
+
+   [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
+              Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
+              April 2016, <https://www.rfc-editor.org/info/rfc7838>.
+
+9.3.  URIs
+
+   [1] https://github.com/google/quic-trace
+
+   [2] https://github.com/EricssonResearch/spindump
+
+   [3] https://www.wireshark.org/
 
 Appendix A.  Change Log
 
@@ -875,18 +887,6 @@ Author's Address
    Hasselt University
 
    Email: robin.marx@uhasselt.be
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

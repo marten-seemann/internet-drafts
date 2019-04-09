@@ -298,13 +298,14 @@ ul.toc li {
 <link href="#rfc.section.3.3.4" rel="Chapter" title="3.3.4 TRIGGER">
 <link href="#rfc.section.3.3.5" rel="Chapter" title="3.3.5 DATA">
 <link href="#rfc.section.3.3.6" rel="Chapter" title="3.3.6 Event field values">
-<link href="#rfc.section.4" rel="Chapter" title="4 Methods of Access">
-<link href="#rfc.section.5" rel="Chapter" title="5 Notes on Practical Use">
-<link href="#rfc.section.6" rel="Chapter" title="6 Security Considerations">
-<link href="#rfc.section.7" rel="Chapter" title="7 IANA Considerations">
-<link href="#rfc.references" rel="Chapter" title="8 References">
-<link href="#rfc.references.1" rel="Chapter" title="8.1 Normative References">
-<link href="#rfc.references.2" rel="Chapter" title="8.2 Informative References">
+<link href="#rfc.section.4" rel="Chapter" title="4 Tooling requirements">
+<link href="#rfc.section.5" rel="Chapter" title="5 Methods of Access">
+<link href="#rfc.section.6" rel="Chapter" title="6 Notes on Practical Use">
+<link href="#rfc.section.7" rel="Chapter" title="7 Security Considerations">
+<link href="#rfc.section.8" rel="Chapter" title="8 IANA Considerations">
+<link href="#rfc.references" rel="Chapter" title="9 References">
+<link href="#rfc.references.1" rel="Chapter" title="9.1 Normative References">
+<link href="#rfc.references.2" rel="Chapter" title="9.2 Informative References">
 <link href="#rfc.appendix.A" rel="Chapter" title="A Change Log">
 <link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 Since draft-marx-quic-logging-main-schema-00:">
 <link href="#rfc.appendix.B" rel="Chapter" title="B Design Variations">
@@ -402,19 +403,21 @@ ul.toc li {
 </li>
 <li>3.3.6.   <a href="#rfc.section.3.3.6">Event field values</a>
 </li>
-</ul></ul><li>4.   <a href="#rfc.section.4">Methods of Access</a>
+</ul></ul><li>4.   <a href="#rfc.section.4">Tooling requirements</a>
 </li>
-<li>5.   <a href="#rfc.section.5">Notes on Practical Use</a>
+<li>5.   <a href="#rfc.section.5">Methods of Access</a>
 </li>
-<li>6.   <a href="#rfc.section.6">Security Considerations</a>
+<li>6.   <a href="#rfc.section.6">Notes on Practical Use</a>
 </li>
-<li>7.   <a href="#rfc.section.7">IANA Considerations</a>
+<li>7.   <a href="#rfc.section.7">Security Considerations</a>
 </li>
-<li>8.   <a href="#rfc.references">References</a>
+<li>8.   <a href="#rfc.section.8">IANA Considerations</a>
 </li>
-<ul><li>8.1.   <a href="#rfc.references.1">Normative References</a>
+<li>9.   <a href="#rfc.references">References</a>
 </li>
-<li>8.2.   <a href="#rfc.references.2">Informative References</a>
+<ul><li>9.1.   <a href="#rfc.references.1">Normative References</a>
+</li>
+<li>9.2.   <a href="#rfc.references.2">Informative References</a>
 </li>
 </ul><li>Appendix A.   <a href="#rfc.appendix.A">Change Log</a>
 </li>
@@ -457,12 +460,12 @@ ul.toc li {
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#top-level-container" id="top-level-container">Top level container</a>
 </h1>
-<p id="rfc.section.3.1.p.1">To allow separate qlog traces to be contained within a single, encompassing qlog file, the top-level element in the qlog schema defines only a small set of fields and an array of component traces. Only the &#8220;qlog_version&#8221; and &#8220;traces&#8221; fields MUST be present.</p>
+<p id="rfc.section.3.1.p.1">To allow separate qlog traces to be contained within a single, encompassing qlog file, the top-level element in the qlog schema defines only a small set of fields and an array of component traces. Only the &#8220;qlog_version&#8221; and &#8220;traces&#8221; fields MUST be present. For this document, the &#8220;qlog_version&#8221; field MUST have a value of draft-00.</p>
 <div id="rfc.figure.1"></div>
 <div id="top_element"></div>
 <pre>
 {
-    "qlog_version": "0.1",
+    "qlog_version": "draft-00",
     "title": "Name of this particular qlog file (short)",
     "description": "Description for this group of traces (long)",
     "traces": [...]
@@ -773,25 +776,30 @@ The delta_time approach will:
 <p id="rfc.section.3.3.6.p.1">The specific values for each of these fields and their semantics are defined in separate documents, specific per protocol or use case.</p>
 <p id="rfc.section.3.3.6.p.2">For example: event definitions for QUIC and HTTP/3 can be found in TODO.</p>
 <h1 id="rfc.section.4">
-<a href="#rfc.section.4">4.</a> <a href="#methods-of-access" id="methods-of-access">Methods of Access</a>
+<a href="#rfc.section.4">4.</a> <a href="#tooling-requirements" id="tooling-requirements">Tooling requirements</a>
 </h1>
-<p id="rfc.section.4.p.1">TBD : propose to use a .well-known URL to fetch these logs from the server</p>
+<p id="rfc.section.4.p.1">Tools MUST indicate which qlog version(s) they support. Additionally, they SHOULD indicate exactly which values for the CATEGORY, EVENT_TYPE and TRIGGER fields they look for to execute their logic. Tools SHOULD perform a (high-level) check if an input qlog file adheres to the expected qlog schema. If a tool determines a qlog file does not contain enough supported information to correctly execute the tool&#8217;s logic, it SHOULD generate a clear error message to this effect.</p>
+<p id="rfc.section.4.p.2">Tools MUST disregard any field names and values in the qlog format that they do not recognize.</p>
 <h1 id="rfc.section.5">
-<a href="#rfc.section.5">5.</a> <a href="#notes-on-practical-use" id="notes-on-practical-use">Notes on Practical Use</a>
+<a href="#rfc.section.5">5.</a> <a href="#methods-of-access" id="methods-of-access">Methods of Access</a>
 </h1>
-<p id="rfc.section.5.p.1">TBD : discuss that implementation do not have to output qlog directly. It is good practice to log in whatever way you want, and then just write a transformer to qlog for use in tooling.</p>
+<p id="rfc.section.5.p.1">TBD : propose to use a .well-known URL to fetch logs from an endpoint / to send logs to.</p>
 <h1 id="rfc.section.6">
-<a href="#rfc.section.6">6.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
+<a href="#rfc.section.6">6.</a> <a href="#notes-on-practical-use" id="notes-on-practical-use">Notes on Practical Use</a>
 </h1>
-<p id="rfc.section.6.p.1">TBD : discuss privacy and security considerations (e.g., what NOT to log, what to strip out of a log before sharing, &#8230;)</p>
+<p id="rfc.section.6.p.1">TBD : discuss that implementation do not have to output qlog directly. It is good practice to log in whatever way you want, and then just write a transformer to qlog for use in tooling.</p>
 <h1 id="rfc.section.7">
-<a href="#rfc.section.7">7.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+<a href="#rfc.section.7">7.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
-<p id="rfc.section.7.p.1">TBD</p>
+<p id="rfc.section.7.p.1">TBD : discuss privacy and security considerations (e.g., what NOT to log, what to strip out of a log before sharing, &#8230;)</p>
+<h1 id="rfc.section.8">
+<a href="#rfc.section.8">8.</a> <a href="#iana-considerations" id="iana-considerations">IANA Considerations</a>
+</h1>
+<p id="rfc.section.8.p.1">TBD</p>
 <h1 id="rfc.references">
-<a href="#rfc.references">8.</a> References</h1>
+<a href="#rfc.references">9.</a> References</h1>
 <h1 id="rfc.references.1">
-<a href="#rfc.references.1">8.1.</a> Normative References</h1>
+<a href="#rfc.references.1">9.1.</a> Normative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="QUIC-TRANSPORT">[QUIC-TRANSPORT]</b></td>
@@ -805,7 +813,7 @@ The delta_time approach will:
 </tr>
 </tbody></table>
 <h1 id="rfc.references.2">
-<a href="#rfc.references.2">8.2.</a> Informative References</h1>
+<a href="#rfc.references.2">9.2.</a> Informative References</h1>
 <table><tbody>
 <tr>
 <td class="reference"><b id="QUIC-HTTP">[QUIC-HTTP]</b></td>
