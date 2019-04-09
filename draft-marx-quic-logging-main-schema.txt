@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                          April 08, 2019
-Expires: October 10, 2019
+Intended status: Standards Track                          April 09, 2019
+Expires: October 11, 2019
 
 
                       Main logging schema for qlog
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 10, 2019.
+   This Internet-Draft will expire on October 11, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                    Expires October 10, 2019                [Page 1]
+Marx                    Expires October 11, 2019                [Page 1]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -70,28 +70,28 @@ Table of Contents
      3.1.  Top level container . . . . . . . . . . . . . . . . . . .   3
      3.2.  Trace container . . . . . . . . . . . . . . . . . . . . .   4
        3.2.1.  vantage_point . . . . . . . . . . . . . . . . . . . .   4
-       3.2.2.  Title and Description . . . . . . . . . . . . . . . .   4
+       3.2.2.  Title and Description . . . . . . . . . . . . . . . .   5
        3.2.3.  Configuration . . . . . . . . . . . . . . . . . . . .   5
-       3.2.4.  common_fields and event_fields  . . . . . . . . . . .   5
-     3.3.  Field name semantics  . . . . . . . . . . . . . . . . . .   8
-       3.3.1.  time, rolling_time and reference_time + delta_time  .   8
-       3.3.2.  group_id and group_ids  . . . . . . . . . . . . . . .   9
-       3.3.3.  CATEGORY and EVENT_TYPE . . . . . . . . . . . . . . .  13
-       3.3.4.  TRIGGER . . . . . . . . . . . . . . . . . . . . . . .  13
-       3.3.5.  DATA  . . . . . . . . . . . . . . . . . . . . . . . .  13
-       3.3.6.  Event field values  . . . . . . . . . . . . . . . . .  13
-   4.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  13
-   5.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  14
-   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  14
-   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  14
-   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  14
-     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  14
-     8.2.  Informative References  . . . . . . . . . . . . . . . . .  14
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  14
-     A.1.  Since draft-marx-quic-logging-main-schema-00: . . . . . .  14
-   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  15
-   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  15
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  15
+       3.2.4.  common_fields and event_fields  . . . . . . . . . . .   6
+     3.3.  Field name semantics  . . . . . . . . . . . . . . . . . .   9
+       3.3.1.  time, rolling_time and reference_time + delta_time  .   9
+       3.3.2.  group_id and group_ids  . . . . . . . . . . . . . . .  10
+       3.3.3.  CATEGORY and EVENT_TYPE . . . . . . . . . . . . . . .  14
+       3.3.4.  TRIGGER . . . . . . . . . . . . . . . . . . . . . . .  14
+       3.3.5.  DATA  . . . . . . . . . . . . . . . . . . . . . . . .  14
+       3.3.6.  Event field values  . . . . . . . . . . . . . . . . .  14
+   4.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  14
+   5.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  15
+   6.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
+   7.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
+   8.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
+     8.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
+     8.2.  Informative References  . . . . . . . . . . . . . . . . .  15
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  16
+     A.1.  Since draft-marx-quic-logging-main-schema-00: . . . . . .  16
+   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  16
+   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  16
 
 1.  Introduction
 
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Marx                    Expires October 10, 2019                [Page 2]
+Marx                    Expires October 11, 2019                [Page 2]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -165,7 +165,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019                [Page 3]
+Marx                    Expires October 11, 2019                [Page 3]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -175,16 +175,27 @@ Internet-Draft        Main logging schema for qlog            April 2019
    Each trace container encompasses a single conceptual trace.  The
    exact definition of a trace can be fluid.  For example, a trace could
    contain all events for a single connection, for a single endpoint,
-   for a single measurement interval, ... Typically, a trace is a log
-   collected at a single location or vantage point and related traces
-   from multiple vantage points can be combined in a single qlog file.
+   for a single measurement interval, ...
+
+   In the normal use case, a trace is a log of a single data flow
+   collected at a single location or vantage point.  For example, for
+   QUIC, a single trace only contains events for a single logical QUIC
+   connection.  However, a single trace could also combine events from a
+   variety of vantage points or use cases (e.g., multiple QUIC
+   connections or the same connection viewed from different points in
+   the network).
+
    The semantics and context of the trace can be deduced from the
-   entries in the "common_fields" and "event_fields" lists.
+   entries in the "common_fields" (specifically the "group_ids" field)
+   and "event_fields" lists.
 
    Only the "event_fields" and "events" fields MUST be present.
 
    {
-       "vantage_point": "SERVER",
+       "vantage_point": {
+           "name": "backend-67",
+           "type": "SERVER"
+       },
        "title": "Name of this particular trace (short)",
        "description": "Description for this trace (long)",
        "configuration": {
@@ -200,14 +211,45 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 3.2.1.  vantage_point
 
-   This field described the vantage point from which the trace
-   originates.  Its value is a string, which can be filled in as needed.
-   Three main values are defined in this document: "SERVER", "CLIENT",
-   "NETWORK".  Other value examples: "NETWORK-1", "loadbalancer45",
-   "reverseproxy@192.168.1.1"
+   This field describes the vantage point from which the trace
+   originates.  Its value is an object, with the following fields:
+
+   o  name: an optional, user-chosen string (e.g., "NETWORK-1",
+      "loadbalancer45", "reverseproxy@192.168.1.1", ...)
+
+   o  type: one of three values: "SERVER", "CLIENT", "NETWORK".
+
+
+
+Marx                    Expires October 11, 2019                [Page 4]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
+      *  CLIENT indicates an endpoint which initiates the connection.
+
+      *  SERVER indicates an endpoint which accepts the connection.
+
+      *  NETWORK indicates an observer in between CLIENT and SERVER.
+
+   o  flow: one of two values: "CLIENT" or "SERVER".
+
+      *  This field is only required if type is "NETWORK".
+
+      *  CLIENT indicates that this vantage point follows client data
+         flow semantics (a PACKET_TX goes in the direction of the
+         SERVER).
+
+      *  SERVER indicates that this vantage point follow server data
+         flow semantics (a PACKET_TX goes in the direction of the
+         client).
+
+   The type field MUST be present.  The flow field MUST be present if
+   the type field has value "NETWORK".  The name field is optional.
 
    TODO (see issue 6): "NETWORK" should have a way to indicate what RX
-   and TX mean (e.g., identify endpoints by ID or 4-tuple etc.)
+   and TX mean (is current way enough? maybe identify endpoints by ID or
+   4-tuple etc.)
 
 3.2.2.  Title and Description
 
@@ -218,13 +260,6 @@ Internet-Draft        Main logging schema for qlog            April 2019
    files that illustrate a specific problem across traces that want to
    include additional explanations for easier communication between
    teams, students, ...).
-
-
-
-Marx                    Expires October 10, 2019                [Page 4]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
 
 3.2.3.  Configuration
 
@@ -239,6 +274,14 @@ Internet-Draft        Main logging schema for qlog            April 2019
    that tools can fill with their own fields, based on per-tool logic.
    It is best practice for tools to prefix each added field with their
    tool name to prevent collisions across tools.  This document only
+
+
+
+Marx                    Expires October 11, 2019                [Page 5]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
    defines two standard, tool-independent configuration settings:
    "time_offset" and "time_units".
 
@@ -274,14 +317,6 @@ Internet-Draft        Main logging schema for qlog            April 2019
    For example, when logging events for a single QUIC connection, all
    events will share the same "original destination connection ID"
    (ODCID).  This field and its value should be set in "common_fields",
-
-
-
-Marx                    Expires October 10, 2019                [Page 5]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
-
    rather than "event_fields".  However, if a single trace would contain
    events for multiple QUIC connections at the same time (e.g., a
    single, big output log for a server), the ODCID can be different
@@ -291,6 +326,17 @@ Internet-Draft        Main logging schema for qlog            April 2019
    in Figure 3 and Figure 4.  The events described in these examples are
    purely for illustration.  Actual event type definitions for the QUIC
    and HTTP/3 protocols can be found in TODO.
+
+
+
+
+
+
+
+Marx                    Expires October 11, 2019                [Page 6]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
 
    {
        "events": [{
@@ -333,7 +379,17 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019                [Page 6]
+
+
+
+
+
+
+
+
+
+
+Marx                    Expires October 11, 2019                [Page 7]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -389,7 +445,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019                [Page 7]
+Marx                    Expires October 11, 2019                [Page 8]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -445,7 +501,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019                [Page 8]
+Marx                    Expires October 11, 2019                [Page 9]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -474,22 +530,16 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 3.3.2.  group_id and group_ids
 
-   In the normal use case, only a single source is logged in a single
-   trace.  For example, for QUIC, a single trace only contains events
-   for a single logical QUIC connection (grouped on ODCID because the
-   normal connection IDs can change during the QUIC connection).
-
-   TODO: for this simple use case, MUST a trace include a group_id?
-
-   However, a single trace could also combine events from a variety of
-   sources or use cases (e.g., multiple QUIC connections).  For tooling
-   considerations, it is necessary to have a well-defined way to split
-   up events belonging to different logical groups into subgroups for
-   visualization and processing.  For example, if one type of log uses
-   4-tuples as identifiers and uses a field name "four_tuple" and
-   another uses "ODCID", there is no way to know for generic tools which
-   of these fields should be used to create subgroups.  As such, qlog
-   uses the generic "group_id" field to circumvent this issue.
+   A single Trace can contain events from a variety of sources,
+   belonging to for example a number of individual QUIC connections.
+   For tooling considerations, it is necessary to have a well-defined
+   way to split up events belonging to different logical groups into
+   subgroups for visualization and processing.  For example, if one type
+   of log uses 4-tuples as identifiers and uses a field name
+   "four_tuple" and another uses "ODCID", there is no way to know for
+   generic tools which of these fields should be used to create
+   subgroups.  As such, qlog uses the generic "group_id" field to
+   circumvent this issue.
 
    The "group_id" field can be any type of valid JSON object, but is
    typically a string or integer.  For more complex use cases, the
@@ -498,20 +548,20 @@ Internet-Draft        Main logging schema for qlog            April 2019
    in full every single time.  This would also complicate tool-based
    processing.  As a solution, qlog allows the extraction of group_id
    values into a separate "group_ids" field in the "common_fields",
-
-
-
-Marx                    Expires October 10, 2019                [Page 9]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
-
    consisting of an array of the various present group ids for this
    trace.  If this field is present, per-event "group_id" values are
    regarded as indices into the "group_ids" array.  This is useful if
    the group_ids are known up-front or the qlog trace can be generated
    from a more verbose format afterwards.  If this is not the case, it
    is acceptable to just log the complex objects as the "group_id" for
+
+
+
+Marx                    Expires October 11, 2019               [Page 10]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
    each event.  Both use cases are demonstrated in Figure 6 and
    Figure 7.
 
@@ -525,6 +575,10 @@ Internet-Draft        Main logging schema for qlog            April 2019
    TODO: maybe just make group_ids or group_id reference the named field
    instead? e.g., "group_id": "ODCID"
 
+   TODO: for the simple use case (e.g., just 1 QUIC connection in the
+   trace), MUST a trace include a group_id? maybe yes: the ODCID?
+   (ODCID because the normal connection IDs can change during the QUIC
+   connection).
 
 
 
@@ -557,7 +611,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019               [Page 10]
+
+
+Marx                    Expires October 11, 2019               [Page 11]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -613,7 +669,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019               [Page 11]
+Marx                    Expires October 11, 2019               [Page 12]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -669,7 +725,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019               [Page 12]
+Marx                    Expires October 11, 2019               [Page 13]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -725,7 +781,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 10, 2019               [Page 13]
+Marx                    Expires October 11, 2019               [Page 14]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -770,29 +826,38 @@ Internet-Draft        Main logging schema for qlog            April 2019
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
               April 2016, <https://www.rfc-editor.org/info/rfc7838>.
 
+8.3.  URIs
+
+   [1] https://github.com/google/quic-trace
+
+   [2] https://github.com/EricssonResearch/spindump
+
+   [3] https://www.wireshark.org/
+
+
+
+
+Marx                    Expires October 11, 2019               [Page 15]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
 Appendix A.  Change Log
 
 A.1.  Since draft-marx-quic-logging-main-schema-00:
 
    o  None yet.
 
-
-
-
-
-
-Marx                    Expires October 10, 2019               [Page 14]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
-
 Appendix B.  Design Variations
 
-   o  Quic-trace (https://github.com/google/quic-trace) takes a slightly
-      different approach based on protocolbuffers.
+   o  Quic-trace [1] takes a slightly different approach based on
+      protocolbuffers.
 
-   o  Spindump (https://github.com/EricssonResearch/spindump) also
-      defines a custom text-based format for in-network measurements
+   o  Spindump [2] also defines a custom text-based format for in-
+      network measurements
+
+   o  Wireshark [3] also has a QUIC dissector and its results can be
+      transformed into a json output format using tshark.
 
    The idea is that qlog is able to encompass the use cases for both of
    these alternate designs and that all tooling converges on the qlog
@@ -800,8 +865,9 @@ Appendix B.  Design Variations
 
 Appendix C.  Acknowledgements
 
-   Thanks to Jana Iyengar, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar,
-   Victor Vasiliev and Lucas Pardue for their feedback and suggestions.
+   Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko,
+   Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and
+   suggestions.
 
 Author's Address
 
@@ -827,14 +893,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-Marx                    Expires October 10, 2019               [Page 15]
+Marx                    Expires October 11, 2019               [Page 16]
