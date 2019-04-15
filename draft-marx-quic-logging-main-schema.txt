@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                          April 09, 2019
-Expires: October 11, 2019
+Intended status: Standards Track                          April 15, 2019
+Expires: October 17, 2019
 
 
                       Main logging schema for qlog
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 11, 2019.
+   This Internet-Draft will expire on October 17, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                    Expires October 11, 2019                [Page 1]
+Marx                    Expires October 17, 2019                [Page 1]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -68,31 +68,32 @@ Table of Contents
    2.  Design Goals  . . . . . . . . . . . . . . . . . . . . . . . .   3
    3.  The High Level Schema . . . . . . . . . . . . . . . . . . . .   3
      3.1.  Top level container . . . . . . . . . . . . . . . . . . .   3
-     3.2.  Trace container . . . . . . . . . . . . . . . . . . . . .   4
-       3.2.1.  vantage_point . . . . . . . . . . . . . . . . . . . .   4
-       3.2.2.  Title and Description . . . . . . . . . . . . . . . .   5
-       3.2.3.  Configuration . . . . . . . . . . . . . . . . . . . .   5
-       3.2.4.  common_fields and event_fields  . . . . . . . . . . .   6
-     3.3.  Field name semantics  . . . . . . . . . . . . . . . . . .   9
-       3.3.1.  time, delta_time and reference_time + relative_time .   9
-       3.3.2.  group_id and group_ids  . . . . . . . . . . . . . . .  10
-       3.3.3.  CATEGORY and EVENT_TYPE . . . . . . . . . . . . . . .  14
-       3.3.4.  TRIGGER . . . . . . . . . . . . . . . . . . . . . . .  14
-       3.3.5.  DATA  . . . . . . . . . . . . . . . . . . . . . . . .  14
-       3.3.6.  Event field values  . . . . . . . . . . . . . . . . .  14
-   4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  14
-   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  15
-   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  15
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  15
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  15
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  15
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  15
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  15
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  16
-     A.1.  Since draft-marx-quic-logging-main-schema-00: . . . . . .  16
-   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  16
-   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  16
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  16
+     3.2.  Summary field . . . . . . . . . . . . . . . . . . . . . .   4
+     3.3.  Trace container . . . . . . . . . . . . . . . . . . . . .   4
+       3.3.1.  vantage_point . . . . . . . . . . . . . . . . . . . .   5
+       3.3.2.  Title and Description . . . . . . . . . . . . . . . .   6
+       3.3.3.  Configuration . . . . . . . . . . . . . . . . . . . .   6
+       3.3.4.  common_fields and event_fields  . . . . . . . . . . .   7
+     3.4.  Field name semantics  . . . . . . . . . . . . . . . . . .  10
+       3.4.1.  time, delta_time and reference_time + relative_time .  10
+       3.4.2.  group_id and group_ids  . . . . . . . . . . . . . . .  11
+       3.4.3.  CATEGORY and EVENT_TYPE . . . . . . . . . . . . . . .  15
+       3.4.4.  TRIGGER . . . . . . . . . . . . . . . . . . . . . . .  15
+       3.4.5.  DATA  . . . . . . . . . . . . . . . . . . . . . . . .  15
+       3.4.6.  Event field values  . . . . . . . . . . . . . . . . .  15
+   4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  15
+   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  16
+   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  16
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
+     9.2.  Informative References  . . . . . . . . . . . . . . . . .  17
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  17
+     A.1.  Since draft-marx-quic-logging-main-schema-00: . . . . . .  17
+   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  17
+   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  17
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
 
 1.  Introduction
 
@@ -108,8 +109,7 @@ Table of Contents
 
 
 
-
-Marx                    Expires October 11, 2019                [Page 2]
+Marx                    Expires October 17, 2019                [Page 2]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -146,6 +146,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
        "qlog_version": "draft-00",
        "title": "Name of this particular qlog file (short)",
        "description": "Description for this group of traces (long)",
+       "summary": {
+           ...
+       }
        "traces": [...]
    }
 
@@ -159,18 +162,45 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
    For example, for a test setup, we perform logging on the CLIENT, on
    the SERVER and on a single point on their common NETWORK path.  Each
-   of these three logs is first created separately during the test.
-   Afterwards, the three logs can be aggregated into a single qlog file.
 
 
 
-
-Marx                    Expires October 11, 2019                [Page 3]
+Marx                    Expires October 17, 2019                [Page 3]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
 
-3.2.  Trace container
+   of these three logs is first created separately during the test.
+   Afterwards, the three logs can be aggregated into a single qlog file.
+
+3.2.  Summary field
+
+   In a real-life deployment with a large amount of generated logs, it
+   can be useful to sort and filter logs based on some basic summarized
+   or aggregated data (e.g., log length, packet loss rate, log location,
+   ...).  The summary field (if present) SHOULD be on top of the qlog
+   file, as this allows for the file to be processed in a streaming
+   fashion (i.e., the implementation could just read up to and including
+   the summary field and then only load the full logs that are deemed
+   interesting by the user).
+
+   As the summary field is highly deployment-specific, this document
+   does not specify any default fields or their semantics.  Some
+   examples of potential entries are:
+
+"summary": {
+    "trace_count":number, // amount of traces in this file
+    "max_duration":string, // time duration of the longest trace
+    "max_outgoing_loss_rate":number, // highest loss rate for outgoing packets over all traces
+    "total_event_count":number // total number of events across all traces
+}
+
+   o  TODO: are there any field semantics we should specify here?
+
+   o  TODO: Will people actually use this? or will they store this info
+      out-of-band (e.g., separate database for faster querying?)
+
+3.3.  Trace container
 
    Each trace container encompasses a single conceptual trace.  The
    exact definition of a trace can be fluid.  For example, a trace could
@@ -188,6 +218,13 @@ Internet-Draft        Main logging schema for qlog            April 2019
    The semantics and context of the trace can be deduced from the
    entries in the "common_fields" (specifically the "group_ids" field)
    and "event_fields" lists.
+
+
+
+Marx                    Expires October 17, 2019                [Page 4]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
 
    Only the "event_fields" and "events" fields MUST be present.
 
@@ -209,7 +246,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
                          Figure 2: Trace container
 
-3.2.1.  vantage_point
+3.3.1.  vantage_point
 
    This field describes the vantage point from which the trace
    originates.  Its value is an object, with the following fields:
@@ -218,13 +255,6 @@ Internet-Draft        Main logging schema for qlog            April 2019
       "loadbalancer45", "reverseproxy@192.168.1.1", ...)
 
    o  type: one of three values: "SERVER", "CLIENT", "NETWORK".
-
-
-
-Marx                    Expires October 11, 2019                [Page 4]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
 
       *  CLIENT indicates an endpoint which initiates the connection.
 
@@ -244,6 +274,14 @@ Internet-Draft        Main logging schema for qlog            April 2019
          flow semantics (a PACKET_TX goes in the direction of the
          client).
 
+
+
+
+Marx                    Expires October 17, 2019                [Page 5]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
    The type field MUST be present.  The flow field MUST be present if
    the type field has value "NETWORK".  The name field is optional.
 
@@ -251,7 +289,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    and TX mean (is current way enough? maybe identify endpoints by ID or
    4-tuple etc.)
 
-3.2.2.  Title and Description
+3.3.2.  Title and Description
 
    Both fields' values are generic strings, used for describing the
    contents of the trace.  These can either be filled in automatically
@@ -261,7 +299,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    include additional explanations for easier communication between
    teams, students, ...).
 
-3.2.3.  Configuration
+3.3.3.  Configuration
 
    We take into account that a log file is usually not used in
    isolation, but by means of various tools.  Especially when
@@ -274,18 +312,10 @@ Internet-Draft        Main logging schema for qlog            April 2019
    that tools can fill with their own fields, based on per-tool logic.
    It is best practice for tools to prefix each added field with their
    tool name to prevent collisions across tools.  This document only
-
-
-
-Marx                    Expires October 11, 2019                [Page 5]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
-
    defines two standard, tool-independent configuration settings:
    "time_offset" and "time_units".
 
-3.2.3.1.  time_offset
+3.3.3.1.  time_offset
 
    time_offset indicates by how many units of time (see next section)
    the starting time of the current trace should be offset.  This is
@@ -294,16 +324,24 @@ Internet-Draft        Main logging schema for qlog            April 2019
    automated logic to align traces in time and the found optimal offsets
    can be stored in this field for future usage.
 
-3.2.3.2.  time_units
+3.3.3.2.  time_units
 
    Since timestamps can be stored in various granularities, this field
    allows to indicate whether storage happens in either milliseconds
    ("ms") or microseconds ("us").  If this field is not present, the
    default value is "ms".  This configuration setting applies to all
+
+
+
+Marx                    Expires October 17, 2019                [Page 6]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
    other timestamps in the trace file as well, not just the
    "time_offset" field.
 
-3.2.4.  common_fields and event_fields
+3.3.4.  common_fields and event_fields
 
    To reduce file size and make logging easier, the trace schema lists
    the names of the specific fields that are logged per-event up-front,
@@ -333,7 +371,25 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019                [Page 6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                    Expires October 17, 2019                [Page 7]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -389,7 +445,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019                [Page 7]
+Marx                    Expires October 17, 2019                [Page 8]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -428,7 +484,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
                        Figure 4: qlog optimized JSON
 
    The main field names that can be included in these fields are defined
-   in Section 3.3.
+   in Section 3.4.
 
    Given that qlog is intended to be a flexible format, unknown field
    names in both "common_fields" and "event_fields" MUST be disregarded
@@ -445,17 +501,17 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019                [Page 8]
+Marx                    Expires October 17, 2019                [Page 9]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
 
-3.2.4.1.  common_fields format
+3.3.4.1.  common_fields format
 
    An object containing pairs of "field name"-"field value".  Fields
    included in "common_fields" indicate that these field values are the
    same for each event in the "events" array (with the exception of the
-   "group_ids" field, see Section 3.3.2)
+   "group_ids" field, see Section 3.4.2)
 
    If even one event in the trace does not adhere to this convention,
    that field name should be in "event_fields" instead, and the value
@@ -464,7 +520,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    field value in the generic "data" field for each non-confirming
    event.  However, these semantics are not defined in this document.
 
-3.2.4.2.  event_fields format
+3.3.4.2.  event_fields format
 
    An array of field names (plain strings).  Field names included in
    "event_fields" indicate that these field names are present *in this
@@ -472,12 +528,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
    event then only has to log the corresponding values for those fields
    in the correct order.
 
-3.3.  Field name semantics
+3.4.  Field name semantics
 
    This section lists pre-defined, reserved field names with specific
    semantics and expected corresponding value formats.
 
-   Only a time-based field (see Section 3.3.1), the EVENT_TYPE field and
+   Only a time-based field (see Section 3.4.1), the EVENT_TYPE field and
    the DATA field are mandatory.  Typical setups will log
    reference_time, protocol_type and group_id in "common_fields" and
    relative_time, CATEGORY, EVENT_TYPE, TRIGGER and DATA in
@@ -487,7 +543,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    "event_fields", but their semantics depend on the context of the log
    usage (e.g., for QUIC, the ODCID field is used).
 
-3.3.1.  time, delta_time and reference_time + relative_time
+3.4.1.  time, delta_time and reference_time + relative_time
 
    There are three main modes for logging time:
 
@@ -501,7 +557,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019                [Page 9]
+Marx                    Expires October 17, 2019               [Page 10]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -528,7 +584,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
         Figure 5: Three different approaches for logging timestamps
 
-3.3.2.  group_id and group_ids
+3.4.2.  group_id and group_ids
 
    A single Trace can contain events from a variety of sources,
    belonging to for example a number of individual QUIC connections.
@@ -557,7 +613,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019               [Page 10]
+Marx                    Expires October 17, 2019               [Page 11]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -613,7 +669,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019               [Page 11]
+Marx                    Expires October 17, 2019               [Page 12]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -669,7 +725,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019               [Page 12]
+Marx                    Expires October 17, 2019               [Page 13]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -725,12 +781,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019               [Page 13]
+Marx                    Expires October 17, 2019               [Page 14]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
 
-3.3.3.  CATEGORY and EVENT_TYPE
+3.4.3.  CATEGORY and EVENT_TYPE
 
    Both CATEGORY and EVENT_TYPE are separate, generic strings.  CATEGORY
    allows a higher-level grouping of events per EVENT_TYPE.
@@ -740,7 +796,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    of "PACKET_TX".  This allows for fast and high-level filtering based
    on CATEGORY and re-use of EVENT_TYPEs across categories.
 
-3.3.4.  TRIGGER
+3.4.4.  TRIGGER
 
    The TRIGGER field is a generic string.  It indicates which type of
    event triggered this event to occur (alternately: which other event
@@ -757,14 +813,14 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
    TODO: is this field needed at this level? see issue 7
 
-3.3.5.  DATA
+3.4.5.  DATA
 
    The DATA field is a generic object (list of name-value pairs).  It
    contains the per-event metadata and its form and semantics are
    defined per specific sort of event (typically per EVENT_TYPE, but
    possibly also by combination of CATEGORY, EVENT_TYPE and TRIGGER).
 
-3.3.6.  Event field values
+3.4.6.  Event field values
 
    The specific values for each of these fields and their semantics are
    defined in separate documents, specific per protocol or use case.
@@ -781,7 +837,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 11, 2019               [Page 14]
+Marx                    Expires October 17, 2019               [Page 15]
 
 Internet-Draft        Main logging schema for qlog            April 2019
 
@@ -791,8 +847,10 @@ Internet-Draft        Main logging schema for qlog            April 2019
    correctly execute the tool's logic, it SHOULD generate a clear error
    message to this effect.
 
-   Tools MUST disregard any field names and values in the qlog format
-   that they do not recognize.
+   Tools MUST not produce errors for any field names and values in the
+   qlog format that they do not recognize.  Tools CAN indicate unknown
+   event occurences within their context (e.g., marking unknown events
+   on a timeline for manual interpretation by the logger).
 
 5.  Methods of Access
 
@@ -828,19 +886,24 @@ Internet-Draft        Main logging schema for qlog            April 2019
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
+
+
+
+
+
+
+
+Marx                    Expires October 17, 2019               [Page 16]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
+
 9.2.  Informative References
 
    [QUIC-HTTP]
               Bishop, M., Ed., "Hypertext Transfer Protocol Version 3
               (HTTP/3)", draft-ietf-quic-http-19 (work in progress),
               October 2018.
-
-
-
-Marx                    Expires October 11, 2019               [Page 15]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
 
    [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
               Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
@@ -877,9 +940,19 @@ Appendix B.  Design Variations
 
 Appendix C.  Acknowledgements
 
-   Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko,
-   Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and
-   suggestions.
+   Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen
+   Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue
+   for their feedback and suggestions.
+
+
+
+
+
+
+Marx                    Expires October 17, 2019               [Page 17]
+
+Internet-Draft        Main logging schema for qlog            April 2019
+
 
 Author's Address
 
@@ -893,4 +966,43 @@ Author's Address
 
 
 
-Marx                    Expires October 11, 2019               [Page 16]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                    Expires October 17, 2019               [Page 18]

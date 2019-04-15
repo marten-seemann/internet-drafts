@@ -348,7 +348,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-quic-logging-event-definitions-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-04-09" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-04-15" />
   <meta name="dct.abstract" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema." />
   <meta name="description" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema." />
 
@@ -369,10 +369,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">April 09, 2019</td>
+<td class="right">April 15, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: October 11, 2019</td>
+<td class="left">Expires: October 17, 2019</td>
 <td class="right"></td>
 </tr>
 
@@ -389,7 +389,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on October 11, 2019.</p>
+<p>This Internet-Draft will expire on October 17, 2019.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -617,6 +617,7 @@ ul.toc li {
 <li>&#8220;RETRANSMIT_TIMEOUT&#8221; // draft-19 6.1.2</li>
 <li>&#8220;RETRANSMIT_CRYPTO&#8221; // draft-19 6.2</li>
 <li>&#8220;RETRANSMIT_PTO&#8221; // draft-19 6.3</li>
+<li>&#8220;CC_BANDWIDTH_PROBE&#8221; // needed for some CCs to figure out bandwidth allocations when there are no normal sends</li>
 </ul>
 <p id="rfc.section.3.3.1.p.3">Data:</p>
 <pre>
@@ -659,10 +660,20 @@ ul.toc li {
 <h1 id="rfc.section.3.3.5">
 <a href="#rfc.section.3.3.5">3.3.5.</a> <a href="#alpnupdate" id="alpnupdate">ALPN_UPDATE</a>
 </h1>
-<p id="rfc.section.3.3.5.p.1">TODO: should this be in HTTP? ~~~~ { alpn } ~~~~</p>
+<p id="rfc.section.3.3.5.p.1">TODO: should this be in HTTP?</p>
+<pre>
+{ alpn:string }
+</pre>
 <h1 id="rfc.section.3.3.6">
 <a href="#rfc.section.3.3.6">3.3.6.</a> <a href="#streamstateupdate" id="streamstateupdate">STREAM_STATE_UPDATE</a>
 </h1>
+<pre>
+{
+    old:string,
+    new:string
+}
+</pre>
+<p id="rfc.section.3.3.6.p.1">Possible values:</p>
 <p></p>
 
 <ul>
@@ -671,7 +682,7 @@ ul.toc li {
 <li>CLOSED</li>
 <li>HALF_CLOSED_REMOTE</li>
 <li>HALF_CLOSED_LOCAL</li>
-<li>DESTROYED // memory freed</li>
+<li>DESTROYED // memory actually freed</li>
 <li>Ready</li>
 <li>Send</li>
 <li>Data Sent</li>
@@ -684,7 +695,7 @@ ul.toc li {
 <li>Data Read</li>
 <li>Reset Read</li>
 </ul>
-<p id="rfc.section.3.3.6.p.2">TODO: do we need all of these? How do implementations actually handle this in practice?</p>
+<p id="rfc.section.3.3.6.p.3">TODO: do we need all of these? How do implementations actually handle this in practice?</p>
 <h1 id="rfc.section.3.3.7">
 <a href="#rfc.section.3.3.7">3.3.7.</a> <a href="#flowcontrolupdate" id="flowcontrolupdate">FLOW_CONTROL_UPDATE</a>
 </h1>
@@ -701,19 +712,40 @@ ul.toc li {
 <h1 id="rfc.section.3.4.1">
 <a href="#rfc.section.3.4.1">3.4.1.</a> <a href="#ccstateupdate" id="ccstateupdate">CC_STATE_UPDATE</a>
 </h1>
+<pre>
+{
+    old:string,
+    new:string
+}
+</pre>
 <h1 id="rfc.section.3.4.2">
 <a href="#rfc.section.3.4.2">3.4.2.</a> <a href="#metricupdate" id="metricupdate">METRIC_UPDATE</a>
 </h1>
+<pre>
+{
+    cwnd?: number;
+    bytes_in_flight?:number;
+
+    min_rtt?:number;
+    smoothed_rtt?:number;
+    latest_rtt?:number;
+    max_ack_delay?:number;
+
+    rtt_variance?:number;
+    ssthresh?:number;
+
+    pacing_rate?:number;
+}
+</pre>
+<p id="rfc.section.3.4.2.p.1">This event SHOULD group all possible metric updates that happen at or around the same time in a single event (e.g., if min_rtt and smoothed_rtt change at the same time, they should be bundled in a single METRIC_UPDATE entry, rather than split out into two). Consequently, a METRIC_UPDATE is only guaranteed to contain at least one of the listed metrics.</p>
+<p id="rfc.section.3.4.2.p.2">Note: to make logging easier, implementations MAY log values even if they are the same as previously reported values (e.g., two subsequent METRIC_UPDATE entries can both report the exact same value for min_rtt). However, applications SHOULD try to log only actual updates to values.</p>
 <p></p>
 
 <ul>
-<li>CWND</li>
-<li>BYTES_IN_FLIGHT</li>
-<li>RTT</li>
-<li>SSTHRESH</li>
-<li>PACING_RATE</li>
+<li>TODO: split these up into separate events? e.g., CWND_UPDATE, BYTES_IN_FLIGHT_UPDATE, &#8230;</li>
+<li>TODO: move things like pacing_rate, cwnd, bytes_in_flight, ssthresh, etc. to CC_STATE_UPDATE?</li>
+<li>TODO: what types of CC metrics do we need to support by default (e.g., cubic vs bbr)</li>
 </ul>
-<p id="rfc.section.3.4.2.p.2">TODO: split these up into separate events? TODO: allow more than 1 of these in a single METRIC_UPDATE event? (cfr. quic-trace TransportState)</p>
 <h1 id="rfc.section.3.4.3">
 <a href="#rfc.section.3.4.3">3.4.3.</a> <a href="#lossalarmset" id="lossalarmset">LOSS_ALARM_SET</a>
 </h1>
@@ -723,9 +755,24 @@ ul.toc li {
 <h1 id="rfc.section.3.4.5">
 <a href="#rfc.section.3.4.5">3.4.5.</a> <a href="#packetlost" id="packetlost">PACKET_LOST</a>
 </h1>
+<p id="rfc.section.3.4.5.p.1">Data:</p>
+<pre>
+{
+    packet_number:string
+}
+</pre>
+<p id="rfc.section.3.4.5.p.2">Triggers:</p>
+<p></p>
+
+<ul>
+<li>&#8220;UNKNOWN&#8221;,</li>
+<li>&#8220;REORDERING_THRESHOLD&#8221;,</li>
+<li>&#8220;TIME_THRESHOLD&#8221;</li>
+</ul>
 <h1 id="rfc.section.3.4.6">
 <a href="#rfc.section.3.4.6">3.4.6.</a> <a href="#packetacknowledged" id="packetacknowledged">PACKET_ACKNOWLEDGED</a>
 </h1>
+<p id="rfc.section.3.4.6.p.1">TODO: must this be a separate event? can&#8217;t we get this from logged ACK frames? (however, explicitly indicating this and logging it in the ack handler is a better signal that the ACK actually had the intended effect than just logging its receipt)</p>
 <h1 id="rfc.section.3.4.7">
 <a href="#rfc.section.3.4.7">3.4.7.</a> <a href="#packetretransmit" id="packetretransmit">PACKET_RETRANSMIT</a>
 </h1>
@@ -835,18 +882,18 @@ class AckFrame{
     frame_type:string = "ACK";
 
     ack_delay:string;
-    acked_ranges:Array&lt;AckRange&gt;;
 
-    ect1:string;
-    ect0:string;
-    ce:string;
-}
+    // first number is "from": lowest packet number in interval
+    // second number is "to": up to and including // highest packet number in interval
+    // e.g., looks like [[1,2],[4,5]]
+    acked_ranges:Array&lt;[number, number]&gt;;
 
-class AckRange{
-    from:string;
-    to:string; // up to and including
+    ect1?:string;
+    ect0?:string;
+    ce?:string;
 }
 </pre>
+<p id="rfc.section.A.3.1.p.1">Note: the packet ranges in AckFrame.acked_ranges do not necessarily have to be ordered (e.g., [[5,9],[1,4]] is a valid value).</p>
 <h1 id="rfc.appendix.A.3.2">
 <a href="#rfc.appendix.A.3.2">A.3.2.</a> <a href="#streamframe" id="streamframe">StreamFrame</a>
 </h1>
@@ -856,10 +903,13 @@ class StreamFrame{
 
   id:string;
 
-  // These three MUST always be set
+  // These two MUST always be set
   // If not present in the Frame type, log their default values
   offset:string;
   length:string;
+
+  // this MAY be set any time, but MUST only be set if the value is "true"
+  // if absent, the value MUST be assumed to be "false"
   fin:boolean;
 }
 </pre>
@@ -988,7 +1038,7 @@ enum ApplicationError{
 <h1 id="rfc.appendix.E">
 <a href="#rfc.appendix.E">Appendix E.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>
-<p id="rfc.section.E.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and suggestions.</p>
+<p id="rfc.section.E.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue for their feedback and suggestions.</p>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">
