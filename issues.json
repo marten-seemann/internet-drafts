@@ -1,6 +1,54 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/10",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/10/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/10/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/10/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/issues/10",
+    "id": 430954231,
+    "node_id": "MDU6SXNzdWU0MzA5NTQyMzE=",
+    "number": 10,
+    "title": "Numbers in JSON",
+    "user": {
+      "login": "rmarx",
+      "id": 2240689,
+      "node_id": "MDQ6VXNlcjIyNDA2ODk=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2240689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmarx",
+      "html_url": "https://github.com/rmarx",
+      "followers_url": "https://api.github.com/users/rmarx/followers",
+      "following_url": "https://api.github.com/users/rmarx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmarx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmarx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmarx/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmarx/orgs",
+      "repos_url": "https://api.github.com/users/rmarx/repos",
+      "events_url": "https://api.github.com/users/rmarx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmarx/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-04-09T13:00:45Z",
+    "updated_at": "2019-04-09T13:00:45Z",
+    "closed_at": null,
+    "author_association": "MEMBER",
+    "body": "Typically, integers in JavaScript and most JSON implementations are limited to 2^53-1.\r\nThis gives problems, as the VLIE values in the QUIC/H3 specs are 2^62-1.\r\n\r\nTwo options:\r\n- Allow bigger values in the JSON. Tools MUST use a JSON parser that can deal with this and a JavaScript engine that supports BigInt (currently limited to Chromium: https://caniuse.com/#search=bigint)\r\n- Encode all VLIE fields as strings. Tools have to deal with this themselves (most will probably just take the shortcut of assuming actual values will be < 2^53 and just use the JavaScript \"Number\" type). This is best for a wide tooling implementation area in browsers. \r\n\r\nCurrently, the draft uses option 2. \r\n\r\n"
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/9",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/9/labels{/name}",
@@ -247,10 +295,10 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T14:15:11Z",
-    "updated_at": "2019-04-08T14:18:05Z",
+    "updated_at": "2019-04-09T10:08:16Z",
     "closed_at": null,
     "author_association": "MEMBER",
-    "body": "For CLIENT and SERVER, the difference between RECEIVE (RX) and TRANSMIT (TX) are obvious. Not so for an in-network observer, where these terms make less sense...\r\n\r\nSome options:\r\n- NETWORK_CLIENT and NETWORK_SERVER\r\n- add separate metadata field indicating which 5-tuple is the conceptual \"client\" and which is the \"server\" and use RX/TX based on that\r\n- Don't fix this and let the tooling layer figure it out (if packet nr 6 is a client TX and a RX in the NETWORK trace, the network is from the viewpoint of the SERVER)"
+    "body": "For CLIENT and SERVER, the difference between RECEIVE (RX) and TRANSMIT (TX) is obvious. Not so for an in-network observer (or, e.g., a proxy server), where these terms make less sense...\r\n\r\nSome options:\r\n- Type is NETWORK_CLIENT and NETWORK_SERVER (instead of NETWORK)\r\n- add separate \"flow\" field indicating if we use CLIENT or SERVER semantics (currently in the draft)\r\n- add separate metadata field indicating which 5-tuple is the conceptual \"client\" and which is the \"server\" and use RX/TX based on that\r\n- Don't fix this and let the tooling layer figure it out (if packet nr 6 is a client TX and a RX in the NETWORK trace, the network is from the viewpoint of the SERVER)\r\n\r\nBroader discussion: does it make sense to log packets as PACKET_TX and _RX here? how about instead a PACKET event (similar to how wireshark does it). However: this doesn't make sense for (stateful) proxies that do act as both client+server when ~transforming the traffic (e.g., Facebook's load balancer). \r\n"
   },
   {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/5",
