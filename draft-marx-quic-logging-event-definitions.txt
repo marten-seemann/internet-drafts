@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                          April 15, 2019
-Expires: October 17, 2019
+Intended status: Standards Track                          April 16, 2019
+Expires: October 18, 2019
 
 
                QUIC and HTTP/3 event definitions for qlog
@@ -33,7 +33,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 17, 2019.
+   This Internet-Draft will expire on October 18, 2019.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                    Expires October 17, 2019                [Page 1]
+Marx                    Expires October 18, 2019                [Page 1]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -109,13 +109,13 @@ Table of Contents
 
 
 
-Marx                    Expires October 17, 2019                [Page 2]
+Marx                    Expires October 18, 2019                [Page 2]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
        A.3.1.  AckFrame  . . . . . . . . . . . . . . . . . . . . . .  11
-       A.3.2.  StreamFrame . . . . . . . . . . . . . . . . . . . . .  11
+       A.3.2.  StreamFrame . . . . . . . . . . . . . . . . . . . . .  12
        A.3.3.  ResetStreamFrame  . . . . . . . . . . . . . . . . . .  12
        A.3.4.  ConnectionCloseFrame  . . . . . . . . . . . . . . . .  12
        A.3.5.  MaxDataFrame  . . . . . . . . . . . . . . . . . . . .  12
@@ -165,7 +165,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 3]
+Marx                    Expires October 18, 2019                [Page 3]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -221,7 +221,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 4]
+Marx                    Expires October 18, 2019                [Page 4]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -277,7 +277,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 5]
+Marx                    Expires October 18, 2019                [Page 5]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -333,7 +333,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 6]
+Marx                    Expires October 18, 2019                [Page 6]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -389,7 +389,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 7]
+Marx                    Expires October 18, 2019                [Page 7]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -445,7 +445,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 8]
+Marx                    Expires October 18, 2019                [Page 8]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -501,7 +501,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
 
 
-Marx                    Expires October 17, 2019                [Page 9]
+Marx                    Expires October 18, 2019                [Page 9]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -557,7 +557,7 @@ A.1.  PacketType
 
 
 
-Marx                    Expires October 17, 2019               [Page 10]
+Marx                    Expires October 18, 2019               [Page 10]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -605,18 +605,20 @@ class AckFrame{
    Note: the packet ranges in AckFrame.acked_ranges do not necessarily
    have to be ordered (e.g., [[5,9],[1,4]] is a valid value).
 
-A.3.2.  StreamFrame
+   Note: the two numbers in the packet range can be the same (e.g.,
+   [120,120] means that packet with number 120 was ACKed).  TODO: maybe
+   make this into just [120]?
 
 
 
 
 
-
-
-Marx                    Expires October 17, 2019               [Page 11]
+Marx                    Expires October 18, 2019               [Page 11]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
+
+A.3.2.  StreamFrame
 
 class StreamFrame{
   frame_type:string = "STREAM";
@@ -667,9 +669,7 @@ A.3.5.  MaxDataFrame
 
 
 
-
-
-Marx                    Expires October 17, 2019               [Page 12]
+Marx                    Expires October 18, 2019               [Page 12]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -725,7 +725,7 @@ B.1.  ApplicationError
 
 
 
-Marx                    Expires October 17, 2019               [Page 13]
+Marx                    Expires October 18, 2019               [Page 13]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog     April 2019
 
@@ -781,4 +781,4 @@ Author's Address
 
 
 
-Marx                    Expires October 17, 2019               [Page 14]
+Marx                    Expires October 18, 2019               [Page 14]
