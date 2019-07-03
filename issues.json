@@ -1,6 +1,69 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/11",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/11/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/11/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/11/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/issues/11",
+    "id": 434679110,
+    "node_id": "MDU6SXNzdWU0MzQ2NzkxMTA=",
+    "number": 11,
+    "title": "Allow raw logging of packets and/or frames",
+    "user": {
+      "login": "rmarx",
+      "id": 2240689,
+      "node_id": "MDQ6VXNlcjIyNDA2ODk=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2240689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmarx",
+      "html_url": "https://github.com/rmarx",
+      "followers_url": "https://api.github.com/users/rmarx/followers",
+      "following_url": "https://api.github.com/users/rmarx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmarx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmarx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmarx/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmarx/orgs",
+      "repos_url": "https://api.github.com/users/rmarx/repos",
+      "events_url": "https://api.github.com/users/rmarx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmarx/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+      {
+        "id": 1304363852,
+        "node_id": "MDU6TGFiZWwxMzA0MzYzODUy",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/design",
+        "name": "design",
+        "color": "1d76db",
+        "default": false
+      },
+      {
+        "id": 1309472379,
+        "node_id": "MDU6TGFiZWwxMzA5NDcyMzc5",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/quic-http3-fields",
+        "name": "quic-http3-fields",
+        "color": "d6354a",
+        "default": false
+      }
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 2,
+    "created_at": "2019-04-18T09:37:52Z",
+    "updated_at": "2019-04-19T09:58:45Z",
+    "closed_at": null,
+    "author_association": "MEMBER",
+    "body": "As mentioned by @kazuho on the mailing list, it would be useful to (re-)introduce the ability to log raw packet and/or frame contents, probably has a hex-encoded string. \r\n\r\nProbably easiest to add an additional field like this:\r\n```\r\n{\r\n    \"stream_type\": \"ACK\",\r\n    \"raw_hex\": \"0892e340dbaa354f800239dddc7be78406fe3726bea050bb8c56ab36\",\r\n    ...\r\n}\r\n```"
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/10",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/10/labels{/name}",
@@ -32,7 +95,22 @@
       "site_admin": false
     },
     "labels": [
-
+      {
+        "id": 1304364706,
+        "node_id": "MDU6TGFiZWwxMzA0MzY0NzA2",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/editorial",
+        "name": "editorial",
+        "color": "0e8a16",
+        "default": false
+      },
+      {
+        "id": 1309472379,
+        "node_id": "MDU6TGFiZWwxMzA5NDcyMzc5",
+        "url": "https://api.github.com/repos/quiclog/internet-drafts/labels/quic-http3-fields",
+        "name": "quic-http3-fields",
+        "color": "d6354a",
+        "default": false
+      }
     ],
     "state": "open",
     "locked": false,
@@ -43,7 +121,7 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-09T13:00:45Z",
-    "updated_at": "2019-04-09T13:00:45Z",
+    "updated_at": "2019-04-16T09:52:09Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "Typically, integers in JavaScript and most JSON implementations are limited to 2^53-1.\r\nThis gives problems, as the VLIE values in the QUIC/H3 specs are 2^62-1.\r\n\r\nTwo options:\r\n- Allow bigger values in the JSON. Tools MUST use a JSON parser that can deal with this and a JavaScript engine that supports BigInt (currently limited to Chromium: https://caniuse.com/#search=bigint)\r\n- Encode all VLIE fields as strings. Tools have to deal with this themselves (most will probably just take the shortcut of assuming actual values will be < 2^53 and just use the JavaScript \"Number\" type). This is best for a wide tooling implementation area in browsers. \r\n\r\nCurrently, the draft uses option 2. \r\n\r\n"
@@ -106,10 +184,10 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-08T15:01:36Z",
-    "updated_at": "2019-04-08T15:35:49Z",
+    "updated_at": "2019-04-16T09:53:42Z",
     "closed_at": null,
     "author_association": "MEMBER",
-    "body": "For example:\r\nPACKET_RX        vs       1RTT_PACKET_RX\r\nFRAME_NEW     vs      ACK_FRAME_NEW\r\n\r\nFor the leftmost entries, one would add a \"type\" field to the \"DATA\" value, e.g., \r\n```\r\n{\r\n     \"type\": \"1RTT\"\r\n}\r\n```\r\n\r\nThe shorter form makes that we have a much less large amount of different EVENT_TYPEs, but also makes it a bit harder to parse for human readers + harder to quickly filter for tools. \r\nThe longer form is much more explicit, but requires much more definition up-front and a proliferation of different EVENT_TYPEs.\r\n\r\nWe could also break consistency. i.e., the original qlog used PACKET_RX with an explicit type in the DATA, but used ACK_FRAME_NEW for individual frames.\r\n\r\nCurrently, we use the short-form, since this is most similar to quic-trace and keeps it consistent if we want to log frames both in their own events and again when sending a packet. \r\n\r\nExtra edge-case: Errors\r\nIf you go for extreme short-form, you would just have a single ERROR EVENT_TYPE for each CATEGORY, and define the error type in the DATA.\r\nHowever, for easier manual debugging, tracking the specific type of error directly in the EVENT_TYPE is arguably easier. Maybe an exception should be made for errors? "
+    "body": "For example:\r\nPACKET_RECEIVED        vs       1RTT_PACKET_RECEIVED\r\nFRAME_NEW                vs        ACK_FRAME_NEW\r\n\r\nFor the leftmost entries, one would add a \"type\" field to the \"DATA\" value, e.g., \r\n```\r\n{\r\n     \"type\": \"1RTT\"\r\n}\r\n```\r\n\r\nThe shorter form makes that we have a much less large amount of different EVENT_TYPEs, but also makes it a bit harder to parse for human readers + harder to quickly filter for tools. \r\nThe longer form is much more explicit, but requires much more definition up-front and a proliferation of different EVENT_TYPEs.\r\n\r\nWe could also break consistency. i.e., the original qlog used PACKET_RECEIVED with an explicit type in the DATA, but used ACK_FRAME_NEW for individual frames.\r\n\r\nCurrently, we use the short-form, since this is most similar to quic-trace and keeps it consistent if we want to log frames both in their own events and again when sending a packet. \r\n\r\nExtra edge-case: Errors\r\nIf you go for extreme short-form, you would just have a single ERROR EVENT_TYPE for each CATEGORY, and define the error type in the DATA.\r\nHowever, for easier manual debugging, tracking the specific type of error directly in the EVENT_TYPE is arguably easier. Maybe an exception should be made for errors? "
   },
   {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/8",
@@ -169,10 +247,10 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T16:27:53Z",
-    "updated_at": "2019-04-08T14:18:05Z",
+    "updated_at": "2019-04-18T10:33:34Z",
     "closed_at": null,
     "author_association": "MEMBER",
-    "body": "Currently, we have a concept that you can have a \"groups_id\" object in \"common_fields\". \r\nIf you then have a \"group_id\" in your \"events_field\", the value for that with each event is an index into the \"groups_id\" field, to prevent replication of complex fields.\r\n\r\nWe could make this more general, applicable to each field name.\r\nE.g., if you know up-front which CATEGORY values you support, you could do something like:\r\n\r\n```\r\n{\r\n    \"common_fields\": {\r\n        \"group_id\": \"127ecc830d98f9d54a42c4f0842aa87e181a\",\r\n        \"ODCID\": \"127ecc830d98f9d54a42c4f0842aa87e181a\",\r\n        \"CATEGORY\": [\"PACKET_RX\", \"DATA_FRAME_NEW\"]\r\n        \"protocol_type\":  \"QUIC_HTTP3\",\r\n        \"reference_time\": \"1553986553572\"\r\n    },\r\n    \"event_fields\": [\r\n        \"delta_time\",\r\n        \"CATEGORY\",\r\n        \"EVENT_TYPE\",\r\n        \"TRIGGER\",\r\n        \"DATA\"\r\n    ],\r\n    \"events\": [[\r\n            2,\r\n            \"TRANSPORT\",\r\n            0,\r\n            \"LINE\",\r\n            [...]\r\n        ],[\r\n            7,\r\n            \"APPLICATION\",\r\n            1,\r\n            \"GET\",\r\n            [...]\r\n        ],\r\n        ...\r\n    ]\r\n}\r\n```\r\n\r\nWe would then have a general rule:\r\n\r\n> If the field is present as a value of type array in \"common_fields\" AND the field-name is present in \"event_fields\", the value per-event MUST be treated as an index into the \"common_fields\" entry, rather than taken as a direct value. \r\n\r\n(\"groups_id\" would then also be renamed to \"group_id\" in \"common_fields\")\r\n\r\nThis would allow smaller file sizes (and less string writing overhead) for applications that have a static list of e.g., CATEGORY or EVENT_TYPE up front.\r\nDownside is that it complicates the tools reading the file (but only a bit imo)\r\n"
+    "body": "Currently, we have a concept that you can have a \"groups_id\" object in \"common_fields\". \r\nIf you then have a \"group_id\" in your \"events_field\", the value for that with each event is an index into the \"groups_id\" field, to prevent replication of complex fields.\r\n\r\nWe could make this more general, applicable to each field name.\r\nE.g., if you know up-front which CATEGORY values you support, you could do something like:\r\n\r\n```\r\n{\r\n    \"common_fields\": {\r\n        \"group_id\": \"127ecc830d98f9d54a42c4f0842aa87e181a\",\r\n        \"ODCID\": \"127ecc830d98f9d54a42c4f0842aa87e181a\",\r\n        \"CATEGORY\": [\"PACKET_RX\", \"DATA_FRAME_NEW\"]\r\n        \"protocol_type\":  \"QUIC_HTTP3\",\r\n        \"reference_time\": \"1553986553572\"\r\n    },\r\n    \"event_fields\": [\r\n        \"delta_time\",\r\n        \"CATEGORY\",\r\n        \"EVENT_TYPE\",\r\n        \"TRIGGER\",\r\n        \"DATA\"\r\n    ],\r\n    \"events\": [[\r\n            2,\r\n            \"TRANSPORT\",\r\n            0,\r\n            \"LINE\",\r\n            [...]\r\n        ],[\r\n            7,\r\n            \"APPLICATION\",\r\n            1,\r\n            \"GET\",\r\n            [...]\r\n        ],\r\n        ...\r\n    ]\r\n}\r\n```\r\n\r\nWe would then have a general rule:\r\n\r\n> If the field is present as a value of type array in \"common_fields\" AND the field-name is present in \"event_fields\", the value per-event MUST be treated as an index into the \"common_fields\" entry, rather than taken as a direct value. \r\n\r\n(\"groups_id\" would then also be renamed to \"group_id\" in \"common_fields\")\r\n\r\nThis would allow smaller file sizes (and less string writing overhead) for applications that have a static list of e.g., CATEGORY or EVENT_TYPE up front.\r\nDownside 1 is that it complicates the tools reading the file (but only a bit imo).\r\nDownside 2 is that is complicates humans reading the file (so it depends on the use case).\r\n   (either way, it's easy to go from 1 to the other with a simple script)\r\n\r\n-----------------------------------------------------------------------------------\r\n\r\nThis concept could be extended to make it a fully self-describing format.\r\nIn other words, we could also describe the fields in the DATA for known events up-front and replace those entries with in-order arrays of the values instead of key-value object definitions.\r\n\r\nVery high-level concept (probably needs proper description of the fields etc.):\r\n```\r\n\"data_fields\" : {\r\n      \"TRANSPORT+PACKET_SENT\" : [\r\n         \"frame_type\",\r\n         \"packet_number\",\r\n         \"frames\"\r\n     ]\r\n}\r\n...\r\n[ 57, \"TRANSPORT\", \"PACKET_SENT\", \"TRIGGER\", [\"STREAM\", 15, [...]]]\r\n```\r\nTaking this all to the extreme, you could have a fully self-describing format that lists all known events (and potentially some values, similar to QPack's static table) up-top and then each entry just uses indexes + potentially a few raw values. However, I'm personally not of the opinion this added complexity is worth it. \r\n\r\n"
   },
   {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/7",
@@ -405,10 +483,10 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T12:11:32Z",
-    "updated_at": "2019-04-05T12:11:32Z",
+    "updated_at": "2019-04-16T10:04:50Z",
     "closed_at": null,
     "author_association": "MEMBER",
-    "body": "We would like to keep the file (semi-) human readable.\r\nThis means more advanced techniques like listing all fields in an ENUM up-front and then referencing to them by index is not optimal.\r\n\r\nHowever, when repeating strings, we might want to limit the length of individual fields. \r\ne.g., TRANS instead of TRANSPORT, APP instead of APPLICATION, RX instead of RECEIVE, etc. "
+    "body": "We would like to keep the file (semi-) human readable.\r\nThis means more advanced techniques like listing all fields in an ENUM up-front and then referencing to them by index is not optimal.\r\n\r\nHowever, when repeating strings, we might want to limit the length of individual fields. \r\ne.g., TRANS instead of TRANSPORT, APP instead of APPLICATION, RX instead of RECEIVE, etc. \r\n\r\nCurrent numbers (with readable strings):\r\n- qlog version without whitespace is about 4x the size of the binary .qtr file for the quic-trace example file (3.5MB to 823KB)\r\n- qlog version with whitespace is 10.6MB. However, this should matter little, since if manually reviewing large logs, you'll probably use a text editor that can auto-format the json from the version without whitespace\r\n\r\n4x size difference is a lot, but better than the direct .json protobuf transform, which clocks in at 14MB. "
   },
   {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/3",
@@ -460,10 +538,10 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-04-05T11:30:41Z",
-    "updated_at": "2019-04-05T11:30:45Z",
+    "updated_at": "2019-04-16T10:06:33Z",
     "closed_at": null,
     "author_association": "MEMBER",
-    "body": "This can be supported in a variety of ways.\r\n\r\nThe easiest would probably be a new EVENT type that just contains the aggregated metrics.\r\nHowever, this depends on which types of aggregated data you want to pass. \r\n\r\ne.g., saying: median RTT was 50ms over the past 5s and we saw 1k packets in that time is fine\r\n\r\ne.g., saying: median RTT was 50ms across these 5 connections identified by these 4-tuples, is not really adhering to the semantics of the original setup.\r\n\r\nWe need more input from the people doing aggregated use cases to see how this data would be used and which types of metadata is needed to make an informed decision. "
+    "body": "Example: in-network logger aggregates over a period of time and sends back summarized data in 1 go (e.g., average RTT in past 10s, measured over 10k packets).\r\n\r\nThis can be supported in a variety of ways.\r\n\r\nThe easiest would probably be a new EVENT type that just contains the aggregated metrics.\r\nHowever, this depends on which types of aggregated data you want to pass. \r\n\r\ne.g., saying: median RTT was 50ms over the past 5s and we saw 1k packets in that time is fine\r\n\r\ne.g., saying: median RTT was 50ms across these 5 connections identified by these 4-tuples, is not really adhering to the semantics of the original setup.\r\n\r\nWe need more input from the people doing aggregated use cases to see how this data would be used and which types of metadata is needed to make an informed decision. "
   },
   {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/2",
