@@ -4,21 +4,21 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                          April 16, 2019
-Expires: October 18, 2019
+Intended status: Standards Track                           July 03, 2019
+Expires: January 4, 2020
 
 
                       Main logging schema for qlog
-               draft-marx-quic-logging-main-schema-latest
+                   draft-marx-qlog-main-schema-latest
 
 Abstract
 
    This document describes a high-level schema for a standardized
-   logging format called qlog.  This format allows easy sharing of data
-   and the creation of reusable visualization and debugging tools.  The
-   high-level schema in this document is intended to be protocol-
-   agnostic.  Separate documents specify how the format should be used
-   for specific protocol data.
+   endpoint logging format called qlog.  This format allows easy sharing
+   of data and the creation of reusable visualization and debugging
+   tools.  The high-level schema in this document is intended to be
+   protocol-agnostic.  Separate documents specify how the format should
+   be used for specific protocol data.
 
 Status of This Memo
 
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on October 18, 2019.
+   This Internet-Draft will expire on January 4, 2020.
 
 Copyright Notice
 
@@ -53,9 +53,9 @@ Copyright Notice
 
 
 
-Marx                    Expires October 18, 2019                [Page 1]
+Marx                     Expires January 4, 2020                [Page 1]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    the Trust Legal Provisions and are provided without warranty as
@@ -86,18 +86,17 @@ Table of Contents
    6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  16
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  16
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  16
-     9.2.  Informative References  . . . . . . . . . . . . . . . . .  17
+   9.  Normative References  . . . . . . . . . . . . . . . . . . . .  16
    Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  17
-     A.1.  Since draft-marx-quic-logging-main-schema-00: . . . . . .  17
+     A.1.  Since draft-marx-qlog-main-schema-00: . . . . . . . . . .  17
    Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  17
    Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  17
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
 
 1.  Introduction
 
-   TODO
+   Feedback and discussion welcome at https://github.com/quiclog/
+   internet-drafts
 
 1.1.  Notational Conventions
 
@@ -109,9 +108,10 @@ Table of Contents
 
 
 
-Marx                    Expires October 18, 2019                [Page 2]
+
+Marx                     Expires January 4, 2020                [Page 2]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
 2.  Design Goals
@@ -165,9 +165,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 3]
+Marx                     Expires January 4, 2020                [Page 3]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    of these three logs is first created separately during the test.
@@ -221,9 +221,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 4]
+Marx                     Expires January 4, 2020                [Page 4]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    Only the "event_fields" and "events" fields MUST be present.
@@ -277,9 +277,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 5]
+Marx                     Expires January 4, 2020                [Page 5]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    The type field MUST be present.  The flow field MUST be present if
@@ -333,9 +333,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 6]
+Marx                     Expires January 4, 2020                [Page 6]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    other timestamps in the trace file as well, not just the
@@ -389,9 +389,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 7]
+Marx                     Expires January 4, 2020                [Page 7]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    {
@@ -445,9 +445,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 8]
+Marx                     Expires January 4, 2020                [Page 8]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    {
@@ -501,9 +501,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019                [Page 9]
+Marx                     Expires January 4, 2020                [Page 9]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
 3.3.4.1.  common_fields format
@@ -557,9 +557,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019               [Page 10]
+Marx                     Expires January 4, 2020               [Page 10]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    o  Specify a full "reference_time" timestamp up-front in
@@ -613,9 +613,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019               [Page 11]
+Marx                     Expires January 4, 2020               [Page 11]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    each event.  Both use cases are demonstrated in Figure 6 and
@@ -669,9 +669,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019               [Page 12]
+Marx                     Expires January 4, 2020               [Page 12]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
 {
@@ -725,9 +725,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019               [Page 13]
+Marx                     Expires January 4, 2020               [Page 13]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
 {
@@ -781,9 +781,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019               [Page 14]
+Marx                     Expires January 4, 2020               [Page 14]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
 3.4.3.  CATEGORY and EVENT_TYPE
@@ -826,7 +826,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
    defined in separate documents, specific per protocol or use case.
 
    For example: event definitions for QUIC and HTTP/3 can be found in
-   TODO.
+   draft-marx-qlog-event-definitions-quic-h3.
 
 4.  Tooling requirements
 
@@ -837,9 +837,9 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 
 
-Marx                    Expires October 18, 2019               [Page 15]
+Marx                     Expires January 4, 2020               [Page 15]
 
-Internet-Draft        Main logging schema for qlog            April 2019
+Internet-Draft        Main logging schema for qlog             July 2019
 
 
    qlog file adheres to the expected qlog schema.  If a tool determines
@@ -859,7 +859,7 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 6.  Notes on Practical Use
 
-   TBD : discuss that implementation do not have to output qlog
+   TBD : discuss that implementations do not have to output qlog
    directly.  It is good practice to log in whatever way you want, and
    then just write a transformer to qlog for use in tooling.
 
@@ -876,40 +876,12 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
 9.1.  Normative References
 
-   [QUIC-TRANSPORT]
-              Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
-              Multiplexed and Secure Transport", draft-ietf-quic-
-              transport-19 (work in progress), October 2018.
-
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
 
-
-
-
-
-
-
-
-Marx                    Expires October 18, 2019               [Page 16]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
-
-9.2.  Informative References
-
-   [QUIC-HTTP]
-              Bishop, M., Ed., "Hypertext Transfer Protocol Version 3
-              (HTTP/3)", draft-ietf-quic-http-19 (work in progress),
-              October 2018.
-
-   [RFC7838]  Nottingham, M., McManus, P., and J. Reschke, "HTTP
-              Alternative Services", RFC 7838, DOI 10.17487/RFC7838,
-              April 2016, <https://www.rfc-editor.org/info/rfc7838>.
-
-9.3.  URIs
+9.2.  URIs
 
    [1] https://github.com/google/quic-trace
 
@@ -917,9 +889,18 @@ Internet-Draft        Main logging schema for qlog            April 2019
 
    [3] https://www.wireshark.org/
 
+
+
+
+
+Marx                     Expires January 4, 2020               [Page 16]
+
+Internet-Draft        Main logging schema for qlog             July 2019
+
+
 Appendix A.  Change Log
 
-A.1.  Since draft-marx-quic-logging-main-schema-00:
+A.1.  Since draft-marx-qlog-main-schema-00:
 
    o  None yet.
 
@@ -941,18 +922,8 @@ Appendix B.  Design Variations
 Appendix C.  Acknowledgements
 
    Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen
-   Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev and Lucas Pardue
-   for their feedback and suggestions.
-
-
-
-
-
-
-Marx                    Expires October 18, 2019               [Page 17]
-
-Internet-Draft        Main logging schema for qlog            April 2019
-
+   Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev, Mirja Kuehlewind
+   and Lucas Pardue for their feedback and suggestions.
 
 Author's Address
 
@@ -978,31 +949,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Marx                    Expires October 18, 2019               [Page 18]
+Marx                     Expires January 4, 2020               [Page 17]
