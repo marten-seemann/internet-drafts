@@ -319,7 +319,7 @@ ul.toc li {
 <link href="#rfc.section.3.4.6" rel="Chapter" title="3.4.6 packet_acknowledged">
 <link href="#rfc.section.3.4.7" rel="Chapter" title="3.4.7 packet_retransmit">
 <link href="#rfc.section.4" rel="Chapter" title="4 HTTP/3 event definitions">
-<link href="#rfc.section.4.1" rel="Chapter" title="4.1 Data">
+<link href="#rfc.section.4.1" rel="Chapter" title="4.1 HTTP">
 <link href="#rfc.section.4.1.1" rel="Chapter" title="4.1.1 stream_state_update">
 <link href="#rfc.section.4.1.2" rel="Chapter" title="4.1.2 stream_type_update">
 <link href="#rfc.section.4.1.3" rel="Chapter" title="4.1.3 frame_created">
@@ -330,7 +330,7 @@ ul.toc li {
 <link href="#rfc.section.4.2.1" rel="Chapter" title="4.2.1 header_encoded">
 <link href="#rfc.section.4.2.2" rel="Chapter" title="4.2.2 header_decoded">
 <link href="#rfc.section.4.2.3" rel="Chapter" title="4.2.3 TODO">
-<link href="#rfc.section.4.3" rel="Chapter" title="4.3 PRIORITIZATION">
+<link href="#rfc.section.4.3" rel="Chapter" title="4.3 prioritization">
 <link href="#rfc.section.4.3.1" rel="Chapter" title="4.3.1 dependency_update">
 <link href="#rfc.section.4.4" rel="Chapter" title="4.4 PUSH">
 <link href="#rfc.section.5" rel="Chapter" title="5 General error and warning definitions">
@@ -529,7 +529,7 @@ ul.toc li {
 </li>
 </ul></ul><li>4.   <a href="#rfc.section.4">HTTP/3 event definitions</a>
 </li>
-<ul><li>4.1.   <a href="#rfc.section.4.1">Data</a>
+<ul><li>4.1.   <a href="#rfc.section.4.1">HTTP</a>
 </li>
 <ul><li>4.1.1.   <a href="#rfc.section.4.1.1">stream_state_update</a>
 </li>
@@ -551,7 +551,7 @@ ul.toc li {
 </li>
 <li>4.2.3.   <a href="#rfc.section.4.2.3">TODO</a>
 </li>
-</ul><li>4.3.   <a href="#rfc.section.4.3">PRIORITIZATION</a>
+</ul><li>4.3.   <a href="#rfc.section.4.3">prioritization</a>
 </li>
 <ul><li>4.3.1.   <a href="#rfc.section.4.3.1">dependency_update</a>
 </li>
@@ -1078,7 +1078,7 @@ ul.toc li {
 <a href="#rfc.section.4">4.</a> <a href="#http3-event-definitions" id="http3-event-definitions">HTTP/3 event definitions</a>
 </h1>
 <h1 id="rfc.section.4.1">
-<a href="#rfc.section.4.1">4.1.</a> <a href="#data" id="data">Data</a>
+<a href="#rfc.section.4.1">4.1.</a> <a href="#http" id="http">HTTP</a>
 </h1>
 <h1 id="rfc.section.4.1.1">
 <a href="#rfc.section.4.1.1">4.1.1.</a> <a href="#streamstateupdate-1" id="streamstateupdate-1">stream_state_update</a>
@@ -1105,6 +1105,7 @@ ul.toc li {
 <h1 id="rfc.section.4.1.2">
 <a href="#rfc.section.4.1.2">4.1.2.</a> <a href="#streamtypeupdate" id="streamtypeupdate">stream_type_update</a>
 </h1>
+<p id="rfc.section.4.1.2.p.1">TODO: possible merge this with stream_state_update? Don&#8217;t really want to watch for 2 events to get a newly opened stream + know what type it is</p>
 <pre>
 {
     id:string,
@@ -1113,7 +1114,7 @@ ul.toc li {
     owner:"local"|"remote"
 }
 </pre>
-<p id="rfc.section.4.1.2.p.1">Possible values:</p>
+<p id="rfc.section.4.1.2.p.2">Possible values:</p>
 <p></p>
 
 <ul>
@@ -1124,7 +1125,7 @@ ul.toc li {
 <li>push</li>
 <li>reserved</li>
 </ul>
-<p id="rfc.section.4.1.2.p.3">Currently, there is no proper state diagram in the HTTP draft (as opposed to the quic draft). TODO: figure out proper values for this.</p>
+<p id="rfc.section.4.1.2.p.4">Currently, there is no proper state diagram in the HTTP draft (as opposed to the quic draft). TODO: figure out proper values for this.</p>
 <h1 id="rfc.section.4.1.3">
 <a href="#rfc.section.4.1.3">4.1.3.</a> <a href="#framecreated" id="framecreated">frame_created</a>
 </h1>
@@ -1212,7 +1213,7 @@ ul.toc li {
 </h1>
 <p id="rfc.section.4.2.3.p.1">Add more qpack-specific events For example: * Encoder Instruction * Decoder Instruction</p>
 <h1 id="rfc.section.4.3">
-<a href="#rfc.section.4.3">4.3.</a> <a href="#prioritization" id="prioritization">PRIORITIZATION</a>
+<a href="#rfc.section.4.3">4.3.</a> <a href="#prioritization" id="prioritization">prioritization</a>
 </h1>
 <h1 id="rfc.section.4.3.1">
 <a href="#rfc.section.4.3.1">4.3.1.</a> <a href="#dependencyupdate" id="dependencyupdate">dependency_update</a>
@@ -1539,7 +1540,7 @@ class MaxDataFrame{
 <a href="#rfc.appendix.A.5.10">A.5.10.</a> <a href="#maxstreamdataframe" id="maxstreamdataframe">MaxStreamDataFrame</a>
 </h1>
 <pre>
-class MaxDataFrame{
+class MaxStreamDataFrame{
   frame_type:string = "max_stream_data";
 
   id:string;
