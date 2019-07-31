@@ -404,7 +404,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-event-definitions-quic-h3-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-07-22" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-07-31" />
   <meta name="dct.abstract" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema-latest." />
   <meta name="description" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema-latest." />
 
@@ -425,10 +425,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">July 22, 2019</td>
+<td class="right">July 31, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: January 23, 2020</td>
+<td class="left">Expires: February 1, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -445,7 +445,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 23, 2020.</p>
+<p>This Internet-Draft will expire on February 1, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -1502,7 +1502,8 @@ class CryptoFrame{
 class NewTokenFrame{
   frame_type:string = "new_token";
 
-  offset:string;
+  length:string;
+  token:string;
 }
 </pre>
 <h1 id="rfc.appendix.A.5.8">
@@ -1572,7 +1573,7 @@ class DataBlockedFrame{
 </h1>
 <pre>
 class StreamDataBlockedFrame{
-  frame_type:string = "data_blocked";
+  frame_type:string = "stream_data_blocked";
 
   id:string;
   limit:string;
@@ -1583,7 +1584,7 @@ class StreamDataBlockedFrame{
 </h1>
 <pre>
 class StreamsBlockedFrame{
-  frame_type:string = "data_blocked";
+  frame_type:string = "streams_blocked";
 
   limit:string;
 }
@@ -1619,7 +1620,7 @@ class RetireConnectionIDFrame{
 </h1>
 <pre>
 class PathChallengeFrame{
-  frame_type:string = "patch_challenge";
+  frame_type:string = "path_challenge";
 
   data?:string;
 }
@@ -1774,7 +1775,7 @@ class PushPromiseFrame{
 <a href="#rfc.appendix.B.1.7">B.1.7.</a> <a href="#goawayframe" id="goawayframe">GoAwayFrame</a>
 </h1>
 <pre>
-class CancelPushFrame{
+class GoAwayFrame{
     frame_type:string = "goaway",
     id:string
 }
@@ -1808,11 +1809,7 @@ class ReservedFrame{
 <h1 id="rfc.appendix.B.1.11">
 <a href="#rfc.appendix.B.1.11">B.1.11.</a> <a href="#unknownframe-1" id="unknownframe-1">UnknownFrame</a>
 </h1>
-<pre>
-class UnknownFrame{
-    frame_type:string = "unknown"
-}
-</pre>
+<p id="rfc.section.B.1.11.p.1">HTTP/3 re-uses QUIC&#8217;s UnknownFrame definition, since their values and usage overlaps.</p>
 <h1 id="rfc.appendix.B.2">
 <a href="#rfc.appendix.B.2">B.2.</a> <a href="#applicationerror-1" id="applicationerror-1">ApplicationError</a>
 </h1>

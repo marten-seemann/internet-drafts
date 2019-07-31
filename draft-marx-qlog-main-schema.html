@@ -318,7 +318,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-main-schema-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-07-22" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-07-31" />
   <meta name="dct.abstract" content="This document describes a high-level schema for a standardized endpoint logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
   <meta name="description" content="This document describes a high-level schema for a standardized endpoint logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
 
@@ -339,10 +339,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">July 22, 2019</td>
+<td class="right">July 31, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: January 23, 2020</td>
+<td class="left">Expires: February 1, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -359,7 +359,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on January 23, 2020.</p>
+<p>This Internet-Draft will expire on February 1, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -455,6 +455,7 @@ ul.toc li {
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#the-high-level-schema" id="the-high-level-schema">The High Level Schema</a>
 </h1>
+<p id="rfc.section.3.p.1">TODO: add proper data definitions for all fields (e.g., enums, strings vs numbers, etc. similar to what we have in the other document). For now, if in doubt, refer to https://github.com/quiclog/qlog/blob/master/TypeScript/draft-01/QLog.ts</p>
 <h1 id="rfc.section.3.1">
 <a href="#rfc.section.3.1">3.1.</a> <a href="#top-level-container" id="top-level-container">Top level container</a>
 </h1>
@@ -475,6 +476,8 @@ ul.toc li {
 <p class="figure">Figure 1: Top-level element</p>
 <p id="rfc.section.3.1.p.2">Typical logs will only contain a single element in the &#8220;traces&#8221; array. Multiple traces can then be combined into a single qlog file by taking the &#8220;traces&#8221; entries for each qlog file individually and copying them to the &#8220;traces&#8221; array of a new, aggregated qlog file. This is typically done in a post-processing step.</p>
 <p id="rfc.section.3.1.p.3">For example, for a test setup, we perform logging on the client, on the server and on a single point on their common network path. Each of these three logs is first created separately during the test. Afterwards, the three logs can be aggregated into a single qlog file.</p>
+<p id="rfc.section.3.1.p.4">As such, the &#8220;traces&#8221; array can also contain &#8220;error&#8221; entries. These indicate that we tried to find/convert a file for inclusion in the aggregated qlog, but there was an error during the process. Rather than silently dropping the erroneous file, we explicitly include it in the qlog file.</p>
+<p id="rfc.section.3.1.p.5">TODO: add proper data definitions of what the &#8220;error&#8221; should look like ~~~ interface IError { error_description: string, uri: string } ~~~</p>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#summary-field" id="summary-field">Summary field</a>
 </h1>
@@ -529,21 +532,24 @@ ul.toc li {
 
 <ul>
 <li>name: an optional, user-chosen string (e.g., &#8220;NETWORK-1&#8221;, &#8220;loadbalancer45&#8221;, &#8220;reverseproxy@192.168.1.1&#8221;, &#8230;)</li>
-<li>type: one of three values: &#8220;server&#8221;, &#8220;client&#8221;, &#8220;network&#8221;.  <ul>
+<li>type: one of four values: &#8220;server&#8221;, &#8220;client&#8221;, &#8220;network&#8221; or &#8220;unknown&#8221;.  <ul>
 <li>client indicates an endpoint which initiates the connection.</li>
 <li>server indicates an endpoint which accepts the connection.</li>
 <li>network indicates an observer in between client and server.</li>
+<li>unknown indicates the endpoint is unknown.</li>
 </ul>
 </li>
-<li>flow: one of two values: &#8220;client&#8221; or &#8220;server&#8221;.  <ul>
+<li>flow: one of three values: &#8220;client&#8221;, &#8220;server&#8221; or &#8220;unknown&#8221;.  <ul>
 <li>This field is only required if type is &#8220;network&#8221;.</li>
 <li>client indicates that this vantage point follows client data flow semantics (a packet_sent goes in the direction of the server).</li>
 <li>server indicates that this vantage point follow server data flow semantics (a packet_sent goes in the direction of the client).</li>
+<li>unknown indicates that the flow is unknown.</li>
 </ul>
 </li>
 </ul>
 <p id="rfc.section.3.3.1.p.3">The type field MUST be present. The flow field MUST be present if the type field has value &#8220;network&#8221;. The name field is optional.</p>
 <p id="rfc.section.3.3.1.p.4">TODO (see issue 6): &#8220;network&#8221; should have a way to indicate what RX and TX mean (is current way enough? maybe identify endpoints by ID or 4-tuple etc.)</p>
+<p id="rfc.section.3.3.1.p.5">TODO: maybe mention what tools should do with &#8220;unknown&#8221;?</p>
 <h1 id="rfc.section.3.3.2">
 <a href="#rfc.section.3.3.2">3.3.2.</a> <a href="#title-and-description" id="title-and-description">Title and Description</a>
 </h1>
@@ -552,7 +558,7 @@ ul.toc li {
 <a href="#rfc.section.3.3.3">3.3.3.</a> <a href="#configuration" id="configuration">Configuration</a>
 </h1>
 <p id="rfc.section.3.3.3.p.1">We take into account that a log file is usually not used in isolation, but by means of various tools. Especially when aggregating various traces together or preparing traces for a demonstration, one might wish to persist certain tool-based settings inside the log file itself. For this, the configuration field is used.</p>
-<p id="rfc.section.3.3.3.p.2">The configuration field can be viewed as a generic metadata field that tools can fill with their own fields, based on per-tool logic. It is best practice for tools to prefix each added field with their tool name to prevent collisions across tools. This document only defines two standard, tool-independent configuration settings: &#8220;time_offset&#8221; and &#8220;time_units&#8221;.</p>
+<p id="rfc.section.3.3.3.p.2">The configuration field can be viewed as a generic metadata field that tools can fill with their own fields, based on per-tool logic. It is best practice for tools to prefix each added field with their tool name to prevent collisions across tools. This document only defines three standard, tool-independent configuration settings: &#8220;time_offset&#8221;, &#8220;time_units&#8221; and &#8220;original_uris&#8221;.</p>
 <h1 id="rfc.section.3.3.3.1">
 <a href="#rfc.section.3.3.3.1">3.3.3.1.</a> <a href="#timeoffset" id="timeoffset">time_offset</a>
 </h1>
@@ -561,6 +567,10 @@ ul.toc li {
 <a href="#rfc.section.3.3.3.2">3.3.3.2.</a> <a href="#timeunits" id="timeunits">time_units</a>
 </h1>
 <p id="rfc.section.3.3.3.2.p.1">Since timestamps can be stored in various granularities, this field allows to indicate whether storage happens in either milliseconds (&#8220;ms&#8221;) or microseconds (&#8220;us&#8221;). If this field is not present, the default value is &#8220;ms&#8221;. This configuration setting applies to all other timestamps in the trace file as well, not just the &#8220;time_offset&#8221; field.</p>
+<h1 id="rfc.section.3.3.3.3">
+<a href="#rfc.section.3.3.3.3">3.3.3.3.</a> <a href="#originaluris" id="originaluris">original_uris</a>
+</h1>
+<p id="rfc.section.3.3.3.3.p.1">This is an optional parameter used when merging multiple individual qlog files or other source files (e.g., when converting .pcaps to qlog). It allows to keep better track where certain data came from. It is a simple array of strings.</p>
 <h1 id="rfc.section.3.3.4">
 <a href="#rfc.section.3.3.4">3.3.4.</a> <a href="#commonfields-and-eventfields" id="commonfields-and-eventfields">common_fields and event_fields</a>
 </h1>
