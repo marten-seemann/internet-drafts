@@ -1,6 +1,60 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/18",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/18/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/18/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/18/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/pull/18",
+    "id": 484466763,
+    "node_id": "MDExOlB1bGxSZXF1ZXN0MzEwMzM1NzE2",
+    "number": 18,
+    "title": "Rename \"type\" property to \"packet_type\" in packet events",
+    "user": {
+      "login": "jlaine",
+      "id": 1567624,
+      "node_id": "MDQ6VXNlcjE1Njc2MjQ=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/1567624?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/jlaine",
+      "html_url": "https://github.com/jlaine",
+      "followers_url": "https://api.github.com/users/jlaine/followers",
+      "following_url": "https://api.github.com/users/jlaine/following{/other_user}",
+      "gists_url": "https://api.github.com/users/jlaine/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/jlaine/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/jlaine/subscriptions",
+      "organizations_url": "https://api.github.com/users/jlaine/orgs",
+      "repos_url": "https://api.github.com/users/jlaine/repos",
+      "events_url": "https://api.github.com/users/jlaine/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/jlaine/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-08-23T10:53:01Z",
+    "updated_at": "2019-08-23T12:30:44Z",
+    "closed_at": "2019-08-23T12:30:44Z",
+    "author_association": "CONTRIBUTOR",
+    "pull_request": {
+      "url": "https://api.github.com/repos/quiclog/internet-drafts/pulls/18",
+      "html_url": "https://github.com/quiclog/internet-drafts/pull/18",
+      "diff_url": "https://github.com/quiclog/internet-drafts/pull/18.diff",
+      "patch_url": "https://github.com/quiclog/internet-drafts/pull/18.patch"
+    },
+    "body": ""
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/17",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/17/labels{/name}",
@@ -137,9 +191,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-07-25T11:43:19Z",
-    "updated_at": "2019-07-25T11:43:29Z",
+    "updated_at": "2019-08-23T10:54:57Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "And probably for other non-timestamp time values (like RTT)\r\n\r\nOptions:\r\n- Force people to use the resolution set in the \"configuration\"\r\n- Choose a fixed resolution (always milli or always micro)\r\n- Allow people to indicate resolution inside .data of each event \r\n- Combination: default is milli, add config parameter to specify, allow overrides in the .data, etc.\r\n\r\nThanks @jlaine for reporting."
@@ -413,9 +467,9 @@
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-04-09T13:00:45Z",
-    "updated_at": "2019-04-16T09:52:09Z",
+    "updated_at": "2019-08-23T10:59:25Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "Typically, integers in JavaScript and most JSON implementations are limited to 2^53-1.\r\nThis gives problems, as the VLIE values in the QUIC/H3 specs are 2^62-1.\r\n\r\nTwo options:\r\n- Allow bigger values in the JSON. Tools MUST use a JSON parser that can deal with this and a JavaScript engine that supports BigInt (currently limited to Chromium: https://caniuse.com/#search=bigint)\r\n- Encode all VLIE fields as strings. Tools have to deal with this themselves (most will probably just take the shortcut of assuming actual values will be < 2^53 and just use the JavaScript \"Number\" type). This is best for a wide tooling implementation area in browsers. \r\n\r\nCurrently, the draft uses option 2. \r\n\r\n"
