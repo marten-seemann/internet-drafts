@@ -297,9 +297,9 @@ ul.toc li {
 <link href="#rfc.section.3.4.1" rel="Chapter" title="3.4.1 time, delta_time and reference_time + relative_time">
 <link href="#rfc.section.3.4.2" rel="Chapter" title="3.4.2 group_id and group_ids">
 <link href="#rfc.section.3.4.3" rel="Chapter" title="3.4.3 category and event">
-<link href="#rfc.section.3.4.4" rel="Chapter" title="3.4.4 trigger">
-<link href="#rfc.section.3.4.5" rel="Chapter" title="3.4.5 data">
-<link href="#rfc.section.3.4.6" rel="Chapter" title="3.4.6 Event field values">
+<link href="#rfc.section.3.4.4" rel="Chapter" title="3.4.4 data">
+<link href="#rfc.section.3.4.5" rel="Chapter" title="3.4.5 Event field values">
+<link href="#rfc.section.3.5" rel="Chapter" title="3.5 triggers">
 <link href="#rfc.section.4" rel="Chapter" title="4 Tooling requirements">
 <link href="#rfc.section.5" rel="Chapter" title="5 Methods of Access">
 <link href="#rfc.section.6" rel="Chapter" title="6 Notes on Practical Use">
@@ -313,12 +313,12 @@ ul.toc li {
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.22.2 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.31.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-main-schema-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-08-23" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-04" />
   <meta name="dct.abstract" content="This document describes a high-level schema for a standardized endpoint logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
   <meta name="description" content="This document describes a high-level schema for a standardized endpoint logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
 
@@ -339,10 +339,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">August 23, 2019</td>
+<td class="right">October 04, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: February 24, 2020</td>
+<td class="left">Expires: April 6, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -359,7 +359,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on February 24, 2020.</p>
+<p>This Internet-Draft will expire on April 6, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -399,13 +399,13 @@ ul.toc li {
 </li>
 <li>3.4.3.   <a href="#rfc.section.3.4.3">category and event</a>
 </li>
-<li>3.4.4.   <a href="#rfc.section.3.4.4">trigger</a>
+<li>3.4.4.   <a href="#rfc.section.3.4.4">data</a>
 </li>
-<li>3.4.5.   <a href="#rfc.section.3.4.5">data</a>
+<li>3.4.5.   <a href="#rfc.section.3.4.5">Event field values</a>
 </li>
-<li>3.4.6.   <a href="#rfc.section.3.4.6">Event field values</a>
+</ul><li>3.5.   <a href="#rfc.section.3.5">triggers</a>
 </li>
-</ul></ul><li>4.   <a href="#rfc.section.4">Tooling requirements</a>
+</ul><li>4.   <a href="#rfc.section.4">Tooling requirements</a>
 </li>
 <li>5.   <a href="#rfc.section.5">Methods of Access</a>
 </li>
@@ -588,16 +588,14 @@ ul.toc li {
             "time": 1553986553574,
             "category": "transport",
             "event": "packet_received",
-            "trigger": "line",
             "data": [...]
         },{
             "group_id": "127ecc830d98f9d54a42c4f0842aa87e181a",
             "ODCID": "127ecc830d98f9d54a42c4f0842aa87e181a",
             "protocol_type": "QUIC_HTTP3",
             "time": 1553986553579,
-            "category": "HTTP",
+            "category": "http",
             "event": "frame_parsed",
-            "trigger": "GET",
             "data": [...]
         },
         ...
@@ -619,20 +617,17 @@ ul.toc li {
         "relative_time",
         "category",
         "event",
-        "trigger",
         "data"
     ],
     "events": [[
             2,
             "transport",
             "packet_received",
-            "line",
             [...]
         ],[
             7,
-            "HTTP",
+            "http",
             "frame_parsed",
-            "GET",
             [...]
         ],
         ...
@@ -656,7 +651,7 @@ ul.toc li {
 <a href="#rfc.section.3.4">3.4.</a> <a href="#field-name-semantics" id="field-name-semantics">Field name semantics</a>
 </h1>
 <p id="rfc.section.3.4.p.1">This section lists pre-defined, reserved field names with specific semantics and expected corresponding value formats.</p>
-<p id="rfc.section.3.4.p.2">Only a time-based field (see <a href="#time-based-fields" class="xref">Section 3.4.1</a>), the event field and the data field are mandatory. Typical setups will log reference_time, protocol_type and group_id in &#8220;common_fields&#8221; and relative_time, category, event, trigger and DAdataTA in &#8220;event_fields&#8221;.</p>
+<p id="rfc.section.3.4.p.2">Only a time-based field (see <a href="#time-based-fields" class="xref">Section 3.4.1</a>), the event field and the data field are mandatory. Typical setups will log reference_time, protocol_type and group_id in &#8220;common_fields&#8221; and relative_time, category, event and data in &#8220;event_fields&#8221;.</p>
 <p id="rfc.section.3.4.p.3">Other field names are allowed, both in &#8220;common_fields&#8221; and &#8220;event_fields&#8221;, but their semantics depend on the context of the log usage (e.g., for QUIC, the ODCID field is used).</p>
 <h1 id="rfc.section.3.4.1">
 <a href="#rfc.section.3.4.1">3.4.1.</a> <a href="#time-based-fields" id="time-based-fields">time, delta_time and reference_time + relative_time</a>
@@ -705,7 +700,6 @@ The relative_time approach will:
         "group_id",
         "category",
         "event",
-        "trigger",
         "data"
     ],
     "events": [[
@@ -713,21 +707,18 @@ The relative_time approach will:
             { "ip1": "2001:67c:1232:144:9498:6df6:f450:110b", "ip2": "2001:67c:2b0:1c1::198", "port1": 59105, "port2": 80 }
             "transport",
             "packet_received",
-            "line",
             [...]
         ],[
             1553986553588,
             { "ip1": "10.0.6.137", "ip2": "52.58.13.57", "port1": 56522, "port2": 443 }
-            "HTTP",
+            "http",
             "frame_parsed",
-            "GET",
             [...]
         ],[
             1553986553598,
             { "ip1": "2001:67c:1232:144:9498:6df6:f450:110b", "ip2": "2001:67c:2b0:1c1::198", "port1": 59105, "port2": 80 }
             "transport",
             "packet_sent",
-            "stream",
             [...]
         ],
         ...
@@ -755,7 +746,6 @@ The relative_time approach will:
         "group_id",
         "category",
         "event",
-        "trigger",
         "data"
     ],
     "events": [[
@@ -763,21 +753,18 @@ The relative_time approach will:
             0,
             "transport",
             "packet_received",
-            "line",
             [...]
         ],[
             1553986553588,
             1,
-            "HTTP",
+            "http",
             "frame_parsed",
-            "GET",
             [...]
         ],[
             1553986553598,
             0,
             "transport",
             "packet_sent",
-            "stream",
             [...]
         ],
         ...
@@ -791,24 +778,67 @@ The relative_time approach will:
 <p id="rfc.section.3.4.3.p.1">Both category and event are separate, generic strings. Category allows a higher-level grouping of events per event type.</p>
 <p id="rfc.section.3.4.3.p.2">For example, instead of having an event of value &#8220;transport_packet_sent&#8221;, we instead have a category of &#8220;transport&#8221; and event type of &#8220;packet_sent&#8221;. This allows for fast and high-level filtering based on category and re-use of event across categories.</p>
 <h1 id="rfc.section.3.4.4">
-<a href="#rfc.section.3.4.4">3.4.4.</a> <a href="#trigger" id="trigger">trigger</a>
+<a href="#rfc.section.3.4.4">3.4.4.</a> <a href="#data" id="data">data</a>
 </h1>
-<p id="rfc.section.3.4.4.p.1">The trigger field is a generic string. It indicates which type of event triggered this event to occur (alternately: which other event is the reason this event occured).</p>
-<p id="rfc.section.3.4.4.p.2">This additional information is needed in the case where a single event can be caused by a variety of other events. In the normal case, the context of the surrounding log messages gives a hint as to which of these other events was the cause. However, in highly-parallel and optimized implementations, corresponding logs messages might be wide and far between in time. The trigger field allows adding an additional hint as to the cause, even if the surrounding messages do not provide this context.</p>
-<p id="rfc.section.3.4.4.p.3">TODO: is this field needed at this level? see issue 7</p>
+<p id="rfc.section.3.4.4.p.1">The data field is a generic object (list of name-value pairs). It contains the per-event metadata and its form and semantics are defined per specific sort of event (typically per event, but possibly also by combination of category and event).</p>
 <h1 id="rfc.section.3.4.5">
-<a href="#rfc.section.3.4.5">3.4.5.</a> <a href="#data" id="data">data</a>
+<a href="#rfc.section.3.4.5">3.4.5.</a> <a href="#event-field-values" id="event-field-values">Event field values</a>
 </h1>
-<p id="rfc.section.3.4.5.p.1">The data field is a generic object (list of name-value pairs). It contains the per-event metadata and its form and semantics are defined per specific sort of event (typically per event, but possibly also by combination of category, event and trigger).</p>
-<h1 id="rfc.section.3.4.6">
-<a href="#rfc.section.3.4.6">3.4.6.</a> <a href="#event-field-values" id="event-field-values">Event field values</a>
+<p id="rfc.section.3.4.5.p.1">The specific values for each of these fields and their semantics are defined in separate documents, specific per protocol or use case.</p>
+<p id="rfc.section.3.4.5.p.2">For example: event definitions for QUIC and HTTP/3 can be found in draft-marx-qlog-event-definitions-quic-h3.</p>
+<h1 id="rfc.section.3.5">
+<a href="#rfc.section.3.5">3.5.</a> <a href="#triggers" id="triggers">triggers</a>
 </h1>
-<p id="rfc.section.3.4.6.p.1">The specific values for each of these fields and their semantics are defined in separate documents, specific per protocol or use case.</p>
-<p id="rfc.section.3.4.6.p.2">For example: event definitions for QUIC and HTTP/3 can be found in draft-marx-qlog-event-definitions-quic-h3.</p>
+<p id="rfc.section.3.5.p.1">Sometimes, additional information is needed in the case where a single event can be caused by a variety of other events. In the normal case, the context of the surrounding log messages gives a hint as to which of these other events was the cause. However, in highly-parallel and optimized implementations, corresponding log messages might be wide and far between in time. Another option is to use triggers instead of logging extra full events to get more fine-grained information without much additional overhead.</p>
+<p id="rfc.section.3.5.p.2">For this reason, qlog allows an optional &#8220;trigger&#8221; property on the value of the &#8220;data&#8221; field to convey such information. It indicates the reason this event occured. The possible reasons depend on the type of event and SHOULD be specified next to each event definition. Triggers can be of any type, but are typically logged as strings. For an example, see <a href="#trigger_example" class="xref">Figure 8</a>.</p>
+<div id="rfc.figure.8"></div>
+<div id="trigger_example"></div>
+<pre>
+{
+    "common_fields": {
+        "group_id": "127ecc830d98f9d54a42c4f0842aa87e181a",
+        "ODCID": "127ecc830d98f9d54a42c4f0842aa87e181a",
+        "protocol_type":  "QUIC_HTTP3",
+        "reference_time": "1553986553572"
+    },
+    "event_fields": [
+        "relative_time",
+        "category",
+        "event",
+        "data"
+    ],
+    "events": [[
+            20,
+            "transport",
+            "packet_received",
+            [
+                // Indicates that the packet wasn't received exactly now,
+                // but instead had been buffered because there were no
+                // appropriate TLS keys available to decrypt it before.
+                "trigger": "keys_available",
+                ...
+            ]
+        ],[
+            27,
+            "http",
+            "frame_created",
+            [
+                // Indicates that this frame is being created in response
+                // to an HTTP GET/POST/... request
+                "trigger": "request",
+                ...
+            ]
+        ],
+        ...
+    ]
+}
+</pre>
+<p class="figure">Figure 8: Trigger example</p>
+<p id="rfc.section.3.5.p.3">Note: previously, triggers were also top-level fields, similar to category, event and data itself. However, since many events don&#8217;t have specific triggers and some triggers are difficult to implement or keep track of in an implementation flow, it was decided to make &#8220;trigger&#8221; an optional property of the data field value instead.</p>
 <h1 id="rfc.section.4">
 <a href="#rfc.section.4">4.</a> <a href="#tooling-requirements" id="tooling-requirements">Tooling requirements</a>
 </h1>
-<p id="rfc.section.4.p.1">Tools MUST indicate which qlog version(s) they support. Additionally, they SHOULD indicate exactly which values for the category, event and trigger fields they look for to execute their logic. Tools SHOULD perform a (high-level) check if an input qlog file adheres to the expected qlog schema. If a tool determines a qlog file does not contain enough supported information to correctly execute the tool&#8217;s logic, it SHOULD generate a clear error message to this effect.</p>
+<p id="rfc.section.4.p.1">Tools MUST indicate which qlog version(s) they support. Additionally, they SHOULD indicate exactly which values for and properties of the category, event and data fields they look for to execute their logic. Tools SHOULD perform a (high-level) check if an input qlog file adheres to the expected qlog schema. If a tool determines a qlog file does not contain enough supported information to correctly execute the tool&#8217;s logic, it SHOULD generate a clear error message to this effect.</p>
 <p id="rfc.section.4.p.2">Tools MUST not produce errors for any field names and values in the qlog format that they do not recognize. Tools CAN indicate unknown event occurences within their context (e.g., marking unknown events on a timeline for manual interpretation by the user).</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#methods-of-access" id="methods-of-access">Methods of Access</a>
@@ -841,7 +871,10 @@ The relative_time approach will:
 </h1>
 <p></p>
 
-<ul><li>None yet.</li></ul>
+<ul>
+<li>All field names are now lowercase (e.g., category instead of CATEGORY)</li>
+<li>Triggers are now properties on the &#8220;data&#8221; field value, instead of separate field types (#23)</li>
+</ul>
 <h1 id="rfc.appendix.B">
 <a href="#rfc.appendix.B">Appendix B.</a> <a href="#design-variations" id="design-variations">Design Variations</a>
 </h1>
@@ -859,7 +892,7 @@ The relative_time approach will:
 <h1 id="rfc.appendix.C">
 <a href="#rfc.appendix.C">Appendix C.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
 </h1>
-<p id="rfc.section.C.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev, Mirja K&#252;hlewind and Lucas Pardue for their feedback and suggestions.</p>
+<p id="rfc.section.C.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev, Mirja K&#252;hlewind, Jeremy Lain&#233; and Lucas Pardue for their feedback and suggestions.</p>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">
