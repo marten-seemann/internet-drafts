@@ -1,6 +1,54 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/24",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/24/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/24/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/24/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/issues/24",
+    "id": 503556213,
+    "node_id": "MDU6SXNzdWU1MDM1NTYyMTM=",
+    "number": 24,
+    "title": "Replace specific events with a single encompassing event",
+    "user": {
+      "login": "rmarx",
+      "id": 2240689,
+      "node_id": "MDQ6VXNlcjIyNDA2ODk=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2240689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmarx",
+      "html_url": "https://github.com/rmarx",
+      "followers_url": "https://api.github.com/users/rmarx/followers",
+      "following_url": "https://api.github.com/users/rmarx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmarx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmarx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmarx/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmarx/orgs",
+      "repos_url": "https://api.github.com/users/rmarx/repos",
+      "events_url": "https://api.github.com/users/rmarx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmarx/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "closed",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-07T16:20:47Z",
+    "updated_at": "2019-10-07T17:03:31Z",
+    "closed_at": "2019-10-07T17:03:31Z",
+    "author_association": "MEMBER",
+    "body": "We want to reduce the total amount of events as much as possible.\r\n\r\nEspecially specific events for things happening in reaction to the receipt of a specific frame in a packet (e.g., ACK, MAX_DATA, etc.) can be removed, since they can usually be inferred from that frame. Initially we had separate events for these (e.g., \"packet_acknowledged\" or \"flow_control_updated\" but those were rarely used in addition to packet_received events + many implementations do not defer frame handling from reception.\r\n\r\nOne notable exception is @nibank's msquic, which does not log all frames in a received packet, but rather does log only specific events (e.g., packet_acknowledged). One of the reasons is because he feels logging each packet in full does not scale. Another reason for this pattern might be that an implementation does not wish to log all types of frames OR conversely, does not want to log packet-level information at all but only very select frames. \r\n\r\nTo support this use case and still keep a low amount of event types, I will add a \"frame_parsed\" encompassing event. This will log the frame with its associated data, but without the encompassing packet-level data. This prevents re-defining semantics for many events. The downside is that you sometimes might want to log e.g., \"packet_acknowledged\" a long time after frame receipt. In that case, you would pretend you're parsing the frame only then. I feel this is a good trade-off to make here though. "
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/23",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/23/labels{/name}",
@@ -472,7 +520,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -481,8 +529,8 @@
     "milestone": null,
     "comments": 0,
     "created_at": "2019-07-23T15:54:46Z",
-    "updated_at": "2019-07-23T15:54:46Z",
-    "closed_at": null,
+    "updated_at": "2019-10-07T17:03:30Z",
+    "closed_at": "2019-10-07T17:03:30Z",
     "author_association": "NONE",
     "body": "First, it looks like there is no payload for this event. Is that expected? It's a hard problem. Practically, there is only one case in which you drop a packet, post decryption success, and that is because it's a duplicate packet number. Other than that, all other drop events would occur before a packet is decrypted. If it can't be decrypted you don't know the packet number, which would likely be the most interesting payload of this event. So, therefor it likely isn't too useful in having the packet number as payload.\r\n\r\nSo, in absence of including the packet number as payload, it might just be worth having a \"reason\" which is a string. That's what winquic has already at least."
   },
@@ -520,7 +568,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -529,8 +577,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-07-23T15:45:02Z",
-    "updated_at": "2019-07-23T15:48:54Z",
-    "closed_at": null,
+    "updated_at": "2019-10-07T17:03:31Z",
+    "closed_at": "2019-10-07T17:03:31Z",
     "author_association": "NONE",
     "body": "The `packet_sent`'s `triggers` field makes the assumptions that a packet is sent because a previous packet is being retransmitted. For instance, in winquic a connection has a queue/set of what data needs to be sent. When data is (suspected) lost, the data in the packet is added back to the queue. Similarly for PTO, we mark an outstanding packet as lost, and if we don't have any, queue a PING frame.\r\n\r\nThe send logic just grabs data from the queue/set and builds up packets to be sent. There is no direction relationship between different packets.\r\n\r\nSo, IMO, triggers are the reason data is queued to be sent, not actually sent. What is actually sent will depend on the entire state of the send queue at the time the send logic actually executes.\r\n\r\nFor example, assume you have two outstanding packets that end up getting marked as lost:\r\n\r\n```\r\n  PktNum=1 { STREAM ID=1, Offset=0, Length=100 }\r\n  PktNum=2 { STREAM ID=1, Offset=100, Length=100 }\r\n```\r\n\r\nBoth are marked as lost. Around the same time, the app queues another 100 bytes on stream 1 to be sent. Then another packet ends up getting sent:\r\n\r\n```\r\n  PktNum=55 { STREAM ID=1, Offset=0, Length=300 }\r\n```"
   },
