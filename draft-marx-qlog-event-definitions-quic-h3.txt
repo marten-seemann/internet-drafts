@@ -80,29 +80,29 @@ Table of Contents
        5.2.2.  key_retired . . . . . . . . . . . . . . . . . . . . .  11
      5.3.  transport . . . . . . . . . . . . . . . . . . . . . . . .  12
        5.3.1.  parameters_set  . . . . . . . . . . . . . . . . . . .  12
-       5.3.2.  transport_parameters_updated  . . . . . . . . . . . .  14
-       5.3.3.  ALPN_updated  . . . . . . . . . . . . . . . . . . . .  14
-       5.3.4.  packet_sent . . . . . . . . . . . . . . . . . . . . .  14
-       5.3.5.  packet_received . . . . . . . . . . . . . . . . . . .  15
-       5.3.6.  packet_dropped  . . . . . . . . . . . . . . . . . . .  15
-       5.3.7.  packet_buffered . . . . . . . . . . . . . . . . . . .  16
-       5.3.8.  datagrams_sent  . . . . . . . . . . . . . . . . . . .  17
-       5.3.9.  datagrams_received  . . . . . . . . . . . . . . . . .  17
-       5.3.10. datagram_dropped  . . . . . . . . . . . . . . . . . .  17
-       5.3.11. stream_state_updated  . . . . . . . . . . . . . . . .  18
-       5.3.12. frames_processed  . . . . . . . . . . . . . . . . . .  20
-     5.4.  recovery  . . . . . . . . . . . . . . . . . . . . . . . .  20
-       5.4.1.  metrics_updated . . . . . . . . . . . . . . . . . . .  20
-       5.4.2.  loss_timer_set  . . . . . . . . . . . . . . . . . . .  21
-       5.4.3.  loss_timer_expired  . . . . . . . . . . . . . . . . .  22
-       5.4.4.  packet_lost . . . . . . . . . . . . . . . . . . . . .  22
-       5.4.5.  marked_for_retransmit . . . . . . . . . . . . . . . .  23
-   6.  HTTP/3 event definitions  . . . . . . . . . . . . . . . . . .  23
-     6.1.  http  . . . . . . . . . . . . . . . . . . . . . . . . . .  23
-       6.1.1.  stream_state_updated  . . . . . . . . . . . . . . . .  23
-       6.1.2.  stream_type_updated . . . . . . . . . . . . . . . . .  24
-       6.1.3.  frame_created . . . . . . . . . . . . . . . . . . . .  25
-       6.1.4.  frame_parsed  . . . . . . . . . . . . . . . . . . . .  25
+       5.3.2.  packet_sent . . . . . . . . . . . . . . . . . . . . .  14
+       5.3.3.  packet_received . . . . . . . . . . . . . . . . . . .  14
+       5.3.4.  packet_dropped  . . . . . . . . . . . . . . . . . . .  15
+       5.3.5.  packet_buffered . . . . . . . . . . . . . . . . . . .  16
+       5.3.6.  datagrams_sent  . . . . . . . . . . . . . . . . . . .  16
+       5.3.7.  datagrams_received  . . . . . . . . . . . . . . . . .  17
+       5.3.8.  datagram_dropped  . . . . . . . . . . . . . . . . . .  17
+       5.3.9.  stream_state_updated  . . . . . . . . . . . . . . . .  17
+       5.3.10. frames_processed  . . . . . . . . . . . . . . . . . .  19
+     5.4.  recovery  . . . . . . . . . . . . . . . . . . . . . . . .  19
+       5.4.1.  parameters_set  . . . . . . . . . . . . . . . . . . .  20
+       5.4.2.  metrics_updated . . . . . . . . . . . . . . . . . . .  20
+       5.4.3.  congestion_state_updated  . . . . . . . . . . . . . .  21
+       5.4.4.  loss_timer_set  . . . . . . . . . . . . . . . . . . .  22
+       5.4.5.  loss_timer_expired  . . . . . . . . . . . . . . . . .  22
+       5.4.6.  packet_lost . . . . . . . . . . . . . . . . . . . . .  23
+       5.4.7.  marked_for_retransmit . . . . . . . . . . . . . . . .  23
+   6.  HTTP/3 event definitions  . . . . . . . . . . . . . . . . . .  24
+     6.1.  http  . . . . . . . . . . . . . . . . . . . . . . . . . .  24
+       6.1.1.  stream_state_updated  . . . . . . . . . . . . . . . .  24
+       6.1.2.  stream_type_updated . . . . . . . . . . . . . . . . .  25
+       6.1.3.  frame_created . . . . . . . . . . . . . . . . . . . .  26
+       6.1.4.  frame_parsed  . . . . . . . . . . . . . . . . . . . .  26
        6.1.5.  data_moved  . . . . . . . . . . . . . . . . . . . . .  26
      6.2.  QPACK . . . . . . . . . . . . . . . . . . . . . . . . . .  27
        6.2.1.  header_encoded  . . . . . . . . . . . . . . . . . . .  27
@@ -114,54 +114,54 @@ Marx                      Expires April 9, 2020                 [Page 2]
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
-       6.2.2.  header_decoded  . . . . . . . . . . . . . . . . . . .  27
-       6.2.3.  TODO  . . . . . . . . . . . . . . . . . . . . . . . .  27
-     6.3.  prioritization  . . . . . . . . . . . . . . . . . . . . .  27
-     6.4.  PUSH  . . . . . . . . . . . . . . . . . . . . . . . . . .  27
-   7.  General error, warning and debugging definitions  . . . . . .  27
+       6.2.2.  header_decoded  . . . . . . . . . . . . . . . . . . .  28
+       6.2.3.  TODO  . . . . . . . . . . . . . . . . . . . . . . . .  28
+     6.3.  prioritization  . . . . . . . . . . . . . . . . . . . . .  28
+     6.4.  PUSH  . . . . . . . . . . . . . . . . . . . . . . . . . .  28
+   7.  General error, warning and debugging definitions  . . . . . .  28
      7.1.  error . . . . . . . . . . . . . . . . . . . . . . . . . .  28
        7.1.1.  connection_error  . . . . . . . . . . . . . . . . . .  28
-       7.1.2.  application_error . . . . . . . . . . . . . . . . . .  28
-       7.1.3.  internal_error  . . . . . . . . . . . . . . . . . . .  28
+       7.1.2.  application_error . . . . . . . . . . . . . . . . . .  29
+       7.1.3.  internal_error  . . . . . . . . . . . . . . . . . . .  29
      7.2.  warning . . . . . . . . . . . . . . . . . . . . . . . . .  29
        7.2.1.  internal_warning  . . . . . . . . . . . . . . . . . .  29
-     7.3.  info  . . . . . . . . . . . . . . . . . . . . . . . . . .  29
-       7.3.1.  message . . . . . . . . . . . . . . . . . . . . . . .  29
-     7.4.  debug . . . . . . . . . . . . . . . . . . . . . . . . . .  29
-       7.4.1.  message . . . . . . . . . . . . . . . . . . . . . . .  29
+     7.3.  info  . . . . . . . . . . . . . . . . . . . . . . . . . .  30
+       7.3.1.  message . . . . . . . . . . . . . . . . . . . . . . .  30
+     7.4.  debug . . . . . . . . . . . . . . . . . . . . . . . . . .  30
+       7.4.1.  message . . . . . . . . . . . . . . . . . . . . . . .  30
      7.5.  verbose . . . . . . . . . . . . . . . . . . . . . . . . .  30
        7.5.1.  message . . . . . . . . . . . . . . . . . . . . . . .  30
-     7.6.  simulation  . . . . . . . . . . . . . . . . . . . . . . .  30
-       7.6.1.  marker  . . . . . . . . . . . . . . . . . . . . . . .  30
-   8.  Security Considerations . . . . . . . . . . . . . . . . . . .  30
-   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  30
-   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  30
-     10.1.  Normative References . . . . . . . . . . . . . . . . . .  30
-     10.2.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  31
-   Appendix A.  QUIC DATA type definitions . . . . . . . . . . . . .  31
-     A.1.  TransportParameter  . . . . . . . . . . . . . . . . . . .  31
-     A.2.  PacketType  . . . . . . . . . . . . . . . . . . . . . . .  31
-     A.3.  PacketHeader  . . . . . . . . . . . . . . . . . . . . . .  31
-     A.4.  KeyType . . . . . . . . . . . . . . . . . . . . . . . . .  32
-     A.5.  QUIC Frames . . . . . . . . . . . . . . . . . . . . . . .  32
-       A.5.1.  PaddingFrame  . . . . . . . . . . . . . . . . . . . .  32
-       A.5.2.  PingFrame . . . . . . . . . . . . . . . . . . . . . .  32
+     7.6.  simulation  . . . . . . . . . . . . . . . . . . . . . . .  31
+       7.6.1.  marker  . . . . . . . . . . . . . . . . . . . . . . .  31
+   8.  Security Considerations . . . . . . . . . . . . . . . . . . .  31
+   9.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  31
+   10. References  . . . . . . . . . . . . . . . . . . . . . . . . .  31
+     10.1.  Normative References . . . . . . . . . . . . . . . . . .  31
+     10.2.  URIs . . . . . . . . . . . . . . . . . . . . . . . . . .  32
+   Appendix A.  QUIC DATA type definitions . . . . . . . . . . . . .  32
+     A.1.  TransportParameter  . . . . . . . . . . . . . . . . . . .  32
+     A.2.  PacketType  . . . . . . . . . . . . . . . . . . . . . . .  32
+     A.3.  PacketHeader  . . . . . . . . . . . . . . . . . . . . . .  32
+     A.4.  KeyType . . . . . . . . . . . . . . . . . . . . . . . . .  33
+     A.5.  QUIC Frames . . . . . . . . . . . . . . . . . . . . . . .  33
+       A.5.1.  PaddingFrame  . . . . . . . . . . . . . . . . . . . .  33
+       A.5.2.  PingFrame . . . . . . . . . . . . . . . . . . . . . .  33
        A.5.3.  AckFrame  . . . . . . . . . . . . . . . . . . . . . .  33
-       A.5.4.  ResetStreamFrame  . . . . . . . . . . . . . . . . . .  33
-       A.5.5.  StopSendingFrame  . . . . . . . . . . . . . . . . . .  33
-       A.5.6.  CryptoFrame . . . . . . . . . . . . . . . . . . . . .  33
+       A.5.4.  ResetStreamFrame  . . . . . . . . . . . . . . . . . .  34
+       A.5.5.  StopSendingFrame  . . . . . . . . . . . . . . . . . .  34
+       A.5.6.  CryptoFrame . . . . . . . . . . . . . . . . . . . . .  34
        A.5.7.  NewTokenFrame . . . . . . . . . . . . . . . . . . . .  34
-       A.5.8.  StreamFrame . . . . . . . . . . . . . . . . . . . . .  34
-       A.5.9.  MaxDataFrame  . . . . . . . . . . . . . . . . . . . .  34
-       A.5.10. MaxStreamDataFrame  . . . . . . . . . . . . . . . . .  34
+       A.5.8.  StreamFrame . . . . . . . . . . . . . . . . . . . . .  35
+       A.5.9.  MaxDataFrame  . . . . . . . . . . . . . . . . . . . .  35
+       A.5.10. MaxStreamDataFrame  . . . . . . . . . . . . . . . . .  35
        A.5.11. MaxStreamsFrame . . . . . . . . . . . . . . . . . . .  35
-       A.5.12. DataBlockedFrame  . . . . . . . . . . . . . . . . . .  35
-       A.5.13. StreamDataBlockedFrame  . . . . . . . . . . . . . . .  35
-       A.5.14. StreamsBlockedFrame . . . . . . . . . . . . . . . . .  35
-       A.5.15. NewConnectionIDFrame  . . . . . . . . . . . . . . . .  35
+       A.5.12. DataBlockedFrame  . . . . . . . . . . . . . . . . . .  36
+       A.5.13. StreamDataBlockedFrame  . . . . . . . . . . . . . . .  36
+       A.5.14. StreamsBlockedFrame . . . . . . . . . . . . . . . . .  36
+       A.5.15. NewConnectionIDFrame  . . . . . . . . . . . . . . . .  36
        A.5.16. RetireConnectionIDFrame . . . . . . . . . . . . . . .  36
-       A.5.17. PathChallengeFrame  . . . . . . . . . . . . . . . . .  36
-       A.5.18. PathResponseFrame . . . . . . . . . . . . . . . . . .  36
+       A.5.17. PathChallengeFrame  . . . . . . . . . . . . . . . . .  37
+       A.5.18. PathResponseFrame . . . . . . . . . . . . . . . . . .  37
 
 
 
@@ -170,28 +170,28 @@ Marx                      Expires April 9, 2020                 [Page 3]
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
-       A.5.19. ConnectionCloseFrame  . . . . . . . . . . . . . . . .  36
+       A.5.19. ConnectionCloseFrame  . . . . . . . . . . . . . . . .  37
        A.5.20. UnknownFrame  . . . . . . . . . . . . . . . . . . . .  37
        A.5.21. TransportError  . . . . . . . . . . . . . . . . . . .  37
-   Appendix B.  HTTP/3 DATA type definitions . . . . . . . . . . . .  37
-     B.1.  HTTP/3 Frames . . . . . . . . . . . . . . . . . . . . . .  37
+   Appendix B.  HTTP/3 DATA type definitions . . . . . . . . . . . .  38
+     B.1.  HTTP/3 Frames . . . . . . . . . . . . . . . . . . . . . .  38
        B.1.1.  DataFrame . . . . . . . . . . . . . . . . . . . . . .  38
        B.1.2.  HeadersFrame  . . . . . . . . . . . . . . . . . . . .  38
-       B.1.3.  PriorityFrame . . . . . . . . . . . . . . . . . . . .  38
-       B.1.4.  CancelPushFrame . . . . . . . . . . . . . . . . . . .  38
+       B.1.3.  PriorityFrame . . . . . . . . . . . . . . . . . . . .  39
+       B.1.4.  CancelPushFrame . . . . . . . . . . . . . . . . . . .  39
        B.1.5.  SettingsFrame . . . . . . . . . . . . . . . . . . . .  39
        B.1.6.  PushPromiseFrame  . . . . . . . . . . . . . . . . . .  39
-       B.1.7.  GoAwayFrame . . . . . . . . . . . . . . . . . . . . .  39
-       B.1.8.  MaxPushIDFrame  . . . . . . . . . . . . . . . . . . .  39
-       B.1.9.  DuplicatePushFrame  . . . . . . . . . . . . . . . . .  39
+       B.1.7.  GoAwayFrame . . . . . . . . . . . . . . . . . . . . .  40
+       B.1.8.  MaxPushIDFrame  . . . . . . . . . . . . . . . . . . .  40
+       B.1.9.  DuplicatePushFrame  . . . . . . . . . . . . . . . . .  40
        B.1.10. ReservedFrame . . . . . . . . . . . . . . . . . . . .  40
        B.1.11. UnknownFrame  . . . . . . . . . . . . . . . . . . . .  40
      B.2.  ApplicationError  . . . . . . . . . . . . . . . . . . . .  40
-   Appendix C.  Change Log . . . . . . . . . . . . . . . . . . . . .  40
-     C.1.  Since draft-00: . . . . . . . . . . . . . . . . . . . . .  40
-   Appendix D.  Design Variations  . . . . . . . . . . . . . . . . .  41
-   Appendix E.  Acknowledgements . . . . . . . . . . . . . . . . . .  41
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  41
+   Appendix C.  Change Log . . . . . . . . . . . . . . . . . . . . .  41
+     C.1.  Since draft-00: . . . . . . . . . . . . . . . . . . . . .  41
+   Appendix D.  Design Variations  . . . . . . . . . . . . . . . . .  42
+   Appendix E.  Acknowledgements . . . . . . . . . . . . . . . . . .  42
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  42
 
 1.  Introduction
 
@@ -550,8 +550,8 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    fit this here or in TRANSPORT TODO: integrate
    https://tools.ietf.org/html/draft-deconinck-quic-multipath-02
 
-
-
+   For now, infer from other connectivity events and path_challenge/
+   path_response frames
 
 
 
@@ -576,8 +576,8 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    {
        key_type:KeyType,
        old?:string,
-       new:string,
-       generation?:number,
+       new?:string,
+       generation?:number, // needed for 1RTT key updates
 
        trigger?: string
    }
@@ -599,8 +599,8 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        key_type:KeyType,
-       key:string,
-       generation?:number,
+       key?:string,
+       generation?:number, // needed for 1RTT key updates
 
        trigger?: string
    }
@@ -684,24 +684,24 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
     tls_cipher?:string, // (e.g., AES_128_GCM_SHA256)
 
     // transport parameters from the TLS layer:
-    original_connection_id:string, // hex
-    stateless_reset_token:string, // hex
-    disable_active_migration:bool,
+    original_connection_id?:string, // hex
+    stateless_reset_token?:string, // hex
+    disable_active_migration?:bool,
 
-    idle_timeout:number,
-    max_packet_size:number,
-    ack_delay_exponent:number,
-    max_ack_delay:number,
-    active_connection_id_limit:number,
+    idle_timeout?:number,
+    max_packet_size?:number,
+    ack_delay_exponent?:number,
+    max_ack_delay?:number,
+    active_connection_id_limit?:number,
 
-    initial_max_data:string,
-    initial_max_stream_data_bidi_local:string,
-    initial_max_stream_data_bidi_remote:string,
-    initial_max_stream_data_uni:string,
-    initial_max_streams_bidi:string,
-    initial_max_streams_uni:string,
+    initial_max_data?:string,
+    initial_max_stream_data_bidi_local?:string,
+    initial_max_stream_data_bidi_remote?:string,
+    initial_max_stream_data_uni?:string,
+    initial_max_streams_bidi?:string,
+    initial_max_streams_uni?:string,
 
-    preferred_address:PreferredAddress
+    preferred_address?:PreferredAddress
 }
 
 interface PreferredAddress {
@@ -730,29 +730,7 @@ Marx                      Expires April 9, 2020                [Page 13]
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
-5.3.2.  transport_parameters_updated
-
-   Importance: Core
-
-   Data:
-
-   {
-       owner:string = "local" | "remote",
-       parameters:Array<TransportParameter>;
-   }
-
-5.3.3.  ALPN_updated
-
-   Importance: Core
-
-   Data:
-
-   {
-       old:string,
-       new:string
-   }
-
-5.3.4.  packet_sent
+5.3.2.  packet_sent
 
    Importance: Core
 
@@ -761,7 +739,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    {
        packet_type:PacketType,
        header:PacketHeader,
-       frames:Array<QuicFrame>, // see appendix for the definitions
+       frames?:Array<QuicFrame>, // see appendix for the definitions
 
        is_coalesced?:boolean,
 
@@ -779,13 +757,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    o  "retransmit_reordered" // draft-23 5.1.1
 
-
-
-Marx                      Expires April 9, 2020                [Page 14]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    o  "retransmit_timeout" // draft-23 5.1.2
 
    o  "pto_probe" // draft-23 5.3.1
@@ -795,16 +766,30 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    o  "cc_bandwidth_probe" // needed for some CCs to figure out
       bandwidth allocations when there are no normal sends
 
-5.3.5.  packet_received
+5.3.3.  packet_received
 
    Importance: Core
 
    Data:
 
+
+
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 14]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    {
        packet_type:PacketType,
        header:PacketHeader,
-       frames:Array<QuicFrame>, // see appendix for the definitions
+       frames?:Array<QuicFrame>, // see appendix for the definitions
 
        is_coalesced?:boolean,
 
@@ -823,7 +808,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    o  "keys_available" // if packet was buffered because it couldn't be
       decrypted before
 
-5.3.6.  packet_dropped
+5.3.4.  packet_dropped
 
    Importance: Base
 
@@ -835,16 +820,9 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Data:
 
-
-
-Marx                      Expires April 9, 2020                [Page 15]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    {
        packet_type?:PacketType,
-       packet_size:number,
+       packet_size?:number,
        raw?:string, // hex encoded,
 
        trigger?: string
@@ -855,6 +833,14 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    o  "key_unavailable"
 
    o  "unknown_connection_id"
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 15]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
    o  "header_decrypt_error"
 
@@ -870,7 +856,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    with a particular connection (e.g., in case of
    "unsupported_version").  This situation is discussed in Section 3.
 
-5.3.7.  packet_buffered
+5.3.5.  packet_buffered
 
    Importance: Base
 
@@ -881,7 +867,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        packet_type:PacketType,
-       packet_number:string,
+       packet_number?:string,
 
        trigger?: string
    }
@@ -891,17 +877,10 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    o  "backpressure" // indicates the parser cannot keep up, temporarily
       buffers packet for later processing
 
-
-
-Marx                      Expires April 9, 2020                [Page 16]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    o  "keys_unavailable" // if packet cannot be decrypted because the
       proper keys were not yet available
 
-5.3.8.  datagrams_sent
+5.3.6.  datagrams_sent
 
    Importance: Extra
 
@@ -910,12 +889,21 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Data:
 
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 16]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    {
        count?:number, // to support passing multiple at once
-       byte_length:number
+       byte_length?:number
    }
 
-5.3.9.  datagrams_received
+5.3.7.  datagrams_received
 
    Importance: Extra
 
@@ -927,10 +915,10 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        count?:number, // to support passing multiple at once
-       byte_length:number
+       byte_length?:number
    }
 
-5.3.10.  datagram_dropped
+5.3.8.  datagram_dropped
 
    Importance: Extra
 
@@ -941,20 +929,10 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    Data:
 
    {
-       byte_length:number
+       byte_length?:number
    }
 
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 17]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
-5.3.11.  stream_state_updated
+5.3.9.  stream_state_updated
 
    Importance: Base
 
@@ -971,41 +949,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 18]
+Marx                      Expires April 9, 2020                [Page 17]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1061,12 +1005,12 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                      Expires April 9, 2020                [Page 19]
+Marx                      Expires April 9, 2020                [Page 18]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
-5.3.12.  frames_processed
+5.3.10.  frames_processed
 
    Importance: Extra
 
@@ -1106,7 +1050,53 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 5.4.  recovery
 
-5.4.1.  metrics_updated
+   Note: most of the events in this category are kept generic to support
+   different recovery approaches and various congestion control
+   algorithms.  Tool creators SHOULD make an effort to support and
+   visualize even unknown data in these events (e.g., plot unknown
+   congestion states by name on a timeline visualization).
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 19]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
+5.4.1.  parameters_set
+
+   Importance: Base
+
+   This event groups initial parameters from both loss detection and
+   congestion control into a single event.  All these settings are
+   typically set once and never change.  Implementation that do, for
+   some reason, change these parameters during execution, MAY emit the
+   parameters_set event twice.
+
+   Data:
+
+{
+    // Loss detection, see recovery draft-23, Appendix A.2
+    reordering_threshold?:number, // in amount of packets
+    time_threshold?:number, // as RTT multiplier
+    timer_granularity?:number, // in ms or us, depending on the overarching qlog's configuration
+    initial_rtt?:number, // in ms or us, depending on the overarching qlog's configuration
+
+    // congestion control, Appendix B.1.
+    max_datagram_size?:number, // in bytes // Note: this could be updated after pmtud
+    initial_congestion_window?:number, // in bytes
+    minimum_congestion_window?:number, // in bytes // Note: this could change when max_datagram_size changes
+    loss_reduction_factor?:number,
+    persistent_congestion_threshold?:number // as PTO multiplier
+}
+
+   Additionally, this event can contain any number of unspecified fields
+   to support different recovery approaches.
+
+5.4.2.  metrics_updated
 
    Importance: Core
 
@@ -1114,6 +1104,16 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    metrics changes value.  This event SHOULD group all possible metric
    updates that happen at or around the same time in a single event
    (e.g., if min_rtt and smoothed_rtt change at the same time, they
+   should be bundled in a single metrics_updated entry, rather than
+   split out into two).  Consequently, a metrics_updated event is only
+   guaranteed to contain at least one of the listed metrics.
+
+   Data:
+
+
+
+
+
 
 
 
@@ -1122,30 +1122,28 @@ Marx                      Expires April 9, 2020                [Page 20]
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
-   should be bundled in a single metrics_updated entry, rather than
-   split out into two).  Consequently, a metrics_updated event is only
-   guaranteed to contain at least one of the listed metrics.
+{
+    // Loss detection, see recovery draft-23, Appendix A.3
+    min_rtt?:number,
+    smoothed_rtt?:number,
+    latest_rtt?:number,
+    rtt_variance?:number,
 
-   Data:
+    max_ack_delay?:number,
+    pto_count?:number,
 
-   {
-       cwnd?: number,
-       bytes_in_flight?:number,
+    // Congestion control, Appendix B.2.
+    congestion_window?:number, // in bytes
+    bytes_in_flight?:number,
 
-       min_rtt?:number,
-       smoothed_rtt?:number,
-       latest_rtt?:number,
-       max_ack_delay?:number,
+    ssthresh?:number, // in bytes
 
-       rtt_variance?:number,
-       ssthresh?:number,
+    // qlog defined
+    packets_in_flight?:number, // sum of all packet number spaces
+    in_recovery?:boolean, // high-level signal. For more granularity, see congestion_state_updated
 
-       pacing_rate?:number,
-
-       maximum_packet_size?:number, // e.g., when updated after pmtud
-
-       packets_in_flight?:number
-   }
+    pacing_rate?:number // in bps
+}
 
    Note: to make logging easier, implementations MAY log values even if
    they are the same as previously reported values (e.g., two subsequent
@@ -1153,22 +1151,24 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    min_rtt).  However, applications SHOULD try to log only actual
    updates to values.
 
-   o  TODO: what types of CC metrics do we need to support by default
-      (e.g., cubic vs bbr)
+   Additionally, this event can contain any number of unspecified fields
+   to support different recovery approaches.
 
-5.4.2.  loss_timer_set
+5.4.3.  congestion_state_updated
 
-   Importance: Extra
+   Importance: Base
 
-   This event is emitted when the single recovery loss timer is set.
+   This event signifies when the congestion controller enters a
+   significant new state and changes its behaviour.  This event's
+   definition is kept generic to support different Congestion Control
+   algorithms.  For example, for the algorithm defined in the Recovery
+   draft ("enhanced" New Reno), the following states are defined:
 
-   Data:
+   o  slow_start
 
-   {
-       timer_type:"ack"|"pto", // called "mode" in draft-23 A.9.
-       timeout:number
-   }
+   o  congestion_avoidance
 
+   o  application_limited
 
 
 
@@ -1178,6 +1178,41 @@ Marx                      Expires April 9, 2020                [Page 21]
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
+   o  recovery
+
+   The trigger SHOULD be logged if there are multiple ways in which a
+   state change can occur but MAY be omitted if a given state can only
+   be due to a single event occuring (e.g., slow start is exited only
+   when ssthresh is exceeded).
+
+   Some triggers for ("enhanced" New Reno):
+
+   o  persistent_congestion
+
+   o  ECN
+
+   Data:
+
+   {
+       old?:string,
+       new:string,
+
+       trigger?:string
+   }
+
+5.4.4.  loss_timer_set
+
+   Importance: Extra
+
+   This event is emitted when the single recovery loss timer is set.
+
+   Data:
+
+   {
+       timer_type?:"ack"|"pto", // called "mode" in draft-23 A.9.
+       timeout?:number
+   }
+
    TODO: how about CC algo's that use multiple timers?  How generic do
    these events need to be?  Just support QUIC-style recovery from the
    spec or broader?
@@ -1186,19 +1221,26 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    TODO
 
-5.4.3.  loss_timer_expired
+5.4.5.  loss_timer_expired
 
    Importance: Extra
 
    This event is emitted when the single recovery loss timer fires.
 
+
+
+Marx                      Expires April 9, 2020                [Page 22]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    Data:
 
    {
-       timer_type:"ack"|"pto", // called "mode" in draft-23 A.9.
+       timer_type?:"ack"|"pto", // called "mode" in draft-23 A.9.
    }
 
-5.4.4.  packet_lost
+5.4.6.  packet_lost
 
    Importance: Core
 
@@ -1227,14 +1269,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    o  "pto_expired" // draft-23 section 5.3.1, MAY
 
-
-
-Marx                      Expires April 9, 2020                [Page 22]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
-5.4.5.  marked_for_retransmit
+5.4.7.  marked_for_retransmit
 
    Importance: Extra
 
@@ -1247,6 +1282,14 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Implementations retransmitting full packets or frames directly can
    just log the consituent frames of the lost packet here (or do away
+
+
+
+Marx                      Expires April 9, 2020                [Page 23]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    with this event and use the contents of the packet_lost event
    instead).  Conversely, implementations that have more complex logic
    (e.g., marking ranges in a stream's data buffer as in-flight), or
@@ -1278,21 +1321,9 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Data:
 
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 23]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    {
        id:string,
-       old:string,
+       old?:string,
        new:string,
 
        trigger?: string
@@ -1307,6 +1338,13 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    o  expecting_push
 
    o  expecting_settings
+
+
+
+Marx                      Expires April 9, 2020                [Page 24]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
    o  cancelled
 
@@ -1334,17 +1372,10 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        id:string,
-       old:string,
+       old?:string,
        new:string,
-       owner:"local"|"remote"
+       owner?:"local"|"remote"
    }
-
-
-
-Marx                      Expires April 9, 2020                [Page 24]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
    Possible values:
 
@@ -1363,6 +1394,14 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    Currently, there is no proper state diagram in the HTTP draft (as
    opposed to the quic draft).  TODO: figure out proper values for this.
 
+
+
+
+Marx                      Expires April 9, 2020                [Page 25]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
 6.1.3.  frame_created
 
    Importance: Core
@@ -1377,7 +1416,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    {
        stream_id:string,
        frame:HTTP3Frame // see appendix for the definitions,
-       byte_length:string,
+       byte_length?:string,
 
        raw?:string
    }
@@ -1393,15 +1432,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    TODO: how do we deal with partial frames (e.g., length is very long,
    we're streaming this incrementally: events should indicate this
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 25]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    setup? or you just have 1 frame_parsed and several data_received
    events for that stream?).  Similar for frame_created.
 
@@ -1410,7 +1440,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    {
        stream_id:string,
        frame:HTTP3Frame // see appendix for the definitions,
-       byte_length:string,
+       byte_length?:string,
 
        raw?:string
    }
@@ -1418,6 +1448,15 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 6.1.5.  data_moved
 
    Importance: Extra
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 26]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
    Used to indicate when data moves between the HTTP/3 and the transport
    layer (e.g., passing from H3 to QUIC stream buffers and vice versa)
@@ -1449,15 +1488,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    occured (both inter-stream in H3 and intra-stream in QPACK layers and
    for control stream packets (e.g., prioritization, push))
 
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 26]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
 6.2.  QPACK
 
 6.2.1.  header_encoded
@@ -1472,6 +1502,17 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
       encoded:string,
       fields:Array<HTTPHeader>
   }
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 27]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 6.2.2.  header_decoded
 
@@ -1503,17 +1544,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 7.  General error, warning and debugging definitions
 
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 27]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
 7.1.  error
 
 7.1.1.  connection_error
@@ -1528,8 +1558,17 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        code?:TransportError | number,
-       description:string
+       description?:string
    }
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 28]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 7.1.2.  application_error
 
@@ -1543,7 +1582,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        code?:ApplicationError | number,
-       description:string
+       description?:string
    }
 
 7.1.3.  internal_error
@@ -1557,18 +1596,8 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        code?:number,
-       description:string
+       description?:string
    }
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 28]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
 7.2.  warning
 
@@ -1583,8 +1612,19 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    {
        code?:number,
-       description:string
+       description?:string
    }
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 29]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 7.3.  info
 
@@ -1618,14 +1658,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
        message:string
    }
 
-
-
-
-Marx                      Expires April 9, 2020                [Page 29]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
 7.5.  verbose
 
 7.5.1.  message
@@ -1642,6 +1674,14 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
        message:string
    }
 
+
+
+
+Marx                      Expires April 9, 2020                [Page 30]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
 7.6.  simulation
 
 7.6.1.  marker
@@ -1654,6 +1694,11 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    triggered).  Marker events can be added to the logs and
    visualizations to show clearly when underlying conditions have been
    changed.
+
+   {
+       marker_type:string,
+       message?:string
+   }
 
 8.  Security Considerations
 
@@ -1672,16 +1717,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
               (HTTP/3)", draft-ietf-quic-http-20 (work in progress),
               April 2019.
 
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 30]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    [QUIC-TRANSPORT]
               Iyengar, J., Ed. and M. Thomson, Ed., "QUIC: A UDP-Based
               Multiplexed and Secure Transport", draft-ietf-quic-
@@ -1691,6 +1726,17 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 31]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 10.2.  URIs
 
@@ -1721,23 +1767,6 @@ A.2.  PacketType
 
 A.3.  PacketHeader
 
-
-
-
-
-
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 31]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    class PacketHeader {
        packet_number: string;
        packet_size?: number;
@@ -1754,6 +1783,16 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
        // Note: short vs long header is implicit through PacketType
    }
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 32]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 A.4.  KeyType
 
@@ -1787,13 +1826,6 @@ A.5.2.  PingFrame
        frame_type:string = "ping";
    }
 
-
-
-Marx                      Expires April 9, 2020                [Page 32]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
 A.5.3.  AckFrame
 
 class AckFrame{
@@ -1810,6 +1842,13 @@ class AckFrame{
     ect0?:string;
     ce?:string;
 }
+
+
+
+Marx                      Expires April 9, 2020                [Page 33]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
    Note: the packet ranges in AckFrame.acked_ranges do not necessarily
    have to be ordered (e.g., [["5","9"],["1","4"]] is a valid value).
@@ -1839,17 +1878,6 @@ A.5.5.  StopSendingFrame
 
 A.5.6.  CryptoFrame
 
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 33]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    class CryptoFrame{
      frame_type:string = "crypto";
 
@@ -1865,6 +1893,18 @@ A.5.7.  NewTokenFrame
      length:string;
      token:string;
    }
+
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 34]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 A.5.8.  StreamFrame
 
@@ -1895,17 +1935,6 @@ A.5.9.  MaxDataFrame
 
 A.5.10.  MaxStreamDataFrame
 
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 34]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    class MaxStreamDataFrame{
      frame_type:string = "max_stream_data";
 
@@ -1921,6 +1950,17 @@ A.5.11.  MaxStreamsFrame
      stream_type:string = "bidirectional" | "unidirectional";
      maximum:string;
    }
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 35]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 A.5.12.  DataBlockedFrame
 
@@ -1950,18 +1990,6 @@ A.5.14.  StreamsBlockedFrame
 
 A.5.15.  NewConnectionIDFrame
 
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 35]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    class NewConnectionIDFrame{
      frame_type:string = "new_connection_id";
 
@@ -1981,6 +2009,14 @@ A.5.16.  RetireConnectionIDFrame
 
      sequence_number:string;
    }
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 36]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 A.5.17.  PathChallengeFrame
 
@@ -2004,20 +2040,6 @@ A.5.19.  ConnectionCloseFrame
    some error types are spread out over a range of codes (e.g., QUIC's
    crypto_error).
 
-
-
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 36]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
 type ErrorSpace = "transport" | "application";
 
 class ConnectionCloseFrame{
@@ -2040,6 +2062,18 @@ A.5.20.  UnknownFrame
 
 A.5.21.  TransportError
 
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 37]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    enum TransportError {
        no_error,
        internal_error,
@@ -2061,18 +2095,6 @@ Appendix B.  HTTP/3 DATA type definitions
 B.1.  HTTP/3 Frames
 
 type HTTP3Frame = DataFrame | HeadersFrame | PriorityFrame | CancelPushFrame | SettingsFrame | PushPromiseFrame | GoAwayFrame | MaxPushIDFrame | DuplicatePushFrame | ReservedFrame | UnknownFrame;
-
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 37]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
 B.1.1.  DataFrame
 
@@ -2101,6 +2123,13 @@ fields: [{"name":":path","content":"/"},{"name":":method","content":"GET"},{"nam
        content:string
    }
 
+
+
+Marx                      Expires April 9, 2020                [Page 38]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
 B.1.3.  PriorityFrame
 
 class PriorityFrame{
@@ -2118,17 +2147,6 @@ class PriorityFrame{
 }
 
 B.1.4.  CancelPushFrame
-
-
-
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 38]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
    class CancelPushFrame{
        frame_type:string = "cancel_push",
@@ -2156,6 +2174,18 @@ B.1.6.  PushPromiseFrame
        fields:Array<HTTPHeader>
    }
 
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 39]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
 B.1.7.  GoAwayFrame
 
    class GoAwayFrame{
@@ -2177,15 +2207,6 @@ B.1.9.  DuplicatePushFrame
        id:string
    }
 
-
-
-
-
-Marx                      Expires April 9, 2020                [Page 39]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
 B.1.10.  ReservedFrame
 
    class ReservedFrame{
@@ -2198,6 +2219,28 @@ B.1.11.  UnknownFrame
    usage overlaps.
 
 B.2.  ApplicationError
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 40]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
    enum ApplicationError{
        http_no_error,
@@ -2235,13 +2278,6 @@ C.1.  Since draft-00:
 
    o  Added many new events and their definitions
 
-
-
-Marx                      Expires April 9, 2020                [Page 40]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
-
    o  "type" fields have been made more specific (especially important
       for PacketType fields, which are now called packet_type instead of
       type)
@@ -2252,6 +2288,15 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    o  Triggers have been redefined as properties of the "data" field and
       updated for most events (issue #23)
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 41]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
 
 Appendix D.  Design Variations
 
@@ -2293,4 +2338,15 @@ Author's Address
 
 
 
-Marx                      Expires April 9, 2020                [Page 41]
+
+
+
+
+
+
+
+
+
+
+
+Marx                      Expires April 9, 2020                [Page 42]

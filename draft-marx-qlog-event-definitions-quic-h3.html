@@ -302,23 +302,23 @@ ul.toc li {
 <link href="#rfc.section.5.2.2" rel="Chapter" title="5.2.2 key_retired">
 <link href="#rfc.section.5.3" rel="Chapter" title="5.3 transport">
 <link href="#rfc.section.5.3.1" rel="Chapter" title="5.3.1 parameters_set">
-<link href="#rfc.section.5.3.2" rel="Chapter" title="5.3.2 transport_parameters_updated">
-<link href="#rfc.section.5.3.3" rel="Chapter" title="5.3.3 ALPN_updated">
-<link href="#rfc.section.5.3.4" rel="Chapter" title="5.3.4 packet_sent">
-<link href="#rfc.section.5.3.5" rel="Chapter" title="5.3.5 packet_received">
-<link href="#rfc.section.5.3.6" rel="Chapter" title="5.3.6 packet_dropped">
-<link href="#rfc.section.5.3.7" rel="Chapter" title="5.3.7 packet_buffered">
-<link href="#rfc.section.5.3.8" rel="Chapter" title="5.3.8 datagrams_sent">
-<link href="#rfc.section.5.3.9" rel="Chapter" title="5.3.9 datagrams_received">
-<link href="#rfc.section.5.3.10" rel="Chapter" title="5.3.10 datagram_dropped">
-<link href="#rfc.section.5.3.11" rel="Chapter" title="5.3.11 stream_state_updated">
-<link href="#rfc.section.5.3.12" rel="Chapter" title="5.3.12 frames_processed">
+<link href="#rfc.section.5.3.2" rel="Chapter" title="5.3.2 packet_sent">
+<link href="#rfc.section.5.3.3" rel="Chapter" title="5.3.3 packet_received">
+<link href="#rfc.section.5.3.4" rel="Chapter" title="5.3.4 packet_dropped">
+<link href="#rfc.section.5.3.5" rel="Chapter" title="5.3.5 packet_buffered">
+<link href="#rfc.section.5.3.6" rel="Chapter" title="5.3.6 datagrams_sent">
+<link href="#rfc.section.5.3.7" rel="Chapter" title="5.3.7 datagrams_received">
+<link href="#rfc.section.5.3.8" rel="Chapter" title="5.3.8 datagram_dropped">
+<link href="#rfc.section.5.3.9" rel="Chapter" title="5.3.9 stream_state_updated">
+<link href="#rfc.section.5.3.10" rel="Chapter" title="5.3.10 frames_processed">
 <link href="#rfc.section.5.4" rel="Chapter" title="5.4 recovery">
-<link href="#rfc.section.5.4.1" rel="Chapter" title="5.4.1 metrics_updated">
-<link href="#rfc.section.5.4.2" rel="Chapter" title="5.4.2 loss_timer_set">
-<link href="#rfc.section.5.4.3" rel="Chapter" title="5.4.3 loss_timer_expired">
-<link href="#rfc.section.5.4.4" rel="Chapter" title="5.4.4 packet_lost">
-<link href="#rfc.section.5.4.5" rel="Chapter" title="5.4.5 marked_for_retransmit">
+<link href="#rfc.section.5.4.1" rel="Chapter" title="5.4.1 parameters_set">
+<link href="#rfc.section.5.4.2" rel="Chapter" title="5.4.2 metrics_updated">
+<link href="#rfc.section.5.4.3" rel="Chapter" title="5.4.3 congestion_state_updated">
+<link href="#rfc.section.5.4.4" rel="Chapter" title="5.4.4 loss_timer_set">
+<link href="#rfc.section.5.4.5" rel="Chapter" title="5.4.5 loss_timer_expired">
+<link href="#rfc.section.5.4.6" rel="Chapter" title="5.4.6 packet_lost">
+<link href="#rfc.section.5.4.7" rel="Chapter" title="5.4.7 marked_for_retransmit">
 <link href="#rfc.section.6" rel="Chapter" title="6 HTTP/3 event definitions">
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 http">
 <link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 stream_state_updated">
@@ -494,39 +494,39 @@ ul.toc li {
 </li>
 <ul><li>5.3.1.   <a href="#rfc.section.5.3.1">parameters_set</a>
 </li>
-<li>5.3.2.   <a href="#rfc.section.5.3.2">transport_parameters_updated</a>
+<li>5.3.2.   <a href="#rfc.section.5.3.2">packet_sent</a>
 </li>
-<li>5.3.3.   <a href="#rfc.section.5.3.3">ALPN_updated</a>
+<li>5.3.3.   <a href="#rfc.section.5.3.3">packet_received</a>
 </li>
-<li>5.3.4.   <a href="#rfc.section.5.3.4">packet_sent</a>
+<li>5.3.4.   <a href="#rfc.section.5.3.4">packet_dropped</a>
 </li>
-<li>5.3.5.   <a href="#rfc.section.5.3.5">packet_received</a>
+<li>5.3.5.   <a href="#rfc.section.5.3.5">packet_buffered</a>
 </li>
-<li>5.3.6.   <a href="#rfc.section.5.3.6">packet_dropped</a>
+<li>5.3.6.   <a href="#rfc.section.5.3.6">datagrams_sent</a>
 </li>
-<li>5.3.7.   <a href="#rfc.section.5.3.7">packet_buffered</a>
+<li>5.3.7.   <a href="#rfc.section.5.3.7">datagrams_received</a>
 </li>
-<li>5.3.8.   <a href="#rfc.section.5.3.8">datagrams_sent</a>
+<li>5.3.8.   <a href="#rfc.section.5.3.8">datagram_dropped</a>
 </li>
-<li>5.3.9.   <a href="#rfc.section.5.3.9">datagrams_received</a>
+<li>5.3.9.   <a href="#rfc.section.5.3.9">stream_state_updated</a>
 </li>
-<li>5.3.10.   <a href="#rfc.section.5.3.10">datagram_dropped</a>
-</li>
-<li>5.3.11.   <a href="#rfc.section.5.3.11">stream_state_updated</a>
-</li>
-<li>5.3.12.   <a href="#rfc.section.5.3.12">frames_processed</a>
+<li>5.3.10.   <a href="#rfc.section.5.3.10">frames_processed</a>
 </li>
 </ul><li>5.4.   <a href="#rfc.section.5.4">recovery</a>
 </li>
-<ul><li>5.4.1.   <a href="#rfc.section.5.4.1">metrics_updated</a>
+<ul><li>5.4.1.   <a href="#rfc.section.5.4.1">parameters_set</a>
 </li>
-<li>5.4.2.   <a href="#rfc.section.5.4.2">loss_timer_set</a>
+<li>5.4.2.   <a href="#rfc.section.5.4.2">metrics_updated</a>
 </li>
-<li>5.4.3.   <a href="#rfc.section.5.4.3">loss_timer_expired</a>
+<li>5.4.3.   <a href="#rfc.section.5.4.3">congestion_state_updated</a>
 </li>
-<li>5.4.4.   <a href="#rfc.section.5.4.4">packet_lost</a>
+<li>5.4.4.   <a href="#rfc.section.5.4.4">loss_timer_set</a>
 </li>
-<li>5.4.5.   <a href="#rfc.section.5.4.5">marked_for_retransmit</a>
+<li>5.4.5.   <a href="#rfc.section.5.4.5">loss_timer_expired</a>
+</li>
+<li>5.4.6.   <a href="#rfc.section.5.4.6">packet_lost</a>
+</li>
+<li>5.4.7.   <a href="#rfc.section.5.4.7">marked_for_retransmit</a>
 </li>
 </ul></ul><li>6.   <a href="#rfc.section.6">HTTP/3 event definitions</a>
 </li>
@@ -854,6 +854,7 @@ enum ConnectionState {
 </h1>
 <p id="rfc.section.5.1.7.p.1">e.g., path_updated</p>
 <p id="rfc.section.5.1.7.p.2">TODO: read up on the draft how migration works and whether to best fit this here or in TRANSPORT TODO: integrate https://tools.ietf.org/html/draft-deconinck-quic-multipath-02</p>
+<p id="rfc.section.5.1.7.p.3">For now, infer from other connectivity events and path_challenge/path_response frames</p>
 <h1 id="rfc.section.5.2">
 <a href="#rfc.section.5.2">5.2.</a> <a href="#security" id="security">security</a>
 </h1>
@@ -867,8 +868,8 @@ enum ConnectionState {
 {
     key_type:KeyType,
     old?:string,
-    new:string,
-    generation?:number,
+    new?:string,
+    generation?:number, // needed for 1RTT key updates
 
     trigger?: string
 }
@@ -889,8 +890,8 @@ enum ConnectionState {
 <pre>
 {
     key_type:KeyType,
-    key:string,
-    generation?:number,
+    key?:string,
+    generation?:number, // needed for 1RTT key updates
 
     trigger?: string
 }
@@ -925,24 +926,24 @@ enum ConnectionState {
     tls_cipher?:string, // (e.g., AES_128_GCM_SHA256)
 
     // transport parameters from the TLS layer:
-    original_connection_id:string, // hex
-    stateless_reset_token:string, // hex
-    disable_active_migration:bool,
+    original_connection_id?:string, // hex
+    stateless_reset_token?:string, // hex
+    disable_active_migration?:bool,
 
-    idle_timeout:number,
-    max_packet_size:number,
-    ack_delay_exponent:number,
-    max_ack_delay:number,
-    active_connection_id_limit:number,
+    idle_timeout?:number,
+    max_packet_size?:number,
+    ack_delay_exponent?:number,
+    max_ack_delay?:number,
+    active_connection_id_limit?:number,
 
-    initial_max_data:string,
-    initial_max_stream_data_bidi_local:string,
-    initial_max_stream_data_bidi_remote:string,
-    initial_max_stream_data_uni:string,
-    initial_max_streams_bidi:string,
-    initial_max_streams_uni:string,
+    initial_max_data?:string,
+    initial_max_stream_data_bidi_local?:string,
+    initial_max_stream_data_bidi_remote?:string,
+    initial_max_stream_data_uni?:string,
+    initial_max_streams_bidi?:string,
+    initial_max_streams_uni?:string,
 
-    preferred_address:PreferredAddress
+    preferred_address?:PreferredAddress
 }
 
 interface PreferredAddress {
@@ -958,37 +959,15 @@ interface PreferredAddress {
 </pre>
 <p id="rfc.section.5.3.1.p.6">Additionally, this event can contain any number of unspecified fields. This is to reflect setting of for example unknown (greased) transport parameters or employed (proprietary) extensions.</p>
 <h1 id="rfc.section.5.3.2">
-<a href="#rfc.section.5.3.2">5.3.2.</a> <a href="#transportparametersupdated" id="transportparametersupdated">transport_parameters_updated</a>
+<a href="#rfc.section.5.3.2">5.3.2.</a> <a href="#packetsent" id="packetsent">packet_sent</a>
 </h1>
 <p id="rfc.section.5.3.2.p.1">Importance: Core</p>
 <p id="rfc.section.5.3.2.p.2">Data:</p>
 <pre>
 {
-    owner:string = "local" | "remote",
-    parameters:Array&lt;TransportParameter&gt;;
-}
-</pre>
-<h1 id="rfc.section.5.3.3">
-<a href="#rfc.section.5.3.3">5.3.3.</a> <a href="#alpnupdated" id="alpnupdated">ALPN_updated</a>
-</h1>
-<p id="rfc.section.5.3.3.p.1">Importance: Core</p>
-<p id="rfc.section.5.3.3.p.2">Data:</p>
-<pre>
-{
-    old:string,
-    new:string
-}
-</pre>
-<h1 id="rfc.section.5.3.4">
-<a href="#rfc.section.5.3.4">5.3.4.</a> <a href="#packetsent" id="packetsent">packet_sent</a>
-</h1>
-<p id="rfc.section.5.3.4.p.1">Importance: Core</p>
-<p id="rfc.section.5.3.4.p.2">Data:</p>
-<pre>
-{
     packet_type:PacketType,
     header:PacketHeader,
-    frames:Array&lt;QuicFrame&gt;, // see appendix for the definitions
+    frames?:Array&lt;QuicFrame&gt;, // see appendix for the definitions
 
     is_coalesced?:boolean,
 
@@ -998,8 +977,8 @@ interface PreferredAddress {
     trigger?: string
 }
 </pre>
-<p id="rfc.section.5.3.4.p.3">Note: We do not explicitly log the encryption_level or packet_number_space: the packet_type specifies this by inference (assuming correct implementation)</p>
-<p id="rfc.section.5.3.4.p.4">Triggers:</p>
+<p id="rfc.section.5.3.2.p.3">Note: We do not explicitly log the encryption_level or packet_number_space: the packet_type specifies this by inference (assuming correct implementation)</p>
+<p id="rfc.section.5.3.2.p.4">Triggers:</p>
 <p></p>
 
 <ul>
@@ -1009,16 +988,16 @@ interface PreferredAddress {
 <li>&#8220;retransmit_crypto&#8221; // draft-19 6.2</li>
 <li>&#8220;cc_bandwidth_probe&#8221; // needed for some CCs to figure out bandwidth allocations when there are no normal sends</li>
 </ul>
-<h1 id="rfc.section.5.3.5">
-<a href="#rfc.section.5.3.5">5.3.5.</a> <a href="#packetreceived" id="packetreceived">packet_received</a>
+<h1 id="rfc.section.5.3.3">
+<a href="#rfc.section.5.3.3">5.3.3.</a> <a href="#packetreceived" id="packetreceived">packet_received</a>
 </h1>
-<p id="rfc.section.5.3.5.p.1">Importance: Core</p>
-<p id="rfc.section.5.3.5.p.2">Data:</p>
+<p id="rfc.section.5.3.3.p.1">Importance: Core</p>
+<p id="rfc.section.5.3.3.p.2">Data:</p>
 <pre>
 {
     packet_type:PacketType,
     header:PacketHeader,
-    frames:Array&lt;QuicFrame&gt;, // see appendix for the definitions
+    frames?:Array&lt;QuicFrame&gt;, // see appendix for the definitions
 
     is_coalesced?:boolean,
 
@@ -1028,28 +1007,28 @@ interface PreferredAddress {
     trigger?: string
 }
 </pre>
-<p id="rfc.section.5.3.5.p.3">Note: We do not explicitly log the encryption_level or packet_number_space: the packet_type specifies this by inference (assuming correct implementation)</p>
-<p id="rfc.section.5.3.5.p.4">Triggers:</p>
+<p id="rfc.section.5.3.3.p.3">Note: We do not explicitly log the encryption_level or packet_number_space: the packet_type specifies this by inference (assuming correct implementation)</p>
+<p id="rfc.section.5.3.3.p.4">Triggers:</p>
 <p></p>
 
 <ul><li>&#8220;keys_available&#8221; // if packet was buffered because it couldn&#8217;t be decrypted before</li></ul>
-<h1 id="rfc.section.5.3.6">
-<a href="#rfc.section.5.3.6">5.3.6.</a> <a href="#packetdropped" id="packetdropped">packet_dropped</a>
+<h1 id="rfc.section.5.3.4">
+<a href="#rfc.section.5.3.4">5.3.4.</a> <a href="#packetdropped" id="packetdropped">packet_dropped</a>
 </h1>
-<p id="rfc.section.5.3.6.p.1">Importance: Base</p>
-<p id="rfc.section.5.3.6.p.2">This event indicates a QUIC-level packet was dropped after partial or no parsing.</p>
-<p id="rfc.section.5.3.6.p.3">For this event, the &#8220;trigger&#8221; property SHOULD be set to one of the values below, as this helps tremendously in debugging.</p>
-<p id="rfc.section.5.3.6.p.4">Data:</p>
+<p id="rfc.section.5.3.4.p.1">Importance: Base</p>
+<p id="rfc.section.5.3.4.p.2">This event indicates a QUIC-level packet was dropped after partial or no parsing.</p>
+<p id="rfc.section.5.3.4.p.3">For this event, the &#8220;trigger&#8221; property SHOULD be set to one of the values below, as this helps tremendously in debugging.</p>
+<p id="rfc.section.5.3.4.p.4">Data:</p>
 <pre>
 {
     packet_type?:PacketType,
-    packet_size:number,
+    packet_size?:number,
     raw?:string, // hex encoded,
 
     trigger?: string
 }
 </pre>
-<p id="rfc.section.5.3.6.p.5">Triggers:</p>
+<p id="rfc.section.5.3.4.p.5">Triggers:</p>
 <p></p>
 
 <ul>
@@ -1061,69 +1040,69 @@ interface PreferredAddress {
 <li>&#8220;dos_prevention&#8221;</li>
 <li>&#8220;unsupported_version&#8221;</li>
 </ul>
-<p id="rfc.section.5.3.6.p.7">Note: sometimes packets are dropped before they can be associated with a particular connection (e.g., in case of &#8220;unsupported_version&#8221;). This situation is discussed in <a href="#handling-unknown-connections" class="xref">Section 3</a>.</p>
-<h1 id="rfc.section.5.3.7">
-<a href="#rfc.section.5.3.7">5.3.7.</a> <a href="#packetbuffered" id="packetbuffered">packet_buffered</a>
+<p id="rfc.section.5.3.4.p.7">Note: sometimes packets are dropped before they can be associated with a particular connection (e.g., in case of &#8220;unsupported_version&#8221;). This situation is discussed in <a href="#handling-unknown-connections" class="xref">Section 3</a>.</p>
+<h1 id="rfc.section.5.3.5">
+<a href="#rfc.section.5.3.5">5.3.5.</a> <a href="#packetbuffered" id="packetbuffered">packet_buffered</a>
 </h1>
-<p id="rfc.section.5.3.7.p.1">Importance: Base</p>
-<p id="rfc.section.5.3.7.p.2">TODO: No need to repeat full packet here, should be logged in another event for that</p>
-<p id="rfc.section.5.3.7.p.3">Data:</p>
+<p id="rfc.section.5.3.5.p.1">Importance: Base</p>
+<p id="rfc.section.5.3.5.p.2">TODO: No need to repeat full packet here, should be logged in another event for that</p>
+<p id="rfc.section.5.3.5.p.3">Data:</p>
 <pre>
 {
     packet_type:PacketType,
-    packet_number:string,
+    packet_number?:string,
 
     trigger?: string
 }
 </pre>
-<p id="rfc.section.5.3.7.p.4">Triggers:</p>
+<p id="rfc.section.5.3.5.p.4">Triggers:</p>
 <p></p>
 
 <ul>
 <li>&#8220;backpressure&#8221; // indicates the parser cannot keep up, temporarily buffers packet for later processing</li>
 <li>&#8220;keys_unavailable&#8221; // if packet cannot be decrypted because the proper keys were not yet available</li>
 </ul>
+<h1 id="rfc.section.5.3.6">
+<a href="#rfc.section.5.3.6">5.3.6.</a> <a href="#datagramssent" id="datagramssent">datagrams_sent</a>
+</h1>
+<p id="rfc.section.5.3.6.p.1">Importance: Extra</p>
+<p id="rfc.section.5.3.6.p.2">When we pass one or more UDP-level datagrams to the socket. This is useful for determining how QUIC packet buffers are drained to the OS.</p>
+<p id="rfc.section.5.3.6.p.3">Data:</p>
+<pre>
+{
+    count?:number, // to support passing multiple at once
+    byte_length?:number
+}
+</pre>
+<h1 id="rfc.section.5.3.7">
+<a href="#rfc.section.5.3.7">5.3.7.</a> <a href="#datagramsreceived" id="datagramsreceived">datagrams_received</a>
+</h1>
+<p id="rfc.section.5.3.7.p.1">Importance: Extra</p>
+<p id="rfc.section.5.3.7.p.2">When we receive one or more UDP-level datagrams from the socket. This is useful for determining how datagrams are passed to the user space stack from the OS.</p>
+<p id="rfc.section.5.3.7.p.3">Data:</p>
+<pre>
+{
+    count?:number, // to support passing multiple at once
+    byte_length?:number
+}
+</pre>
 <h1 id="rfc.section.5.3.8">
-<a href="#rfc.section.5.3.8">5.3.8.</a> <a href="#datagramssent" id="datagramssent">datagrams_sent</a>
+<a href="#rfc.section.5.3.8">5.3.8.</a> <a href="#datagramdropped" id="datagramdropped">datagram_dropped</a>
 </h1>
 <p id="rfc.section.5.3.8.p.1">Importance: Extra</p>
-<p id="rfc.section.5.3.8.p.2">When we pass one or more UDP-level datagrams to the socket. This is useful for determining how QUIC packet buffers are drained to the OS.</p>
+<p id="rfc.section.5.3.8.p.2">When we drop a UDP-level datagram. This is typically if it does not contain a valid QUIC packet (in that case, use packet_dropped instead).</p>
 <p id="rfc.section.5.3.8.p.3">Data:</p>
 <pre>
 {
-    count?:number, // to support passing multiple at once
-    byte_length:number
+    byte_length?:number
 }
 </pre>
 <h1 id="rfc.section.5.3.9">
-<a href="#rfc.section.5.3.9">5.3.9.</a> <a href="#datagramsreceived" id="datagramsreceived">datagrams_received</a>
+<a href="#rfc.section.5.3.9">5.3.9.</a> <a href="#streamstateupdated" id="streamstateupdated">stream_state_updated</a>
 </h1>
-<p id="rfc.section.5.3.9.p.1">Importance: Extra</p>
-<p id="rfc.section.5.3.9.p.2">When we receive one or more UDP-level datagrams from the socket. This is useful for determining how datagrams are passed to the user space stack from the OS.</p>
+<p id="rfc.section.5.3.9.p.1">Importance: Base</p>
+<p id="rfc.section.5.3.9.p.2">This event is emitted whenever the internal state of a QUIC stream is updated, as described in QUIC transport draft-23 section 3. Most of this can be inferred from several types of frames going over the wire, but it&#8217;s much easier to have explicit signals for these state changes.</p>
 <p id="rfc.section.5.3.9.p.3">Data:</p>
-<pre>
-{
-    count?:number, // to support passing multiple at once
-    byte_length:number
-}
-</pre>
-<h1 id="rfc.section.5.3.10">
-<a href="#rfc.section.5.3.10">5.3.10.</a> <a href="#datagramdropped" id="datagramdropped">datagram_dropped</a>
-</h1>
-<p id="rfc.section.5.3.10.p.1">Importance: Extra</p>
-<p id="rfc.section.5.3.10.p.2">When we drop a UDP-level datagram. This is typically if it does not contain a valid QUIC packet (in that case, use packet_dropped instead).</p>
-<p id="rfc.section.5.3.10.p.3">Data:</p>
-<pre>
-{
-    byte_length:number
-}
-</pre>
-<h1 id="rfc.section.5.3.11">
-<a href="#rfc.section.5.3.11">5.3.11.</a> <a href="#streamstateupdated" id="streamstateupdated">stream_state_updated</a>
-</h1>
-<p id="rfc.section.5.3.11.p.1">Importance: Base</p>
-<p id="rfc.section.5.3.11.p.2">This event is emitted whenever the internal state of a QUIC stream is updated, as described in QUIC transport draft-23 section 3. Most of this can be inferred from several types of frames going over the wire, but it&#8217;s much easier to have explicit signals for these state changes.</p>
-<p id="rfc.section.5.3.11.p.3">Data:</p>
 <pre>
 {
     stream_id:string,
@@ -1163,16 +1142,16 @@ enum StreamState {
     destroyed // memory actually freed
 }
 </pre>
-<p id="rfc.section.5.3.11.p.4">Note: QUIC implementations SHOULD mainly log the simplified bidirectional (HTTP/2-alike) stream states (e.g., idle, open, closed) instead of the more finegrained stream states (e.g., data_sent, reset_received). These latter ones are mainly for more in-depth debugging. Tools SHOULD be able to deal with both types equally.</p>
-<h1 id="rfc.section.5.3.12">
-<a href="#rfc.section.5.3.12">5.3.12.</a> <a href="#framesprocessed" id="framesprocessed">frames_processed</a>
+<p id="rfc.section.5.3.9.p.4">Note: QUIC implementations SHOULD mainly log the simplified bidirectional (HTTP/2-alike) stream states (e.g., idle, open, closed) instead of the more finegrained stream states (e.g., data_sent, reset_received). These latter ones are mainly for more in-depth debugging. Tools SHOULD be able to deal with both types equally.</p>
+<h1 id="rfc.section.5.3.10">
+<a href="#rfc.section.5.3.10">5.3.10.</a> <a href="#framesprocessed" id="framesprocessed">frames_processed</a>
 </h1>
-<p id="rfc.section.5.3.12.p.1">Importance: Extra</p>
-<p id="rfc.section.5.3.12.p.2">This event&#8217;s main goal is to prevent a large proliferation of specific purpose events (e.g., packets_acknowledged, flow_control_updated, stream_data_received).  We want to give implementations the opportunity to (selectively) log this type of signal without having to log packet-level details (e.g., in packet_received).  Since for almost all cases, the effects of applying a frame to the internal state of an implementation can be inferred from that frame&#8217;s contents, we aggregate these events in this single &#8220;frames_processed&#8221; event.</p>
-<p id="rfc.section.5.3.12.p.3">Note: This event can be used to signal internal state change not resulting directly from the actual &#8220;parsing&#8221; of a frame (e.g., the frame could have been parsed, data put into a buffer, then later processed, then logged with this event).</p>
-<p id="rfc.section.5.3.12.p.4">Note: Implementations logging &#8220;packet_received&#8221; and which include all of the packet&#8217;s constituent frames therein, are not expected to emit this &#8220;frames_processed&#8221; event (contrary to the HTTP-level &#8220;frames_parsed&#8221; event).  Rather, implementations not wishing to log full packets or that wish to explicitly convey extra information about when frames are processed (if not directly tied to their reception) can use this event.</p>
-<p id="rfc.section.5.3.12.p.5">Note: for some events, this approach will lose some information (e.g., for which encryption level are packets being acknowledged?). If this information is important, please use the packet_received event instead.</p>
-<p id="rfc.section.5.3.12.p.6">Data:</p>
+<p id="rfc.section.5.3.10.p.1">Importance: Extra</p>
+<p id="rfc.section.5.3.10.p.2">This event&#8217;s main goal is to prevent a large proliferation of specific purpose events (e.g., packets_acknowledged, flow_control_updated, stream_data_received).  We want to give implementations the opportunity to (selectively) log this type of signal without having to log packet-level details (e.g., in packet_received).  Since for almost all cases, the effects of applying a frame to the internal state of an implementation can be inferred from that frame&#8217;s contents, we aggregate these events in this single &#8220;frames_processed&#8221; event.</p>
+<p id="rfc.section.5.3.10.p.3">Note: This event can be used to signal internal state change not resulting directly from the actual &#8220;parsing&#8221; of a frame (e.g., the frame could have been parsed, data put into a buffer, then later processed, then logged with this event).</p>
+<p id="rfc.section.5.3.10.p.4">Note: Implementations logging &#8220;packet_received&#8221; and which include all of the packet&#8217;s constituent frames therein, are not expected to emit this &#8220;frames_processed&#8221; event (contrary to the HTTP-level &#8220;frames_parsed&#8221; event).  Rather, implementations not wishing to log full packets or that wish to explicitly convey extra information about when frames are processed (if not directly tied to their reception) can use this event.</p>
+<p id="rfc.section.5.3.10.p.5">Note: for some events, this approach will lose some information (e.g., for which encryption level are packets being acknowledged?). If this information is important, please use the packet_received event instead.</p>
+<p id="rfc.section.5.3.10.p.6">Data:</p>
 <pre>
 {
     frames:Array&lt;QuicFrame&gt;, // see appendix for the definitions
@@ -1181,68 +1160,124 @@ enum StreamState {
 <h1 id="rfc.section.5.4">
 <a href="#rfc.section.5.4">5.4.</a> <a href="#recovery" id="recovery">recovery</a>
 </h1>
+<p id="rfc.section.5.4.p.1">Note: most of the events in this category are kept generic to support different recovery approaches and various congestion control algorithms. Tool creators SHOULD make an effort to support and visualize even unknown data in these events (e.g., plot unknown congestion states by name on a timeline visualization).</p>
 <h1 id="rfc.section.5.4.1">
-<a href="#rfc.section.5.4.1">5.4.1.</a> <a href="#metricsupdated" id="metricsupdated">metrics_updated</a>
+<a href="#rfc.section.5.4.1">5.4.1.</a> <a href="#parametersset-1" id="parametersset-1">parameters_set</a>
 </h1>
-<p id="rfc.section.5.4.1.p.1">Importance: Core</p>
-<p id="rfc.section.5.4.1.p.2">This event is emitted when one or more of the observable recovery metrics changes value. This event SHOULD group all possible metric updates that happen at or around the same time in a single event (e.g., if min_rtt and smoothed_rtt change at the same time, they should be bundled in a single metrics_updated entry, rather than split out into two). Consequently, a metrics_updated event is only guaranteed to contain at least one of the listed metrics.</p>
+<p id="rfc.section.5.4.1.p.1">Importance: Base</p>
+<p id="rfc.section.5.4.1.p.2">This event groups initial parameters from both loss detection and congestion control into a single event. All these settings are typically set once and never change. Implementation that do, for some reason, change these parameters during execution, MAY emit the parameters_set event twice.</p>
 <p id="rfc.section.5.4.1.p.3">Data:</p>
 <pre>
 {
-    cwnd?: number,
-    bytes_in_flight?:number,
+    // Loss detection, see recovery draft-23, Appendix A.2
+    reordering_threshold?:number, // in amount of packets
+    time_threshold?:number, // as RTT multiplier
+    timer_granularity?:number, // in ms or us, depending on the overarching qlog's configuration
+    initial_rtt?:number, // in ms or us, depending on the overarching qlog's configuration
 
-    min_rtt?:number,
-    smoothed_rtt?:number,
-    latest_rtt?:number,
-    max_ack_delay?:number,
-
-    rtt_variance?:number,
-    ssthresh?:number,
-
-    pacing_rate?:number,
-
-    maximum_packet_size?:number, // e.g., when updated after pmtud
-
-    packets_in_flight?:number
+    // congestion control, Appendix B.1.
+    max_datagram_size?:number, // in bytes // Note: this could be updated after pmtud
+    initial_congestion_window?:number, // in bytes
+    minimum_congestion_window?:number, // in bytes // Note: this could change when max_datagram_size changes
+    loss_reduction_factor?:number,
+    persistent_congestion_threshold?:number // as PTO multiplier
 }
 </pre>
-<p id="rfc.section.5.4.1.p.4">Note: to make logging easier, implementations MAY log values even if they are the same as previously reported values (e.g., two subsequent METRIC_UPDATE entries can both report the exact same value for min_rtt). However, applications SHOULD try to log only actual updates to values.</p>
-<p></p>
-
-<ul><li>TODO: what types of CC metrics do we need to support by default (e.g., cubic vs bbr)</li></ul>
+<p id="rfc.section.5.4.1.p.4">Additionally, this event can contain any number of unspecified fields to support different recovery approaches.</p>
 <h1 id="rfc.section.5.4.2">
-<a href="#rfc.section.5.4.2">5.4.2.</a> <a href="#losstimerset" id="losstimerset">loss_timer_set</a>
+<a href="#rfc.section.5.4.2">5.4.2.</a> <a href="#metricsupdated" id="metricsupdated">metrics_updated</a>
 </h1>
-<p id="rfc.section.5.4.2.p.1">Importance: Extra</p>
-<p id="rfc.section.5.4.2.p.2">This event is emitted when the single recovery loss timer is set.</p>
+<p id="rfc.section.5.4.2.p.1">Importance: Core</p>
+<p id="rfc.section.5.4.2.p.2">This event is emitted when one or more of the observable recovery metrics changes value. This event SHOULD group all possible metric updates that happen at or around the same time in a single event (e.g., if min_rtt and smoothed_rtt change at the same time, they should be bundled in a single metrics_updated entry, rather than split out into two). Consequently, a metrics_updated event is only guaranteed to contain at least one of the listed metrics.</p>
 <p id="rfc.section.5.4.2.p.3">Data:</p>
 <pre>
 {
-    timer_type:"ack"|"pto", // called "mode" in draft-23 A.9.
-    timeout:number
+    // Loss detection, see recovery draft-23, Appendix A.3
+    min_rtt?:number,
+    smoothed_rtt?:number,
+    latest_rtt?:number,
+    rtt_variance?:number,
+
+    max_ack_delay?:number,
+    pto_count?:number,
+
+    // Congestion control, Appendix B.2.
+    congestion_window?:number, // in bytes
+    bytes_in_flight?:number,
+
+    ssthresh?:number, // in bytes
+
+    // qlog defined
+    packets_in_flight?:number, // sum of all packet number spaces
+    in_recovery?:boolean, // high-level signal. For more granularity, see congestion_state_updated
+
+    pacing_rate?:number // in bps
 }
 </pre>
-<p id="rfc.section.5.4.2.p.4">TODO: how about CC algo&#8217;s that use multiple timers? How generic do these events need to be? Just support QUIC-style recovery from the spec or broader?</p>
-<p id="rfc.section.5.4.2.p.5">Triggers:</p>
-<p id="rfc.section.5.4.2.p.6">TODO</p>
+<p id="rfc.section.5.4.2.p.4">Note: to make logging easier, implementations MAY log values even if they are the same as previously reported values (e.g., two subsequent METRIC_UPDATE entries can both report the exact same value for min_rtt). However, applications SHOULD try to log only actual updates to values.</p>
+<p id="rfc.section.5.4.2.p.5">Additionally, this event can contain any number of unspecified fields to support different recovery approaches.</p>
 <h1 id="rfc.section.5.4.3">
-<a href="#rfc.section.5.4.3">5.4.3.</a> <a href="#losstimerexpired" id="losstimerexpired">loss_timer_expired</a>
+<a href="#rfc.section.5.4.3">5.4.3.</a> <a href="#congestionstateupdated" id="congestionstateupdated">congestion_state_updated</a>
 </h1>
-<p id="rfc.section.5.4.3.p.1">Importance: Extra</p>
-<p id="rfc.section.5.4.3.p.2">This event is emitted when the single recovery loss timer fires.</p>
-<p id="rfc.section.5.4.3.p.3">Data:</p>
+<p id="rfc.section.5.4.3.p.1">Importance: Base</p>
+<p id="rfc.section.5.4.3.p.2">This event signifies when the congestion controller enters a significant new state and changes its behaviour. This event&#8217;s definition is kept generic to support different Congestion Control algorithms. For example, for the algorithm defined in the Recovery draft (&#8220;enhanced&#8221; New Reno), the following states are defined:</p>
+<p></p>
+
+<ul>
+<li>slow_start</li>
+<li>congestion_avoidance</li>
+<li>application_limited</li>
+<li>recovery</li>
+</ul>
+<p id="rfc.section.5.4.3.p.4">The trigger SHOULD be logged if there are multiple ways in which a state change can occur but MAY be omitted if a given state can only be due to a single event occuring (e.g., slow start is exited only when ssthresh is exceeded).</p>
+<p id="rfc.section.5.4.3.p.5">Some triggers for (&#8220;enhanced&#8221; New Reno):</p>
+<p></p>
+
+<ul>
+<li>persistent_congestion</li>
+<li>ECN</li>
+</ul>
+<p id="rfc.section.5.4.3.p.7">Data:</p>
 <pre>
 {
-    timer_type:"ack"|"pto", // called "mode" in draft-23 A.9.
+    old?:string,
+    new:string,
+
+    trigger?:string
 }
 </pre>
 <h1 id="rfc.section.5.4.4">
-<a href="#rfc.section.5.4.4">5.4.4.</a> <a href="#packetlost" id="packetlost">packet_lost</a>
+<a href="#rfc.section.5.4.4">5.4.4.</a> <a href="#losstimerset" id="losstimerset">loss_timer_set</a>
 </h1>
-<p id="rfc.section.5.4.4.p.1">Importance: Core</p>
-<p id="rfc.section.5.4.4.p.2">This event is emitted when a packet is deemed lost by loss detection. Use the &#8220;trigger&#8221; field to indicate the loss detection method used for this decision.</p>
+<p id="rfc.section.5.4.4.p.1">Importance: Extra</p>
+<p id="rfc.section.5.4.4.p.2">This event is emitted when the single recovery loss timer is set.</p>
 <p id="rfc.section.5.4.4.p.3">Data:</p>
+<pre>
+{
+    timer_type?:"ack"|"pto", // called "mode" in draft-23 A.9.
+    timeout?:number
+}
+</pre>
+<p id="rfc.section.5.4.4.p.4">TODO: how about CC algo&#8217;s that use multiple timers? How generic do these events need to be? Just support QUIC-style recovery from the spec or broader?</p>
+<p id="rfc.section.5.4.4.p.5">Triggers:</p>
+<p id="rfc.section.5.4.4.p.6">TODO</p>
+<h1 id="rfc.section.5.4.5">
+<a href="#rfc.section.5.4.5">5.4.5.</a> <a href="#losstimerexpired" id="losstimerexpired">loss_timer_expired</a>
+</h1>
+<p id="rfc.section.5.4.5.p.1">Importance: Extra</p>
+<p id="rfc.section.5.4.5.p.2">This event is emitted when the single recovery loss timer fires.</p>
+<p id="rfc.section.5.4.5.p.3">Data:</p>
+<pre>
+{
+    timer_type?:"ack"|"pto", // called "mode" in draft-23 A.9.
+}
+</pre>
+<h1 id="rfc.section.5.4.6">
+<a href="#rfc.section.5.4.6">5.4.6.</a> <a href="#packetlost" id="packetlost">packet_lost</a>
+</h1>
+<p id="rfc.section.5.4.6.p.1">Importance: Core</p>
+<p id="rfc.section.5.4.6.p.2">This event is emitted when a packet is deemed lost by loss detection. Use the &#8220;trigger&#8221; field to indicate the loss detection method used for this decision.</p>
+<p id="rfc.section.5.4.6.p.3">Data:</p>
 <pre>
 {
     packet_type:PacketType,
@@ -1255,7 +1290,7 @@ enum StreamState {
     trigger?: string
 }
 </pre>
-<p id="rfc.section.5.4.4.p.4">Triggers:</p>
+<p id="rfc.section.5.4.6.p.4">Triggers:</p>
 <p></p>
 
 <ul>
@@ -1263,14 +1298,14 @@ enum StreamState {
 <li>&#8220;time_threshold&#8221;</li>
 <li>&#8220;pto_expired&#8221; // draft-23 section 5.3.1, MAY</li>
 </ul>
-<h1 id="rfc.section.5.4.5">
-<a href="#rfc.section.5.4.5">5.4.5.</a> <a href="#markedforretransmit" id="markedforretransmit">marked_for_retransmit</a>
+<h1 id="rfc.section.5.4.7">
+<a href="#rfc.section.5.4.7">5.4.7.</a> <a href="#markedforretransmit" id="markedforretransmit">marked_for_retransmit</a>
 </h1>
-<p id="rfc.section.5.4.5.p.1">Importance: Extra</p>
-<p id="rfc.section.5.4.5.p.2">This event indicates which data was marked for retransmit upon detecing a packet loss (see packet_lost). Similar to our reasoning for the &#8220;frames_processed&#8221; event, in order to keep the amount of different events low, we group this signal for all types of retransmittable data in a single event based on existing QUIC frame definitions.</p>
-<p id="rfc.section.5.4.5.p.3">Implementations retransmitting full packets or frames directly can just log the consituent frames of the lost packet here (or do away with this event and use the contents of the packet_lost event instead). Conversely, implementations that have more complex logic (e.g., marking ranges in a stream&#8217;s data buffer as in-flight), or that do not track sent frames in full (e.g., only stream offset + length), can translate their internal behaviour into the appropriate frame instance here even if that frame was never or will never be put on the wire.</p>
-<p id="rfc.section.5.4.5.p.4">Note: much of this data can be inferred if implementations log packet_sent events (e.g., looking at overlapping stream data offsets and length, one can determine when data was retransmitted).</p>
-<p id="rfc.section.5.4.5.p.5">Data:</p>
+<p id="rfc.section.5.4.7.p.1">Importance: Extra</p>
+<p id="rfc.section.5.4.7.p.2">This event indicates which data was marked for retransmit upon detecing a packet loss (see packet_lost). Similar to our reasoning for the &#8220;frames_processed&#8221; event, in order to keep the amount of different events low, we group this signal for all types of retransmittable data in a single event based on existing QUIC frame definitions.</p>
+<p id="rfc.section.5.4.7.p.3">Implementations retransmitting full packets or frames directly can just log the consituent frames of the lost packet here (or do away with this event and use the contents of the packet_lost event instead). Conversely, implementations that have more complex logic (e.g., marking ranges in a stream&#8217;s data buffer as in-flight), or that do not track sent frames in full (e.g., only stream offset + length), can translate their internal behaviour into the appropriate frame instance here even if that frame was never or will never be put on the wire.</p>
+<p id="rfc.section.5.4.7.p.4">Note: much of this data can be inferred if implementations log packet_sent events (e.g., looking at overlapping stream data offsets and length, one can determine when data was retransmitted).</p>
+<p id="rfc.section.5.4.7.p.5">Data:</p>
 <pre>
 {
     frames:Array&lt;QuicFrame&gt;, // see appendix for the definitions
@@ -1291,7 +1326,7 @@ enum StreamState {
 <pre>
 {
     id:string,
-    old:string,
+    old?:string,
     new:string,
 
     trigger?: string
@@ -1325,9 +1360,9 @@ enum StreamState {
 <pre>
 {
     id:string,
-    old:string,
+    old?:string,
     new:string,
-    owner:"local"|"remote"
+    owner?:"local"|"remote"
 }
 </pre>
 <p id="rfc.section.6.1.2.p.4">Possible values:</p>
@@ -1352,7 +1387,7 @@ enum StreamState {
 {
     stream_id:string,
     frame:HTTP3Frame // see appendix for the definitions,
-    byte_length:string,
+    byte_length?:string,
 
     raw?:string
 }
@@ -1368,7 +1403,7 @@ enum StreamState {
 {
     stream_id:string,
     frame:HTTP3Frame // see appendix for the definitions,
-    byte_length:string,
+    byte_length?:string,
 
     raw?:string
 }
@@ -1450,7 +1485,7 @@ enum StreamState {
 <pre>
 {
     code?:TransportError | number,
-    description:string
+    description?:string
 }
 </pre>
 <h1 id="rfc.section.7.1.2">
@@ -1462,7 +1497,7 @@ enum StreamState {
 <pre>
 {
     code?:ApplicationError | number,
-    description:string
+    description?:string
 }
 </pre>
 <h1 id="rfc.section.7.1.3">
@@ -1474,7 +1509,7 @@ enum StreamState {
 <pre>
 {
     code?:number,
-    description:string
+    description?:string
 }
 </pre>
 <h1 id="rfc.section.7.2">
@@ -1489,7 +1524,7 @@ enum StreamState {
 <pre>
 {
     code?:number,
-    description:string
+    description?:string
 }
 </pre>
 <h1 id="rfc.section.7.3">
@@ -1542,6 +1577,12 @@ enum StreamState {
 </h1>
 <p id="rfc.section.7.6.1.p.1">Importance: Extra</p>
 <p id="rfc.section.7.6.1.p.2">Used for when running an implementation in a form of simulation setup where specific emulation conditions are triggered at set times (e.g., at 3 seconds in 2% packet loss is introduced, at 10s a NAT rebind is triggered). Marker events can be added to the logs and visualizations to show clearly when underlying conditions have been changed.</p>
+<pre>
+{
+    marker_type:string,
+    message?:string
+}
+</pre>
 <h1 id="rfc.section.8">
 <a href="#rfc.section.8">8.</a> <a href="#security-considerations" id="security-considerations">Security Considerations</a>
 </h1>
