@@ -226,7 +226,7 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
@@ -235,8 +235,8 @@
     "milestone": null,
     "comments": 1,
     "created_at": "2019-09-13T11:12:21Z",
-    "updated_at": "2019-09-13T11:18:25Z",
-    "closed_at": null,
+    "updated_at": "2019-10-08T14:50:35Z",
+    "closed_at": "2019-10-08T14:50:35Z",
     "author_association": "MEMBER",
     "body": "Some comments from @lpardue on qpack support:\r\n\r\n> but how do you correlate a qpack header block event (or whatever you want to call it) to the header frame that it was carried in? maybe simply that header block event contains a stream_id for correlation\r\n\r\n> other option is add raw_header_block to the HeaderFrame event data\r\n\r\nThough that would still require additional events for encoder/decoder instructions, no?\r\n\r\n> a qpack event that can consist of encoder instructions, decoder instructions and/or header block\r\n\r\nSo this seems the better option then, combined with the stream_id and expectation that the qpack events are logged in the same order as HeaderFrame's... (though not sure how important the ordering is personally).\r\n\r\nOpen questions:\r\n- What about seeing what's in the dynamic table (or initial static table? or is that always the same?)? specific dynamic_table_updated event or... ?\r\n\r\n\r\n"
   },
@@ -811,17 +811,17 @@
         "default": false
       }
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-04-08T15:01:36Z",
-    "updated_at": "2019-04-16T09:53:42Z",
-    "closed_at": null,
+    "updated_at": "2019-10-07T19:46:27Z",
+    "closed_at": "2019-10-07T19:46:26Z",
     "author_association": "MEMBER",
     "body": "For example:\r\nPACKET_RECEIVED        vs       1RTT_PACKET_RECEIVED\r\nFRAME_NEW                vs        ACK_FRAME_NEW\r\n\r\nFor the leftmost entries, one would add a \"type\" field to the \"DATA\" value, e.g., \r\n```\r\n{\r\n     \"type\": \"1RTT\"\r\n}\r\n```\r\n\r\nThe shorter form makes that we have a much less large amount of different EVENT_TYPEs, but also makes it a bit harder to parse for human readers + harder to quickly filter for tools. \r\nThe longer form is much more explicit, but requires much more definition up-front and a proliferation of different EVENT_TYPEs.\r\n\r\nWe could also break consistency. i.e., the original qlog used PACKET_RECEIVED with an explicit type in the DATA, but used ACK_FRAME_NEW for individual frames.\r\n\r\nCurrently, we use the short-form, since this is most similar to quic-trace and keeps it consistent if we want to log frames both in their own events and again when sending a packet. \r\n\r\nExtra edge-case: Errors\r\nIf you go for extreme short-form, you would just have a single ERROR EVENT_TYPE for each CATEGORY, and define the error type in the DATA.\r\nHowever, for easier manual debugging, tracking the specific type of error directly in the EVENT_TYPE is arguably easier. Maybe an exception should be made for errors? "
   },
