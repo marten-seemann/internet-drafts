@@ -326,12 +326,16 @@ ul.toc li {
 <link href="#rfc.section.6.1.3" rel="Chapter" title="6.1.3 frame_created">
 <link href="#rfc.section.6.1.4" rel="Chapter" title="6.1.4 frame_parsed">
 <link href="#rfc.section.6.1.5" rel="Chapter" title="6.1.5 data_moved">
-<link href="#rfc.section.6.2" rel="Chapter" title="6.2 QPACK">
-<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 header_encoded">
-<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 header_decoded">
-<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 TODO">
-<link href="#rfc.section.6.3" rel="Chapter" title="6.3 prioritization">
-<link href="#rfc.section.6.4" rel="Chapter" title="6.4 PUSH">
+<link href="#rfc.section.6.1.6" rel="Chapter" title="6.1.6 PUSH-events">
+<link href="#rfc.section.6.2" rel="Chapter" title="6.2 qpack">
+<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 parameters_set">
+<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 state_updated">
+<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 stream_state_updated">
+<link href="#rfc.section.6.2.4" rel="Chapter" title="6.2.4 dynamic_table_updated">
+<link href="#rfc.section.6.2.5" rel="Chapter" title="6.2.5 headers_encoded">
+<link href="#rfc.section.6.2.6" rel="Chapter" title="6.2.6 headers_decoded">
+<link href="#rfc.section.6.2.7" rel="Chapter" title="6.2.7 instruction_sent">
+<link href="#rfc.section.6.2.8" rel="Chapter" title="6.2.8 instruction_received">
 <link href="#rfc.section.7" rel="Chapter" title="7 General error, warning and debugging definitions">
 <link href="#rfc.section.7.1" rel="Chapter" title="7.1 error">
 <link href="#rfc.section.7.1.1" rel="Chapter" title="7.1.1 connection_error">
@@ -391,10 +395,23 @@ ul.toc li {
 <link href="#rfc.appendix.B.1.10" rel="Chapter" title="B.1.10 ReservedFrame">
 <link href="#rfc.appendix.B.1.11" rel="Chapter" title="B.1.11 UnknownFrame">
 <link href="#rfc.appendix.B.2" rel="Chapter" title="B.2 ApplicationError">
-<link href="#rfc.appendix.C" rel="Chapter" title="C Change Log">
-<link href="#rfc.appendix.C.1" rel="Chapter" title="C.1 Since draft-00:">
-<link href="#rfc.appendix.D" rel="Chapter" title="D Design Variations">
-<link href="#rfc.appendix.E" rel="Chapter" title="E Acknowledgements">
+<link href="#rfc.appendix.C" rel="Chapter" title="C QPACK DATA type definitions">
+<link href="#rfc.appendix.C.1" rel="Chapter" title="C.1 QPACK Instructions">
+<link href="#rfc.appendix.C.1.1" rel="Chapter" title="C.1.1 SetDynamicTableCapacityInstruction">
+<link href="#rfc.appendix.C.1.2" rel="Chapter" title="C.1.2 InsertWithNameReferenceInstruction">
+<link href="#rfc.appendix.C.1.3" rel="Chapter" title="C.1.3 InsertWithoutNameReferenceInstruction">
+<link href="#rfc.appendix.C.1.4" rel="Chapter" title="C.1.4 DuplicateInstruction">
+<link href="#rfc.appendix.C.1.5" rel="Chapter" title="C.1.5 HeaderAcknowledgementInstruction">
+<link href="#rfc.appendix.C.1.6" rel="Chapter" title="C.1.6 StreamCancellationInstruction">
+<link href="#rfc.appendix.C.1.7" rel="Chapter" title="C.1.7 InsertCountIncrementInstruction">
+<link href="#rfc.appendix.C.2" rel="Chapter" title="C.2 QPACK Header compression">
+<link href="#rfc.appendix.C.2.1" rel="Chapter" title="C.2.1 IndexedHeaderField">
+<link href="#rfc.appendix.C.2.2" rel="Chapter" title="C.2.2 LiteralHeaderFieldWithName">
+<link href="#rfc.appendix.C.2.3" rel="Chapter" title="C.2.3 QPACKHeaderBlockPrefix">
+<link href="#rfc.appendix.D" rel="Chapter" title="D Change Log">
+<link href="#rfc.appendix.D.1" rel="Chapter" title="D.1 Since draft-00:">
+<link href="#rfc.appendix.E" rel="Chapter" title="E Design Variations">
+<link href="#rfc.appendix.F" rel="Chapter" title="F Acknowledgements">
 <link href="#rfc.authors" rel="Chapter">
 
 
@@ -403,7 +420,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-event-definitions-quic-h3-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-10-07" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-08" />
   <meta name="dct.abstract" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema-latest." />
   <meta name="description" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema-latest." />
 
@@ -424,10 +441,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">October 07, 2019</td>
+<td class="right">October 08, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: April 9, 2020</td>
+<td class="left">Expires: April 10, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -444,7 +461,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 9, 2020.</p>
+<p>This Internet-Draft will expire on April 10, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -542,19 +559,27 @@ ul.toc li {
 </li>
 <li>6.1.5.   <a href="#rfc.section.6.1.5">data_moved</a>
 </li>
-</ul><li>6.2.   <a href="#rfc.section.6.2">QPACK</a>
+<li>6.1.6.   <a href="#rfc.section.6.1.6">PUSH-events</a>
 </li>
-<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">header_encoded</a>
+</ul><li>6.2.   <a href="#rfc.section.6.2">qpack</a>
 </li>
-<li>6.2.2.   <a href="#rfc.section.6.2.2">header_decoded</a>
+<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">parameters_set</a>
 </li>
-<li>6.2.3.   <a href="#rfc.section.6.2.3">TODO</a>
+<li>6.2.2.   <a href="#rfc.section.6.2.2">state_updated</a>
 </li>
-</ul><li>6.3.   <a href="#rfc.section.6.3">prioritization</a>
+<li>6.2.3.   <a href="#rfc.section.6.2.3">stream_state_updated</a>
 </li>
-<li>6.4.   <a href="#rfc.section.6.4">PUSH</a>
+<li>6.2.4.   <a href="#rfc.section.6.2.4">dynamic_table_updated</a>
 </li>
-</ul><li>7.   <a href="#rfc.section.7">General error, warning and debugging definitions</a>
+<li>6.2.5.   <a href="#rfc.section.6.2.5">headers_encoded</a>
+</li>
+<li>6.2.6.   <a href="#rfc.section.6.2.6">headers_decoded</a>
+</li>
+<li>6.2.7.   <a href="#rfc.section.6.2.7">instruction_sent</a>
+</li>
+<li>6.2.8.   <a href="#rfc.section.6.2.8">instruction_received</a>
+</li>
+</ul></ul><li>7.   <a href="#rfc.section.7">General error, warning and debugging definitions</a>
 </li>
 <ul><li>7.1.   <a href="#rfc.section.7.1">error</a>
 </li>
@@ -672,13 +697,39 @@ ul.toc li {
 </li>
 </ul><li>B.2.   <a href="#rfc.appendix.B.2">ApplicationError</a>
 </li>
-</ul><li>Appendix C.   <a href="#rfc.appendix.C">Change Log</a>
+</ul><li>Appendix C.   <a href="#rfc.appendix.C">QPACK DATA type definitions</a>
 </li>
-<ul><li>C.1.   <a href="#rfc.appendix.C.1">Since draft-00:</a>
+<ul><li>C.1.   <a href="#rfc.appendix.C.1">QPACK Instructions</a>
 </li>
-</ul><li>Appendix D.   <a href="#rfc.appendix.D">Design Variations</a>
+<ul><li>C.1.1.   <a href="#rfc.appendix.C.1.1">SetDynamicTableCapacityInstruction</a>
 </li>
-<li>Appendix E.   <a href="#rfc.appendix.E">Acknowledgements</a>
+<li>C.1.2.   <a href="#rfc.appendix.C.1.2">InsertWithNameReferenceInstruction</a>
+</li>
+<li>C.1.3.   <a href="#rfc.appendix.C.1.3">InsertWithoutNameReferenceInstruction</a>
+</li>
+<li>C.1.4.   <a href="#rfc.appendix.C.1.4">DuplicateInstruction</a>
+</li>
+<li>C.1.5.   <a href="#rfc.appendix.C.1.5">HeaderAcknowledgementInstruction</a>
+</li>
+<li>C.1.6.   <a href="#rfc.appendix.C.1.6">StreamCancellationInstruction</a>
+</li>
+<li>C.1.7.   <a href="#rfc.appendix.C.1.7">InsertCountIncrementInstruction</a>
+</li>
+</ul><li>C.2.   <a href="#rfc.appendix.C.2">QPACK Header compression</a>
+</li>
+<ul><li>C.2.1.   <a href="#rfc.appendix.C.2.1">IndexedHeaderField</a>
+</li>
+<li>C.2.2.   <a href="#rfc.appendix.C.2.2">LiteralHeaderFieldWithName</a>
+</li>
+<li>C.2.3.   <a href="#rfc.appendix.C.2.3">QPACKHeaderBlockPrefix</a>
+</li>
+</ul></ul><li>Appendix D.   <a href="#rfc.appendix.D">Change Log</a>
+</li>
+<ul><li>D.1.   <a href="#rfc.appendix.D.1">Since draft-00:</a>
+</li>
+</ul><li>Appendix E.   <a href="#rfc.appendix.E">Design Variations</a>
+</li>
+<li>Appendix F.   <a href="#rfc.appendix.F">Acknowledgements</a>
 </li>
 <li><a href="#rfc.authors">Author's Address</a>
 </li>
@@ -1429,47 +1480,144 @@ enum StreamState {
 <p id="rfc.section.6.1.5.p.4">The &#8220;from&#8221; and &#8220;to&#8221; fields MUST NOT be set at the same time. The missing field is always implied to have the value &#8220;http&#8221;.</p>
 <p id="rfc.section.6.1.5.p.5">TODO: add separate event to highlight when we didn&#8217;t receive enough data to actually decode an H3 frame (e.g., only received 1 byte of 2-byte VLIE encoded value)</p>
 <p id="rfc.section.6.1.5.p.6">TODO: add separate diagnostic event(s) to indicate when HOL-blocking occured (both inter-stream in H3 and intra-stream in QPACK layers and for control stream packets (e.g., prioritization, push))</p>
-<h1 id="rfc.section.6.2">
-<a href="#rfc.section.6.2">6.2.</a> <a href="#qpack" id="qpack">QPACK</a>
+<h1 id="rfc.section.6.1.6">
+<a href="#rfc.section.6.1.6">6.1.6.</a> <a href="#push-events" id="push-events">PUSH-events</a>
 </h1>
+<p id="rfc.section.6.1.6.p.1">TODO: add these</p>
+<h1 id="rfc.section.6.2">
+<a href="#rfc.section.6.2">6.2.</a> <a href="#qpack" id="qpack">qpack</a>
+</h1>
+<p id="rfc.section.6.2.p.1">Note: like all category values, the &#8220;qpack&#8221; category is written in lowercase.</p>
+<p id="rfc.section.6.2.p.2">The QPACK events mainly serve as an aid to debug low-level QPACK issues. The higher-level, plaintext header values SHOULD (also) be logged in the http.frame_created and http.frame_parsed event data (instead).</p>
 <h1 id="rfc.section.6.2.1">
-<a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#headerencoded" id="headerencoded">header_encoded</a>
+<a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#parametersset-2" id="parametersset-2">parameters_set</a>
 </h1>
 <p id="rfc.section.6.2.1.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.1.p.2">Data:</p>
+<p id="rfc.section.6.2.1.p.2">This event contains QPACK-level settings, received from the HTTP/3 SETTINGS frame.  All these parameters are typically set once and never change.</p>
 <pre>
 {
-    stream_id?:string, // not necessarily available at the QPACK level
-
-    encoded:string,
-    fields:Array&lt;HTTPHeader&gt;
+    max_table_capacity?:number, // from SETTINGS_QPACK_MAX_TABLE_CAPACITY
+    blocked_streams_count?:number // from SETTINGS_QPACK_BLOCKED_STREAMS
 }
 </pre>
 <h1 id="rfc.section.6.2.2">
-<a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#headerdecoded" id="headerdecoded">header_decoded</a>
+<a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#stateupdated" id="stateupdated">state_updated</a>
 </h1>
 <p id="rfc.section.6.2.2.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.2.p.2">Data:</p>
+<p id="rfc.section.6.2.2.p.2">This event is emitted when one or more of the internal QPACK variables changes value. Note that some variables have two variations (one set locally, one requested by the remote peer). This is reflected in the &#8220;owner&#8221; field. As such, this field MUST be correct for all variables included a single event instance. If you need to log settings from two sides, you MUST emit two separate event instances.</p>
+<p id="rfc.section.6.2.2.p.3">Data:</p>
 <pre>
 {
-    stream_id?:string, // not necessarily available at the QPACK level
+    owner?:string = "local" | "remote", // can be left for bidirectionally negotiated parameters, e.g. ALPN
 
-    encoded:string,
-    fields:Array&lt;HTTPHeader&gt;
+    dynamic_table_capacity?:number,
+    dynamic_table_size?:number, // effective current size, sum of all the entries
+
+    known_received_count?:number,
+    current_insert_count?:number
 }
 </pre>
 <h1 id="rfc.section.6.2.3">
-<a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#todo" id="todo">TODO</a>
+<a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#streamstateupdated-2" id="streamstateupdated-2">stream_state_updated</a>
 </h1>
-<p id="rfc.section.6.2.3.p.1">Add more qpack-specific events For example: * Encoder Instruction * Decoder Instruction</p>
-<h1 id="rfc.section.6.3">
-<a href="#rfc.section.6.3">6.3.</a> <a href="#prioritization" id="prioritization">prioritization</a>
+<p id="rfc.section.6.2.3.p.1">Importance: Core</p>
+<p id="rfc.section.6.2.3.p.2">This event is emitted when a stream becomes blocked or unblocked by header decoding requests or QPACK instructions.</p>
+<p id="rfc.section.6.2.3.p.3">Note: This event is of &#8220;Core&#8221; importance, as it might have a large impact on HTTP/3&#8217;s observed performance.</p>
+<p id="rfc.section.6.2.3.p.4">Data:</p>
+<pre>
+{
+    stream_id:string,
+
+    state:"blocked"|"unblocked" // streams are assumed to start "unblocked" until they become "blocked"
+}
+</pre>
+<h1 id="rfc.section.6.2.4">
+<a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#dynamictableupdated" id="dynamictableupdated">dynamic_table_updated</a>
 </h1>
-<p id="rfc.section.6.3.p.1">TODO: add some higher-level primitives that can work regardless of the resulting scheme and then add some more specific things later? e.g., scheduler_updated?</p>
-<h1 id="rfc.section.6.4">
-<a href="#rfc.section.6.4">6.4.</a> <a href="#push" id="push">PUSH</a>
+<p id="rfc.section.6.2.4.p.1">Importance: Extra</p>
+<p id="rfc.section.6.2.4.p.2">This event is emitted when one or more entries are added or evicted from QPACK&#8217;s dynamic table.</p>
+<p id="rfc.section.6.2.4.p.3">Data:</p>
+<pre>
+{
+    update_type:"added"|"evicted",
+
+    entries:Array&lt;DynamicTableEntry&gt;
+}
+
+class DynamicTableEntry {
+    index:number,
+    name?:string,
+    value?:string
+}
+</pre>
+<h1 id="rfc.section.6.2.5">
+<a href="#rfc.section.6.2.5">6.2.5.</a> <a href="#headersencoded" id="headersencoded">headers_encoded</a>
 </h1>
-<p id="rfc.section.6.4.p.1">TODO</p>
+<p id="rfc.section.6.2.5.p.1">Importance: Base</p>
+<p id="rfc.section.6.2.5.p.2">This event is emitted when an uncompressed header block is encoded successfully.</p>
+<p id="rfc.section.6.2.5.p.3">Note: this event has overlap with http.frame_created for the HeadersFrame type.  When outputting both events, implementers MAY omit the &#8220;headers&#8221; field in this event.</p>
+<p id="rfc.section.6.2.5.p.4">Data:</p>
+<pre>
+{
+    stream_id?:string,
+
+    headers?:Array&lt;HTTPHeader&gt;,
+
+    block_prefix:QPACKHeaderBlockPrefix,
+    compressed_headers:Array&lt;QPackCompressedHeader&gt;,
+
+    raw?:string, // in hex
+}
+</pre>
+<h1 id="rfc.section.6.2.6">
+<a href="#rfc.section.6.2.6">6.2.6.</a> <a href="#headersdecoded" id="headersdecoded">headers_decoded</a>
+</h1>
+<p id="rfc.section.6.2.6.p.1">Importance: Base</p>
+<p id="rfc.section.6.2.6.p.2">This event is emitted when a compressed header block is decoded successfully.</p>
+<p id="rfc.section.6.2.6.p.3">Note: this event has overlap with http.frame_parsed for the HeadersFrame type.  When outputting both events, implementers MAY omit the &#8220;headers&#8221; field in this event.</p>
+<p id="rfc.section.6.2.6.p.4">Data:</p>
+<pre>
+{
+    stream_id?:string,
+
+    headers?:Array&lt;HTTPHeader&gt;,
+
+    block_prefix:QPACKHeaderBlockPrefix,
+    compressed_headers:Array&lt;QPackCompressedHeader&gt;,
+
+    raw?:string, // in hex
+}
+</pre>
+<h1 id="rfc.section.6.2.7">
+<a href="#rfc.section.6.2.7">6.2.7.</a> <a href="#instructionsent" id="instructionsent">instruction_sent</a>
+</h1>
+<p id="rfc.section.6.2.7.p.1">Importance: Base</p>
+<p id="rfc.section.6.2.7.p.2">This event is emitted when a QPACK instruction (both decoder and encoder) is sent.</p>
+<p id="rfc.section.6.2.7.p.3">Data:</p>
+<pre>
+{
+    instruction:QPACKInstruction // see appendix for the definitions,
+    byte_length?:string,
+
+    raw?:string // in hex
+}
+</pre>
+<p id="rfc.section.6.2.7.p.4">Note: encoder/decoder semantics and stream_id&#8217;s are implicit in either the instruction types or can be logged via other events (e.g., http.stream_type_updated)</p>
+<h1 id="rfc.section.6.2.8">
+<a href="#rfc.section.6.2.8">6.2.8.</a> <a href="#instructionreceived" id="instructionreceived">instruction_received</a>
+</h1>
+<p id="rfc.section.6.2.8.p.1">Importance: Base</p>
+<p id="rfc.section.6.2.8.p.2">This event is emitted when a QPACK instruction (both decoder and encoder) is received.</p>
+<p id="rfc.section.6.2.8.p.3">Data:</p>
+<pre>
+{
+    instruction:QPACKInstruction // see appendix for the definitions,
+    byte_length?:string,
+
+    raw?:string // in hex
+}
+</pre>
+<p id="rfc.section.6.2.8.p.4">Note: encoder/decoder semantics and stream_id&#8217;s are implicit in either the instruction types or can be logged via other events (e.g., http.stream_type_updated)</p>
 <h1 id="rfc.section.7">
 <a href="#rfc.section.7">7.</a> <a href="#general-error-warning-and-debugging-definitions" id="general-error-warning-and-debugging-definitions">General error, warning and debugging definitions</a>
 </h1>
@@ -1479,7 +1627,7 @@ enum StreamState {
 <h1 id="rfc.section.7.1.1">
 <a href="#rfc.section.7.1.1">7.1.1.</a> <a href="#connectionerror" id="connectionerror">connection_error</a>
 </h1>
-<p id="rfc.section.7.1.1.p.1">Importance: Extra</p>
+<p id="rfc.section.7.1.1.p.1">Importance: Core</p>
 <p id="rfc.section.7.1.1.p.2">Logged when there is a connection error. Can be inferred from a CONNECTION_CLOSE frame, but one might refrain from sending a long string in that frame, while logging it here.</p>
 <p id="rfc.section.7.1.1.p.3">Data:</p>
 <pre>
@@ -1491,7 +1639,7 @@ enum StreamState {
 <h1 id="rfc.section.7.1.2">
 <a href="#rfc.section.7.1.2">7.1.2.</a> <a href="#applicationerror" id="applicationerror">application_error</a>
 </h1>
-<p id="rfc.section.7.1.2.p.1">Importance: Extra</p>
+<p id="rfc.section.7.1.2.p.1">Importance: Core</p>
 <p id="rfc.section.7.1.2.p.2">Logged when there is an application error. Can be inferred from a CONNECTION_CLOSE frame, but one might refrain from sending a long string in that frame, while logging it here.</p>
 <p id="rfc.section.7.1.2.p.3">Data:</p>
 <pre>
@@ -1966,13 +2114,13 @@ class DataFrame{
 <p id="rfc.section.B.1.2.p.1">This represents an <em>uncompressed</em>, plaintext HTTP Headers frame (e.g., no QPACK compression is applied).</p>
 <p id="rfc.section.B.1.2.p.2">For example:</p>
 <pre>
-fields: [{"name":":path","content":"/"},{"name":":method","content":"GET"},{"name":":authority","content":"127.0.0.1:4433"},{"name":":scheme","content":"https"}]
+headers: [{"name":":path","content":"/"},{"name":":method","content":"GET"},{"name":":authority","content":"127.0.0.1:4433"},{"name":":scheme","content":"https"}]
 </pre>
 <p id="rfc.section.B.1.2.p.3">TODO: use proper HTTP naming for the fields, names, values, etc.</p>
 <pre>
 class HeadersFrame{
     frame_type:string = "header",
-    fields:Array&lt;HTTPHeader&gt;
+    headers:Array&lt;HTTPHeader&gt;
 }
 
 class HTTPHeader {
@@ -2029,7 +2177,7 @@ class PushPromiseFrame{
     frame_type:string = "push_promise",
     id:string,
 
-    fields:Array&lt;HTTPHeader&gt;
+    headers:Array&lt;HTTPHeader&gt;
 }
 </pre>
 <h1 id="rfc.appendix.B.1.7">
@@ -2099,10 +2247,167 @@ enum ApplicationError{
 </pre>
 <p id="rfc.section.B.2.p.1">TODO: http_malformed_frame is not a single value, but can include the frame type in its definition. This means we need more flexible error logging. Best to wait until h3-draft-23 (PR https://github.com/quicwg/base-drafts/pull/2662), which will include substantial changes to error codes.</p>
 <h1 id="rfc.appendix.C">
-<a href="#rfc.appendix.C">Appendix C.</a> <a href="#change-log" id="change-log">Change Log</a>
+<a href="#rfc.appendix.C">Appendix C.</a> <a href="#qpack-data-type-definitions" id="qpack-data-type-definitions">QPACK DATA type definitions</a>
 </h1>
 <h1 id="rfc.appendix.C.1">
-<a href="#rfc.appendix.C.1">C.1.</a> <a href="#since-draft-00" id="since-draft-00">Since draft-00:</a>
+<a href="#rfc.appendix.C.1">C.1.</a> <a href="#qpack-instructions" id="qpack-instructions">QPACK Instructions</a>
+</h1>
+<p id="rfc.section.C.1.p.1">Note: the instructions do not have explicit encoder/decoder types, since there is no overlap between the insturctions of both types in neither name nor function.</p>
+<pre>
+type QPACKInstruction = SetDynamicTableCapacityInstruction | InsertWithNameReferenceInstruction | InsertWithoutNameReferenceInstruction | DuplicateInstruction | HeaderAcknowledgementInstruction | StreamCancellationInstruction | InsertCountIncrementInstruction;
+</pre>
+<h1 id="rfc.appendix.C.1.1">
+<a href="#rfc.appendix.C.1.1">C.1.1.</a> <a href="#setdynamictablecapacityinstruction" id="setdynamictablecapacityinstruction">SetDynamicTableCapacityInstruction</a>
+</h1>
+<pre>
+class SetDynamicTableCapacityInstruction {
+    instruction_type:string = "set_dynamic_table_capacity",
+
+    capacity:number
+}
+</pre>
+<h1 id="rfc.appendix.C.1.2">
+<a href="#rfc.appendix.C.1.2">C.1.2.</a> <a href="#insertwithnamereferenceinstruction" id="insertwithnamereferenceinstruction">InsertWithNameReferenceInstruction</a>
+</h1>
+<pre>
+class InsertWithNameReferenceInstruction {
+    instruction_type:string = "insert_with_name_reference",
+
+    table_type:"static"|"dynamic",
+
+    name_index:number,
+
+    huffman_encoded_value:boolean,
+    value_length:number,
+    value:string
+}
+</pre>
+<h1 id="rfc.appendix.C.1.3">
+<a href="#rfc.appendix.C.1.3">C.1.3.</a> <a href="#insertwithoutnamereferenceinstruction" id="insertwithoutnamereferenceinstruction">InsertWithoutNameReferenceInstruction</a>
+</h1>
+<pre>
+class InsertWithoutNameReferenceInstruction {
+    instruction_type:string = "insert_without_name_reference",
+
+    huffman_encoded_name:boolean,
+    name_length:number,
+    name:string
+
+    huffman_encoded_value:boolean,
+    value_length:number,
+    value:string
+}
+</pre>
+<h1 id="rfc.appendix.C.1.4">
+<a href="#rfc.appendix.C.1.4">C.1.4.</a> <a href="#duplicateinstruction" id="duplicateinstruction">DuplicateInstruction</a>
+</h1>
+<pre>
+class DuplicateInstruction {
+    instruction_type:string = "duplicate",
+
+    index:number
+}
+</pre>
+<h1 id="rfc.appendix.C.1.5">
+<a href="#rfc.appendix.C.1.5">C.1.5.</a> <a href="#headeracknowledgementinstruction" id="headeracknowledgementinstruction">HeaderAcknowledgementInstruction</a>
+</h1>
+<pre>
+class HeaderAcknowledgementInstruction {
+    instruction_type:string = "header_acknowledgement",
+
+    stream_id:string
+}
+</pre>
+<h1 id="rfc.appendix.C.1.6">
+<a href="#rfc.appendix.C.1.6">C.1.6.</a> <a href="#streamcancellationinstruction" id="streamcancellationinstruction">StreamCancellationInstruction</a>
+</h1>
+<pre>
+class StreamCancellationInstruction {
+    instruction_type:string = "stream_cancellation",
+
+    stream_id:string
+}
+</pre>
+<h1 id="rfc.appendix.C.1.7">
+<a href="#rfc.appendix.C.1.7">C.1.7.</a> <a href="#insertcountincrementinstruction" id="insertcountincrementinstruction">InsertCountIncrementInstruction</a>
+</h1>
+<pre>
+class InsertCountIncrementInstruction {
+    instruction_type:string = "insert_count_increment",
+
+    increment:number
+}
+</pre>
+<h1 id="rfc.appendix.C.2">
+<a href="#rfc.appendix.C.2">C.2.</a> <a href="#qpack-header-compression" id="qpack-header-compression">QPACK Header compression</a>
+</h1>
+<pre>
+type QPackCompressedHeader = IndexedHeaderField | LiteralHeaderFieldWithName | LiteralHeaderFieldWithoutName;
+</pre>
+<h1 id="rfc.appendix.C.2.1">
+<a href="#rfc.appendix.C.2.1">C.2.1.</a> <a href="#indexedheaderfield" id="indexedheaderfield">IndexedHeaderField</a>
+</h1>
+<p id="rfc.section.C.2.1.p.1">Note: also used for &#8220;indexed header field with post-base index&#8221;</p>
+<pre>
+class IndexedHeaderField {
+    header_field_type:string = "index_header",
+
+    table_type:"static"|"dynamic", // MUST be "dynamic" if is_post_base is true
+    index:number,
+
+    is_post_base?:boolean = false, // to represent the "indexed header field with post-base index" header field type
+}
+</pre>
+<h1 id="rfc.appendix.C.2.2">
+<a href="#rfc.appendix.C.2.2">C.2.2.</a> <a href="#literalheaderfieldwithname" id="literalheaderfieldwithname">LiteralHeaderFieldWithName</a>
+</h1>
+<p id="rfc.section.C.2.2.p.1">Note: also used for &#8220;Literal header field with post-base name reference&#8221;</p>
+<pre>
+class LiteralHeaderFieldWithName {
+    header_field_type:string = "literal_with_name",
+
+    preserve_literal:boolean, // the 3rd "N" bit
+    table_type:"static"|"dynamic", // MUST be "dynamic" if is_post_base is true
+    name_index:number,
+
+    huffman_encoded_value:boolean,
+    value_length:number,
+    value:string,
+
+    is_post_base?:boolean = false, // to represent the "Literal header field with post-base name reference" header field type
+}
+</pre>
+<p id="rfc.section.C.2.2.p.2">### LiteralHeaderFieldWithoutName</p>
+<pre>
+class LiteralHeaderFieldWithoutName {
+    header_field_type:string = "literal_without_name",
+
+    preserve_literal:boolean, // the 3rd "N" bit
+
+    huffman_encoded_name:boolean,
+    name_length:number,
+    name:string
+
+    huffman_encoded_value:boolean,
+    value_length:number,
+    value:string,
+}
+</pre>
+<h1 id="rfc.appendix.C.2.3">
+<a href="#rfc.appendix.C.2.3">C.2.3.</a> <a href="#qpackheaderblockprefix" id="qpackheaderblockprefix">QPACKHeaderBlockPrefix</a>
+</h1>
+<pre>
+class QPACKHeaderBlockPrefix {
+    required_insert_count:number,
+    sign_bit:boolean,
+    delta_base:number
+}
+</pre>
+<h1 id="rfc.appendix.D">
+<a href="#rfc.appendix.D">Appendix D.</a> <a href="#change-log" id="change-log">Change Log</a>
+</h1>
+<h1 id="rfc.appendix.D.1">
+<a href="#rfc.appendix.D.1">D.1.</a> <a href="#since-draft-00" id="since-draft-00">Since draft-00:</a>
 </h1>
 <p></p>
 
@@ -2114,14 +2419,14 @@ enum ApplicationError{
 <li>Event names are more consistent and use past tense (issue #21)</li>
 <li>Triggers have been redefined as properties of the &#8220;data&#8221; field and updated for most events (issue #23)</li>
 </ul>
-<h1 id="rfc.appendix.D">
-<a href="#rfc.appendix.D">Appendix D.</a> <a href="#design-variations" id="design-variations">Design Variations</a>
-</h1>
-<p id="rfc.section.D.p.1">TBD</p>
 <h1 id="rfc.appendix.E">
-<a href="#rfc.appendix.E">Appendix E.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
+<a href="#rfc.appendix.E">Appendix E.</a> <a href="#design-variations" id="design-variations">Design Variations</a>
 </h1>
-<p id="rfc.section.E.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev, Mirja K&#252;hlewind, Jeremy Lain&#233; and Lucas Pardue for their feedback and suggestions.</p>
+<p id="rfc.section.E.p.1">TBD</p>
+<h1 id="rfc.appendix.F">
+<a href="#rfc.appendix.F">Appendix F.</a> <a href="#acknowledgements" id="acknowledgements">Acknowledgements</a>
+</h1>
+<p id="rfc.section.F.p.1">Thanks to Jana Iyengar, Brian Trammell, Dmitri Tikhonov, Stephen Petrides, Jari Arkko, Marcus Ihlar, Victor Vasiliev, Mirja K&#252;hlewind, Jeremy Lain&#233; and Lucas Pardue for their feedback and suggestions.</p>
 <h1 id="rfc.authors"><a href="#rfc.authors">Author's Address</a></h1>
 <div class="avoidbreak">
   <address class="vcard">
