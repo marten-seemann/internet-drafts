@@ -1,6 +1,54 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/25",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/25/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/25/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/25/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/issues/25",
+    "id": 504527040,
+    "node_id": "MDU6SXNzdWU1MDQ1MjcwNDA=",
+    "number": 25,
+    "title": "Additional triggers and info for dropped packets",
+    "user": {
+      "login": "rmarx",
+      "id": 2240689,
+      "node_id": "MDQ6VXNlcjIyNDA2ODk=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2240689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmarx",
+      "html_url": "https://github.com/rmarx",
+      "followers_url": "https://api.github.com/users/rmarx/followers",
+      "following_url": "https://api.github.com/users/rmarx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmarx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmarx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmarx/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmarx/orgs",
+      "repos_url": "https://api.github.com/users/rmarx/repos",
+      "events_url": "https://api.github.com/users/rmarx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmarx/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-09T09:29:23Z",
+    "updated_at": "2019-10-09T09:29:23Z",
+    "closed_at": null,
+    "author_association": "MEMBER",
+    "body": "The current text lists about 8 reasons for dropping packets.\r\nMicrosoft's implementation lists 60+ individual reasons (via @nibanks)\r\n\r\nSome of those:\r\n\r\n> LogDrop(\"Retry sent to server\");\r\nLogDrop(\"Already received server response\");\r\nLogDrop(\"No room for ODCID\");\r\nLogDrop(\"Invalid ODCID\");\r\nLogDrop(\"InitialToken alloc failed\");\r\nLogDrop(\"OrigCID alloc failed\");\r\nLogDrop(\"Max deferred datagram count reached\");\r\nLogDrop(\"Key no longer accepted\");\r\nLogDrop(\"SH packet during version negotiation\");\r\nLogDrop(\"Too short for HP\");\r\nLogDrop(\"Packet number too big\");\r\nLogDrop(\"Payload length less than encryption tag\");\r\nLogDrop(\"Generate new packet keys\");\r\nLogDrop(\"Decryption failure\");\r\nLogDrop(\"Invalid SH Reserved bits values\");\r\nLogDrop(\"Invalid LH Reserved bits values\");\r\nLogDrop(\"Duplicate packet number\");\r\nLogDrop(\"Key no longer accepted (batch)\");\r\nLogDrop(\"Failed to compute HP mask\");\r\nLogDrop(\"Different remote address\");\r\nLogDrop(\"Too small for Packet->Invariant\");\r\nLogDrop(\"LH no room for DestCID\");\r\nLogDrop(\"Zero length DestCID\");\r\nLogDrop(\"LH no room for SourceCID\");\r\nLogDrop(\"SH no room for DestCID\");\r\nLogDrop(\"DestCID don't match\");\r\nLogDrop(\"SourceCID don't match\");\r\nLogDrop(\"Greater than allowed max CID length\");\r\nLogDropWithValue(\"Invalid client/server packet type\", Packet->LH->Type);\r\nLogDrop(\"Invalid LH FixedBit bits values\");\r\nLogDrop(\"Long header has invalid token length\");\r\nLogDropWithValue(\"Long header has token length larger than buffer length\", TokenLengthVarInt);\r\nLogDrop(\"Long header has invalid payload length\");\r\nLogDropWithValue(\"Long header has length larger than buffer length\", LengthVarInt);\r\nLogDropWithValue(\"Long Header doesn't have enough room for packet number\",\r\nLogDrop(\"Invalid SH FixedBit bits values\");\r\nLogDrop(\"Non-initial packet not matched with a Connection\");\r\nLogDrop(\"Retry received after initial\");\r\n\r\nI feel that we don't need to list things in this level of detail in the qlog spec (the \"trigger\" field allows any text anyway). However, maybe some guidance text on this would be helpful and maybe a few more suggested triggers would be interesting. \r\n\r\n\r\n"
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/24",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/24/labels{/name}",
