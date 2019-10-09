@@ -379,6 +379,7 @@ ul.toc li {
 <link href="#rfc.appendix.A.4.19" rel="Chapter" title="A.4.19 ConnectionCloseFrame">
 <link href="#rfc.appendix.A.4.20" rel="Chapter" title="A.4.20 UnknownFrame">
 <link href="#rfc.appendix.A.4.21" rel="Chapter" title="A.4.21 TransportError">
+<link href="#rfc.appendix.A.4.22" rel="Chapter" title="A.4.22 CryptoError">
 <link href="#rfc.appendix.B" rel="Chapter" title="B HTTP/3 data field definitions">
 <link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 HTTP/3 Frames">
 <link href="#rfc.appendix.B.1.1" rel="Chapter" title="B.1.1 DataFrame">
@@ -405,7 +406,7 @@ ul.toc li {
 <link href="#rfc.appendix.C.2.1" rel="Chapter" title="C.2.1 IndexedHeaderField">
 <link href="#rfc.appendix.C.2.2" rel="Chapter" title="C.2.2 LiteralHeaderFieldWithName">
 <link href="#rfc.appendix.C.2.3" rel="Chapter" title="C.2.3 LiteralHeaderFieldWithoutName">
-<link href="#rfc.appendix.C.2.4" rel="Chapter" title="C.2.4 QPACKHeaderBlockPrefix">
+<link href="#rfc.appendix.C.2.4" rel="Chapter" title="C.2.4 QPackHeaderBlockPrefix">
 <link href="#rfc.appendix.D" rel="Chapter" title="D Change Log">
 <link href="#rfc.appendix.D.1" rel="Chapter" title="D.1 Since draft-00:">
 <link href="#rfc.appendix.E" rel="Chapter" title="E Design Variations">
@@ -663,6 +664,8 @@ ul.toc li {
 </li>
 <li>A.4.21.   <a href="#rfc.appendix.A.4.21">TransportError</a>
 </li>
+<li>A.4.22.   <a href="#rfc.appendix.A.4.22">CryptoError</a>
+</li>
 </ul></ul><li>Appendix B.   <a href="#rfc.appendix.B">HTTP/3 data field definitions</a>
 </li>
 <ul><li>B.1.   <a href="#rfc.appendix.B.1">HTTP/3 Frames</a>
@@ -715,7 +718,7 @@ ul.toc li {
 </li>
 <li>C.2.3.   <a href="#rfc.appendix.C.2.3">LiteralHeaderFieldWithoutName</a>
 </li>
-<li>C.2.4.   <a href="#rfc.appendix.C.2.4">QPACKHeaderBlockPrefix</a>
+<li>C.2.4.   <a href="#rfc.appendix.C.2.4">QPackHeaderBlockPrefix</a>
 </li>
 </ul></ul><li>Appendix D.   <a href="#rfc.appendix.D">Change Log</a>
 </li>
@@ -1457,10 +1460,8 @@ enum StreamType {
 <pre>
 {
     stream_id:string,
-    offset_start?:string,
-    offset_end?:string,
-
-    length?:number, // to be used mainly if no exact offsets are known
+    offset?:string,
+    length?:number,
 
     from?:"application"|"transport",
     to?:"application"|"transport",
@@ -1551,8 +1552,8 @@ class DynamicTableEntry {
 
     headers?:Array&lt;HTTPHeader&gt;,
 
-    block_prefix:QPACKHeaderBlockPrefix,
-    compressed_headers:Array&lt;QPackCompressedHeader&gt;,
+    block_prefix:QPackHeaderBlockPrefix,
+    header_block:Array&lt;QPackHeaderBlockRepresentation&gt;,
 
     raw?:string, // in hex
 }
@@ -1570,8 +1571,8 @@ class DynamicTableEntry {
 
     headers?:Array&lt;HTTPHeader&gt;,
 
-    block_prefix:QPACKHeaderBlockPrefix,
-    compressed_headers:Array&lt;QPackCompressedHeader&gt;,
+    block_prefix:QPackHeaderBlockPrefix,
+    header_block:Array&lt;QPackHeaderBlockRepresentation&gt;,
 
     raw?:string, // in hex
 }
@@ -1584,7 +1585,7 @@ class DynamicTableEntry {
 <p id="rfc.section.6.2.6.p.3">Data:</p>
 <pre>
 {
-    instruction:QPACKInstruction // see appendix for the definitions,
+    instruction:QPackInstruction // see appendix for the definitions,
     byte_length?:string,
 
     raw?:string // in hex
@@ -1599,7 +1600,7 @@ class DynamicTableEntry {
 <p id="rfc.section.6.2.7.p.3">Data:</p>
 <pre>
 {
-    instruction:QPACKInstruction // see appendix for the definitions,
+    instruction:QPackInstruction // see appendix for the definitions,
     byte_length?:string,
 
     raw?:string // in hex
@@ -1620,7 +1621,7 @@ class DynamicTableEntry {
 <p id="rfc.section.7.1.1.p.3">Data:</p>
 <pre>
 {
-    code?:TransportError | number,
+    code?:TransportError | CryptoError | number,
     description?:string
 }
 </pre>
@@ -1731,6 +1732,11 @@ class DynamicTableEntry {
 <a href="#rfc.references">10.</a> Normative References</h1>
 <table><tbody>
 <tr>
+<td class="reference"><b id="QLOG-MAIN">[QLOG-MAIN]</b></td>
+<td class="top">
+<a title="Hasselt University">Marx, R.</a>, "<a href="https://tools.ietf.org/html/draft-marx-qlog-main-schema-01">Main logging schema for qlog</a>", Internet-Draft draft-marx-qlog-main-schema-01, October 2019.</td>
+</tr>
+<tr>
 <td class="reference"><b id="QUIC-HTTP">[QUIC-HTTP]</b></td>
 <td class="top">
 <a title="Akamai">Bishop, M.</a>, "<a href="https://tools.ietf.org/html/draft-ietf-quic-http-20">Hypertext Transfer Protocol Version 3 (HTTP/3)</a>", Internet-Draft draft-ietf-quic-http-20, April 2019.</td>
@@ -1831,12 +1837,12 @@ class PingFrame{
 class AckFrame{
     frame_type:string = "ack";
 
-    ack_delay:string;
+    ack_delay?:string;
 
     // first number is "from": lowest packet number in interval
     // second number is "to": up to and including // highest packet number in interval
     // e.g., looks like [["1","2"],["4","5"]]
-    acked_ranges:Array&lt;[string, string]|[string]&gt;;
+    acked_ranges?:Array&lt;[string, string]|[string]&gt;;
 
     ect1?:string;
     ect0?:string;
@@ -1852,7 +1858,7 @@ class AckFrame{
 class ResetStreamFrame{
     frame_type:string = "reset_stream";
 
-    id:string;
+    stream_id:string;
     error_code:ApplicationError | number;
     final_size:string;
 }
@@ -1864,7 +1870,7 @@ class ResetStreamFrame{
 class StopSendingFrame{
     frame_type:string = "stop_sending";
 
-    id:string;
+    stream_id:string;
     error_code:ApplicationError | number;
 }
 </pre>
@@ -1876,7 +1882,7 @@ class CryptoFrame{
   frame_type:string = "crypto";
 
   offset:string;
-  length:string;
+  length:number;
 }
 </pre>
 <h1 id="rfc.appendix.A.4.7">
@@ -1886,7 +1892,7 @@ class CryptoFrame{
 class NewTokenFrame{
   frame_type:string = "new_token";
 
-  length:string;
+  length:number;
   token:string;
 }
 </pre>
@@ -1902,7 +1908,7 @@ class StreamFrame{
     // These two MUST always be set
     // If not present in the Frame type, log their default values
     offset:string;
-    length:string;
+    length:number;
 
     // this MAY be set any time, but MUST only be set if the value is "true"
     // if absent, the value MUST be assumed to be "false"
@@ -2066,8 +2072,17 @@ enum TransportError {
     transport_parameter_error,
     protocol_violation,
     invalid_migration,
-    crypto_buffer_exceeded,
-    crypto_error
+    crypto_buffer_exceeded
+}
+</pre>
+<h1 id="rfc.appendix.A.4.22">
+<a href="#rfc.appendix.A.4.22">A.4.22.</a> <a href="#cryptoerror" id="cryptoerror">CryptoError</a>
+</h1>
+<p id="rfc.section.A.4.22.p.1">These errors are defined in the TLS document as &#8220;A TLS alert is turned into a QUIC connection error by converting the one-byte alert description into a QUIC error code. The alert description is added to 0x100 to produce a QUIC error code from the range reserved for CRYPTO_ERROR.&#8221;</p>
+<p id="rfc.section.A.4.22.p.2">This approach maps badly to a pre-defined enum. As such, we define the crypto_error string as having a dynamic component here, which should include the hex-encoded value of the TLS alert description.</p>
+<pre>
+enum CryptoError {
+    crypto_error_{TLS_ALERT}
 }
 </pre>
 <h1 id="rfc.appendix.B">
@@ -2213,7 +2228,7 @@ enum ApplicationError{
 </h1>
 <p id="rfc.section.C.1.p.1">Note: the instructions do not have explicit encoder/decoder types, since there is no overlap between the insturctions of both types in neither name nor function.</p>
 <pre>
-type QPACKInstruction = SetDynamicTableCapacityInstruction | InsertWithNameReferenceInstruction | InsertWithoutNameReferenceInstruction | DuplicateInstruction | HeaderAcknowledgementInstruction | StreamCancellationInstruction | InsertCountIncrementInstruction;
+type QPackInstruction = SetDynamicTableCapacityInstruction | InsertWithNameReferenceInstruction | InsertWithoutNameReferenceInstruction | DuplicateInstruction | HeaderAcknowledgementInstruction | StreamCancellationInstruction | InsertCountIncrementInstruction;
 </pre>
 <h1 id="rfc.appendix.C.1.1">
 <a href="#rfc.appendix.C.1.1">C.1.1.</a> <a href="#setdynamictablecapacityinstruction" id="setdynamictablecapacityinstruction">SetDynamicTableCapacityInstruction</a>
@@ -2301,7 +2316,7 @@ class InsertCountIncrementInstruction {
 <a href="#rfc.appendix.C.2">C.2.</a> <a href="#qpack-header-compression" id="qpack-header-compression">QPACK Header compression</a>
 </h1>
 <pre>
-type QPackCompressedHeader = IndexedHeaderField | LiteralHeaderFieldWithName | LiteralHeaderFieldWithoutName;
+type QPackHeaderBlockRepresentation = IndexedHeaderField | LiteralHeaderFieldWithName | LiteralHeaderFieldWithoutName;
 </pre>
 <h1 id="rfc.appendix.C.2.1">
 <a href="#rfc.appendix.C.2.1">C.2.1.</a> <a href="#indexedheaderfield" id="indexedheaderfield">IndexedHeaderField</a>
@@ -2355,10 +2370,10 @@ class LiteralHeaderFieldWithoutName {
 }
 </pre>
 <h1 id="rfc.appendix.C.2.4">
-<a href="#rfc.appendix.C.2.4">C.2.4.</a> <a href="#qpackheaderblockprefix" id="qpackheaderblockprefix">QPACKHeaderBlockPrefix</a>
+<a href="#rfc.appendix.C.2.4">C.2.4.</a> <a href="#qpackheaderblockprefix" id="qpackheaderblockprefix">QPackHeaderBlockPrefix</a>
 </h1>
 <pre>
-class QPACKHeaderBlockPrefix {
+class QPackHeaderBlockPrefix {
     required_insert_count:number;
     sign_bit:boolean;
     delta_base:number;

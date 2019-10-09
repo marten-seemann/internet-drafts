@@ -477,7 +477,13 @@ ul.toc li {
 <p id="rfc.section.3.1.p.2">Typical logs will only contain a single element in the &#8220;traces&#8221; array. Multiple traces can then be combined into a single qlog file by taking the &#8220;traces&#8221; entries for each qlog file individually and copying them to the &#8220;traces&#8221; array of a new, aggregated qlog file. This is typically done in a post-processing step.</p>
 <p id="rfc.section.3.1.p.3">For example, for a test setup, we perform logging on the client, on the server and on a single point on their common network path. Each of these three logs is first created separately during the test. Afterwards, the three logs can be aggregated into a single qlog file.</p>
 <p id="rfc.section.3.1.p.4">As such, the &#8220;traces&#8221; array can also contain &#8220;error&#8221; entries. These indicate that we tried to find/convert a file for inclusion in the aggregated qlog, but there was an error during the process. Rather than silently dropping the erroneous file, we explicitly include it in the qlog file.</p>
-<p id="rfc.section.3.1.p.5">TODO: add proper data definitions of what the &#8220;error&#8221; should look like ~~~ interface IError { error_description: string, uri: string } ~~~</p>
+<p id="rfc.section.3.1.p.5">TODO: add proper data definitions of what the &#8220;error&#8221; should look like</p>
+<pre>
+interface IError {
+    error_description: string,
+    uri: string
+}
+</pre>
 <h1 id="rfc.section.3.2">
 <a href="#rfc.section.3.2">3.2.</a> <a href="#summary-field" id="summary-field">Summary field</a>
 </h1>
@@ -566,7 +572,7 @@ ul.toc li {
 <h1 id="rfc.section.3.3.3.2">
 <a href="#rfc.section.3.3.3.2">3.3.3.2.</a> <a href="#timeunits" id="timeunits">time_units</a>
 </h1>
-<p id="rfc.section.3.3.3.2.p.1">Since timestamps can be stored in various granularities, this field allows to indicate whether storage happens in either milliseconds (&#8220;ms&#8221;) or microseconds (&#8220;us&#8221;). If this field is not present, the default value is &#8220;ms&#8221;. This configuration setting applies to all other timestamps in the trace file as well, not just the &#8220;time_offset&#8221; field.</p>
+<p id="rfc.section.3.3.3.2.p.1">Since timestamps and other time-related values can be stored in various granularities, this field allows to indicate whether storage happens in either milliseconds (&#8220;ms&#8221;) or microseconds (&#8220;us&#8221;). If this field is not present, the default value is &#8220;ms&#8221;. This configuration setting applies to all other timestamps and time-related values in the trace file and its consituent events as well, not just the &#8220;time_offset&#8221; field.</p>
 <h1 id="rfc.section.3.3.3.3">
 <a href="#rfc.section.3.3.3.3">3.3.3.3.</a> <a href="#originaluris" id="originaluris">original_uris</a>
 </h1>
@@ -680,6 +686,7 @@ The relative_time approach will:
 
 </pre>
 <p class="figure">Figure 5: Three different approaches for logging timestamps</p>
+<p id="rfc.section.3.4.1.p.4">Events in each individual trace MUST be logged in strictly ascending timestamp order. Tools are not expected to sort all events on the timestamp before processing them.</p>
 <h1 id="rfc.section.3.4.2">
 <a href="#rfc.section.3.4.2">3.4.2.</a> <a href="#group_ids" id="group_ids">group_id and group_ids</a>
 </h1>

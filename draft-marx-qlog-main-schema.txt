@@ -77,21 +77,21 @@ Table of Contents
      3.4.  Field name semantics  . . . . . . . . . . . . . . . . . .  10
        3.4.1.  time, delta_time and reference_time + relative_time .  10
        3.4.2.  group_id and group_ids  . . . . . . . . . . . . . . .  11
-       3.4.3.  category and event  . . . . . . . . . . . . . . . . .  14
-       3.4.4.  data  . . . . . . . . . . . . . . . . . . . . . . . .  14
-       3.4.5.  Event field values  . . . . . . . . . . . . . . . . .  14
-     3.5.  triggers  . . . . . . . . . . . . . . . . . . . . . . . .  14
-   4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  16
-   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  16
-   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  16
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  16
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  16
-   9.  Normative References  . . . . . . . . . . . . . . . . . . . .  16
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  17
-     A.1.  Since draft-marx-qlog-main-schema-00: . . . . . . . . . .  17
-   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  17
-   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  17
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  17
+       3.4.3.  category and event  . . . . . . . . . . . . . . . . .  15
+       3.4.4.  data  . . . . . . . . . . . . . . . . . . . . . . . .  15
+       3.4.5.  Event field values  . . . . . . . . . . . . . . . . .  15
+     3.5.  triggers  . . . . . . . . . . . . . . . . . . . . . . . .  15
+   4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  17
+   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  17
+   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  17
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  17
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  17
+   9.  Normative References  . . . . . . . . . . . . . . . . . . . .  17
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  18
+     A.1.  Since draft-marx-qlog-main-schema-00: . . . . . . . . . .  18
+   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  18
+   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  18
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  18
 
 1.  Introduction
 
@@ -186,8 +186,12 @@ Internet-Draft        Main logging schema for qlog          October 2019
    in the qlog file.
 
    TODO: add proper data definitions of what the "error" should look
-   like ~~~ interface IError { error_description: string, uri: string }
-   ~~~
+   like
+
+   interface IError {
+       error_description: string,
+       uri: string
+   }
 
 3.2.  Summary field
 
@@ -213,10 +217,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
    o  TODO: are there any field semantics we should specify here?
 
-   o  TODO: Will people actually use this? or will they store this info
-      out-of-band (e.g., separate database for faster querying?)
-
-
 
 
 
@@ -225,6 +225,9 @@ Marx                     Expires April 11, 2020                 [Page 4]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
+
+   o  TODO: Will people actually use this? or will they store this info
+      out-of-band (e.g., separate database for faster querying?)
 
 3.3.  Trace container
 
@@ -270,9 +273,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
    This field describes the vantage point from which the trace
    originates.  Its value is an object, with the following fields:
 
-   o  name: an optional, user-chosen string (e.g., "NETWORK-1",
-      "loadbalancer45", "reverseproxy@192.168.1.1", ...)
-
 
 
 
@@ -281,6 +281,9 @@ Marx                     Expires April 11, 2020                 [Page 5]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
+
+   o  name: an optional, user-chosen string (e.g., "NETWORK-1",
+      "loadbalancer45", "reverseproxy@192.168.1.1", ...)
 
    o  type: one of four values: "server", "client", "network" or
       "unknown".
@@ -330,9 +333,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-
-
-
 Marx                     Expires April 11, 2020                 [Page 6]
 
 Internet-Draft        Main logging schema for qlog          October 2019
@@ -365,12 +365,13 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 3.3.3.2.  time_units
 
-   Since timestamps can be stored in various granularities, this field
-   allows to indicate whether storage happens in either milliseconds
-   ("ms") or microseconds ("us").  If this field is not present, the
-   default value is "ms".  This configuration setting applies to all
-   other timestamps in the trace file as well, not just the
-   "time_offset" field.
+   Since timestamps and other time-related values can be stored in
+   various granularities, this field allows to indicate whether storage
+   happens in either milliseconds ("ms") or microseconds ("us").  If
+   this field is not present, the default value is "ms".  This
+   configuration setting applies to all other timestamps and time-
+   related values in the trace file and its consituent events as well,
+   not just the "time_offset" field.
 
 3.3.3.3.  original_uris
 
@@ -385,7 +386,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
    the names of the specific fields that are logged per-event up-front,
    instead of repeating the field name with each value, as is common in
    traditiona JSON.  This is done in the "event_fields" list.  This
-   allows us to encode individual events as an array of values, instead
 
 
 
@@ -394,6 +394,7 @@ Marx                     Expires April 11, 2020                 [Page 7]
 Internet-Draft        Main logging schema for qlog          October 2019
 
 
+   allows us to encode individual events as an array of values, instead
    of an object.  To reduce file size even further, common event fields
    that have the same value for all events in this trace, are listed as
    name-value pairs in "common_fields".
@@ -434,7 +435,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
    }
 
                         Figure 3: Traditional JSON
-
 
 
 
@@ -579,6 +579,10 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
         Figure 5: Three different approaches for logging timestamps
 
+   Events in each individual trace MUST be logged in strictly ascending
+   timestamp order.  Tools are not expected to sort all events on the
+   timestamp before processing them.
+
 3.4.2.  group_id and group_ids
 
    A single Trace can contain events from a variety of sources,
@@ -605,11 +609,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
    the group_ids are known up-front or the qlog trace can be generated
    from a more verbose format afterwards.  If this is not the case, it
    is acceptable to just log the complex objects as the "group_id" for
-   each event.  Both use cases are demonstrated in Figure 6 and
-   Figure 7.
 
-   Since "group_id" and "group_ids" are generic names, they convey
-   little of the semantics to the casual reader.  It is best practice to
 
 
 
@@ -618,6 +618,11 @@ Marx                     Expires April 11, 2020                [Page 11]
 Internet-Draft        Main logging schema for qlog          October 2019
 
 
+   each event.  Both use cases are demonstrated in Figure 6 and
+   Figure 7.
+
+   Since "group_id" and "group_ids" are generic names, they convey
+   little of the semantics to the casual reader.  It is best practice to
    also include a per use case additional field to the "common_fields"
    with a semantic name, that has the same value as the "group_id" or
    "group_ids" field.  For example, see the "ODCID" field in Figure 4
@@ -630,6 +635,44 @@ Internet-Draft        Main logging schema for qlog          October 2019
    trace), MUST a trace include a group_id? maybe yes: the ODCID?
    (ODCID because the normal connection IDs can change during the QUIC
    connection).
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                     Expires April 11, 2020                [Page 12]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
 
 {
     "common_fields": {
@@ -669,7 +712,20 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 11, 2020                [Page 12]
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                     Expires April 11, 2020                [Page 13]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -725,7 +781,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 11, 2020                [Page 13]
+Marx                     Expires April 11, 2020                [Page 14]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -781,7 +837,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 11, 2020                [Page 14]
+Marx                     Expires April 11, 2020                [Page 15]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -837,7 +893,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 11, 2020                [Page 15]
+Marx                     Expires April 11, 2020                [Page 16]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -893,7 +949,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 11, 2020                [Page 16]
+Marx                     Expires April 11, 2020                [Page 17]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -949,4 +1005,4 @@ Author's Address
 
 
 
-Marx                     Expires April 11, 2020                [Page 17]
+Marx                     Expires April 11, 2020                [Page 18]
