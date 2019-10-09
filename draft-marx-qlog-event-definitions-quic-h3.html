@@ -321,21 +321,20 @@ ul.toc li {
 <link href="#rfc.section.5.4.7" rel="Chapter" title="5.4.7 marked_for_retransmit">
 <link href="#rfc.section.6" rel="Chapter" title="6 HTTP/3 event definitions">
 <link href="#rfc.section.6.1" rel="Chapter" title="6.1 http">
-<link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 stream_state_updated">
-<link href="#rfc.section.6.1.2" rel="Chapter" title="6.1.2 stream_type_updated">
+<link href="#rfc.section.6.1.1" rel="Chapter" title="6.1.1 parameters_set">
+<link href="#rfc.section.6.1.2" rel="Chapter" title="6.1.2 stream_type_set">
 <link href="#rfc.section.6.1.3" rel="Chapter" title="6.1.3 frame_created">
 <link href="#rfc.section.6.1.4" rel="Chapter" title="6.1.4 frame_parsed">
 <link href="#rfc.section.6.1.5" rel="Chapter" title="6.1.5 data_moved">
-<link href="#rfc.section.6.1.6" rel="Chapter" title="6.1.6 PUSH-events">
+<link href="#rfc.section.6.1.6" rel="Chapter" title="6.1.6 push_resolved">
 <link href="#rfc.section.6.2" rel="Chapter" title="6.2 qpack">
-<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 parameters_set">
-<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 state_updated">
-<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 stream_state_updated">
-<link href="#rfc.section.6.2.4" rel="Chapter" title="6.2.4 dynamic_table_updated">
-<link href="#rfc.section.6.2.5" rel="Chapter" title="6.2.5 headers_encoded">
-<link href="#rfc.section.6.2.6" rel="Chapter" title="6.2.6 headers_decoded">
-<link href="#rfc.section.6.2.7" rel="Chapter" title="6.2.7 instruction_sent">
-<link href="#rfc.section.6.2.8" rel="Chapter" title="6.2.8 instruction_received">
+<link href="#rfc.section.6.2.1" rel="Chapter" title="6.2.1 state_updated">
+<link href="#rfc.section.6.2.2" rel="Chapter" title="6.2.2 stream_state_updated">
+<link href="#rfc.section.6.2.3" rel="Chapter" title="6.2.3 dynamic_table_updated">
+<link href="#rfc.section.6.2.4" rel="Chapter" title="6.2.4 headers_encoded">
+<link href="#rfc.section.6.2.5" rel="Chapter" title="6.2.5 headers_decoded">
+<link href="#rfc.section.6.2.6" rel="Chapter" title="6.2.6 instruction_sent">
+<link href="#rfc.section.6.2.7" rel="Chapter" title="6.2.7 instruction_received">
 <link href="#rfc.section.7" rel="Chapter" title="7 General error, warning and debugging definitions">
 <link href="#rfc.section.7.1" rel="Chapter" title="7.1 error">
 <link href="#rfc.section.7.1.1" rel="Chapter" title="7.1.1 connection_error">
@@ -354,46 +353,44 @@ ul.toc li {
 <link href="#rfc.section.8" rel="Chapter" title="8 Security Considerations">
 <link href="#rfc.section.9" rel="Chapter" title="9 IANA Considerations">
 <link href="#rfc.references" rel="Chapter" title="10 Normative References">
-<link href="#rfc.appendix.A" rel="Chapter" title="A QUIC DATA type definitions">
-<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 TransportParameter">
-<link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 PacketType">
-<link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 PacketHeader">
-<link href="#rfc.appendix.A.4" rel="Chapter" title="A.4 KeyType">
-<link href="#rfc.appendix.A.5" rel="Chapter" title="A.5 QUIC Frames">
-<link href="#rfc.appendix.A.5.1" rel="Chapter" title="A.5.1 PaddingFrame">
-<link href="#rfc.appendix.A.5.2" rel="Chapter" title="A.5.2 PingFrame">
-<link href="#rfc.appendix.A.5.3" rel="Chapter" title="A.5.3 AckFrame">
-<link href="#rfc.appendix.A.5.4" rel="Chapter" title="A.5.4 ResetStreamFrame">
-<link href="#rfc.appendix.A.5.5" rel="Chapter" title="A.5.5 StopSendingFrame">
-<link href="#rfc.appendix.A.5.6" rel="Chapter" title="A.5.6 CryptoFrame">
-<link href="#rfc.appendix.A.5.7" rel="Chapter" title="A.5.7 NewTokenFrame">
-<link href="#rfc.appendix.A.5.8" rel="Chapter" title="A.5.8 StreamFrame">
-<link href="#rfc.appendix.A.5.9" rel="Chapter" title="A.5.9 MaxDataFrame">
-<link href="#rfc.appendix.A.5.10" rel="Chapter" title="A.5.10 MaxStreamDataFrame">
-<link href="#rfc.appendix.A.5.11" rel="Chapter" title="A.5.11 MaxStreamsFrame">
-<link href="#rfc.appendix.A.5.12" rel="Chapter" title="A.5.12 DataBlockedFrame">
-<link href="#rfc.appendix.A.5.13" rel="Chapter" title="A.5.13 StreamDataBlockedFrame">
-<link href="#rfc.appendix.A.5.14" rel="Chapter" title="A.5.14 StreamsBlockedFrame">
-<link href="#rfc.appendix.A.5.15" rel="Chapter" title="A.5.15 NewConnectionIDFrame">
-<link href="#rfc.appendix.A.5.16" rel="Chapter" title="A.5.16 RetireConnectionIDFrame">
-<link href="#rfc.appendix.A.5.17" rel="Chapter" title="A.5.17 PathChallengeFrame">
-<link href="#rfc.appendix.A.5.18" rel="Chapter" title="A.5.18 PathResponseFrame">
-<link href="#rfc.appendix.A.5.19" rel="Chapter" title="A.5.19 ConnectionCloseFrame">
-<link href="#rfc.appendix.A.5.20" rel="Chapter" title="A.5.20 UnknownFrame">
-<link href="#rfc.appendix.A.5.21" rel="Chapter" title="A.5.21 TransportError">
-<link href="#rfc.appendix.B" rel="Chapter" title="B HTTP/3 DATA type definitions">
+<link href="#rfc.appendix.A" rel="Chapter" title="A QUIC data field definitions">
+<link href="#rfc.appendix.A.1" rel="Chapter" title="A.1 PacketType">
+<link href="#rfc.appendix.A.2" rel="Chapter" title="A.2 PacketHeader">
+<link href="#rfc.appendix.A.3" rel="Chapter" title="A.3 KeyType">
+<link href="#rfc.appendix.A.4" rel="Chapter" title="A.4 QUIC Frames">
+<link href="#rfc.appendix.A.4.1" rel="Chapter" title="A.4.1 PaddingFrame">
+<link href="#rfc.appendix.A.4.2" rel="Chapter" title="A.4.2 PingFrame">
+<link href="#rfc.appendix.A.4.3" rel="Chapter" title="A.4.3 AckFrame">
+<link href="#rfc.appendix.A.4.4" rel="Chapter" title="A.4.4 ResetStreamFrame">
+<link href="#rfc.appendix.A.4.5" rel="Chapter" title="A.4.5 StopSendingFrame">
+<link href="#rfc.appendix.A.4.6" rel="Chapter" title="A.4.6 CryptoFrame">
+<link href="#rfc.appendix.A.4.7" rel="Chapter" title="A.4.7 NewTokenFrame">
+<link href="#rfc.appendix.A.4.8" rel="Chapter" title="A.4.8 StreamFrame">
+<link href="#rfc.appendix.A.4.9" rel="Chapter" title="A.4.9 MaxDataFrame">
+<link href="#rfc.appendix.A.4.10" rel="Chapter" title="A.4.10 MaxStreamDataFrame">
+<link href="#rfc.appendix.A.4.11" rel="Chapter" title="A.4.11 MaxStreamsFrame">
+<link href="#rfc.appendix.A.4.12" rel="Chapter" title="A.4.12 DataBlockedFrame">
+<link href="#rfc.appendix.A.4.13" rel="Chapter" title="A.4.13 StreamDataBlockedFrame">
+<link href="#rfc.appendix.A.4.14" rel="Chapter" title="A.4.14 StreamsBlockedFrame">
+<link href="#rfc.appendix.A.4.15" rel="Chapter" title="A.4.15 NewConnectionIDFrame">
+<link href="#rfc.appendix.A.4.16" rel="Chapter" title="A.4.16 RetireConnectionIDFrame">
+<link href="#rfc.appendix.A.4.17" rel="Chapter" title="A.4.17 PathChallengeFrame">
+<link href="#rfc.appendix.A.4.18" rel="Chapter" title="A.4.18 PathResponseFrame">
+<link href="#rfc.appendix.A.4.19" rel="Chapter" title="A.4.19 ConnectionCloseFrame">
+<link href="#rfc.appendix.A.4.20" rel="Chapter" title="A.4.20 UnknownFrame">
+<link href="#rfc.appendix.A.4.21" rel="Chapter" title="A.4.21 TransportError">
+<link href="#rfc.appendix.B" rel="Chapter" title="B HTTP/3 data field definitions">
 <link href="#rfc.appendix.B.1" rel="Chapter" title="B.1 HTTP/3 Frames">
 <link href="#rfc.appendix.B.1.1" rel="Chapter" title="B.1.1 DataFrame">
 <link href="#rfc.appendix.B.1.2" rel="Chapter" title="B.1.2 HeadersFrame">
-<link href="#rfc.appendix.B.1.3" rel="Chapter" title="B.1.3 PriorityFrame">
-<link href="#rfc.appendix.B.1.4" rel="Chapter" title="B.1.4 CancelPushFrame">
-<link href="#rfc.appendix.B.1.5" rel="Chapter" title="B.1.5 SettingsFrame">
-<link href="#rfc.appendix.B.1.6" rel="Chapter" title="B.1.6 PushPromiseFrame">
-<link href="#rfc.appendix.B.1.7" rel="Chapter" title="B.1.7 GoAwayFrame">
-<link href="#rfc.appendix.B.1.8" rel="Chapter" title="B.1.8 MaxPushIDFrame">
-<link href="#rfc.appendix.B.1.9" rel="Chapter" title="B.1.9 DuplicatePushFrame">
-<link href="#rfc.appendix.B.1.10" rel="Chapter" title="B.1.10 ReservedFrame">
-<link href="#rfc.appendix.B.1.11" rel="Chapter" title="B.1.11 UnknownFrame">
+<link href="#rfc.appendix.B.1.3" rel="Chapter" title="B.1.3 CancelPushFrame">
+<link href="#rfc.appendix.B.1.4" rel="Chapter" title="B.1.4 SettingsFrame">
+<link href="#rfc.appendix.B.1.5" rel="Chapter" title="B.1.5 PushPromiseFrame">
+<link href="#rfc.appendix.B.1.6" rel="Chapter" title="B.1.6 GoAwayFrame">
+<link href="#rfc.appendix.B.1.7" rel="Chapter" title="B.1.7 MaxPushIDFrame">
+<link href="#rfc.appendix.B.1.8" rel="Chapter" title="B.1.8 DuplicatePushFrame">
+<link href="#rfc.appendix.B.1.9" rel="Chapter" title="B.1.9 ReservedFrame">
+<link href="#rfc.appendix.B.1.10" rel="Chapter" title="B.1.10 UnknownFrame">
 <link href="#rfc.appendix.B.2" rel="Chapter" title="B.2 ApplicationError">
 <link href="#rfc.appendix.C" rel="Chapter" title="C QPACK DATA type definitions">
 <link href="#rfc.appendix.C.1" rel="Chapter" title="C.1 QPACK Instructions">
@@ -407,7 +404,8 @@ ul.toc li {
 <link href="#rfc.appendix.C.2" rel="Chapter" title="C.2 QPACK Header compression">
 <link href="#rfc.appendix.C.2.1" rel="Chapter" title="C.2.1 IndexedHeaderField">
 <link href="#rfc.appendix.C.2.2" rel="Chapter" title="C.2.2 LiteralHeaderFieldWithName">
-<link href="#rfc.appendix.C.2.3" rel="Chapter" title="C.2.3 QPACKHeaderBlockPrefix">
+<link href="#rfc.appendix.C.2.3" rel="Chapter" title="C.2.3 LiteralHeaderFieldWithoutName">
+<link href="#rfc.appendix.C.2.4" rel="Chapter" title="C.2.4 QPACKHeaderBlockPrefix">
 <link href="#rfc.appendix.D" rel="Chapter" title="D Change Log">
 <link href="#rfc.appendix.D.1" rel="Chapter" title="D.1 Since draft-00:">
 <link href="#rfc.appendix.E" rel="Chapter" title="E Design Variations">
@@ -415,12 +413,12 @@ ul.toc li {
 <link href="#rfc.authors" rel="Chapter">
 
 
-  <meta name="generator" content="xml2rfc version 2.31.0 - https://tools.ietf.org/tools/xml2rfc" />
+  <meta name="generator" content="xml2rfc version 2.32.0 - https://tools.ietf.org/tools/xml2rfc" />
   <link rel="schema.dct" href="http://purl.org/dc/terms/" />
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-event-definitions-quic-h3-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-10-08" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-09" />
   <meta name="dct.abstract" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema-latest." />
   <meta name="description" content="This document describes concrete qlog event definitions and their metadata for QUIC and HTTP/3-related events. These events can then be embedded in the higher level schema defined in draft-marx-quic-logging-main-schema-latest." />
 
@@ -441,10 +439,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">October 08, 2019</td>
+<td class="right">October 09, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: April 10, 2020</td>
+<td class="left">Expires: April 11, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -461,7 +459,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 10, 2020.</p>
+<p>This Internet-Draft will expire on April 11, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -549,9 +547,9 @@ ul.toc li {
 </li>
 <ul><li>6.1.   <a href="#rfc.section.6.1">http</a>
 </li>
-<ul><li>6.1.1.   <a href="#rfc.section.6.1.1">stream_state_updated</a>
+<ul><li>6.1.1.   <a href="#rfc.section.6.1.1">parameters_set</a>
 </li>
-<li>6.1.2.   <a href="#rfc.section.6.1.2">stream_type_updated</a>
+<li>6.1.2.   <a href="#rfc.section.6.1.2">stream_type_set</a>
 </li>
 <li>6.1.3.   <a href="#rfc.section.6.1.3">frame_created</a>
 </li>
@@ -559,25 +557,23 @@ ul.toc li {
 </li>
 <li>6.1.5.   <a href="#rfc.section.6.1.5">data_moved</a>
 </li>
-<li>6.1.6.   <a href="#rfc.section.6.1.6">PUSH-events</a>
+<li>6.1.6.   <a href="#rfc.section.6.1.6">push_resolved</a>
 </li>
 </ul><li>6.2.   <a href="#rfc.section.6.2">qpack</a>
 </li>
-<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">parameters_set</a>
+<ul><li>6.2.1.   <a href="#rfc.section.6.2.1">state_updated</a>
 </li>
-<li>6.2.2.   <a href="#rfc.section.6.2.2">state_updated</a>
+<li>6.2.2.   <a href="#rfc.section.6.2.2">stream_state_updated</a>
 </li>
-<li>6.2.3.   <a href="#rfc.section.6.2.3">stream_state_updated</a>
+<li>6.2.3.   <a href="#rfc.section.6.2.3">dynamic_table_updated</a>
 </li>
-<li>6.2.4.   <a href="#rfc.section.6.2.4">dynamic_table_updated</a>
+<li>6.2.4.   <a href="#rfc.section.6.2.4">headers_encoded</a>
 </li>
-<li>6.2.5.   <a href="#rfc.section.6.2.5">headers_encoded</a>
+<li>6.2.5.   <a href="#rfc.section.6.2.5">headers_decoded</a>
 </li>
-<li>6.2.6.   <a href="#rfc.section.6.2.6">headers_decoded</a>
+<li>6.2.6.   <a href="#rfc.section.6.2.6">instruction_sent</a>
 </li>
-<li>6.2.7.   <a href="#rfc.section.6.2.7">instruction_sent</a>
-</li>
-<li>6.2.8.   <a href="#rfc.section.6.2.8">instruction_received</a>
+<li>6.2.7.   <a href="#rfc.section.6.2.7">instruction_received</a>
 </li>
 </ul></ul><li>7.   <a href="#rfc.section.7">General error, warning and debugging definitions</a>
 </li>
@@ -615,61 +611,59 @@ ul.toc li {
 </li>
 <li>10.   <a href="#rfc.references">Normative References</a>
 </li>
-<li>Appendix A.   <a href="#rfc.appendix.A">QUIC DATA type definitions</a>
+<li>Appendix A.   <a href="#rfc.appendix.A">QUIC data field definitions</a>
 </li>
-<ul><li>A.1.   <a href="#rfc.appendix.A.1">TransportParameter</a>
+<ul><li>A.1.   <a href="#rfc.appendix.A.1">PacketType</a>
 </li>
-<li>A.2.   <a href="#rfc.appendix.A.2">PacketType</a>
+<li>A.2.   <a href="#rfc.appendix.A.2">PacketHeader</a>
 </li>
-<li>A.3.   <a href="#rfc.appendix.A.3">PacketHeader</a>
+<li>A.3.   <a href="#rfc.appendix.A.3">KeyType</a>
 </li>
-<li>A.4.   <a href="#rfc.appendix.A.4">KeyType</a>
+<li>A.4.   <a href="#rfc.appendix.A.4">QUIC Frames</a>
 </li>
-<li>A.5.   <a href="#rfc.appendix.A.5">QUIC Frames</a>
+<ul><li>A.4.1.   <a href="#rfc.appendix.A.4.1">PaddingFrame</a>
 </li>
-<ul><li>A.5.1.   <a href="#rfc.appendix.A.5.1">PaddingFrame</a>
+<li>A.4.2.   <a href="#rfc.appendix.A.4.2">PingFrame</a>
 </li>
-<li>A.5.2.   <a href="#rfc.appendix.A.5.2">PingFrame</a>
+<li>A.4.3.   <a href="#rfc.appendix.A.4.3">AckFrame</a>
 </li>
-<li>A.5.3.   <a href="#rfc.appendix.A.5.3">AckFrame</a>
+<li>A.4.4.   <a href="#rfc.appendix.A.4.4">ResetStreamFrame</a>
 </li>
-<li>A.5.4.   <a href="#rfc.appendix.A.5.4">ResetStreamFrame</a>
+<li>A.4.5.   <a href="#rfc.appendix.A.4.5">StopSendingFrame</a>
 </li>
-<li>A.5.5.   <a href="#rfc.appendix.A.5.5">StopSendingFrame</a>
+<li>A.4.6.   <a href="#rfc.appendix.A.4.6">CryptoFrame</a>
 </li>
-<li>A.5.6.   <a href="#rfc.appendix.A.5.6">CryptoFrame</a>
+<li>A.4.7.   <a href="#rfc.appendix.A.4.7">NewTokenFrame</a>
 </li>
-<li>A.5.7.   <a href="#rfc.appendix.A.5.7">NewTokenFrame</a>
+<li>A.4.8.   <a href="#rfc.appendix.A.4.8">StreamFrame</a>
 </li>
-<li>A.5.8.   <a href="#rfc.appendix.A.5.8">StreamFrame</a>
+<li>A.4.9.   <a href="#rfc.appendix.A.4.9">MaxDataFrame</a>
 </li>
-<li>A.5.9.   <a href="#rfc.appendix.A.5.9">MaxDataFrame</a>
+<li>A.4.10.   <a href="#rfc.appendix.A.4.10">MaxStreamDataFrame</a>
 </li>
-<li>A.5.10.   <a href="#rfc.appendix.A.5.10">MaxStreamDataFrame</a>
+<li>A.4.11.   <a href="#rfc.appendix.A.4.11">MaxStreamsFrame</a>
 </li>
-<li>A.5.11.   <a href="#rfc.appendix.A.5.11">MaxStreamsFrame</a>
+<li>A.4.12.   <a href="#rfc.appendix.A.4.12">DataBlockedFrame</a>
 </li>
-<li>A.5.12.   <a href="#rfc.appendix.A.5.12">DataBlockedFrame</a>
+<li>A.4.13.   <a href="#rfc.appendix.A.4.13">StreamDataBlockedFrame</a>
 </li>
-<li>A.5.13.   <a href="#rfc.appendix.A.5.13">StreamDataBlockedFrame</a>
+<li>A.4.14.   <a href="#rfc.appendix.A.4.14">StreamsBlockedFrame</a>
 </li>
-<li>A.5.14.   <a href="#rfc.appendix.A.5.14">StreamsBlockedFrame</a>
+<li>A.4.15.   <a href="#rfc.appendix.A.4.15">NewConnectionIDFrame</a>
 </li>
-<li>A.5.15.   <a href="#rfc.appendix.A.5.15">NewConnectionIDFrame</a>
+<li>A.4.16.   <a href="#rfc.appendix.A.4.16">RetireConnectionIDFrame</a>
 </li>
-<li>A.5.16.   <a href="#rfc.appendix.A.5.16">RetireConnectionIDFrame</a>
+<li>A.4.17.   <a href="#rfc.appendix.A.4.17">PathChallengeFrame</a>
 </li>
-<li>A.5.17.   <a href="#rfc.appendix.A.5.17">PathChallengeFrame</a>
+<li>A.4.18.   <a href="#rfc.appendix.A.4.18">PathResponseFrame</a>
 </li>
-<li>A.5.18.   <a href="#rfc.appendix.A.5.18">PathResponseFrame</a>
+<li>A.4.19.   <a href="#rfc.appendix.A.4.19">ConnectionCloseFrame</a>
 </li>
-<li>A.5.19.   <a href="#rfc.appendix.A.5.19">ConnectionCloseFrame</a>
+<li>A.4.20.   <a href="#rfc.appendix.A.4.20">UnknownFrame</a>
 </li>
-<li>A.5.20.   <a href="#rfc.appendix.A.5.20">UnknownFrame</a>
+<li>A.4.21.   <a href="#rfc.appendix.A.4.21">TransportError</a>
 </li>
-<li>A.5.21.   <a href="#rfc.appendix.A.5.21">TransportError</a>
-</li>
-</ul></ul><li>Appendix B.   <a href="#rfc.appendix.B">HTTP/3 DATA type definitions</a>
+</ul></ul><li>Appendix B.   <a href="#rfc.appendix.B">HTTP/3 data field definitions</a>
 </li>
 <ul><li>B.1.   <a href="#rfc.appendix.B.1">HTTP/3 Frames</a>
 </li>
@@ -677,23 +671,21 @@ ul.toc li {
 </li>
 <li>B.1.2.   <a href="#rfc.appendix.B.1.2">HeadersFrame</a>
 </li>
-<li>B.1.3.   <a href="#rfc.appendix.B.1.3">PriorityFrame</a>
+<li>B.1.3.   <a href="#rfc.appendix.B.1.3">CancelPushFrame</a>
 </li>
-<li>B.1.4.   <a href="#rfc.appendix.B.1.4">CancelPushFrame</a>
+<li>B.1.4.   <a href="#rfc.appendix.B.1.4">SettingsFrame</a>
 </li>
-<li>B.1.5.   <a href="#rfc.appendix.B.1.5">SettingsFrame</a>
+<li>B.1.5.   <a href="#rfc.appendix.B.1.5">PushPromiseFrame</a>
 </li>
-<li>B.1.6.   <a href="#rfc.appendix.B.1.6">PushPromiseFrame</a>
+<li>B.1.6.   <a href="#rfc.appendix.B.1.6">GoAwayFrame</a>
 </li>
-<li>B.1.7.   <a href="#rfc.appendix.B.1.7">GoAwayFrame</a>
+<li>B.1.7.   <a href="#rfc.appendix.B.1.7">MaxPushIDFrame</a>
 </li>
-<li>B.1.8.   <a href="#rfc.appendix.B.1.8">MaxPushIDFrame</a>
+<li>B.1.8.   <a href="#rfc.appendix.B.1.8">DuplicatePushFrame</a>
 </li>
-<li>B.1.9.   <a href="#rfc.appendix.B.1.9">DuplicatePushFrame</a>
+<li>B.1.9.   <a href="#rfc.appendix.B.1.9">ReservedFrame</a>
 </li>
-<li>B.1.10.   <a href="#rfc.appendix.B.1.10">ReservedFrame</a>
-</li>
-<li>B.1.11.   <a href="#rfc.appendix.B.1.11">UnknownFrame</a>
+<li>B.1.10.   <a href="#rfc.appendix.B.1.10">UnknownFrame</a>
 </li>
 </ul><li>B.2.   <a href="#rfc.appendix.B.2">ApplicationError</a>
 </li>
@@ -721,7 +713,9 @@ ul.toc li {
 </li>
 <li>C.2.2.   <a href="#rfc.appendix.C.2.2">LiteralHeaderFieldWithName</a>
 </li>
-<li>C.2.3.   <a href="#rfc.appendix.C.2.3">QPACKHeaderBlockPrefix</a>
+<li>C.2.3.   <a href="#rfc.appendix.C.2.3">LiteralHeaderFieldWithoutName</a>
+</li>
+<li>C.2.4.   <a href="#rfc.appendix.C.2.4">QPACKHeaderBlockPrefix</a>
 </li>
 </ul></ul><li>Appendix D.   <a href="#rfc.appendix.D">Change Log</a>
 </li>
@@ -779,7 +773,7 @@ ul.toc li {
 </h1>
 <p id="rfc.section.2.p.1">This document describes the values of the qlog &#8220;category&#8221;, &#8220;event&#8221; and &#8220;data&#8221; fields and their semantics for the QUIC and HTTP/3 protocols. The definitions included in this file are assumed to be used in qlog&#8217;s &#8220;trace&#8221; containers, where the trace&#8217;s &#8220;protocol_type&#8221; field MUST be set to &#8220;QUIC_HTTP3&#8221;.</p>
 <p id="rfc.section.2.p.2">Many of the events map directly to concepts seen in the QUIC and HTTP/3 documents, while others act as aggregating events that combine data from several possible protocol behaviours or code paths into one, to reduce the amount of different event definitions. Limiting the amount of different events is one of the main design goals for this document. As such, many events that can be directly inferred from data on the wire (e.g., flow control limit changes) if the implementation is bug-free, are not explicitly defined as stand-alone events.</p>
-<p id="rfc.section.2.p.3">Similarly, we prevent logging duplicate data as much as possible. As such, especially packet header value updates are split out into separate events (e.g., spin_bit_updated, connection_id_updated), as there are expected to change sparingly.</p>
+<p id="rfc.section.2.p.3">Similarly, we prevent logging duplicate data as much as possible. As such, especially packet header value updates are split out into separate events (e.g., spin_bit_updated, connection_id_updated), as they are expected to change sparingly.</p>
 <p id="rfc.section.2.p.4">This document assumes the usage of the encompassing main qlog schema defined in draft-marx-quic-logging-main-schema-latest. Each subsection below defines a separate category (e.g., connectivity, transport, http) and each subsubsection is an event type.</p>
 <p id="rfc.section.2.p.5">For each event type, its importance and data definition is laid out, often accompanied by possible values for the optional &#8220;trigger&#8221; field. For the definition and semantics of &#8220;trigger&#8221;, see the main scheme document.</p>
 <p id="rfc.section.2.p.6">Most of the complex datastructures, enums and re-usable definitions are grouped together on the bottom of the document for clarity.</p>
@@ -823,7 +817,7 @@ ul.toc li {
 <a href="#rfc.section.5.1.2">5.1.2.</a> <a href="#connectionstarted" id="connectionstarted">connection_started</a>
 </h1>
 <p id="rfc.section.5.1.2.p.1">Importance: Base</p>
-<p id="rfc.section.5.1.2.p.2">Used for both attempting (client-perspective) and accepting (server-perspective) new connections.</p>
+<p id="rfc.section.5.1.2.p.2">Used for both attempting (client-perspective) and accepting (server-perspective) new connections. Note that this event has overlap with connection_state_updated and this is a separate event mainly because of all the additional data that should be logged.</p>
 <p id="rfc.section.5.1.2.p.3">Data:</p>
 <pre>
 {
@@ -899,6 +893,7 @@ enum ConnectionState {
 <ul>
 <li>&#8220;error&#8221; // when closing because of an unexpected event</li>
 <li>&#8220;clean&#8221; // when closing normally</li>
+<li>&#8220;application&#8221; // e.g., HTTP/3&#8217;s GOAWAY frame</li>
 </ul>
 <h1 id="rfc.section.5.1.7">
 <a href="#rfc.section.5.1.7">5.1.7.</a> <a href="#migration-related-events" id="migration-related-events">MIGRATION-related events</a>
@@ -964,11 +959,11 @@ enum ConnectionState {
 <p id="rfc.section.5.3.1.p.1">Importance: Core</p>
 <p id="rfc.section.5.3.1.p.2">This event groups settings from many different sources (transport parameters, version negotiation, ALPN selection, TLS ciphers, etc.) into a single event. This is done to minimize the amount of events and to decouple conceptual setting impacts from their underlying mechanism for easier high-level reasoning.</p>
 <p id="rfc.section.5.3.1.p.3">All these settings are typically set once and never change. However, they are typically set at different times during the connection, so there will typically be several instances of this event with different fields set.</p>
-<p id="rfc.section.5.3.1.p.4">Note that while the settings may be set just once, some have two variations (one set locally, one requested by the remote peer). This is reflected in the &#8220;owner&#8221; field. As such, this field MUST be correct for all settings included a single event instance. If you need to log settings from two sides, you MUST emit two separate event instances.</p>
+<p id="rfc.section.5.3.1.p.4">Note that some settings have two variations (one set locally, one requested by the remote peer). This is reflected in the &#8220;owner&#8221; field. As such, this field MUST be correct for all settings included a single event instance. If you need to log settings from two sides, you MUST emit two separate event instances.</p>
 <p id="rfc.section.5.3.1.p.5">Data:</p>
 <pre>
 {
-    owner?:string = "local" | "remote", // can be left for bidirectionally negotiated parameters, e.g. ALPN
+    owner?:"local" | "remote", // can be left for bidirectionally negotiated parameters, e.g. ALPN
 
     resumption_allowed?:boolean, // valid session ticket was received
     early_data_enabled?:boolean, // early data extension was enabled on the TLS layer
@@ -1008,7 +1003,7 @@ interface PreferredAddress {
     stateless_reset_token:string // hex
 }
 </pre>
-<p id="rfc.section.5.3.1.p.6">Additionally, this event can contain any number of unspecified fields. This is to reflect setting of for example unknown (greased) transport parameters or employed (proprietary) extensions.</p>
+<p id="rfc.section.5.3.1.p.6">Additionally, this event can contain any number of unspecified fields. This is to reflect setting of for example unknown (greased) transport parameters or employed (proprietary) extensions. In this case, the field name should be the hex-encoded value of the parameter name or identifier.</p>
 <h1 id="rfc.section.5.3.2">
 <a href="#rfc.section.5.3.2">5.3.2.</a> <a href="#packetsent" id="packetsent">packet_sent</a>
 </h1>
@@ -1096,7 +1091,7 @@ interface PreferredAddress {
 <a href="#rfc.section.5.3.5">5.3.5.</a> <a href="#packetbuffered" id="packetbuffered">packet_buffered</a>
 </h1>
 <p id="rfc.section.5.3.5.p.1">Importance: Base</p>
-<p id="rfc.section.5.3.5.p.2">TODO: No need to repeat full packet here, should be logged in another event for that</p>
+<p id="rfc.section.5.3.5.p.2">This event is emitted when a packet is buffered because it cannot be processed yet. Typically, this is because the packet cannot be parsed yet, and thus we only log the full packet contents when it was parsed in a packet_received event.</p>
 <p id="rfc.section.5.3.5.p.3">Data:</p>
 <pre>
 {
@@ -1157,6 +1152,7 @@ interface PreferredAddress {
 <pre>
 {
     stream_id:string,
+    stream_type?:"unidirectional"|"bidirectional", // mainly useful when opening the stream
 
     old?:StreamState,
     new:StreamState,
@@ -1168,9 +1164,9 @@ enum StreamState {
     // bidirectional stream states, draft-23 3.4.
     idle,
     open,
-    closed
     half_closed_local,
     half_closed_remote,
+    closed,
 
     // sending-side stream states, draft-23 3.1.
     ready,
@@ -1370,64 +1366,55 @@ enum StreamState {
 </h1>
 <p id="rfc.section.6.1.p.1">Note: like all category values, the &#8220;http&#8221; category is written in lowercase.</p>
 <h1 id="rfc.section.6.1.1">
-<a href="#rfc.section.6.1.1">6.1.1.</a> <a href="#streamstateupdated-1" id="streamstateupdated-1">stream_state_updated</a>
+<a href="#rfc.section.6.1.1">6.1.1.</a> <a href="#parametersset-2" id="parametersset-2">parameters_set</a>
 </h1>
 <p id="rfc.section.6.1.1.p.1">Importance: Base</p>
-<p id="rfc.section.6.1.1.p.2">Data:</p>
+<p id="rfc.section.6.1.1.p.2">This event contains HTTP/3 and QPACK-level settings, mostly those received from the HTTP/3 SETTINGS frame. All these parameters are typically set once and never change. However, they are typically set at different times during the connection, so there can be several instances of this event with different fields set.</p>
+<p id="rfc.section.6.1.1.p.3">Note that some settings have two variations (one set locally, one requested by the remote peer). This is reflected in the &#8220;owner&#8221; field. As such, this field MUST be correct for all settings included a single event instance. If you need to log settings from two sides, you MUST emit two separate event instances.</p>
+<p id="rfc.section.6.1.1.p.4">Data:</p>
 <pre>
 {
-    id:string,
-    old?:string,
-    new:string,
+    owner?:"local" | "remote",
 
-    trigger?: string
+    max_header_list_size?:number, // from SETTINGS_MAX_HEADER_LIST_SIZE
+    max_table_capacity?:number, // from SETTINGS_QPACK_MAX_TABLE_CAPACITY
+    blocked_streams_count?:number, // from SETTINGS_QPACK_BLOCKED_STREAMS
+
+    push_allowed?:boolean, // received a MAX_PUSH_ID frame with non-zero value
+
+    // qlog-defined
+    waits_for_settings?:boolean // indicates whether this implementation waits for a SETTINGS frame before processing requests
 }
 </pre>
-<p id="rfc.section.6.1.1.p.3">Possible values:</p>
-<p></p>
-
-<ul>
-<li>open // maybe local_open, remote_open?</li>
-<li>closed // maybe local_closed, remote_closed?</li>
-<li>expecting_push</li>
-<li>expecting_settings</li>
-<li>cancelled</li>
-</ul>
-<p id="rfc.section.6.1.1.p.5">Currently, there is no proper state diagram in the HTTP draft (as opposed to the quic draft). TODO: figure out proper values for this.</p>
-<p id="rfc.section.6.1.1.p.6">Triggers:</p>
-<p></p>
-
-<ul>
-<li>&#8220;request&#8221; // opened due to GET,POST,PUT,DELETE,&#8230; request from peer</li>
-<li>&#8220;push&#8221;</li>
-<li>&#8220;reset&#8221; // closed due to reset from peer</li>
-</ul>
+<p id="rfc.section.6.1.1.p.5">Additionally, this event can contain any number of unspecified fields. This is to reflect setting of for example unknown (greased) settings or parameters of (proprietary) extensions. In this case, the field name should be the hex-encoded value of the setting identifier.</p>
 <h1 id="rfc.section.6.1.2">
-<a href="#rfc.section.6.1.2">6.1.2.</a> <a href="#streamtypeupdated" id="streamtypeupdated">stream_type_updated</a>
+<a href="#rfc.section.6.1.2">6.1.2.</a> <a href="#streamtypeset" id="streamtypeset">stream_type_set</a>
 </h1>
 <p id="rfc.section.6.1.2.p.1">Importance: Base</p>
-<p id="rfc.section.6.1.2.p.2">TODO: possible merge this with stream_state_update? Don&#8217;t really want to watch for 2 events to get a newly opened stream + know what type it is</p>
-<p id="rfc.section.6.1.2.p.3">Data:</p>
+<p id="rfc.section.6.1.2.p.2">Emitted when a stream&#8217;s type becomes known. This is typically when a stream is opened and the stream&#8217;s type indicator is sent or received.</p>
+<p id="rfc.section.6.1.2.p.3">Note: most of this information can also be inferred by looking at a stream&#8217;s id, since id&#8217;s are strictly partitioned at the QUIC level. Even so, this event has a &#8220;Base&#8221; importance because it helps a lot in debugging to have this information clearly spelled out.</p>
+<p id="rfc.section.6.1.2.p.4">Data:</p>
 <pre>
 {
-    id:string,
-    old?:string,
-    new:string,
+    stream_id:string,
+
     owner?:"local"|"remote"
+
+    old?:StreamType,
+    new:StreamType,
+
+    associated_push_id?:number // only when new == "push"
+}
+
+enum StreamType {
+    data, // bidirectional request-response streams
+    control,
+    push,
+    reserved,
+    qpack_encode,
+    qpack_decode
 }
 </pre>
-<p id="rfc.section.6.1.2.p.4">Possible values:</p>
-<p></p>
-
-<ul>
-<li>data</li>
-<li>control</li>
-<li>qpack_encode</li>
-<li>qpack_decode</li>
-<li>push</li>
-<li>reserved</li>
-</ul>
-<p id="rfc.section.6.1.2.p.6">Currently, there is no proper state diagram in the HTTP draft (as opposed to the quic draft). TODO: figure out proper values for this.</p>
 <h1 id="rfc.section.6.1.3">
 <a href="#rfc.section.6.1.3">6.1.3.</a> <a href="#framecreated" id="framecreated">frame_created</a>
 </h1>
@@ -1440,31 +1427,33 @@ enum StreamState {
     frame:HTTP3Frame // see appendix for the definitions,
     byte_length?:string,
 
-    raw?:string
+    raw?:string // in hex
 }
 </pre>
+<p id="rfc.section.6.1.3.p.4">Note: in HTTP/3, DATA frames can have arbitrarily large lengths to reduce frame header overhead. As such, DATA frames can span many QUIC packets and can be created in a streaming fashion. In this case, the frame_created event is emitted once for the frame header, and further streamed data is indicated using the data_moved event.</p>
 <h1 id="rfc.section.6.1.4">
 <a href="#rfc.section.6.1.4">6.1.4.</a> <a href="#frameparsed" id="frameparsed">frame_parsed</a>
 </h1>
 <p id="rfc.section.6.1.4.p.1">Importance: Core</p>
 <p id="rfc.section.6.1.4.p.2">HTTP equivalent to the packet_received event. This event is emitted when we actually parse the HTTP/3 frame. Note: this is not necessarily the same as when the HTTP/3 data is actually received on the QUIC layer. For that, see the &#8220;data_moved&#8221; event.</p>
-<p id="rfc.section.6.1.4.p.3">TODO: how do we deal with partial frames (e.g., length is very long, we&#8217;re streaming this incrementally: events should indicate this setup? or you just have 1 frame_parsed and several data_received events for that stream?). Similar for frame_created.</p>
-<p id="rfc.section.6.1.4.p.4">Data:</p>
+<p id="rfc.section.6.1.4.p.3">Data:</p>
 <pre>
 {
     stream_id:string,
     frame:HTTP3Frame // see appendix for the definitions,
     byte_length?:string,
 
-    raw?:string
+    raw?:string // in hex
 }
 </pre>
+<p id="rfc.section.6.1.4.p.4">Note: in HTTP/3, DATA frames can have arbitrarily large lengths to reduce frame header overhead. As such, DATA frames can span many QUIC packets and can be processed in a streaming fashion. In this case, the frame_parsed event is emitted once for the frame header, and further streamed data is indicated using the data_moved event.</p>
 <h1 id="rfc.section.6.1.5">
 <a href="#rfc.section.6.1.5">6.1.5.</a> <a href="#datamoved" id="datamoved">data_moved</a>
 </h1>
-<p id="rfc.section.6.1.5.p.1">Importance: Extra</p>
-<p id="rfc.section.6.1.5.p.2">Used to indicate when data moves between the HTTP/3 and the transport layer (e.g., passing from H3 to QUIC stream buffers and vice versa) or between HTTP/3 and the actual user application on top (e.g., a browser engine). This helps debug errors where buffers are full with ready data, but aren&#8217;t beind drained fast enough.</p>
-<p id="rfc.section.6.1.5.p.3">Data:</p>
+<p id="rfc.section.6.1.5.p.1">Importance: Base</p>
+<p id="rfc.section.6.1.5.p.2">Used to indicate when data moves between the HTTP/3 and the transport layer (e.g., passing from H3 to QUIC stream buffers and vice versa) or between HTTP/3 and the actual user application on top (e.g., a browser engine). This helps make clear the flow of data, how long data remains in various buffers and the overheads introduced by HTTP/3&#8217;s framing layer.</p>
+<p id="rfc.section.6.1.5.p.3">For example, when moving from application to http, the data will most likely be the raw request we wish to transmit. When then moving that request from http to transport, it will be compressed using QPACK and wrapped in an HTTP/3 HEADERS frame. Similarly, when receiving data from the transport layer, this will potentially include HTTP/3 headers, which are not passed on to the application layer. A final use case is making clear when only part of an HTTP/3 frame is received (e.g., only 1 or 2 bytes, while 3, 4 or more are needed to fully interpret an HTTP/3 frame).</p>
+<p id="rfc.section.6.1.5.p.4">Data:</p>
 <pre>
 {
     stream_id:string,
@@ -1474,41 +1463,40 @@ enum StreamState {
     length?:number, // to be used mainly if no exact offsets are known
 
     from?:"application"|"transport",
-    to?:"application"|"transport"
+    to?:"application"|"transport",
+
+    raw?:string // in hex
 }
 </pre>
-<p id="rfc.section.6.1.5.p.4">The &#8220;from&#8221; and &#8220;to&#8221; fields MUST NOT be set at the same time. The missing field is always implied to have the value &#8220;http&#8221;.</p>
-<p id="rfc.section.6.1.5.p.5">TODO: add separate event to highlight when we didn&#8217;t receive enough data to actually decode an H3 frame (e.g., only received 1 byte of 2-byte VLIE encoded value)</p>
-<p id="rfc.section.6.1.5.p.6">TODO: add separate diagnostic event(s) to indicate when HOL-blocking occured (both inter-stream in H3 and intra-stream in QPACK layers and for control stream packets (e.g., prioritization, push))</p>
+<p id="rfc.section.6.1.5.p.5">The &#8220;from&#8221; and &#8220;to&#8221; fields MUST NOT be set at the same time. The missing field is always implied to have the value &#8220;http&#8221;.</p>
 <h1 id="rfc.section.6.1.6">
-<a href="#rfc.section.6.1.6">6.1.6.</a> <a href="#push-events" id="push-events">PUSH-events</a>
+<a href="#rfc.section.6.1.6">6.1.6.</a> <a href="#pushresolved" id="pushresolved">push_resolved</a>
 </h1>
-<p id="rfc.section.6.1.6.p.1">TODO: add these</p>
+<p id="rfc.section.6.1.6.p.1">Importance: Extra</p>
+<p id="rfc.section.6.1.6.p.2">This event is emitted when a pushed resource is successfully claimed (used) or, conversely, abandoned (rejected) by the application on top of HTTP/3 (e.g., the web browser). This event is added to help debug problems with unexpected PUSH behaviour, which is commonplace with HTTP/2.</p>
+<pre>
+{
+    push_id?:number,
+    stream_id?:string, // in case this is logged from a place that does not have access to the push_id
+
+    decision:"claimed"|"abandoned"
+}
+</pre>
 <h1 id="rfc.section.6.2">
 <a href="#rfc.section.6.2">6.2.</a> <a href="#qpack" id="qpack">qpack</a>
 </h1>
 <p id="rfc.section.6.2.p.1">Note: like all category values, the &#8220;qpack&#8221; category is written in lowercase.</p>
 <p id="rfc.section.6.2.p.2">The QPACK events mainly serve as an aid to debug low-level QPACK issues. The higher-level, plaintext header values SHOULD (also) be logged in the http.frame_created and http.frame_parsed event data (instead).</p>
+<p id="rfc.section.6.2.p.3">Note: qpack does not have its own parameters_set event. This was merged with http.parameters_set for brevity, since qpack is a required extension for HTTP/3 anyway. Other HTTP/3 extensions MAY also log their SETTINGS fields in http.parameters_set or MAY define their own events.</p>
 <h1 id="rfc.section.6.2.1">
-<a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#parametersset-2" id="parametersset-2">parameters_set</a>
+<a href="#rfc.section.6.2.1">6.2.1.</a> <a href="#stateupdated" id="stateupdated">state_updated</a>
 </h1>
 <p id="rfc.section.6.2.1.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.1.p.2">This event contains QPACK-level settings, received from the HTTP/3 SETTINGS frame.  All these parameters are typically set once and never change.</p>
+<p id="rfc.section.6.2.1.p.2">This event is emitted when one or more of the internal QPACK variables changes value. Note that some variables have two variations (one set locally, one requested by the remote peer). This is reflected in the &#8220;owner&#8221; field. As such, this field MUST be correct for all variables included a single event instance. If you need to log settings from two sides, you MUST emit two separate event instances.</p>
+<p id="rfc.section.6.2.1.p.3">Data:</p>
 <pre>
 {
-    max_table_capacity?:number, // from SETTINGS_QPACK_MAX_TABLE_CAPACITY
-    blocked_streams_count?:number // from SETTINGS_QPACK_BLOCKED_STREAMS
-}
-</pre>
-<h1 id="rfc.section.6.2.2">
-<a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#stateupdated" id="stateupdated">state_updated</a>
-</h1>
-<p id="rfc.section.6.2.2.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.2.p.2">This event is emitted when one or more of the internal QPACK variables changes value. Note that some variables have two variations (one set locally, one requested by the remote peer). This is reflected in the &#8220;owner&#8221; field. As such, this field MUST be correct for all variables included a single event instance. If you need to log settings from two sides, you MUST emit two separate event instances.</p>
-<p id="rfc.section.6.2.2.p.3">Data:</p>
-<pre>
-{
-    owner?:string = "local" | "remote", // can be left for bidirectionally negotiated parameters, e.g. ALPN
+    owner?:"local" | "remote", // can be left for bidirectionally negotiated parameters, e.g. ALPN
 
     dynamic_table_capacity?:number,
     dynamic_table_size?:number, // effective current size, sum of all the entries
@@ -1517,13 +1505,13 @@ enum StreamState {
     current_insert_count?:number
 }
 </pre>
-<h1 id="rfc.section.6.2.3">
-<a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#streamstateupdated-2" id="streamstateupdated-2">stream_state_updated</a>
+<h1 id="rfc.section.6.2.2">
+<a href="#rfc.section.6.2.2">6.2.2.</a> <a href="#streamstateupdated-1" id="streamstateupdated-1">stream_state_updated</a>
 </h1>
-<p id="rfc.section.6.2.3.p.1">Importance: Core</p>
-<p id="rfc.section.6.2.3.p.2">This event is emitted when a stream becomes blocked or unblocked by header decoding requests or QPACK instructions.</p>
-<p id="rfc.section.6.2.3.p.3">Note: This event is of &#8220;Core&#8221; importance, as it might have a large impact on HTTP/3&#8217;s observed performance.</p>
-<p id="rfc.section.6.2.3.p.4">Data:</p>
+<p id="rfc.section.6.2.2.p.1">Importance: Core</p>
+<p id="rfc.section.6.2.2.p.2">This event is emitted when a stream becomes blocked or unblocked by header decoding requests or QPACK instructions.</p>
+<p id="rfc.section.6.2.2.p.3">Note: This event is of &#8220;Core&#8221; importance, as it might have a large impact on HTTP/3&#8217;s observed performance.</p>
+<p id="rfc.section.6.2.2.p.4">Data:</p>
 <pre>
 {
     stream_id:string,
@@ -1531,12 +1519,12 @@ enum StreamState {
     state:"blocked"|"unblocked" // streams are assumed to start "unblocked" until they become "blocked"
 }
 </pre>
-<h1 id="rfc.section.6.2.4">
-<a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#dynamictableupdated" id="dynamictableupdated">dynamic_table_updated</a>
+<h1 id="rfc.section.6.2.3">
+<a href="#rfc.section.6.2.3">6.2.3.</a> <a href="#dynamictableupdated" id="dynamictableupdated">dynamic_table_updated</a>
 </h1>
-<p id="rfc.section.6.2.4.p.1">Importance: Extra</p>
-<p id="rfc.section.6.2.4.p.2">This event is emitted when one or more entries are added or evicted from QPACK&#8217;s dynamic table.</p>
-<p id="rfc.section.6.2.4.p.3">Data:</p>
+<p id="rfc.section.6.2.3.p.1">Importance: Extra</p>
+<p id="rfc.section.6.2.3.p.2">This event is emitted when one or more entries are added or evicted from QPACK&#8217;s dynamic table.</p>
+<p id="rfc.section.6.2.3.p.3">Data:</p>
 <pre>
 {
     update_type:"added"|"evicted",
@@ -1545,17 +1533,36 @@ enum StreamState {
 }
 
 class DynamicTableEntry {
-    index:number,
-    name?:string,
-    value?:string
+    index:number;
+    name?:string;
+    value?:string;
+}
+</pre>
+<h1 id="rfc.section.6.2.4">
+<a href="#rfc.section.6.2.4">6.2.4.</a> <a href="#headersencoded" id="headersencoded">headers_encoded</a>
+</h1>
+<p id="rfc.section.6.2.4.p.1">Importance: Base</p>
+<p id="rfc.section.6.2.4.p.2">This event is emitted when an uncompressed header block is encoded successfully.</p>
+<p id="rfc.section.6.2.4.p.3">Note: this event has overlap with http.frame_created for the HeadersFrame type.  When outputting both events, implementers MAY omit the &#8220;headers&#8221; field in this event.</p>
+<p id="rfc.section.6.2.4.p.4">Data:</p>
+<pre>
+{
+    stream_id?:string,
+
+    headers?:Array&lt;HTTPHeader&gt;,
+
+    block_prefix:QPACKHeaderBlockPrefix,
+    compressed_headers:Array&lt;QPackCompressedHeader&gt;,
+
+    raw?:string, // in hex
 }
 </pre>
 <h1 id="rfc.section.6.2.5">
-<a href="#rfc.section.6.2.5">6.2.5.</a> <a href="#headersencoded" id="headersencoded">headers_encoded</a>
+<a href="#rfc.section.6.2.5">6.2.5.</a> <a href="#headersdecoded" id="headersdecoded">headers_decoded</a>
 </h1>
 <p id="rfc.section.6.2.5.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.5.p.2">This event is emitted when an uncompressed header block is encoded successfully.</p>
-<p id="rfc.section.6.2.5.p.3">Note: this event has overlap with http.frame_created for the HeadersFrame type.  When outputting both events, implementers MAY omit the &#8220;headers&#8221; field in this event.</p>
+<p id="rfc.section.6.2.5.p.2">This event is emitted when a compressed header block is decoded successfully.</p>
+<p id="rfc.section.6.2.5.p.3">Note: this event has overlap with http.frame_parsed for the HeadersFrame type.  When outputting both events, implementers MAY omit the &#8220;headers&#8221; field in this event.</p>
 <p id="rfc.section.6.2.5.p.4">Data:</p>
 <pre>
 {
@@ -1570,29 +1577,25 @@ class DynamicTableEntry {
 }
 </pre>
 <h1 id="rfc.section.6.2.6">
-<a href="#rfc.section.6.2.6">6.2.6.</a> <a href="#headersdecoded" id="headersdecoded">headers_decoded</a>
+<a href="#rfc.section.6.2.6">6.2.6.</a> <a href="#instructionsent" id="instructionsent">instruction_sent</a>
 </h1>
 <p id="rfc.section.6.2.6.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.6.p.2">This event is emitted when a compressed header block is decoded successfully.</p>
-<p id="rfc.section.6.2.6.p.3">Note: this event has overlap with http.frame_parsed for the HeadersFrame type.  When outputting both events, implementers MAY omit the &#8220;headers&#8221; field in this event.</p>
-<p id="rfc.section.6.2.6.p.4">Data:</p>
+<p id="rfc.section.6.2.6.p.2">This event is emitted when a QPACK instruction (both decoder and encoder) is sent.</p>
+<p id="rfc.section.6.2.6.p.3">Data:</p>
 <pre>
 {
-    stream_id?:string,
+    instruction:QPACKInstruction // see appendix for the definitions,
+    byte_length?:string,
 
-    headers?:Array&lt;HTTPHeader&gt;,
-
-    block_prefix:QPACKHeaderBlockPrefix,
-    compressed_headers:Array&lt;QPackCompressedHeader&gt;,
-
-    raw?:string, // in hex
+    raw?:string // in hex
 }
 </pre>
+<p id="rfc.section.6.2.6.p.4">Note: encoder/decoder semantics and stream_id&#8217;s are implicit in either the instruction types or can be logged via other events (e.g., http.stream_type_set)</p>
 <h1 id="rfc.section.6.2.7">
-<a href="#rfc.section.6.2.7">6.2.7.</a> <a href="#instructionsent" id="instructionsent">instruction_sent</a>
+<a href="#rfc.section.6.2.7">6.2.7.</a> <a href="#instructionreceived" id="instructionreceived">instruction_received</a>
 </h1>
 <p id="rfc.section.6.2.7.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.7.p.2">This event is emitted when a QPACK instruction (both decoder and encoder) is sent.</p>
+<p id="rfc.section.6.2.7.p.2">This event is emitted when a QPACK instruction (both decoder and encoder) is received.</p>
 <p id="rfc.section.6.2.7.p.3">Data:</p>
 <pre>
 {
@@ -1602,22 +1605,7 @@ class DynamicTableEntry {
     raw?:string // in hex
 }
 </pre>
-<p id="rfc.section.6.2.7.p.4">Note: encoder/decoder semantics and stream_id&#8217;s are implicit in either the instruction types or can be logged via other events (e.g., http.stream_type_updated)</p>
-<h1 id="rfc.section.6.2.8">
-<a href="#rfc.section.6.2.8">6.2.8.</a> <a href="#instructionreceived" id="instructionreceived">instruction_received</a>
-</h1>
-<p id="rfc.section.6.2.8.p.1">Importance: Base</p>
-<p id="rfc.section.6.2.8.p.2">This event is emitted when a QPACK instruction (both decoder and encoder) is received.</p>
-<p id="rfc.section.6.2.8.p.3">Data:</p>
-<pre>
-{
-    instruction:QPACKInstruction // see appendix for the definitions,
-    byte_length?:string,
-
-    raw?:string // in hex
-}
-</pre>
-<p id="rfc.section.6.2.8.p.4">Note: encoder/decoder semantics and stream_id&#8217;s are implicit in either the instruction types or can be logged via other events (e.g., http.stream_type_updated)</p>
+<p id="rfc.section.6.2.7.p.4">Note: encoder/decoder semantics and stream_id&#8217;s are implicit in either the instruction types or can be logged via other events (e.g., http.stream_type_set)</p>
 <h1 id="rfc.section.7">
 <a href="#rfc.section.7">7.</a> <a href="#general-error-warning-and-debugging-definitions" id="general-error-warning-and-debugging-definitions">General error, warning and debugging definitions</a>
 </h1>
@@ -1759,21 +1747,10 @@ class DynamicTableEntry {
 </tr>
 </tbody></table>
 <h1 id="rfc.appendix.A">
-<a href="#rfc.appendix.A">Appendix A.</a> <a href="#quic-data-type-definitions" id="quic-data-type-definitions">QUIC DATA type definitions</a>
+<a href="#rfc.appendix.A">Appendix A.</a> <a href="#quic-data-field-definitions" id="quic-data-field-definitions">QUIC data field definitions</a>
 </h1>
 <h1 id="rfc.appendix.A.1">
-<a href="#rfc.appendix.A.1">A.1.</a> <a href="#transportparameter" id="transportparameter">TransportParameter</a>
-</h1>
-<pre>
-class TransportParameter
-{
-    name:string, // TODO: list all transport parameters properly in an enum
-    raw_name:string, // for unknown parameters
-    content:any
-}
-</pre>
-<h1 id="rfc.appendix.A.2">
-<a href="#rfc.appendix.A.2">A.2.</a> <a href="#packettype" id="packettype">PacketType</a>
+<a href="#rfc.appendix.A.1">A.1.</a> <a href="#packettype" id="packettype">PacketType</a>
 </h1>
 <pre>
 enum PacketType {
@@ -1786,8 +1763,8 @@ enum PacketType {
     unknown
 }
 </pre>
-<h1 id="rfc.appendix.A.3">
-<a href="#rfc.appendix.A.3">A.3.</a> <a href="#packetheader" id="packetheader">PacketHeader</a>
+<h1 id="rfc.appendix.A.2">
+<a href="#rfc.appendix.A.2">A.2.</a> <a href="#packetheader" id="packetheader">PacketHeader</a>
 </h1>
 <pre>
 class PacketHeader {
@@ -1807,8 +1784,8 @@ class PacketHeader {
     // Note: short vs long header is implicit through PacketType
 }
 </pre>
-<h1 id="rfc.appendix.A.4">
-<a href="#rfc.appendix.A.4">A.4.</a> <a href="#keytype" id="keytype">KeyType</a>
+<h1 id="rfc.appendix.A.3">
+<a href="#rfc.appendix.A.3">A.3.</a> <a href="#keytype" id="keytype">KeyType</a>
 </h1>
 <pre>
 enum KeyType {
@@ -1825,30 +1802,30 @@ enum KeyType {
     client_1rtt_secret
 }
 </pre>
-<h1 id="rfc.appendix.A.5">
-<a href="#rfc.appendix.A.5">A.5.</a> <a href="#quic-frames" id="quic-frames">QUIC Frames</a>
+<h1 id="rfc.appendix.A.4">
+<a href="#rfc.appendix.A.4">A.4.</a> <a href="#quic-frames" id="quic-frames">QUIC Frames</a>
 </h1>
 <pre>
 type QuicFrame = PaddingFrame | PingFrame | AckFrame | ResetStreamFrame | StopSendingFrame | CryptoFrame | NewTokenFrame | StreamFrame | MaxDataFrame | MaxStreamDataFrame | MaxStreamsFrame | DataBlockedFrame | StreamDataBlockedFrame | StreamsBlockedFrame | NewConnectionIDFrame | RetireConnectionIDFrame | PathChallengeFrame | PathResponseFrame | ConnectionCloseFrame | UnknownFrame;
 </pre>
-<h1 id="rfc.appendix.A.5.1">
-<a href="#rfc.appendix.A.5.1">A.5.1.</a> <a href="#paddingframe" id="paddingframe">PaddingFrame</a>
+<h1 id="rfc.appendix.A.4.1">
+<a href="#rfc.appendix.A.4.1">A.4.1.</a> <a href="#paddingframe" id="paddingframe">PaddingFrame</a>
 </h1>
 <pre>
 class PaddingFrame{
     frame_type:string = "padding";
 }
 </pre>
-<h1 id="rfc.appendix.A.5.2">
-<a href="#rfc.appendix.A.5.2">A.5.2.</a> <a href="#pingframe" id="pingframe">PingFrame</a>
+<h1 id="rfc.appendix.A.4.2">
+<a href="#rfc.appendix.A.4.2">A.4.2.</a> <a href="#pingframe" id="pingframe">PingFrame</a>
 </h1>
 <pre>
 class PingFrame{
     frame_type:string = "ping";
 }
 </pre>
-<h1 id="rfc.appendix.A.5.3">
-<a href="#rfc.appendix.A.5.3">A.5.3.</a> <a href="#ackframe" id="ackframe">AckFrame</a>
+<h1 id="rfc.appendix.A.4.3">
+<a href="#rfc.appendix.A.4.3">A.4.3.</a> <a href="#ackframe" id="ackframe">AckFrame</a>
 </h1>
 <pre>
 class AckFrame{
@@ -1859,17 +1836,17 @@ class AckFrame{
     // first number is "from": lowest packet number in interval
     // second number is "to": up to and including // highest packet number in interval
     // e.g., looks like [["1","2"],["4","5"]]
-    acked_ranges:Array&lt;[string, string]&gt;;
+    acked_ranges:Array&lt;[string, string]|[string]&gt;;
 
     ect1?:string;
     ect0?:string;
     ce?:string;
 }
 </pre>
-<p id="rfc.section.A.5.3.p.1">Note: the packet ranges in AckFrame.acked_ranges do not necessarily have to be ordered (e.g., [[&#8220;5&#8221;,&#8221;9&#8221;],[&#8220;1&#8221;,&#8221;4&#8221;]] is a valid value).</p>
-<p id="rfc.section.A.5.3.p.2">Note: the two numbers in the packet range can be the same (e.g., [120,120] means that packet with number 120 was ACKed). TODO: maybe make this into just [120]?</p>
-<h1 id="rfc.appendix.A.5.4">
-<a href="#rfc.appendix.A.5.4">A.5.4.</a> <a href="#resetstreamframe" id="resetstreamframe">ResetStreamFrame</a>
+<p id="rfc.section.A.4.3.p.1">Note: the packet ranges in AckFrame.acked_ranges do not necessarily have to be ordered (e.g., [[&#8220;5&#8221;,&#8221;9&#8221;],[&#8220;1&#8221;,&#8221;4&#8221;]] is a valid value).</p>
+<p id="rfc.section.A.4.3.p.2">Note: the two numbers in the packet range can be the same (e.g., [&#8220;120&#8221;,&#8221;120&#8221;] means that packet with number 120 was ACKed). However, in that case, implementers SHOULD log [&#8220;120&#8221;] instead and tools MUST be able to deal with both notations.</p>
+<h1 id="rfc.appendix.A.4.4">
+<a href="#rfc.appendix.A.4.4">A.4.4.</a> <a href="#resetstreamframe" id="resetstreamframe">ResetStreamFrame</a>
 </h1>
 <pre>
 class ResetStreamFrame{
@@ -1880,8 +1857,8 @@ class ResetStreamFrame{
     final_size:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.5">
-<a href="#rfc.appendix.A.5.5">A.5.5.</a> <a href="#stopsendingframe" id="stopsendingframe">StopSendingFrame</a>
+<h1 id="rfc.appendix.A.4.5">
+<a href="#rfc.appendix.A.4.5">A.4.5.</a> <a href="#stopsendingframe" id="stopsendingframe">StopSendingFrame</a>
 </h1>
 <pre>
 class StopSendingFrame{
@@ -1891,8 +1868,8 @@ class StopSendingFrame{
     error_code:ApplicationError | number;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.6">
-<a href="#rfc.appendix.A.5.6">A.5.6.</a> <a href="#cryptoframe" id="cryptoframe">CryptoFrame</a>
+<h1 id="rfc.appendix.A.4.6">
+<a href="#rfc.appendix.A.4.6">A.4.6.</a> <a href="#cryptoframe" id="cryptoframe">CryptoFrame</a>
 </h1>
 <pre>
 class CryptoFrame{
@@ -1902,8 +1879,8 @@ class CryptoFrame{
   length:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.7">
-<a href="#rfc.appendix.A.5.7">A.5.7.</a> <a href="#newtokenframe" id="newtokenframe">NewTokenFrame</a>
+<h1 id="rfc.appendix.A.4.7">
+<a href="#rfc.appendix.A.4.7">A.4.7.</a> <a href="#newtokenframe" id="newtokenframe">NewTokenFrame</a>
 </h1>
 <pre>
 class NewTokenFrame{
@@ -1913,14 +1890,14 @@ class NewTokenFrame{
   token:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.8">
-<a href="#rfc.appendix.A.5.8">A.5.8.</a> <a href="#streamframe" id="streamframe">StreamFrame</a>
+<h1 id="rfc.appendix.A.4.8">
+<a href="#rfc.appendix.A.4.8">A.4.8.</a> <a href="#streamframe" id="streamframe">StreamFrame</a>
 </h1>
 <pre>
 class StreamFrame{
     frame_type:string = "stream";
 
-    id:string;
+    stream_id:string;
 
     // These two MUST always be set
     // If not present in the Frame type, log their default values
@@ -1934,8 +1911,8 @@ class StreamFrame{
     raw?:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.9">
-<a href="#rfc.appendix.A.5.9">A.5.9.</a> <a href="#maxdataframe" id="maxdataframe">MaxDataFrame</a>
+<h1 id="rfc.appendix.A.4.9">
+<a href="#rfc.appendix.A.4.9">A.4.9.</a> <a href="#maxdataframe" id="maxdataframe">MaxDataFrame</a>
 </h1>
 <pre>
 class MaxDataFrame{
@@ -1944,19 +1921,19 @@ class MaxDataFrame{
   maximum:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.10">
-<a href="#rfc.appendix.A.5.10">A.5.10.</a> <a href="#maxstreamdataframe" id="maxstreamdataframe">MaxStreamDataFrame</a>
+<h1 id="rfc.appendix.A.4.10">
+<a href="#rfc.appendix.A.4.10">A.4.10.</a> <a href="#maxstreamdataframe" id="maxstreamdataframe">MaxStreamDataFrame</a>
 </h1>
 <pre>
 class MaxStreamDataFrame{
   frame_type:string = "max_stream_data";
 
-  id:string;
+  stream_id:string;
   maximum:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.11">
-<a href="#rfc.appendix.A.5.11">A.5.11.</a> <a href="#maxstreamsframe" id="maxstreamsframe">MaxStreamsFrame</a>
+<h1 id="rfc.appendix.A.4.11">
+<a href="#rfc.appendix.A.4.11">A.4.11.</a> <a href="#maxstreamsframe" id="maxstreamsframe">MaxStreamsFrame</a>
 </h1>
 <pre>
 class MaxStreamsFrame{
@@ -1966,8 +1943,8 @@ class MaxStreamsFrame{
   maximum:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.12">
-<a href="#rfc.appendix.A.5.12">A.5.12.</a> <a href="#datablockedframe" id="datablockedframe">DataBlockedFrame</a>
+<h1 id="rfc.appendix.A.4.12">
+<a href="#rfc.appendix.A.4.12">A.4.12.</a> <a href="#datablockedframe" id="datablockedframe">DataBlockedFrame</a>
 </h1>
 <pre>
 class DataBlockedFrame{
@@ -1976,19 +1953,19 @@ class DataBlockedFrame{
   limit:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.13">
-<a href="#rfc.appendix.A.5.13">A.5.13.</a> <a href="#streamdatablockedframe" id="streamdatablockedframe">StreamDataBlockedFrame</a>
+<h1 id="rfc.appendix.A.4.13">
+<a href="#rfc.appendix.A.4.13">A.4.13.</a> <a href="#streamdatablockedframe" id="streamdatablockedframe">StreamDataBlockedFrame</a>
 </h1>
 <pre>
 class StreamDataBlockedFrame{
   frame_type:string = "stream_data_blocked";
 
-  id:string;
+  stream_id:string;
   limit:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.14">
-<a href="#rfc.appendix.A.5.14">A.5.14.</a> <a href="#streamsblockedframe" id="streamsblockedframe">StreamsBlockedFrame</a>
+<h1 id="rfc.appendix.A.4.14">
+<a href="#rfc.appendix.A.4.14">A.4.14.</a> <a href="#streamsblockedframe" id="streamsblockedframe">StreamsBlockedFrame</a>
 </h1>
 <pre>
 class StreamsBlockedFrame{
@@ -1998,8 +1975,8 @@ class StreamsBlockedFrame{
   limit:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.15">
-<a href="#rfc.appendix.A.5.15">A.5.15.</a> <a href="#newconnectionidframe" id="newconnectionidframe">NewConnectionIDFrame</a>
+<h1 id="rfc.appendix.A.4.15">
+<a href="#rfc.appendix.A.4.15">A.4.15.</a> <a href="#newconnectionidframe" id="newconnectionidframe">NewConnectionIDFrame</a>
 </h1>
 <pre>
 class NewConnectionIDFrame{
@@ -2014,8 +1991,8 @@ class NewConnectionIDFrame{
   reset_token:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.16">
-<a href="#rfc.appendix.A.5.16">A.5.16.</a> <a href="#retireconnectionidframe" id="retireconnectionidframe">RetireConnectionIDFrame</a>
+<h1 id="rfc.appendix.A.4.16">
+<a href="#rfc.appendix.A.4.16">A.4.16.</a> <a href="#retireconnectionidframe" id="retireconnectionidframe">RetireConnectionIDFrame</a>
 </h1>
 <pre>
 class RetireConnectionIDFrame{
@@ -2024,8 +2001,8 @@ class RetireConnectionIDFrame{
   sequence_number:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.17">
-<a href="#rfc.appendix.A.5.17">A.5.17.</a> <a href="#pathchallengeframe" id="pathchallengeframe">PathChallengeFrame</a>
+<h1 id="rfc.appendix.A.4.17">
+<a href="#rfc.appendix.A.4.17">A.4.17.</a> <a href="#pathchallengeframe" id="pathchallengeframe">PathChallengeFrame</a>
 </h1>
 <pre>
 class PathChallengeFrame{
@@ -2034,8 +2011,8 @@ class PathChallengeFrame{
   data?:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.18">
-<a href="#rfc.appendix.A.5.18">A.5.18.</a> <a href="#pathresponseframe" id="pathresponseframe">PathResponseFrame</a>
+<h1 id="rfc.appendix.A.4.18">
+<a href="#rfc.appendix.A.4.18">A.4.18.</a> <a href="#pathresponseframe" id="pathresponseframe">PathResponseFrame</a>
 </h1>
 <pre>
 class PathResponseFrame{
@@ -2044,10 +2021,10 @@ class PathResponseFrame{
   data?:string;
 }
 </pre>
-<h1 id="rfc.appendix.A.5.19">
-<a href="#rfc.appendix.A.5.19">A.5.19.</a> <a href="#connectioncloseframe" id="connectioncloseframe">ConnectionCloseFrame</a>
+<h1 id="rfc.appendix.A.4.19">
+<a href="#rfc.appendix.A.4.19">A.4.19.</a> <a href="#connectioncloseframe" id="connectioncloseframe">ConnectionCloseFrame</a>
 </h1>
-<p id="rfc.section.A.5.19.p.1">raw_error_code is the actual, numerical code. This is useful because some error types are spread out over a range of codes (e.g., QUIC&#8217;s crypto_error).</p>
+<p id="rfc.section.A.4.19.p.1">raw_error_code is the actual, numerical code. This is useful because some error types are spread out over a range of codes (e.g., QUIC&#8217;s crypto_error).</p>
 <pre>
 type ErrorSpace = "transport" | "application";
 
@@ -2059,20 +2036,22 @@ class ConnectionCloseFrame{
     raw_error_code:number;
     reason:string;
 
-    trigger_frame_type?:number; // TODO: should be more defined, but we don't have a FrameType enum atm...
+    trigger_frame_type?:string; // For known frame types, the appropriate "frame_type" string. For unknown frame types, the hex encoded identifier value
 }
 </pre>
-<h1 id="rfc.appendix.A.5.20">
-<a href="#rfc.appendix.A.5.20">A.5.20.</a> <a href="#unknownframe" id="unknownframe">UnknownFrame</a>
+<h1 id="rfc.appendix.A.4.20">
+<a href="#rfc.appendix.A.4.20">A.4.20.</a> <a href="#unknownframe" id="unknownframe">UnknownFrame</a>
 </h1>
 <pre>
 class UnknownFrame{
     frame_type:string = "unknown";
     raw_frame_type:number;
+
+    raw?:string; // hex encoded
 }
 </pre>
-<h1 id="rfc.appendix.A.5.21">
-<a href="#rfc.appendix.A.5.21">A.5.21.</a> <a href="#transporterror" id="transporterror">TransportError</a>
+<h1 id="rfc.appendix.A.4.21">
+<a href="#rfc.appendix.A.4.21">A.4.21.</a> <a href="#transporterror" id="transporterror">TransportError</a>
 </h1>
 <pre>
 enum TransportError {
@@ -2092,7 +2071,7 @@ enum TransportError {
 }
 </pre>
 <h1 id="rfc.appendix.B">
-<a href="#rfc.appendix.B">Appendix B.</a> <a href="#http3-data-type-definitions" id="http3-data-type-definitions">HTTP/3 DATA type definitions</a>
+<a href="#rfc.appendix.B">Appendix B.</a> <a href="#http3-data-field-definitions" id="http3-data-field-definitions">HTTP/3 data field definitions</a>
 </h1>
 <h1 id="rfc.appendix.B.1">
 <a href="#rfc.appendix.B.1">B.1.</a> <a href="#http3-frames" id="http3-frames">HTTP/3 Frames</a>
@@ -2105,7 +2084,9 @@ type HTTP3Frame = DataFrame | HeadersFrame | PriorityFrame | CancelPushFrame | S
 </h1>
 <pre>
 class DataFrame{
-    frame_type:string = "data"
+    frame_type:string = "data";
+
+    raw?:string; // hex encoded
 }
 </pre>
 <h1 id="rfc.appendix.B.1.2">
@@ -2114,111 +2095,92 @@ class DataFrame{
 <p id="rfc.section.B.1.2.p.1">This represents an <em>uncompressed</em>, plaintext HTTP Headers frame (e.g., no QPACK compression is applied).</p>
 <p id="rfc.section.B.1.2.p.2">For example:</p>
 <pre>
-headers: [{"name":":path","content":"/"},{"name":":method","content":"GET"},{"name":":authority","content":"127.0.0.1:4433"},{"name":":scheme","content":"https"}]
+headers: [{"name":":path","value":"/"},{"name":":method","value":"GET"},{"name":":authority","value":"127.0.0.1:4433"},{"name":":scheme","value":"https"}]
 </pre>
-<p id="rfc.section.B.1.2.p.3">TODO: use proper HTTP naming for the fields, names, values, etc.</p>
 <pre>
 class HeadersFrame{
-    frame_type:string = "header",
-    headers:Array&lt;HTTPHeader&gt;
+    frame_type:string = "header";
+    headers:Array&lt;HTTPHeader&gt;;
 }
 
 class HTTPHeader {
-    name:string,
-    content:string
+    name:string;
+    value:string;
 }
 </pre>
 <h1 id="rfc.appendix.B.1.3">
-<a href="#rfc.appendix.B.1.3">B.1.3.</a> <a href="#priorityframe" id="priorityframe">PriorityFrame</a>
-</h1>
-<pre>
-class PriorityFrame{
-    frame_type:string = "priority",
-
-    prioritized_element_type:string = "request_stream"  | "push_stream" | "placeholder" | "root",
-    element_dependency_type?:string = "stream_id"       | "push_id"     | "placeholder_id",
-
-    exclusive:boolean,
-
-    prioritized_element_id:string,
-    element_dependency_id:string,
-    weight:number
-
-}
-</pre>
-<h1 id="rfc.appendix.B.1.4">
-<a href="#rfc.appendix.B.1.4">B.1.4.</a> <a href="#cancelpushframe" id="cancelpushframe">CancelPushFrame</a>
+<a href="#rfc.appendix.B.1.3">B.1.3.</a> <a href="#cancelpushframe" id="cancelpushframe">CancelPushFrame</a>
 </h1>
 <pre>
 class CancelPushFrame{
-    frame_type:string = "cancel_push",
-    id:string
+    frame_type:string = "cancel_push";
+    push_id:string;
 }
 </pre>
-<h1 id="rfc.appendix.B.1.5">
-<a href="#rfc.appendix.B.1.5">B.1.5.</a> <a href="#settingsframe" id="settingsframe">SettingsFrame</a>
+<h1 id="rfc.appendix.B.1.4">
+<a href="#rfc.appendix.B.1.4">B.1.4.</a> <a href="#settingsframe" id="settingsframe">SettingsFrame</a>
 </h1>
 <pre>
 class SettingsFrame{
-    frame_type:string = "settings",
-    fields:Array&lt;Setting&gt;
+    frame_type:string = "settings";
+    settings:Array&lt;Setting&gt;;
 }
 
 class Setting{
-    name:string = "SETTINGS_MAX_HEADER_LIST_SIZE" | "SETTINGS_NUM_PLACEHOLDERS",
-    content:string
+    name:string;
+    value:string;
 }
 </pre>
-<h1 id="rfc.appendix.B.1.6">
-<a href="#rfc.appendix.B.1.6">B.1.6.</a> <a href="#pushpromiseframe" id="pushpromiseframe">PushPromiseFrame</a>
+<h1 id="rfc.appendix.B.1.5">
+<a href="#rfc.appendix.B.1.5">B.1.5.</a> <a href="#pushpromiseframe" id="pushpromiseframe">PushPromiseFrame</a>
 </h1>
 <pre>
 class PushPromiseFrame{
-    frame_type:string = "push_promise",
-    id:string,
+    frame_type:string = "push_promise";
+    push_id:string;
 
-    headers:Array&lt;HTTPHeader&gt;
+    headers:Array&lt;HTTPHeader&gt;;
 }
 </pre>
-<h1 id="rfc.appendix.B.1.7">
-<a href="#rfc.appendix.B.1.7">B.1.7.</a> <a href="#goawayframe" id="goawayframe">GoAwayFrame</a>
+<h1 id="rfc.appendix.B.1.6">
+<a href="#rfc.appendix.B.1.6">B.1.6.</a> <a href="#goawayframe" id="goawayframe">GoAwayFrame</a>
 </h1>
 <pre>
 class GoAwayFrame{
-    frame_type:string = "goaway",
-    id:string
+    frame_type:string = "goaway";
+    stream_id:string;
 }
 </pre>
-<h1 id="rfc.appendix.B.1.8">
-<a href="#rfc.appendix.B.1.8">B.1.8.</a> <a href="#maxpushidframe" id="maxpushidframe">MaxPushIDFrame</a>
+<h1 id="rfc.appendix.B.1.7">
+<a href="#rfc.appendix.B.1.7">B.1.7.</a> <a href="#maxpushidframe" id="maxpushidframe">MaxPushIDFrame</a>
 </h1>
 <pre>
 class MaxPushIDFrame{
-    frame_type:string = "max_push_id",
-    id:string
+    frame_type:string = "max_push_id";
+    push_id:string;
 }
 </pre>
-<h1 id="rfc.appendix.B.1.9">
-<a href="#rfc.appendix.B.1.9">B.1.9.</a> <a href="#duplicatepushframe" id="duplicatepushframe">DuplicatePushFrame</a>
+<h1 id="rfc.appendix.B.1.8">
+<a href="#rfc.appendix.B.1.8">B.1.8.</a> <a href="#duplicatepushframe" id="duplicatepushframe">DuplicatePushFrame</a>
 </h1>
 <pre>
 class DuplicatePushFrame{
-    frame_type:string = "duplicate_push",
-    id:string
+    frame_type:string = "duplicate_push";
+    push_id:string;
 }
 </pre>
-<h1 id="rfc.appendix.B.1.10">
-<a href="#rfc.appendix.B.1.10">B.1.10.</a> <a href="#reservedframe" id="reservedframe">ReservedFrame</a>
+<h1 id="rfc.appendix.B.1.9">
+<a href="#rfc.appendix.B.1.9">B.1.9.</a> <a href="#reservedframe" id="reservedframe">ReservedFrame</a>
 </h1>
 <pre>
 class ReservedFrame{
-    frame_type:string = "reserved"
+    frame_type:string = "reserved";
 }
 </pre>
-<h1 id="rfc.appendix.B.1.11">
-<a href="#rfc.appendix.B.1.11">B.1.11.</a> <a href="#unknownframe-1" id="unknownframe-1">UnknownFrame</a>
+<h1 id="rfc.appendix.B.1.10">
+<a href="#rfc.appendix.B.1.10">B.1.10.</a> <a href="#unknownframe-1" id="unknownframe-1">UnknownFrame</a>
 </h1>
-<p id="rfc.section.B.1.11.p.1">HTTP/3 re-uses QUIC&#8217;s UnknownFrame definition, since their values and usage overlaps.</p>
+<p id="rfc.section.B.1.10.p.1">HTTP/3 re-uses QUIC&#8217;s UnknownFrame definition, since their values and usage overlaps.</p>
 <h1 id="rfc.appendix.B.2">
 <a href="#rfc.appendix.B.2">B.2.</a> <a href="#applicationerror-1" id="applicationerror-1">ApplicationError</a>
 </h1>
@@ -2226,26 +2188,23 @@ class ReservedFrame{
 enum ApplicationError{
     http_no_error,
     http_general_protocol_error,
-    reserved,
     http_internal_error,
-    http_request_cancelled,
-    http_incomplete_request,
-    http_connect_error,
-    http_excessive_load,
-    http_version_fallback,
-    http_wrong_stream,
-    http_id_error,
     http_stream_creation_error,
     http_closed_critical_stream,
-    http_early_response,
-    http_missing_settings,
-    http_unexpected_frame,
-    http_request_rejected,
+    http_frame_unexpected,
+    http_frame_error,
+    http_excessive_load,
+    http_id_error,
     http_settings_error,
-    http_malformed_frame
+    http_missing_settings,
+    http_request_rejected,
+    http_request_cancelled,
+    http_request_incomplete,
+    http_early_response,
+    http_connect_error,
+    http_version_fallback
 }
 </pre>
-<p id="rfc.section.B.2.p.1">TODO: http_malformed_frame is not a single value, but can include the frame type in its definition. This means we need more flexible error logging. Best to wait until h3-draft-23 (PR https://github.com/quicwg/base-drafts/pull/2662), which will include substantial changes to error codes.</p>
 <h1 id="rfc.appendix.C">
 <a href="#rfc.appendix.C">Appendix C.</a> <a href="#qpack-data-type-definitions" id="qpack-data-type-definitions">QPACK DATA type definitions</a>
 </h1>
@@ -2261,9 +2220,9 @@ type QPACKInstruction = SetDynamicTableCapacityInstruction | InsertWithNameRefer
 </h1>
 <pre>
 class SetDynamicTableCapacityInstruction {
-    instruction_type:string = "set_dynamic_table_capacity",
+    instruction_type:string = "set_dynamic_table_capacity";
 
-    capacity:number
+    capacity:number;
 }
 </pre>
 <h1 id="rfc.appendix.C.1.2">
@@ -2271,15 +2230,15 @@ class SetDynamicTableCapacityInstruction {
 </h1>
 <pre>
 class InsertWithNameReferenceInstruction {
-    instruction_type:string = "insert_with_name_reference",
+    instruction_type:string = "insert_with_name_reference";
 
-    table_type:"static"|"dynamic",
+    table_type:"static"|"dynamic";
 
-    name_index:number,
+    name_index:number;
 
-    huffman_encoded_value:boolean,
-    value_length:number,
-    value:string
+    huffman_encoded_value:boolean;
+    value_length:number;
+    value:string;
 }
 </pre>
 <h1 id="rfc.appendix.C.1.3">
@@ -2287,15 +2246,15 @@ class InsertWithNameReferenceInstruction {
 </h1>
 <pre>
 class InsertWithoutNameReferenceInstruction {
-    instruction_type:string = "insert_without_name_reference",
+    instruction_type:string = "insert_without_name_reference";
 
-    huffman_encoded_name:boolean,
-    name_length:number,
-    name:string
+    huffman_encoded_name:boolean;
+    name_length:number;
+    name:string;
 
-    huffman_encoded_value:boolean,
-    value_length:number,
-    value:string
+    huffman_encoded_value:boolean;
+    value_length:number;
+    value:string;
 }
 </pre>
 <h1 id="rfc.appendix.C.1.4">
@@ -2303,9 +2262,9 @@ class InsertWithoutNameReferenceInstruction {
 </h1>
 <pre>
 class DuplicateInstruction {
-    instruction_type:string = "duplicate",
+    instruction_type:string = "duplicate";
 
-    index:number
+    index:number;
 }
 </pre>
 <h1 id="rfc.appendix.C.1.5">
@@ -2313,9 +2272,9 @@ class DuplicateInstruction {
 </h1>
 <pre>
 class HeaderAcknowledgementInstruction {
-    instruction_type:string = "header_acknowledgement",
+    instruction_type:string = "header_acknowledgement";
 
-    stream_id:string
+    stream_id:string;
 }
 </pre>
 <h1 id="rfc.appendix.C.1.6">
@@ -2323,9 +2282,9 @@ class HeaderAcknowledgementInstruction {
 </h1>
 <pre>
 class StreamCancellationInstruction {
-    instruction_type:string = "stream_cancellation",
+    instruction_type:string = "stream_cancellation";
 
-    stream_id:string
+    stream_id:string;
 }
 </pre>
 <h1 id="rfc.appendix.C.1.7">
@@ -2333,9 +2292,9 @@ class StreamCancellationInstruction {
 </h1>
 <pre>
 class InsertCountIncrementInstruction {
-    instruction_type:string = "insert_count_increment",
+    instruction_type:string = "insert_count_increment";
 
-    increment:number
+    increment:number;
 }
 </pre>
 <h1 id="rfc.appendix.C.2">
@@ -2350,12 +2309,12 @@ type QPackCompressedHeader = IndexedHeaderField | LiteralHeaderFieldWithName | L
 <p id="rfc.section.C.2.1.p.1">Note: also used for &#8220;indexed header field with post-base index&#8221;</p>
 <pre>
 class IndexedHeaderField {
-    header_field_type:string = "index_header",
+    header_field_type:string = "index_header";
 
-    table_type:"static"|"dynamic", // MUST be "dynamic" if is_post_base is true
-    index:number,
+    table_type:"static"|"dynamic"; // MUST be "dynamic" if is_post_base is true
+    index:number;
 
-    is_post_base?:boolean = false, // to represent the "indexed header field with post-base index" header field type
+    is_post_base?:boolean = false; // to represent the "indexed header field with post-base index" header field type
 }
 </pre>
 <h1 id="rfc.appendix.C.2.2">
@@ -2364,43 +2323,45 @@ class IndexedHeaderField {
 <p id="rfc.section.C.2.2.p.1">Note: also used for &#8220;Literal header field with post-base name reference&#8221;</p>
 <pre>
 class LiteralHeaderFieldWithName {
-    header_field_type:string = "literal_with_name",
+    header_field_type:string = "literal_with_name";
 
-    preserve_literal:boolean, // the 3rd "N" bit
-    table_type:"static"|"dynamic", // MUST be "dynamic" if is_post_base is true
-    name_index:number,
+    preserve_literal:boolean; // the 3rd "N" bit
+    table_type:"static"|"dynamic"; // MUST be "dynamic" if is_post_base is true
+    name_index:number;
 
-    huffman_encoded_value:boolean,
-    value_length:number,
-    value:string,
+    huffman_encoded_value:boolean;
+    value_length:number;
+    value:string;
 
-    is_post_base?:boolean = false, // to represent the "Literal header field with post-base name reference" header field type
-}
-</pre>
-<p id="rfc.section.C.2.2.p.2">### LiteralHeaderFieldWithoutName</p>
-<pre>
-class LiteralHeaderFieldWithoutName {
-    header_field_type:string = "literal_without_name",
-
-    preserve_literal:boolean, // the 3rd "N" bit
-
-    huffman_encoded_name:boolean,
-    name_length:number,
-    name:string
-
-    huffman_encoded_value:boolean,
-    value_length:number,
-    value:string,
+    is_post_base?:boolean = false; // to represent the "Literal header field with post-base name reference" header field type
 }
 </pre>
 <h1 id="rfc.appendix.C.2.3">
-<a href="#rfc.appendix.C.2.3">C.2.3.</a> <a href="#qpackheaderblockprefix" id="qpackheaderblockprefix">QPACKHeaderBlockPrefix</a>
+<a href="#rfc.appendix.C.2.3">C.2.3.</a> <a href="#literalheaderfieldwithoutname" id="literalheaderfieldwithoutname">LiteralHeaderFieldWithoutName</a>
+</h1>
+<pre>
+class LiteralHeaderFieldWithoutName {
+    header_field_type:string = "literal_without_name";
+
+    preserve_literal:boolean; // the 3rd "N" bit
+
+    huffman_encoded_name:boolean;
+    name_length:number;
+    name:string;
+
+    huffman_encoded_value:boolean;
+    value_length:number;
+    value:string;
+}
+</pre>
+<h1 id="rfc.appendix.C.2.4">
+<a href="#rfc.appendix.C.2.4">C.2.4.</a> <a href="#qpackheaderblockprefix" id="qpackheaderblockprefix">QPACKHeaderBlockPrefix</a>
 </h1>
 <pre>
 class QPACKHeaderBlockPrefix {
-    required_insert_count:number,
-    sign_bit:boolean,
-    delta_base:number
+    required_insert_count:number;
+    sign_bit:boolean;
+    delta_base:number;
 }
 </pre>
 <h1 id="rfc.appendix.D">
