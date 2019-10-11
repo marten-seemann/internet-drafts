@@ -322,17 +322,17 @@
     "labels": [
 
     ],
-    "state": "open",
+    "state": "closed",
     "locked": false,
     "assignee": null,
     "assignees": [
 
     ],
     "milestone": null,
-    "comments": 0,
+    "comments": 1,
     "created_at": "2019-09-06T07:46:24Z",
-    "updated_at": "2019-09-06T07:46:24Z",
-    "closed_at": null,
+    "updated_at": "2019-10-09T19:24:59Z",
+    "closed_at": "2019-10-09T19:24:58Z",
     "author_association": "MEMBER",
     "body": "Thanks to @jlaine for reporting"
   },
