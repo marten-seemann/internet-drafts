@@ -299,7 +299,8 @@ ul.toc li {
 <link href="#rfc.section.3.4.2" rel="Chapter" title="3.4.2 group_id">
 <link href="#rfc.section.3.4.3" rel="Chapter" title="3.4.3 category and event">
 <link href="#rfc.section.3.4.4" rel="Chapter" title="3.4.4 data">
-<link href="#rfc.section.3.4.5" rel="Chapter" title="3.4.5 Event field values">
+<link href="#rfc.section.3.4.5" rel="Chapter" title="3.4.5 custom fields">
+<link href="#rfc.section.3.4.6" rel="Chapter" title="3.4.6 Event field values">
 <link href="#rfc.section.3.5" rel="Chapter" title="3.5 triggers">
 <link href="#rfc.section.4" rel="Chapter" title="4 Tooling requirements">
 <link href="#rfc.section.5" rel="Chapter" title="5 Methods of Access">
@@ -319,7 +320,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-main-schema-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-10-11" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-13" />
   <meta name="dct.abstract" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
   <meta name="description" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
 
@@ -340,10 +341,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">October 11, 2019</td>
+<td class="right">October 13, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: April 13, 2020</td>
+<td class="left">Expires: April 15, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -360,7 +361,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 13, 2020.</p>
+<p>This Internet-Draft will expire on April 15, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -404,7 +405,9 @@ ul.toc li {
 </li>
 <li>3.4.4.   <a href="#rfc.section.3.4.4">data</a>
 </li>
-<li>3.4.5.   <a href="#rfc.section.3.4.5">Event field values</a>
+<li>3.4.5.   <a href="#rfc.section.3.4.5">custom fields</a>
+</li>
+<li>3.4.6.   <a href="#rfc.section.3.4.6">Event field values</a>
 </li>
 </ul><li>3.5.   <a href="#rfc.section.3.5">triggers</a>
 </li>
@@ -826,11 +829,15 @@ The relative_time approach will:
 <p id="rfc.section.3.4.4.p.1">Required: yes</p>
 <p id="rfc.section.3.4.4.p.2">The data field is a generic object (list of name-value pairs). It contains the per-event metadata and its form and semantics are defined per specific sort of event (typically per event, but possibly also by combination of category and event). For example data field value definitons for QUIC and HTTP/3, see <a href="#QLOG-QUIC-HTTP3" class="xref">[QLOG-QUIC-HTTP3]</a>.</p>
 <h1 id="rfc.section.3.4.5">
-<a href="#rfc.section.3.4.5">3.4.5.</a> <a href="#event-field-values" id="event-field-values">Event field values</a>
+<a href="#rfc.section.3.4.5">3.4.5.</a> <a href="#custom-fields-1" id="custom-fields-1">custom fields</a>
 </h1>
-<p id="rfc.section.3.4.5.p.1">Required: yes</p>
-<p id="rfc.section.3.4.5.p.2">The specific values for each of these fields and their semantics are defined in separate documents, specific per protocol or use case.</p>
-<p id="rfc.section.3.4.5.p.3">For example: event definitions for QUIC and HTTP/3 can be found in <a href="#QLOG-QUIC-HTTP3" class="xref">[QLOG-QUIC-HTTP3]</a>.</p>
+<p id="rfc.section.3.4.5.p.1">Note that qlog files can always contain custom fields (e.g., a per-event field indicating its privacy properties) and assign custom values to existing fields (e.g., new categories for implemenation-specific events). Loggers are free to add such fields and field values and tools MUST either ignore these unknown fields or show them in a generic fashion.</p>
+<h1 id="rfc.section.3.4.6">
+<a href="#rfc.section.3.4.6">3.4.6.</a> <a href="#event-field-values" id="event-field-values">Event field values</a>
+</h1>
+<p id="rfc.section.3.4.6.p.1">Required: yes</p>
+<p id="rfc.section.3.4.6.p.2">The specific values for each of these fields and their semantics are defined in separate documents, specific per protocol or use case.</p>
+<p id="rfc.section.3.4.6.p.3">For example: event definitions for QUIC and HTTP/3 can be found in <a href="#QLOG-QUIC-HTTP3" class="xref">[QLOG-QUIC-HTTP3]</a>.</p>
 <h1 id="rfc.section.3.5">
 <a href="#rfc.section.3.5">3.5.</a> <a href="#triggers" id="triggers">triggers</a>
 </h1>

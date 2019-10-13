@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                        October 11, 2019
-Expires: April 13, 2020
+Intended status: Standards Track                        October 13, 2019
+Expires: April 15, 2020
 
 
                       Main logging schema for qlog
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 13, 2020.
+   This Internet-Draft will expire on April 15, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                     Expires April 13, 2020                 [Page 1]
+Marx                     Expires April 15, 2020                 [Page 1]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -80,21 +80,22 @@ Table of Contents
        3.4.2.  group_id  . . . . . . . . . . . . . . . . . . . . . .  13
        3.4.3.  category and event  . . . . . . . . . . . . . . . . .  17
        3.4.4.  data  . . . . . . . . . . . . . . . . . . . . . . . .  17
-       3.4.5.  Event field values  . . . . . . . . . . . . . . . . .  17
+       3.4.5.  custom fields . . . . . . . . . . . . . . . . . . . .  17
+       3.4.6.  Event field values  . . . . . . . . . . . . . . . . .  17
      3.5.  triggers  . . . . . . . . . . . . . . . . . . . . . . . .  17
    4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  19
-   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  19
-   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  19
-   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  20
-   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  20
-   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  20
-     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  20
-     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  20
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  20
+   5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  20
+   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  20
+   7.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
+   8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
+   9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  21
+     9.1.  Normative References  . . . . . . . . . . . . . . . . . .  21
+     9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  21
      A.1.  Since draft-marx-qlog-main-schema-00: . . . . . . . . . .  21
-   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  21
-   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  21
-   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  21
+   Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  22
+   Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  22
+   Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  22
 
 1.  Introduction
 
@@ -104,16 +105,17 @@ Table of Contents
    difficult to obtain structured logs that provide adequate information
    for tasks like problem root cause analysis.
 
-   This document aims to provide a high-level schema and harness that
-   describes the general layout of an easily usable, shareable,
 
 
 
-Marx                     Expires April 13, 2020                 [Page 2]
+
+Marx                     Expires April 15, 2020                 [Page 2]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
 
+   This document aims to provide a high-level schema and harness that
+   describes the general layout of an easily usable, shareable,
    aggregatable and structured logging format.  This high-level schema
    is protocol agnostic, with logging entries for specific protocols and
    use cases being defined in other documents (see for example
@@ -163,9 +165,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-
-
-Marx                     Expires April 13, 2020                 [Page 3]
+Marx                     Expires April 15, 2020                 [Page 3]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -221,7 +221,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                 [Page 4]
+Marx                     Expires April 15, 2020                 [Page 4]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -277,7 +277,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                 [Page 5]
+Marx                     Expires April 15, 2020                 [Page 5]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -333,7 +333,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                 [Page 6]
+Marx                     Expires April 15, 2020                 [Page 6]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -389,7 +389,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                 [Page 7]
+Marx                     Expires April 15, 2020                 [Page 7]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -445,7 +445,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                 [Page 8]
+Marx                     Expires April 15, 2020                 [Page 8]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -501,7 +501,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                 [Page 9]
+Marx                     Expires April 15, 2020                 [Page 9]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -557,7 +557,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 10]
+Marx                     Expires April 15, 2020                [Page 10]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -613,7 +613,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 11]
+Marx                     Expires April 15, 2020                [Page 11]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -669,7 +669,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 12]
+Marx                     Expires April 15, 2020                [Page 12]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -725,7 +725,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 13]
+Marx                     Expires April 15, 2020                [Page 13]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -781,7 +781,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 14]
+Marx                     Expires April 15, 2020                [Page 14]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -837,7 +837,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 15]
+Marx                     Expires April 15, 2020                [Page 15]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -893,7 +893,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 13, 2020                [Page 16]
+Marx                     Expires April 15, 2020                [Page 16]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -920,7 +920,16 @@ Internet-Draft        Main logging schema for qlog          October 2019
    also by combination of category and event).  For example data field
    value definitons for QUIC and HTTP/3, see [QLOG-QUIC-HTTP3].
 
-3.4.5.  Event field values
+3.4.5.  custom fields
+
+   Note that qlog files can always contain custom fields (e.g., a per-
+   event field indicating its privacy properties) and assign custom
+   values to existing fields (e.g., new categories for implemenation-
+   specific events).  Loggers are free to add such fields and field
+   values and tools MUST either ignore these unknown fields or show them
+   in a generic fashion.
+
+3.4.6.  Event field values
 
    Required: yes
 
@@ -937,6 +946,14 @@ Internet-Draft        Main logging schema for qlog          October 2019
    Sometimes, additional information is needed in the case where a
    single event can be caused by a variety of other events.  In the
    normal case, the context of the surrounding log messages gives a hint
+
+
+
+Marx                     Expires April 15, 2020                [Page 17]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
    as to which of these other events was the cause.  However, in highly-
    parallel and optimized implementations, corresponding log messages
    might be wide and far between in time.  Another option is to use
@@ -946,17 +963,52 @@ Internet-Draft        Main logging schema for qlog          October 2019
    For this reason, qlog allows an optional "trigger" property on the
    value of the "data" field to convey such information.  It indicates
    the reason this event occured.  The possible reasons depend on the
-
-
-
-Marx                     Expires April 13, 2020                [Page 17]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
    type of event and SHOULD be specified next to each event definition.
    Triggers can be of any type, but are typically logged as strings.
    For an example, see Figure 8.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                     Expires April 15, 2020                [Page 18]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
 
 {
     "common_fields": {
@@ -999,17 +1051,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
                          Figure 8: Trigger example
 
-
-
-
-
-
-
-Marx                     Expires April 13, 2020                [Page 18]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
 4.  Tooling requirements
 
    Tools MUST indicate which qlog version(s) they support.
@@ -1017,6 +1058,14 @@ Internet-Draft        Main logging schema for qlog          October 2019
    properties of the category, event and data fields they look for to
    execute their logic.  Tools SHOULD perform a (high-level) check if an
    input qlog file adheres to the expected qlog schema.  If a tool
+
+
+
+Marx                     Expires April 15, 2020                [Page 19]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
    determines a qlog file does not contain enough supported information
    to correctly execute the tool's logic, it SHOULD generate a clear
    error message to this effect.
@@ -1058,19 +1107,20 @@ Internet-Draft        Main logging schema for qlog          October 2019
    a real deployment, it is a perfectly acceptable practices to first
    generate the initial application-side logs in another (custom)
    (binary) format.  Afterwards, those bespoke files can then be
-
-
-
-Marx                     Expires April 13, 2020                [Page 19]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
    transformed into the qlog format for improved interoperability with
    tools and other logs.  A prime example of this is converting of
    binary .pcap packet capture files (e.g., obtained from wireshark or
    tcpdump) to the qlog format.  Such a conversion tool is available for
    the QUIC and HTTP/3 protocols [3].
+
+
+
+
+
+Marx                     Expires April 15, 2020                [Page 20]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
 
 7.  Security Considerations
 
@@ -1111,17 +1161,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 Appendix A.  Change Log
 
-
-
-
-
-
-
-Marx                     Expires April 13, 2020                [Page 20]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
 A.1.  Since draft-marx-qlog-main-schema-00:
 
    o  All field names are now lowercase (e.g., category instead of
@@ -1131,6 +1170,13 @@ A.1.  Since draft-marx-qlog-main-schema-00:
       separate field types (#23)
 
    o  group_ids in common_fields is now just also group_id
+
+
+
+Marx                     Expires April 15, 2020                [Page 21]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
 
 Appendix B.  Design Variations
 
@@ -1173,4 +1219,14 @@ Author's Address
 
 
 
-Marx                     Expires April 13, 2020                [Page 21]
+
+
+
+
+
+
+
+
+
+
+Marx                     Expires April 15, 2020                [Page 22]
