@@ -91,8 +91,8 @@ Table of Contents
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  21
      9.1.  Normative References  . . . . . . . . . . . . . . . . . .  21
      9.2.  URIs  . . . . . . . . . . . . . . . . . . . . . . . . . .  21
-   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  21
-     A.1.  Since draft-marx-qlog-main-schema-00: . . . . . . . . . .  21
+   Appendix A.  Change Log . . . . . . . . . . . . . . . . . . . . .  22
+     A.1.  Since draft-marx-qlog-main-schema-00: . . . . . . . . . .  22
    Appendix B.  Design Variations  . . . . . . . . . . . . . . . . .  22
    Appendix C.  Acknowledgements . . . . . . . . . . . . . . . . . .  22
    Author's Address  . . . . . . . . . . . . . . . . . . . . . . . .  22
@@ -692,9 +692,9 @@ Internet-Draft        Main logging schema for qlog          October 2019
         Figure 5: Three different approaches for logging timestamps
 
    Events in each individual trace MUST be logged in strictly ascending
-   timestamp order (though not necessarily value, for the "delta_time"
-   setup).  Tools are NOT expected to sort all events on the timestamp
-   before processing them.
+   timestamp order (though not necessarily absolute value, for the
+   "delta_time" setup).  Tools are NOT expected to sort all events on
+   the timestamp before processing them.
 
 3.4.2.  group_id
 
@@ -1075,6 +1075,16 @@ Internet-Draft        Main logging schema for qlog          October 2019
    event occurences within their context (e.g., marking unknown events
    on a timeline for manual interpretation by the user).
 
+   Tool authors should be aware that, depending on the logging
+   implementation, some events will not always be present in all traces.
+   For example, using a circular logging buffer of a fixed size, it
+   could be that the earliest events (e.g., connection setup events) are
+   later overwritten by "newer" events.  Tool authors are encouraged to
+   take this setup into account and to make their tools robust enough to
+   still provide adequate output for incomplete logs.  Loggers using a
+   circular buffer are in turn reminded of the requirement of listing
+   events in strict time order, as er Section 3.4.1.
+
 5.  Methods of Access
 
    qlog implementers MAY make generated logs and traces on an endpoint
@@ -1104,6 +1114,14 @@ Internet-Draft        Main logging schema for qlog          October 2019
    Note that, even with the optimizations detailed above, it is to be
    expected that qlog files (as they are JSON) will be relatively large
    when compared to binary formats.  If this turns out to be an issue in
+
+
+
+Marx                     Expires April 16, 2020                [Page 20]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
    a real deployment, it is a perfectly acceptable practices to first
    generate the initial application-side logs in another (custom)
    (binary) format.  Afterwards, those bespoke files can then be
@@ -1112,15 +1130,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
    binary .pcap packet capture files (e.g., obtained from wireshark or
    tcpdump) to the qlog format.  Such a conversion tool is available for
    the QUIC and HTTP/3 protocols [3].
-
-
-
-
-
-Marx                     Expires April 16, 2020                [Page 20]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
 
 7.  Security Considerations
 
@@ -1159,6 +1168,16 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
    [6] https://www.wireshark.org/
 
+
+
+
+
+
+Marx                     Expires April 16, 2020                [Page 21]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
 Appendix A.  Change Log
 
 A.1.  Since draft-marx-qlog-main-schema-00:
@@ -1170,13 +1189,6 @@ A.1.  Since draft-marx-qlog-main-schema-00:
       separate field types (#23)
 
    o  group_ids in common_fields is now just also group_id
-
-
-
-Marx                     Expires April 16, 2020                [Page 21]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
 
 Appendix B.  Design Variations
 
@@ -1206,18 +1218,6 @@ Author's Address
    Hasselt University
 
    Email: robin.marx@uhasselt.be
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

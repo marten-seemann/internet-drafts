@@ -726,7 +726,7 @@ The relative_time approach will:
 
 </pre>
 <p class="figure">Figure 5: Three different approaches for logging timestamps</p>
-<p id="rfc.section.3.4.1.p.5">Events in each individual trace MUST be logged in strictly ascending timestamp order (though not necessarily value, for the &#8220;delta_time&#8221; setup). Tools are NOT expected to sort all events on the timestamp before processing them.</p>
+<p id="rfc.section.3.4.1.p.5">Events in each individual trace MUST be logged in strictly ascending timestamp order (though not necessarily absolute value, for the &#8220;delta_time&#8221; setup). Tools are NOT expected to sort all events on the timestamp before processing them.</p>
 <h1 id="rfc.section.3.4.2">
 <a href="#rfc.section.3.4.2">3.4.2.</a> <a href="#group_ids" id="group_ids">group_id</a>
 </h1>
@@ -893,6 +893,7 @@ The relative_time approach will:
 </h1>
 <p id="rfc.section.4.p.1">Tools MUST indicate which qlog version(s) they support. Additionally, they SHOULD indicate exactly which values for and properties of the category, event and data fields they look for to execute their logic. Tools SHOULD perform a (high-level) check if an input qlog file adheres to the expected qlog schema. If a tool determines a qlog file does not contain enough supported information to correctly execute the tool&#8217;s logic, it SHOULD generate a clear error message to this effect.</p>
 <p id="rfc.section.4.p.2">Tools MUST NOT produce errors for any field names and values in the qlog format that they do not recognize. Tools CAN indicate unknown event occurences within their context (e.g., marking unknown events on a timeline for manual interpretation by the user).</p>
+<p id="rfc.section.4.p.3">Tool authors should be aware that, depending on the logging implementation, some events will not always be present in all traces. For example, using a circular logging buffer of a fixed size, it could be that the earliest events (e.g., connection setup events) are later overwritten by &#8220;newer&#8221; events. Tool authors are encouraged to take this setup into account and to make their tools robust enough to still provide adequate output for incomplete logs. Loggers using a circular buffer are in turn reminded of the requirement of listing events in strict time order, as er <a href="#time-based-fields" class="xref">Section 3.4.1</a>.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#methods-of-access" id="methods-of-access">Methods of Access</a>
 </h1>
