@@ -431,9 +431,9 @@
 
     ],
     "milestone": null,
-    "comments": 2,
+    "comments": 3,
     "created_at": "2019-07-25T20:35:32Z",
-    "updated_at": "2019-10-02T14:09:23Z",
+    "updated_at": "2019-10-14T08:58:26Z",
     "closed_at": null,
     "author_association": "MEMBER",
     "body": "Right now, the group_id concept is -very- flexible. It can be in common_fields (e.g., 1 trace per connection) but it can also be in event_fields (combining several connections into 1 trace). That already puts quite a burden on tools to support this different approaches.\r\n\r\nThen, another problem comes up if you would have the same group_id across multiple traces (e.g., trace 1 has some events for group_id x, but trace 2 has some group_id x events as well.)\r\n\r\nNote: This concept was mainly added to support the spindump use case (https://github.com/EricssonResearch/spindump), CC @jariarkko. There, a network intermediary logs (aggregated) data on many connections and even protocols. It would be tedious for that setup to split everything out into separate traces. \r\n\r\nPossible solutions I currently see:\r\n- Only allow 1 of the options (e.g., group_id only in common_fields or only in event_fields). I'm not a big fan of this (common only is inflexible, event_fields only has much overhead)(also: common can be seen as a special case of event_fields, so that could be the implementation target)\r\n- Disallow the same group_id across different traces: I think this makes a lot of sense, my preference\r\n- Discard the whole group_id concept alltogether (in practice, this would lead to many different approaches in different tools. basically the same as event_fields only, only no standard way of calling the thing)\r\n\r\nAdditional suggestion: rename group_id to \"luid\" (locally unique identifier)\r\n\r\nThanks to @nibanks for reporting this"
