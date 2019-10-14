@@ -320,7 +320,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-main-schema-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-10-13" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-14" />
   <meta name="dct.abstract" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
   <meta name="description" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
 
@@ -341,10 +341,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">October 13, 2019</td>
+<td class="right">October 14, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: April 15, 2020</td>
+<td class="left">Expires: April 16, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -361,7 +361,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 15, 2020.</p>
+<p>This Internet-Draft will expire on April 16, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -466,7 +466,7 @@ ul.toc li {
 <h1 id="rfc.section.3">
 <a href="#rfc.section.3">3.</a> <a href="#the-high-level-schema" id="the-high-level-schema">The High Level Schema</a>
 </h1>
-<p id="rfc.section.3.p.1">A qlog file should be able to contain several indivdual traces and logs from multiple vantage points that are in some way related. To that end, the top-level element in the qlog schema defines only a small set of fields and an array of component traces. Only the &#8220;qlog_version&#8221; and &#8220;traces&#8221; fields MUST be present. For this document, the &#8220;qlog_version&#8221; field MUST have a value of draft-01.</p>
+<p id="rfc.section.3.p.1">A qlog file should be able to contain several indivdual traces and logs from multiple vantage points that are in some way related. To that end, the top-level element in the qlog schema defines only a small set of fields and an array of component traces. Only the &#8220;qlog_version&#8221; and &#8220;traces&#8221; fields MUST be present. For this document, the &#8220;qlog_version&#8221; field MUST have a value of &#8220;draft-01&#8221;.</p>
 <div id="rfc.figure.1"></div>
 <div id="top_element"></div>
 <pre>
@@ -548,7 +548,8 @@ ul.toc li {
 <a href="#rfc.section.3.3.1">3.3.1.</a> <a href="#vantage-point" id="vantage-point">vantage_point</a>
 </h1>
 <p id="rfc.section.3.3.1.p.1">Required: yes</p>
-<p id="rfc.section.3.3.1.p.2">This field describes the vantage point from which the trace originates.  Its value is an object, with the following fields:</p>
+<p id="rfc.section.3.3.1.p.2">This field describes the vantage point from which the trace originates. Each trace can have only a single vantage_point and thus all events in a trace MUST BE from the perspective of this vantage_point. To include events from multiple vantage_points, implementers can include multiple traces, split by vantage_point, in a single qlog file.</p>
+<p id="rfc.section.3.3.1.p.3">Its value is an object, with the following fields:</p>
 <p></p>
 
 <ul>
@@ -568,9 +569,9 @@ ul.toc li {
 </ul>
 </li>
 </ul>
-<p id="rfc.section.3.3.1.p.4">The type field MUST be present. The flow field MUST be present if the type field has value &#8220;network&#8221;. The name field is optional.</p>
-<p id="rfc.section.3.3.1.p.5">The flow field is necessary because for multiple reasons (e.g., privacy) data from which the flow direction might be inferred (e.g., IP addresses) might not be present in the logs.</p>
-<p id="rfc.section.3.3.1.p.6">Depending on the context, tools confronted with &#8220;unknown&#8221; values in the vantage_point can either try to infer the semantics from protocol-level domain knowledge (e.g., in QUIC, the client sends an Initial packet) or give the user the option to switch between client and server perspectives.</p>
+<p id="rfc.section.3.3.1.p.5">The type field MUST be present. The flow field MUST be present if the type field has value &#8220;network&#8221;. The name field is optional.</p>
+<p id="rfc.section.3.3.1.p.6">The flow field is necessary because for multiple reasons (e.g., privacy) data from which the flow direction might be inferred (e.g., IP addresses) might not be present in the logs.</p>
+<p id="rfc.section.3.3.1.p.7">Depending on the context, tools confronted with &#8220;unknown&#8221; values in the vantage_point can either try to infer the semantics from protocol-level domain knowledge (e.g., in QUIC, the client sends an Initial packet) or give the user the option to switch between client and server perspectives.</p>
 <h1 id="rfc.section.3.3.2">
 <a href="#rfc.section.3.3.2">3.3.2.</a> <a href="#title-and-description-1" id="title-and-description-1">Title and Description</a>
 </h1>

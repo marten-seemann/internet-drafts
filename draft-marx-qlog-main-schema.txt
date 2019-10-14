@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                        October 13, 2019
-Expires: April 15, 2020
+Intended status: Standards Track                        October 14, 2019
+Expires: April 16, 2020
 
 
                       Main logging schema for qlog
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 15, 2020.
+   This Internet-Draft will expire on April 16, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                     Expires April 15, 2020                 [Page 1]
+Marx                     Expires April 16, 2020                 [Page 1]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -72,7 +72,7 @@ Table of Contents
        3.2.1.  Title and Description . . . . . . . . . . . . . . . .   5
      3.3.  Individual trace containers . . . . . . . . . . . . . . .   6
        3.3.1.  vantage_point . . . . . . . . . . . . . . . . . . . .   6
-       3.3.2.  Title and Description . . . . . . . . . . . . . . . .   7
+       3.3.2.  Title and Description . . . . . . . . . . . . . . . .   8
        3.3.3.  Configuration . . . . . . . . . . . . . . . . . . . .   8
        3.3.4.  common_fields and event_fields  . . . . . . . . . . .   9
      3.4.  Field name semantics  . . . . . . . . . . . . . . . . . .  12
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Marx                     Expires April 15, 2020                 [Page 2]
+Marx                     Expires April 16, 2020                 [Page 2]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -165,7 +165,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                 [Page 3]
+Marx                     Expires April 16, 2020                 [Page 3]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -177,7 +177,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
    that end, the top-level element in the qlog schema defines only a
    small set of fields and an array of component traces.  Only the
    "qlog_version" and "traces" fields MUST be present.  For this
-   document, the "qlog_version" field MUST have a value of draft-01.
+   document, the "qlog_version" field MUST have a value of "draft-01".
 
    {
        "qlog_version": "draft-01",
@@ -221,7 +221,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                 [Page 4]
+Marx                     Expires April 16, 2020                 [Page 4]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -277,7 +277,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                 [Page 5]
+Marx                     Expires April 16, 2020                 [Page 5]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -327,16 +327,21 @@ Internet-Draft        Main logging schema for qlog          October 2019
    Required: yes
 
    This field describes the vantage point from which the trace
-   originates.  Its value is an object, with the following fields:
+   originates.  Each trace can have only a single vantage_point and thus
+   all events in a trace MUST BE from the perspective of this
+   vantage_point.  To include events from multiple vantage_points,
 
 
 
-
-
-Marx                     Expires April 15, 2020                 [Page 6]
+Marx                     Expires April 16, 2020                 [Page 6]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
+
+   implementers can include multiple traces, split by vantage_point, in
+   a single qlog file.
+
+   Its value is an object, with the following fields:
 
    o  name: a user-chosen string (e.g., "NETWORK-1", "loadbalancer45",
       "reverseproxy@192.168.1.1", ...)
@@ -379,6 +384,16 @@ Internet-Draft        Main logging schema for qlog          October 2019
    Initial packet) or give the user the option to switch between client
    and server perspectives.
 
+
+
+
+
+
+Marx                     Expires April 16, 2020                 [Page 7]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
 3.3.2.  Title and Description
 
    Required: no
@@ -386,14 +401,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
    Both fields' values are generic strings, used for describing the
    contents of the trace.  These can either be filled in automatically
    (e.g., showing the endpoint name and readable timestamp of the log),
-
-
-
-Marx                     Expires April 15, 2020                 [Page 7]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
    or can be filled manually when creating aggregated logs (e.g., qlog
    files that illustrate a specific problem across traces that want to
    include additional explanations for easier communication between
@@ -436,20 +443,19 @@ Internet-Draft        Main logging schema for qlog          October 2019
    align traces in time and the found optimal offsets can be stored in
    this field for future usage.  The default value is "0".
 
+
+
+Marx                     Expires April 16, 2020                 [Page 8]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
 3.3.3.3.  original_uris
 
    This field is used when merging multiple individual qlog files or
    other source files (e.g., when converting .pcaps to qlog).  It allows
    to keep better track where certain data came from.  It is a simple
    array of strings.  It is an array instead of a single string, since a
-
-
-
-Marx                     Expires April 15, 2020                 [Page 8]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
    single qlog trace can be made up out of an aggregation of multiple
    component qlog traces as well.  The default value is an empty array.
 
@@ -492,19 +498,20 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
    For example, when logging events for a single QUIC connection, all
    events will share the same "original destination connection ID"
+
+
+
+Marx                     Expires April 16, 2020                 [Page 9]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
    (ODCID).  This field and its value should be set in "common_fields",
    rather than "event_fields".  However, if a single trace would contain
    events for multiple QUIC connections at the same time (e.g., a
    single, big output log for a server), the ODCID can be different
    across events, and should be part of "event_fields" instead (leading
    to it being logged for each individual event).
-
-
-
-Marx                     Expires April 15, 2020                 [Page 9]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
 
    Examples comparing traditional JSON vs the qlog format can be found
    in Figure 3 and Figure 4.  The events described in these examples are
@@ -550,14 +557,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-
-
-
-
-
-
-
-Marx                     Expires April 15, 2020                [Page 10]
+Marx                     Expires April 16, 2020                [Page 10]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -613,7 +613,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 11]
+Marx                     Expires April 16, 2020                [Page 11]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -669,7 +669,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 12]
+Marx                     Expires April 16, 2020                [Page 12]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -725,7 +725,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 13]
+Marx                     Expires April 16, 2020                [Page 13]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -781,7 +781,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 14]
+Marx                     Expires April 16, 2020                [Page 14]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -837,7 +837,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 15]
+Marx                     Expires April 16, 2020                [Page 15]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -893,7 +893,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 16]
+Marx                     Expires April 16, 2020                [Page 16]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -949,7 +949,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 17]
+Marx                     Expires April 16, 2020                [Page 17]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 18]
+Marx                     Expires April 16, 2020                [Page 18]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1061,7 +1061,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 19]
+Marx                     Expires April 16, 2020                [Page 19]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1117,7 +1117,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 15, 2020                [Page 20]
+Marx                     Expires April 16, 2020                [Page 20]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1173,7 +1173,7 @@ A.1.  Since draft-marx-qlog-main-schema-00:
 
 
 
-Marx                     Expires April 15, 2020                [Page 21]
+Marx                     Expires April 16, 2020                [Page 21]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1229,4 +1229,4 @@ Author's Address
 
 
 
-Marx                     Expires April 15, 2020                [Page 22]
+Marx                     Expires April 16, 2020                [Page 22]
