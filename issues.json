@@ -1,6 +1,54 @@
 [
 
   {
+    "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/28",
+    "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
+    "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/28/labels{/name}",
+    "comments_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/28/comments",
+    "events_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/28/events",
+    "html_url": "https://github.com/quiclog/internet-drafts/issues/28",
+    "id": 509052738,
+    "node_id": "MDU6SXNzdWU1MDkwNTI3Mzg=",
+    "number": 28,
+    "title": "Lacking a way to indicate ALPN list for client",
+    "user": {
+      "login": "rmarx",
+      "id": 2240689,
+      "node_id": "MDQ6VXNlcjIyNDA2ODk=",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/2240689?v=4",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/rmarx",
+      "html_url": "https://github.com/rmarx",
+      "followers_url": "https://api.github.com/users/rmarx/followers",
+      "following_url": "https://api.github.com/users/rmarx/following{/other_user}",
+      "gists_url": "https://api.github.com/users/rmarx/gists{/gist_id}",
+      "starred_url": "https://api.github.com/users/rmarx/starred{/owner}{/repo}",
+      "subscriptions_url": "https://api.github.com/users/rmarx/subscriptions",
+      "organizations_url": "https://api.github.com/users/rmarx/orgs",
+      "repos_url": "https://api.github.com/users/rmarx/repos",
+      "events_url": "https://api.github.com/users/rmarx/events{/privacy}",
+      "received_events_url": "https://api.github.com/users/rmarx/received_events",
+      "type": "User",
+      "site_admin": false
+    },
+    "labels": [
+
+    ],
+    "state": "open",
+    "locked": false,
+    "assignee": null,
+    "assignees": [
+
+    ],
+    "milestone": null,
+    "comments": 0,
+    "created_at": "2019-10-18T12:35:44Z",
+    "updated_at": "2019-10-18T12:35:44Z",
+    "closed_at": null,
+    "author_association": "MEMBER",
+    "body": "Currently, we can log a list of supported ALPN values for the server in \"server_listening\" and log the finally selected ALPN in \"parameters_set\". However, we lack a way to log the list of ALPN values the client supports (and offers the server).\r\n\r\nOptions:\r\n- add `alpn_values?: Array<string> // ALPN values offered by the client / received by the server. Use parameters_set to log the actually selected alp` to \"connection_started\"\r\n- make \"alpn\" in \"parameters_set\" an array instead of a string\r\n\r\nI personally prefer the 1st option, since the second doesn't match the semantics of \"set\" (since it would be emitted twice) and logging the negotiation options should be optional in a \"Base\" (while the final value is in a \"Core\" event).\r\n\r\nCC @jlaine "
+  },
+  {
     "url": "https://api.github.com/repos/quiclog/internet-drafts/issues/27",
     "repository_url": "https://api.github.com/repos/quiclog/internet-drafts",
     "labels_url": "https://api.github.com/repos/quiclog/internet-drafts/issues/27/labels{/name}",
