@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                        October 17, 2019
-Expires: April 19, 2020
+Intended status: Standards Track                        October 18, 2019
+Expires: April 20, 2020
 
 
                QUIC and HTTP/3 event definitions for qlog
@@ -32,7 +32,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 19, 2020.
+   This Internet-Draft will expire on April 20, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                     Expires April 19, 2020                 [Page 1]
+Marx                     Expires April 20, 2020                 [Page 1]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -73,13 +73,13 @@ Table of Contents
        5.1.2.  connection_started  . . . . . . . . . . . . . . . . .   9
        5.1.3.  connection_id_updated . . . . . . . . . . . . . . . .  10
        5.1.4.  spin_bit_updated  . . . . . . . . . . . . . . . . . .  10
-       5.1.5.  connection_retried  . . . . . . . . . . . . . . . . .  10
-       5.1.6.  connection_state_updated  . . . . . . . . . . . . . .  10
+       5.1.5.  connection_retried  . . . . . . . . . . . . . . . . .  11
+       5.1.6.  connection_state_updated  . . . . . . . . . . . . . .  11
        5.1.7.  MIGRATION-related events  . . . . . . . . . . . . . .  11
-     5.2.  security  . . . . . . . . . . . . . . . . . . . . . . . .  11
-       5.2.1.  key_updated . . . . . . . . . . . . . . . . . . . . .  11
+     5.2.  security  . . . . . . . . . . . . . . . . . . . . . . . .  12
+       5.2.1.  key_updated . . . . . . . . . . . . . . . . . . . . .  12
        5.2.2.  key_retired . . . . . . . . . . . . . . . . . . . . .  12
-     5.3.  transport . . . . . . . . . . . . . . . . . . . . . . . .  12
+     5.3.  transport . . . . . . . . . . . . . . . . . . . . . . . .  13
        5.3.1.  parameters_set  . . . . . . . . . . . . . . . . . . .  13
        5.3.2.  packet_sent . . . . . . . . . . . . . . . . . . . . .  15
        5.3.3.  packet_received . . . . . . . . . . . . . . . . . . .  15
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Marx                     Expires April 19, 2020                 [Page 2]
+Marx                     Expires April 20, 2020                 [Page 2]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -165,7 +165,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 3]
+Marx                     Expires April 20, 2020                 [Page 3]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -221,7 +221,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 4]
+Marx                     Expires April 20, 2020                 [Page 4]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -277,7 +277,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 5]
+Marx                     Expires April 20, 2020                 [Page 5]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -333,7 +333,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 6]
+Marx                     Expires April 20, 2020                 [Page 6]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -389,7 +389,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 7]
+Marx                     Expires April 20, 2020                 [Page 7]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -445,7 +445,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 8]
+Marx                     Expires April 20, 2020                 [Page 8]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -464,8 +464,8 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
     port_v4?: number,
     port_v6?: number,
 
-    quic_versions?: Array<string>,
-    alpn_values?: Array<string>,
+    quic_versions?: Array<string>, // the application layer protocols this server supports
+    alpn_values?: Array<string>, // the application layer protocols this server supports
 
     stateless_reset_required?:boolean // server will always respond with stateless_reset for incoming initials
 }
@@ -484,27 +484,43 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Data:
 
-   {
-       ip_version?: string,
-       src_ip?: string,
-       dst_ip?: string,
-
-       protocol?: string, // (default "QUIC")
-       src_port?: number,
-       dst_port?: number,
-
-       quic_version?: string,
-       src_cid?: string,
-       dst_cid?: string
-   }
 
 
 
 
-Marx                     Expires April 19, 2020                 [Page 9]
+
+
+
+
+
+
+
+
+
+
+
+
+
+Marx                     Expires April 20, 2020                 [Page 9]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
+
+{
+    ip_version?: string,
+    src_ip?: string,
+    dst_ip?: string,
+
+    protocol?: string, // (default "QUIC")
+    src_port?: number,
+    dst_port?: number,
+
+    quic_version?: string,
+    src_cid?: string,
+    dst_cid?: string,
+
+    alpn_values?: Array<string> // ALPN values offered by the client / received by the server. Use parameters_set to log the actually selected alp
+}
 
    Note: some QUIC stacks do not handle sockets directly and are thus
    unable to log IP and/or port information.
@@ -537,6 +553,15 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Data:
 
+
+
+
+
+Marx                     Expires April 20, 2020                [Page 10]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    {
        state: boolean
    }
@@ -550,17 +575,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    Importance: Base
 
    Data:
-
-
-
-
-
-
-
-Marx                     Expires April 19, 2020                [Page 10]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
    {
        old?:ConnectionState,
@@ -594,6 +608,16 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    e.g., path_updated
 
+
+
+
+
+
+Marx                     Expires April 20, 2020                [Page 11]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    TODO: read up on the draft how migration works and whether to best
    fit this here or in TRANSPORT TODO: integrate
    https://tools.ietf.org/html/draft-deconinck-quic-multipath-02
@@ -609,14 +633,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Note: secret_updated would be more correct, but in the draft it's
    called KEY_UPDATE, so stick with that for consistency
-
-
-
-
-Marx                     Expires April 19, 2020                [Page 11]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
    Data:
 
@@ -644,6 +660,20 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
    Data:
 
+
+
+
+
+
+
+
+
+
+Marx                     Expires April 20, 2020                [Page 12]
+
+Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
+
+
    {
        key_type:KeyType,
        key?:string,
@@ -662,17 +692,6 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
    o  "local_update"
 
 5.3.  transport
-
-
-
-
-
-
-
-Marx                     Expires April 19, 2020                [Page 12]
-
-Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
-
 
 5.3.1.  parameters_set
 
@@ -706,26 +725,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-Marx                     Expires April 19, 2020                [Page 13]
+Marx                     Expires April 20, 2020                [Page 13]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -781,7 +781,7 @@ interface PreferredAddress {
 
 
 
-Marx                     Expires April 19, 2020                [Page 14]
+Marx                     Expires April 20, 2020                [Page 14]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -837,7 +837,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 15]
+Marx                     Expires April 20, 2020                [Page 15]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -893,7 +893,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 16]
+Marx                     Expires April 20, 2020                [Page 16]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -949,7 +949,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 17]
+Marx                     Expires April 20, 2020                [Page 17]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 18]
+Marx                     Expires April 20, 2020                [Page 18]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1061,7 +1061,7 @@ enum StreamState {
 
 
 
-Marx                     Expires April 19, 2020                [Page 19]
+Marx                     Expires April 20, 2020                [Page 19]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1117,7 +1117,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 20]
+Marx                     Expires April 20, 2020                [Page 20]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1173,7 +1173,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 21]
+Marx                     Expires April 20, 2020                [Page 21]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1229,7 +1229,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 22]
+Marx                     Expires April 20, 2020                [Page 22]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1285,7 +1285,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 23]
+Marx                     Expires April 20, 2020                [Page 23]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1341,7 +1341,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 24]
+Marx                     Expires April 20, 2020                [Page 24]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1397,7 +1397,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 25]
+Marx                     Expires April 20, 2020                [Page 25]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1453,7 +1453,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 26]
+Marx                     Expires April 20, 2020                [Page 26]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1509,7 +1509,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 27]
+Marx                     Expires April 20, 2020                [Page 27]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1565,7 +1565,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 28]
+Marx                     Expires April 20, 2020                [Page 28]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1621,7 +1621,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 29]
+Marx                     Expires April 20, 2020                [Page 29]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1677,7 +1677,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 30]
+Marx                     Expires April 20, 2020                [Page 30]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1733,7 +1733,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 31]
+Marx                     Expires April 20, 2020                [Page 31]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1789,7 +1789,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 32]
+Marx                     Expires April 20, 2020                [Page 32]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1845,7 +1845,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 33]
+Marx                     Expires April 20, 2020                [Page 33]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1901,7 +1901,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 34]
+Marx                     Expires April 20, 2020                [Page 34]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -1957,7 +1957,7 @@ Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 35]
+Marx                     Expires April 20, 2020                [Page 35]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2013,7 +2013,7 @@ A.1.  PacketType
 
 
 
-Marx                     Expires April 19, 2020                [Page 36]
+Marx                     Expires April 20, 2020                [Page 36]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2069,7 +2069,7 @@ A.4.1.  PaddingFrame
 
 
 
-Marx                     Expires April 19, 2020                [Page 37]
+Marx                     Expires April 20, 2020                [Page 37]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2125,7 +2125,7 @@ A.4.5.  StopSendingFrame
 
 
 
-Marx                     Expires April 19, 2020                [Page 38]
+Marx                     Expires April 20, 2020                [Page 38]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2181,7 +2181,7 @@ class StreamFrame{
 
 
 
-Marx                     Expires April 19, 2020                [Page 39]
+Marx                     Expires April 20, 2020                [Page 39]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2237,7 +2237,7 @@ A.4.14.  StreamsBlockedFrame
 
 
 
-Marx                     Expires April 19, 2020                [Page 40]
+Marx                     Expires April 20, 2020                [Page 40]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2293,7 +2293,7 @@ A.4.18.  PathResponseFrame
 
 
 
-Marx                     Expires April 19, 2020                [Page 41]
+Marx                     Expires April 20, 2020                [Page 41]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2349,7 +2349,7 @@ A.4.21.  TransportError
 
 
 
-Marx                     Expires April 19, 2020                [Page 42]
+Marx                     Expires April 20, 2020                [Page 42]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2405,7 +2405,7 @@ headers: [{"name":":path","value":"/"},{"name":":method","value":"GET"},{"name":
 
 
 
-Marx                     Expires April 19, 2020                [Page 43]
+Marx                     Expires April 20, 2020                [Page 43]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2461,7 +2461,7 @@ B.1.8.  DuplicatePushFrame
 
 
 
-Marx                     Expires April 19, 2020                [Page 44]
+Marx                     Expires April 20, 2020                [Page 44]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2517,7 +2517,7 @@ C.1.1.  SetDynamicTableCapacityInstruction
 
 
 
-Marx                     Expires April 19, 2020                [Page 45]
+Marx                     Expires April 20, 2020                [Page 45]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2573,7 +2573,7 @@ C.1.5.  HeaderAcknowledgementInstruction
 
 
 
-Marx                     Expires April 19, 2020                [Page 46]
+Marx                     Expires April 20, 2020                [Page 46]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2629,7 +2629,7 @@ C.2.2.  LiteralHeaderFieldWithName
 
 
 
-Marx                     Expires April 19, 2020                [Page 47]
+Marx                     Expires April 20, 2020                [Page 47]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2685,7 +2685,7 @@ D.1.  Since draft-00:
 
 
 
-Marx                     Expires April 19, 2020                [Page 48]
+Marx                     Expires April 20, 2020                [Page 48]
 
 Internet-Draft QUIC and HTTP/3 event definitions for qlog   October 2019
 
@@ -2741,4 +2741,4 @@ Author's Address
 
 
 
-Marx                     Expires April 19, 2020                [Page 49]
+Marx                     Expires April 20, 2020                [Page 49]

@@ -4,8 +4,8 @@
 
 QUIC                                                             R. Marx
 Internet-Draft                                        Hasselt University
-Intended status: Standards Track                        October 17, 2019
-Expires: April 19, 2020
+Intended status: Standards Track                        October 18, 2019
+Expires: April 20, 2020
 
 
                       Main logging schema for qlog
@@ -35,7 +35,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on April 19, 2020.
+   This Internet-Draft will expire on April 20, 2020.
 
 Copyright Notice
 
@@ -53,7 +53,7 @@ Copyright Notice
 
 
 
-Marx                     Expires April 19, 2020                 [Page 1]
+Marx                     Expires April 20, 2020                 [Page 1]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -85,7 +85,7 @@ Table of Contents
      3.5.  triggers  . . . . . . . . . . . . . . . . . . . . . . . .  17
    4.  Tooling requirements  . . . . . . . . . . . . . . . . . . . .  19
    5.  Methods of Access . . . . . . . . . . . . . . . . . . . . . .  20
-   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  20
+   6.  Notes on Practical Use  . . . . . . . . . . . . . . . . . . .  21
    7.  Security Considerations . . . . . . . . . . . . . . . . . . .  21
    8.  IANA Considerations . . . . . . . . . . . . . . . . . . . . .  21
    9.  References  . . . . . . . . . . . . . . . . . . . . . . . . .  21
@@ -109,7 +109,7 @@ Table of Contents
 
 
 
-Marx                     Expires April 19, 2020                 [Page 2]
+Marx                     Expires April 20, 2020                 [Page 2]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -165,7 +165,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 3]
+Marx                     Expires April 20, 2020                 [Page 3]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -221,7 +221,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 4]
+Marx                     Expires April 20, 2020                 [Page 4]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -277,7 +277,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 5]
+Marx                     Expires April 20, 2020                 [Page 5]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -333,7 +333,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 6]
+Marx                     Expires April 20, 2020                 [Page 6]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -389,7 +389,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 7]
+Marx                     Expires April 20, 2020                 [Page 7]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -445,7 +445,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 8]
+Marx                     Expires April 20, 2020                 [Page 8]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -501,7 +501,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                 [Page 9]
+Marx                     Expires April 20, 2020                 [Page 9]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -557,7 +557,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 10]
+Marx                     Expires April 20, 2020                [Page 10]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -613,7 +613,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 11]
+Marx                     Expires April 20, 2020                [Page 11]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -669,7 +669,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 12]
+Marx                     Expires April 20, 2020                [Page 12]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -725,7 +725,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 13]
+Marx                     Expires April 20, 2020                [Page 13]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -781,7 +781,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 14]
+Marx                     Expires April 20, 2020                [Page 14]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -837,7 +837,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 15]
+Marx                     Expires April 20, 2020                [Page 15]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -893,7 +893,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 16]
+Marx                     Expires April 20, 2020                [Page 16]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -949,7 +949,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 17]
+Marx                     Expires April 20, 2020                [Page 17]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1005,7 +1005,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 18]
+Marx                     Expires April 20, 2020                [Page 18]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1061,7 +1061,7 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
 
 
-Marx                     Expires April 19, 2020                [Page 19]
+Marx                     Expires April 20, 2020                [Page 19]
 
 Internet-Draft        Main logging schema for qlog          October 2019
 
@@ -1085,6 +1085,14 @@ Internet-Draft        Main logging schema for qlog          October 2019
    circular buffer are in turn reminded of the requirement of listing
    events in strict time order, as er Section 3.4.1.
 
+   Most JSON parsers strictly follow the JSON specification.  This
+   includes the rule that trailing comma's are not allowed.  As it is
+   frequently annoying to remove these trailing comma's when logging
+   events in a streaming fashion, tool implementers SHOULD allow the
+   last event entry of a qlog trace to be an empty array.  This allows
+   loggers to simply close the qlog file by appending "[]]}]}" after
+   their last streamed event.
+
 5.  Methods of Access
 
    qlog implementers MAY make generated logs and traces on an endpoint
@@ -1106,6 +1114,14 @@ Internet-Draft        Main logging schema for qlog          October 2019
    qlog implementers SHOULD NOT enable this .well-known endpoint in
    typical production settings to prevent (malicious) users from
    downloading logs from other connections.  Implementers are advised to
+
+
+
+Marx                     Expires April 20, 2020                [Page 20]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
    disable this endpoint by default and require specific actions from
    the end users to enable it (and potentially qlog itself).
 
@@ -1114,14 +1130,6 @@ Internet-Draft        Main logging schema for qlog          October 2019
    Note that, even with the optimizations detailed above, it is to be
    expected that qlog files (as they are JSON) will be relatively large
    when compared to binary formats.  If this turns out to be an issue in
-
-
-
-Marx                     Expires April 19, 2020                [Page 20]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
-
    a real deployment, it is a perfectly acceptable practices to first
    generate the initial application-side logs in another (custom)
    (binary) format.  Afterwards, those bespoke files can then be
@@ -1162,21 +1170,19 @@ Internet-Draft        Main logging schema for qlog          October 2019
 
    [3] https://github.com/quiclog/pcap2qlog
 
+
+
+
+Marx                     Expires April 20, 2020                [Page 21]
+
+Internet-Draft        Main logging schema for qlog          October 2019
+
+
    [4] https://github.com/google/quic-trace
 
    [5] https://github.com/EricssonResearch/spindump
 
    [6] https://www.wireshark.org/
-
-
-
-
-
-
-Marx                     Expires April 19, 2020                [Page 21]
-
-Internet-Draft        Main logging schema for qlog          October 2019
-
 
 Appendix A.  Change Log
 
@@ -1223,10 +1229,4 @@ Author's Address
 
 
 
-
-
-
-
-
-
-Marx                     Expires April 19, 2020                [Page 22]
+Marx                     Expires April 20, 2020                [Page 22]

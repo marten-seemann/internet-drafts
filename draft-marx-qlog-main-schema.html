@@ -320,7 +320,7 @@ ul.toc li {
 
   <meta name="dct.creator" content="Marx, R." />
   <meta name="dct.identifier" content="urn:ietf:id:draft-marx-qlog-main-schema-latest" />
-  <meta name="dct.issued" scheme="ISO8601" content="2019-10-17" />
+  <meta name="dct.issued" scheme="ISO8601" content="2019-10-18" />
   <meta name="dct.abstract" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
   <meta name="description" content="This document describes a high-level schema for a standardized logging format called qlog.  This format allows easy sharing of data and the creation of reusable visualization and debugging tools. The high-level schema in this document is intended to be protocol-agnostic. Separate documents specify how the format should be used for specific protocol data." />
 
@@ -341,10 +341,10 @@ ul.toc li {
 </tr>
 <tr>
 <td class="left">Intended status: Standards Track</td>
-<td class="right">October 17, 2019</td>
+<td class="right">October 18, 2019</td>
 </tr>
 <tr>
-<td class="left">Expires: April 19, 2020</td>
+<td class="left">Expires: April 20, 2020</td>
 <td class="right"></td>
 </tr>
 
@@ -361,7 +361,7 @@ ul.toc li {
 <p>This Internet-Draft is submitted in full conformance with the provisions of BCP 78 and BCP 79.</p>
 <p>Internet-Drafts are working documents of the Internet Engineering Task Force (IETF).  Note that other groups may also distribute working documents as Internet-Drafts.  The list of current Internet-Drafts is at https://datatracker.ietf.org/drafts/current/.</p>
 <p>Internet-Drafts are draft documents valid for a maximum of six months and may be updated, replaced, or obsoleted by other documents at any time.  It is inappropriate to use Internet-Drafts as reference material or to cite them other than as "work in progress."</p>
-<p>This Internet-Draft will expire on April 19, 2020.</p>
+<p>This Internet-Draft will expire on April 20, 2020.</p>
 <h1 id="rfc.copyrightnotice"><a href="#rfc.copyrightnotice">Copyright Notice</a></h1>
 <p>Copyright (c) 2019 IETF Trust and the persons identified as the document authors.  All rights reserved.</p>
 <p>This document is subject to BCP 78 and the IETF Trust's Legal Provisions Relating to IETF Documents (https://trustee.ietf.org/license-info) in effect on the date of publication of this document.  Please review these documents carefully, as they describe your rights and restrictions with respect to this document.  Code Components extracted from this document must include Simplified BSD License text as described in Section 4.e of the Trust Legal Provisions and are provided without warranty as described in the Simplified BSD License.</p>
@@ -894,6 +894,7 @@ The relative_time approach will:
 <p id="rfc.section.4.p.1">Tools MUST indicate which qlog version(s) they support. Additionally, they SHOULD indicate exactly which values for and properties of the category, event and data fields they look for to execute their logic. Tools SHOULD perform a (high-level) check if an input qlog file adheres to the expected qlog schema. If a tool determines a qlog file does not contain enough supported information to correctly execute the tool&#8217;s logic, it SHOULD generate a clear error message to this effect.</p>
 <p id="rfc.section.4.p.2">Tools MUST NOT produce errors for any field names and values in the qlog format that they do not recognize. Tools CAN indicate unknown event occurences within their context (e.g., marking unknown events on a timeline for manual interpretation by the user).</p>
 <p id="rfc.section.4.p.3">Tool authors should be aware that, depending on the logging implementation, some events will not always be present in all traces. For example, using a circular logging buffer of a fixed size, it could be that the earliest events (e.g., connection setup events) are later overwritten by &#8220;newer&#8221; events. Tool authors are encouraged to take this setup into account and to make their tools robust enough to still provide adequate output for incomplete logs. Loggers using a circular buffer are in turn reminded of the requirement of listing events in strict time order, as er <a href="#time-based-fields" class="xref">Section 3.4.1</a>.</p>
+<p id="rfc.section.4.p.4">Most JSON parsers strictly follow the JSON specification. This includes the rule that trailing comma&#8217;s are not allowed. As it is frequently annoying to remove these trailing comma&#8217;s when logging events in a streaming fashion, tool implementers SHOULD allow the last event entry of a qlog trace to be an empty array. This allows loggers to simply close the qlog file by appending &#8220;[]]}]}&#8221; after their last streamed event.</p>
 <h1 id="rfc.section.5">
 <a href="#rfc.section.5">5.</a> <a href="#methods-of-access" id="methods-of-access">Methods of Access</a>
 </h1>
