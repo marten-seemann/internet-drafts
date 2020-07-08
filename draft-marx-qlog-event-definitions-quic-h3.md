@@ -781,6 +781,7 @@ Data:
     time_threshold?:number, // as RTT multiplier
     timer_granularity?:number, // in ms or us, depending on the overarching qlog's configuration
     initial_rtt?:number, // in ms or us, depending on the overarching qlog's configuration
+    max_ack_delay?:number, // in ms or us, depending on the overarching qlog's configuration
 
     // congestion control, Appendix B.1.
     max_datagram_size?:number, // in bytes // Note: this could be updated after pmtud
@@ -814,7 +815,6 @@ Data:
     latest_rtt?:number, // in ms or us, depending on the overarching qlog's configuration
     rtt_variance?:number, // in ms or us, depending on the overarching qlog's configuration
 
-    max_ack_delay?:number, // in ms or us, depending on the overarching qlog's configuration
     pto_count?:number,
 
     // Congestion control, Appendix B.2.
