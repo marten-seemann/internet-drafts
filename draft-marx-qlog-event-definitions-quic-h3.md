@@ -579,9 +579,9 @@ Data:
 
 ~~~
 {
-    server_versions?:Array<bytes>,
-    client_versions?:Array<bytes>,
-    chosen_version?:bytes
+    server_versions?:Array<uint32>,
+    client_versions?:Array<uint32>,
+    chosen_version?:uint32
 }
 ~~~
 
@@ -754,7 +754,7 @@ Data:
 
     stateless_reset_token?:bytes, // only if header.packet_type === stateless_reset. Is always 128 bits in length.
 
-    supported_versions:Array<bytes>, // only if header.packet_type === version_negotiation
+    supported_versions:Array<uint32>, // only if header.packet_type === version_negotiation
 
     raw?:RawInfo,
     datagram_id?:uint32
@@ -793,7 +793,7 @@ Data:
 
     stateless_reset_token?:bytes, // only if header.packet_type === stateless_reset. Is always 128 bits in length.
 
-    supported_versions:Array<bytes>, // only if header.packet_type === version_negotiation
+    supported_versions:Array<uint32>, // only if header.packet_type === version_negotiation
 
     raw?:RawInfo,
     datagram_id?:uint32
@@ -1824,7 +1824,7 @@ class PacketHeader {
     // only if present in the header
     // if correctly using transport:connection_id_updated events,
     // dcid can be skipped for 1RTT packets
-    version?: bytes; // e.g., "ff00001d" for draft-29
+    version?: uint32; // e.g., 0xff00001d for draft-29
     scil?: uint8;
     dcil?: uint8;
     scid?: bytes;
